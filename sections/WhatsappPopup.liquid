@@ -13,7 +13,9 @@
 </div>
 
 <script>
+
 {% if template contains 'collection' %}
+    alert("Hello")
     const link = window.location.href
     const x = document.getElementsByTagName("h1")[0].innerHTML
     whatsappLink=document.getElementById('wStrip')
@@ -26,7 +28,7 @@
     whatsappLink=document.getElementById('wStrip')
     whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I am looking for ${x.trim()} product the link is ${link}`
 {% endif %}
-    {% if template contains 'blog' %}
+    {% if template contains 'article' %}
     const link = window.location.href
     const x = document.getElementsByTagName("h1")[0].innerHTML
     whatsappLink=document.getElementById('wStrip')
@@ -51,7 +53,7 @@
     }
     setTimeout(show, 90000);
 {%endif%}
-    {% if template contains 'blog' %}
+    {% if template contains 'article' %}
         
         function show() {
             document.getElementById("popup1").classList.add("fadeIn");
