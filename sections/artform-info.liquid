@@ -1,0 +1,72 @@
+{%- liquid
+	assign collection_handle = product.metafields.artform.artfrom_name | downcase | replace: ' ','-'
+    assign collection_url = collections[collection_handle].url
+-%}
+
+
+<!-- <style> 
+@media all and (max-width: 675px) {
+
+.img {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+ }
+}
+</style> -->
+
+
+{%unless collections[collection_handle] == blank %}
+    <section style="margin-bottom: 45px; 
+                    color: {% if collections[collection_handle].image != blank %} white {%else%} black {%endif%};
+                    font-weight: 200;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-position: center; 
+                    position: relative;">
+      
+      <h1 class="section-title" > Art Form </h1>
+      <div style="padding: 25px;
+                  background-image: linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)),url({{collections[collection_handle].image | img_url: '2048x' | url}});
+                  background-repeat: no-repeat;
+                  background-attachment: fixed;
+                  background-size: cover; 
+                  min-height: 400px;">
+        <h1 style="text-align: center; margin-top: 20px; color: {% if collections[collection_handle].image != blank %} white {%else%} black {%endif%}">{{collection_handle | capitalize}}</h1>
+        <p style="color: white;">
+          {{collections[collection_handle].description}}</p>
+        <br><br>
+        <div style="display: flex;">
+            <button style=" justify-content: center; width: auto; border-radius: 22px; margin: 0 auto;">
+                <a style="color: white; text-decoration: none; margin: 10px;" href="https:{{collection_url }}"> Explore {{product.metafields.artform.artfrom_name | capitalize}} </a>
+            </button>
+        </div>
+      </div>
+    </section>
+{%endunless%}
+
+{% schema %}
+ {
+    "name": "Artform Info",
+    "settings": [
+    ],
+  "presets": [
+	{
+	"name": "Artform-Info",
+	"category": "Workshops"
+	}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}.
+
+
+{% endstylesheet %}
+  
+{% comment %}
+
+{% endcomment %}
+
+

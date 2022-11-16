@@ -1,0 +1,205 @@
+{% assign option_name = option.name | downcase %}
+
+{% assign color_swatch_options = "color, colour" | split: ", " %}
+
+{% assign current_option = "option" | append: option.position %}
+
+{% assign other_options = "option1 option2 option3" | remove: current_option | strip | split: " " %}
+
+<div class="swatches__container" data-option-index="{{ option.position }}" data-other-options='{{ other_options | json }}'>
+  <p class="swatches__option-name">{{ option.name }} {% for value in option.values %}{% if option.selected_value == value %}<span id="selected-option-{{ option.position }}" class="swatches__option-value">{{ value }}</span>{% endif %}{% endfor %}</p>
+
+  {% for value in option.values %}
+    {% assign image_url = value | handle | append: '.png' | file_url %}
+
+    {% assign css_color = value | split: ' ' | last | handle %}
+
+    {% capture id %}{% if template == 'product.quick' %}qv-{% endif %}{{ section.id }}-swatch-{{ option.position }}-{{ value | handle }}{% endcapture %}
+
+    {% assign available = false %}
+
+    <!-- Checking Availability -->
+    {% for variant in product.variants %}
+      {% unless variant.available %}
+        {% continue %}
+      {% endunless %}
+
+      {% unless variant[current_option] == value %}
+        {% continue %}
+      {% endunless %}
+
+      {% unless variant[other_options[0]] == current_variant[other_options[0]] %}
+        {% continue %}
+      {% endunless %}
+
+      {% unless variant[other_options[1]] == current_variant[other_options[1]] %}
+        {% continue %}
+      {% endunless %}
+
+      {% assign available = true %}
+    {% endfor %}
+
+    <!-- Building Variant Image -->
+    {% for variant in product.variants %}
+      {% unless variant[current_option] == value %}
+        {% continue %}
+      {% endunless %}
+
+      {% unless variant[other_options[0]] == current_variant[other_options[0]] %}
+        {% continue %}
+      {% endunless %}
+
+      {% unless variant[other_options[1]] == current_variant[other_options[1]] %}
+        {% continue %}
+      {% endunless %}
+
+      {% assign variant_image_url = blank %}
+
+      {% if variant.image %}
+        {% assign variant_image_url =  variant.image | img_url: '100x' %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign checked = "" %}
+
+    {% if current_variant[current_option] == value %}
+      {% assign checked = 'checked="checked"' %}
+    {% endif %}
+
+    {% capture radio_button %}
+      <input type="radio" id="{{ id }}" 
+             class="swatches__form--input" 
+             name="{{ option_name }}" 
+             value="{{ value | escape }}" 
+             data-position="{{ option.position }}" {{ checked }} 
+             onClick = "ChangeToVariantImage(this)"/>
+    {% endcapture %}
+
+    {% capture sold_out_image %}
+      <img class="swatches__sold-out--image crossed-out" alt="Sold out" src="{{ 'soldout.png' | asset_url }}" />
+    {% endcapture %}
+
+    {% capture regular_swatch %}
+      <div class="swatches__swatch--regular swatch-element {% unless available %}soldout{% endunless %}">
+        {{ radio_button }}
+
+        <label class="swatches__form--label" for="{{ id }}" tabindex="0">
+          {{ value }}
+          {{ sold_out_image }}
+        </label>
+      </div>
+    {% endcapture %}
+
+    {% capture color_swatch %}
+      <div class="swatches__swatch--color swatch-element color swatches__shape--{{ color_swatch_shape }} {% unless available %}soldout{% endunless %}">
+
+        {{ radio_button }}
+
+        <label class="swatches__form--label"
+        for="{{ id }}"
+        tabindex="0"
+        style="background-color: {{ css_color }};
+        {% unless color_swatch_style == 'default-color' %}
+          background-image: url({% if color_swatch_style == 'custom-image' %}{{ image_url }}{% elsif color_swatch_style == 'variant-image' %}{{ variant_image_url }}{% endif %}); background-position: center center;
+        {% endunless %}">
+          {{ sold_out_image }}
+        </label>
+      </div>
+    {% endcapture %}
+
+    {% if show_color_swatches and color_swatch_options contains option_name %}
+      {{ color_swatch }}
+    {% else %}
+      {{ regular_swatch }}
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<script>
+  function ChangeToVariantImage(doc){
+  let variantJson = [];
+  let variantPrice = []; 
+  let variantOptions = [];
+ 
+  	{% for variant in product.variants %}   	
+  		 variantJson.push({{variant|json}});
+  		 variantPrice.push('{{ variant.price | money }}');
+    {%endfor%}
+	
+                           
+	{% for variant in product.options_with_values%} 
+  		variantOptions.push({{variant.values|json}});
+    {%endfor%}
+    //console.log(variantOptions);
+
+    var imgDivs = document.getElementsByClassName('product-media-container'); 
+	var buttonTag = document.getElementById('addToCart'); 
+    var selectedOption1 = document.getElementById('selected-option-1');
+    var selectedOption2 = document.getElementById('selected-option-2');
+    var selectedOption3 = document.getElementById('selected-option-3');
+    
+    //console.log(selectedOption3);
+	//console.log(buttonTag.value);
+  	//console.log(imgDivs[0].parentElement);
+    //console.log(imgDivs[1].parentElement);
+    
+    if(variantOptions.length == 1){
+      var value = doc.getAttribute("value");
+    }
+    else if(variantOptions.length == 2){
+      if(variantOptions[0].includes(doc.getAttribute("value"))){
+            var value = doc.getAttribute("value")  + ' / ' + selectedOption2.innerHTML ;
+        }
+        else if(variantOptions[1].includes(doc.getAttribute("value"))){
+            var value = selectedOption1.innerHTML + ' / ' + doc.getAttribute("value");
+        }
+    }
+    else if(variantOptions.length == 3){
+      if(variantOptions[0].includes(doc.getAttribute("value"))){
+            var value = doc.getAttribute("value")  + ' / ' + selectedOption2.innerHTML + + ' / ' + selectedOption3.innerHTML;
+        }
+        else if(variantOptions[1].includes(doc.getAttribute("value"))){
+            var value = selectedOption1.innerHTML + ' / ' + doc.getAttribute("value") + ' / ' + selectedOption3.innerHTML;
+        }
+      	else if(variantOptions[2].includes(doc.getAttribute("value"))){
+            var value = selectedOption1.innerHTML + ' / ' + selectedOption2.innerHTML + ' / ' + doc.getAttribute("value");
+        }
+    }
+    console.log(value);
+    
+    for(let i in variantJson){
+      if(variantJson[i].title == value){
+        buttonTag.value = variantPrice[i];s
+      	//console.log(variantJson[i].id);
+		var tag = "product-media--" + variantJson[i].featured_media.id;
+		//console.log("product-media--",variantJson[i].featured_media.id);
+      	//console.log(tag);
+      }   
+  	}
+    //console.log(price);
+
+    
+    for(let i in imgDivs){
+      try{
+        if(imgDivs[i].classList.contains(tag)){
+        imgDivs[i].parentElement.classList.add("is-selected");;
+        imgDivs[i].classList.remove("inactive");
+      	imgDivs[i].classList.add("active-slide");
+        }
+        else{
+          imgDivs[i].parentElement.classList.remove("is-selected");
+          imgDivs[i].classList.remove("active-slide");
+          imgDivs[i].classList.add("inactive");
+        }
+      } catch(e){
+        break;
+      }
+      
+    }	
+  }
+</script>
+
+{% comment %}
+   
+{% endcomment %}

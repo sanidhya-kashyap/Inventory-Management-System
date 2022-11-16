@@ -1,0 +1,17 @@
+{% section 'painting-template' %}
+{% if product.metafields.Instructor.name != blank %}
+	{% section 'Instructor-info' %}
+{% endif %}
+{% if product.metafields.artform.artfrom_name != blank %}
+		{% section 'artform-info' %}
+{% endif %}	
+<!-- <div style="text-align:center;
+            margin-left:80px;
+            margin-right: 80px;
+            margin-top:10px;
+            margin-bottom:10px;">
+  <b>Note*</b> Orders for paintings, they are made to order and will take 2-3 weeks, 
+  we will keep you updated about the progress and will notify you when it 
+  has been shipped. 
+</div> -->
+{% section 'product-recommendations' %}

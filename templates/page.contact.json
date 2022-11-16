@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "blocks": {
+        "4c4f2ce0-df07-4557-babb-09cc76fee944": {
+          "type": "text_note",
+          "disabled": true,
+          "settings": {
+            "textbox_heading": "Heading",
+            "textbox_subheading": "<p><strong>For Customer Queries - <\/strong><\/p><p>Email: wecare@memeraki.com<\/p><p>WhatsApp: ‪+91 99715 93574‬<br\/><\/p><p><strong>For Letters and Mails -<\/strong><\/p><p>Office Address - ABC 402, 4rd CENTRUM PLAZA, Golf Course Rd, opp. SunCity, Sector 53, Gurugram, Haryana (122002), India<\/p>",
+            "subheading_align": "left"
+          }
+        },
+        "cc25ec0f-c126-426d-84ba-e34fd556433b": {
+          "type": "text_note",
+          "disabled": true,
+          "settings": {
+            "textbox_heading": "Heading",
+            "textbox_subheading": "<p>Subheading<\/p>",
+            "subheading_align": "left"
+          }
+        }
+      },
+      "block_order": [
+        "4c4f2ce0-df07-4557-babb-09cc76fee944",
+        "cc25ec0f-c126-426d-84ba-e34fd556433b"
+      ],
+      "settings": {
+        "page_size": "thin",
+        "sidebar_positon": "right"
+      }
+    },
+    "dafac7c8-5391-4f40-9148-3a3d1aee8204": {
+      "type": "rich-text",
+      "blocks": {
+        "ed4f41ca-ccdd-4d76-90ea-d964e1a21dc2": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "rich_text": "<p>Please use the information on the left to reach us. You can also use the WhatsApp button on the bottom right to start an instant chat with us.<\/p><p>If you're unsure where to send your queries, please fill out the form below and we'll get back to you. <\/p>",
+            "center": false,
+            "block_size": 3
+          }
+        },
+        "338045ca-2d06-4941-8e3e-a4070209e5ab": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "rich_text": "<p><\/p><p><strong>For Customer Queries - <\/strong><\/p><p>Email: wecare@memeraki.com<\/p><p>WhatsApp: ‪+91 99715 93574‬<br\/><\/p><p><strong>For Letters and Mails -<\/strong><\/p><p>Office Address - ABC 402, 4rd CENTRUM PLAZA, Golf Course Rd, opp. SunCity, Sector 53, Gurugram, Haryana (122002), India<\/p>",
+            "center": false,
+            "block_size": 3
+          }
+        }
+      },
+      "block_order": [
+        "ed4f41ca-ccdd-4d76-90ea-d964e1a21dc2",
+        "338045ca-2d06-4941-8e3e-a4070209e5ab"
+      ],
+      "settings": {
+        "title": "Contact Us",
+        "color_scheme": "cs3",
+        "section_padding": "both"
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Contact Us Form",
+        "cf_max_width": 900,
+        "cf_show_first_name": true,
+        "cf_show_last_name": true,
+        "cf_show_company_name": true,
+        "cf_show_address": true,
+        "cf_show_website_url": true,
+        "cf_show_phone": true,
+        "cf_show_custom_field_one": false,
+        "cf_custom_field_one": "Custom Field One",
+        "cf_custom_field_one_type": "input",
+        "cf_show_custom_field_two": false,
+        "cf_custom_field_two": "Custom Field Two",
+        "cf_custom_field_two_type": "input",
+        "section_padding": "both"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "dafac7c8-5391-4f40-9148-3a3d1aee8204",
+    "form"
+  ]
+}

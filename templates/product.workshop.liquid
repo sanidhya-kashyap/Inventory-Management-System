@@ -1,0 +1,10 @@
+{% section 'workshop-template' %}
+{% if product.metafields.Instructor.name != blank %}
+	{% section 'Instructor-info' %}
+{% endif %}
+{% if product.metafields.artform.artfrom_name != blank %}
+		{% section 'artform-info' %}
+{% endif %}	
+{% section 'workshop-reviews' %}
+{% section 'accordion' %}
+{% section 'product-recommendations' %}

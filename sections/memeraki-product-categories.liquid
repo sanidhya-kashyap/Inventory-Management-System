@@ -1,0 +1,150 @@
+<div class="section-title" style="margin-top: 25px;"><h2>Explore Categories</h2></div>
+<div class="categories-container">
+  <div id="workshop" class="category-item">
+    <img class="collection-image" loading="lazy" style="" src="{{collections['live-art-workshops'].featured_image | img_url: '512x512'}}">
+    <a href="{{collections['live-art-workshops'].url}}"><div class="collection-overlay">
+      <span class="category-text">Attend Live Workshops</span>
+    </div></a>
+  </div>
+  <div id="masterclass" class="category-item ">
+    
+    <img class="collection-image" loading="lazy" style="" src="{{collections['masterclasses'].featured_image | img_url: '512x512'}}">
+    <a href="{{collections['masterclasses'].url}}"><div class="collection-overlay">
+      <span class="category-text">Watch On Demand Masterclasses</span>   
+    </div></a>
+  </div>
+  <div id="painting" class="category-item">
+    <img class="collection-image" loading="lazy" style="" src="{{collections['paintings'].featured_image |img_url: '512x512'}}">
+    <a href="{{collections['paintings'].url}}"><div class="collection-overlay">
+      <span class="category-text">Buy Handmande Paintings</span>
+    </div></a>
+  </div>
+</div>
+
+<style>
+  .categories-container{
+    margin-bottom: 20px;
+    display:flex;
+    background-color: #411e2f;
+    height: 60%;
+    padding: 10px;    
+  }
+  
+  .category-item{
+    position: relative;
+    margin: 20px;
+    width: 100%;
+  }
+  
+  .collection-overlay {  
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .category-text {
+    background-color: #f4cb28;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 10px 12px;
+    height: 20px;
+    
+  }
+  
+  .category-item:hover .collection-image {
+    opacity: 0.3;
+
+  }
+  
+  .category-item:hover .collection-overlay {
+    opacity: 1;
+  }
+
+  @media (max-width: 1200px) {
+    .section-title{
+      margin-top: 20px;
+    }
+
+    .category-item{
+      width: 90%;
+    }
+
+    .collection-overlay {  
+      opacity: 1;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      width: 100%;
+      text-align: center;
+  }
+
+  .category-text {
+    background-color: #f4cb28;
+    color: white;
+    font-weight: bolder;
+    font-size: 11px;
+    padding: 10px 12px;
+    height: 20px;
+    
+  }
+
+  .category-item:hover .collection-image {
+    opacity: 1;
+  }
+}
+
+  @media (max-width: 780px) {
+    .section-title{
+      margin-top: 20px;
+    }
+    
+    .categories-container{
+      flex-direction: column; 
+      background-color: white;
+      
+    }
+
+    .category-item{
+      width: 90%;
+    }
+
+    .collection-overlay {  
+      opacity: 1;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      width: 100%;
+      text-align: center;
+  }
+
+  .category-item:hover .collection-image {
+    opacity: 1;
+  }
+}
+</style>
+{% schema %}
+  {
+    "name": "Product Catergories",
+    "class": "shopify-section",
+    "settings": [],
+    "presets":[
+      {
+      "name": "MeMeraki Categories"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

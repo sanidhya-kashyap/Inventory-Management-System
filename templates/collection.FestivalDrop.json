@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "banner": {
+      "type": "banner-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/3_d69f44d8-257e-4211-8d02-79a38cdd6536.png"
+      }
+    },
+    "collections": {
+      "type": "RakhiCollection",
+      "settings": {
+      }
+    },
+    "16585077094a6d3096": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Conscious Christmas Decor",
+        "collection": "christmas-decor",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "none"
+      }
+    },
+    "166394605447579bb3": {
+      "type": "custom-liquid",
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['christmas-decor'].url}}><button class=\"View-More-Button\" >View More<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "bottom"
+      }
+    },
+    "1663918045b397f5c5": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Conscious Christmas Gifting",
+        "collection": "christmas-gift-list",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "top"
+      }
+    },
+    "16639480896ddaac72": {
+      "type": "custom-liquid",
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['christmas-gift-list'].url}}><button class=\"View-More-Button\" >View More<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "bottom"
+      }
+    },
+    "165850770144488217": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Christmas Arts & Craft DIY Workshops",
+        "collection": "christmas-art-craft-diy-workshops",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "top"
+      }
+    },
+    "1663948093bc87055b": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-paintings-2022'].url}}><button class=\"View-More-Button\" >View More<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "bottom"
+      }
+    },
+    "16585077251a362ed3": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Christmas Paintings in Traditional Indian Artforms",
+        "collection": "handpainted-christmas-paintings-in-traditional-indian-art",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "top"
+      }
+    },
+    "1663945496b3231731": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-live-online-art-workshops'].url}}><button class=\"View-More-Button\" >View More<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "bottom"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collections",
+    "16585077094a6d3096",
+    "166394605447579bb3",
+    "1663918045b397f5c5",
+    "16639480896ddaac72",
+    "165850770144488217",
+    "1663948093bc87055b",
+    "16585077251a362ed3",
+    "1663945496b3231731"
+  ]
+}

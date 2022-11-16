@@ -1,0 +1,22 @@
+
+{%comment %}
+{% section 'masterclass-template' %}
+{%endcomment%}
+{% section 'masterclass-leads-popup' %}
+{% section 'product-gallery' %}
+
+
+<!-- rendering product-gallary in masterclass-description -->
+
+{% section 'masterclass-description' %}
+
+
+{% if product.metafields.Instructor.name != blank %}
+	{% section 'Instructor-info' %}
+{% endif %}
+{% if product.metafields.artform.artfrom_name != blank %}
+		{% section 'artform-info' %}
+{% endif %}	
+{% section 'masterclass-review' %}
+{% section 'masterclass-accordian' %}
+{% render 'related-products' %}

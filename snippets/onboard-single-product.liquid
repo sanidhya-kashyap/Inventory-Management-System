@@ -1,0 +1,130 @@
+{%- if section.settings.title != blank -%}
+  <div class="section-title">
+    <h2>
+      <a href="#" title="{{ section.settings.title | escape }}">
+        {{ section.settings.title }}
+      </a>
+    </h2>
+  </div>
+{%- endif -%}
+ <div class="row grid_wrapper">
+
+   {%- liquid
+
+   case section.settings.image_section_size
+     when 'small'
+        assign image_width = 'span-5 push-1 md-span-6 sm-span-12 auto'
+        assign descr_width = 'span-5 md-span-6 sm-span-12 auto'
+     when 'medium'
+        assign image_width = 'span-6 sm-span-12 auto'
+        assign descr_width = 'span-6 sm-span-12 auto'
+     when 'large'
+        assign image_width = 'span-8 md-span-6 sm-span-12 auto'
+        assign descr_width = 'span-4 md-span-6 sm-span-12 auto'
+   endcase
+
+   -%}
+
+
+
+  <div class="product__section-images onboard {{ image_width }}">
+     {{ 'image' | placeholder_svg_tag: 'placeholder-svg span-12' }}
+   </div>
+
+  <div id="product-content" class="product__section-content {{ descr_width }}">
+    <div id="sticky-item" class="product__section-details is_sticky">
+
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'product_info' %}
+              <div>
+                <h3>
+                  <a href="#" title="Product name">
+                    Product Name
+                  </a>
+                </h3>
+              </div>
+
+              {% if show_vendor %}
+                <h3>{{ 'products.product.designer' | t }}: Product Vendor Name</h3>
+                <div class="clear"></div>
+              {% endif %}
+
+              <dl id="product-price" class="price" data-price=""><div class="price__pricing-group">
+               <div class="price__regular">
+                 <dt>
+                   <span class="visually-hidden visually-hidden--inline">Regular</span>
+                 </dt>
+                 <dd>
+                   <span class="price-item price-item--regular" data-regular-price="">
+                     {{ 6200 | money }}
+                   </span>
+                 </dd>
+               </div>
+               <div class="price__sale">
+                 <dt>
+                   <span class="visually-hidden visually-hidden--inline">Sale</span>
+                 </dt>
+                 <dd>
+                   <span class="price-item price-item--sale" data-sale-price="">
+                     {{ 6200 | money }}
+                   </span>
+                 </dd>
+                 <dt>
+                   <span class="visually-hidden visually-hidden--inline">Regular</span>
+                 </dt>
+                 <dd>
+                   <span class="price-item price-item--regular" data-regular-price="">
+
+                   </span>
+                 </dd>
+               </div>
+              </div>
+              </dl>
+            {% when 'product_form' %}
+              <div class="product-form">
+               {% if show_sku %}
+               <div class="product__sku-container sku js-product-sku-container">
+                <span class="product__sku-label">SKU</span>
+                <span class="product__sku-value js-product-sku">116848</span>
+               </div><div class="clear"></div>
+               {% endif %}
+
+               {% if show_quantity %}
+               <div class="product-qty selector-wrapper">
+                <label for="qty-1234">Quantity</label>
+                <a class="downer quantity-control-down">-</a>
+                <input id="qty-1234" min="1" type="text" name="quantity" class="product-quantity" value="1">
+                <a class="up quantity-control-up">+</a>
+               </div>
+               <div class="clear"></div>
+               {% endif %}
+
+               <div class="product-add">
+               <div class="note note-success js-added-msg" style="display: none">
+               <b>Added to Cart</b>&nbsp;&nbsp;&nbsp;<a class="underline" href="/cart">View Cart</a> or <a class="underline" href="/collections/all">Continue Shopping</a>.
+               </div>
+               <div class="note note-error js-error-msg" style="display: none">
+               <b>Cart Error</b>&nbsp;&nbsp;&nbsp;Some items became unavailable. Update the quantity and try again.
+               </div>
+               <input id="addToCart" disabled type="submit" name="button" class="add clearfix AddtoCart" value="Sold Out">
+               </div>
+              </div>
+            {% when 'product_description' %}
+              <div class="clear"></div>
+              <div class="rte">
+                <p>This area is used to describe your product’s details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made. <a href="#" title="{{ 'products.product.readmore' | t }}">{{ 'products.product.readmore' | t }}</a></p>
+              </div>
+              <div class="clear"></div>
+
+          {% endcase %}
+        {% endfor %}
+      {% endif %}
+
+   </div>
+  </div>
+ </div>
+{%- if section.settings.show_social_share -%}
+{% render 'social' with product %}
+{%- endif -%}

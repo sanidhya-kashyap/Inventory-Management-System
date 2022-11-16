@@ -1,0 +1,976 @@
+{%- liquid
+	assign description = product.description
+    assign collection_handle = product.metafields.artform.artfrom_name | downcase
+    assign collection_url = collections[collection_handle].url
+    
+    assign product_imgs = product.images
+    assign courseContent = product.metafields.masterclass.coursecontent | split: ", "
+-%}
+
+
+
+<section id="description"  style="margin-bottom: 45px;">
+  
+  <div class="masterclass-description-container">
+    {%comment %} 
+    <div class="m-desc-con-left">
+       <div class="videoWrapper">
+        <iframe src="{{product.metafields.masterclass.trailer_url}}" width="850" height="480" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+    </div>
+    {%endcomment%}
+    <div class="m-desc-con-right">
+      
+<!--   syllabus container     -->
+      <div class="syllabus-container bg-head" >
+    <h1 style="padding: 10px 80px 0px 80px;">Course Contents</h1>
+    {% for item in courseContent %}
+        {% assign i = forloop.index0 | modulo: 2%}
+        {%if i == 0 %}
+      		{% assign next_i = forloop.index0 | plus: 1 %}
+            <div class="b">
+                <span class="syllabus-nested-container">
+                  <p style="text-align: left;">{{item}}</p>                  
+                  <p style="float: right;">{{courseContent[next_i]}}</p>
+                </span>
+            </div>
+        {%endif%}
+    {%endfor%}
+	
+
+	</div>
+    </div>
+  </div>
+  
+  {%comment%} adding the gallery section 
+  {%endcomment%}
+  
+  
+ {%comment%} for desktop view {% endcomment%}
+
+  
+  <div class="image-text-container">
+    <div class="masterclass-details-heading">   <h1> Details </h1> </div>
+    
+    {% if product.title == 'PICHWAI MASTERCLASS (ON-DEMAND, PRE-RECORDED, SELF-PACED)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text"> Lesson 1: Introduction of the Artist (Kalakar ka Parichay): Sit back and explore the small town of Nathdwara in Rajasthan. In this lesson, we will take you to our master artist Jayesh ji’s home where you will learn all about your Pichwai teacher, the Nathdwara region and the artist community devoted to Lord Srinathji. 
+        </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Lesson 2 :Introduction of the Art form (Kala ka Parichay): Learn everything you can about Pichwai art, the name of which is derived from the literal meaning of “hanging behind”. Know the history, techniques and evolution of this heritage art that has adorned the homes of Vaishnavites for a long time.
+        </p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text"> Lesson 3 : Introduction of Materials used in Pichwai: Watch this lesson to know about everything you will need to start your Pichwai art journey. From authentic, all-natural, and traditional materials to all the modern tips and tricks that will help you navigate 
+        </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4: Artwork 1, KAMAL TALAY (The Lotus Pond), Beginner Friendly, A4 size:  Prepare your supplies as we dive into making our first artwork. Don’t fret! We will start with a simple lotus artwork, and you will have plenty of room 
+        </p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text"> Lesson 5: Artwork 2, Gau Mata (The Holy Cow), Beginner Friendly, A4 size:  Level up! With this second artwork, we will learn more intricate designs that will create a foundation for all your future Pichwai artworks.
+        </p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" > Lesson 6: Artwork 3, Srinathji (The Lord), Medium Difficulty, A4 size: With the last lesson, you will complete a complex Pichwai artwork by drawing the supreme character of lord Srinathji, in His ‘rajbhog darshan’! Get comfortable and learn at your own speed with step-by-step instructions.
+          </p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+         <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[8] | image_url: width: 300 }}" alt="not found"/>
+        <div class="image-text">
+        <h2 class="lesson-heading"> Bonus Lesson </h2>
+        <p class="lesson-text" > Borders and other motifs in Pichwai </p>
+       </div>
+        
+    </div>
+    
+        <div>
+      <p>
+        
+        If you wish to purchase traditional Pichwai colours and canvas, you can buy this <a style="color: blue" href="https://www.memeraki.com/collections/traditional-art-kits-materials/products/natural-colours-for-pichwai-art-plus-natural-brushes">here</a> (Materials price is additional and not already included in the masterclass price. The materials class also includes information and links about the materials and where else you can source it if you prefer). You can also post your questions and queries in the discussions forum of the masterclass to get responses from the community or the artist.
+        
+      </p></div>
+    
+    {%endif %}
+    
+    
+    {%if product.title == 'LIPPAN MASTERCLASS (ON DEMAND, PRE-RECORDED, SELF PACED)' %} 
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text"> Introduction of the Artist (Kalakar ka Parichay): Sit back and explore the sandy terrains of Dhordo in Gujarat. In this lesson, we will take you to our master artist Nalemitha’s home where you will learn all about the traditional art of Lippan Kaam/ Mudwork. </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Introduction of the Art form (Kala ka Parichay): Know your guru in his own words as you find out more about how Nalemitha began his journey as an artist, and highlighted the importance of his inherited artistic knowledge to his countrymen and the global economy.sss </p>
+      </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text"> Introduction of Materials used in Lippan Kaam: Watch this lesson to know about everything you will need to start your Lippan art journey. From authentic, all-nature and traditional materials to all the modern tips and tricks that will help you navigate this unique art form.
+        </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" > Artwork 1- Small size: beginner friendly: Prepare your supplies as we dive into making our first artwork. Don’t fret! We will start with simple shapes and patterns, and you will have plenty of room to rectify your mistakes.
+        </p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text"> Artwork 2 - Medium size artwork: medium difficulty: Level up! With this second artwork, we will learn more intricate designs that will create a foundation for all your future creativity.
+</p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" > Artwork 3 - Lippan Art on Wall: medium difficulty: With the last lesson, you will complete a complex Lippan artwork that will rival those of artists in Kutch! Sit back and learn at your own speed with step-by-step instructions.
+          </p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div>
+      <p>
+        
+        Also find a few more bonus lessons inside the masterclass from a few other masters of this craft, behind the scenes of the making of the masterclass. And if you wish to purchase the art kit and materials for this masterclass from us, you can buy this 
+        <a style="color: blue" href="https://www.memeraki.com/collections/traditional-art-kits-materials/products/lippan-mudwork-art-kit"> here </a>
+        (Materials price is additional and not already included in the masterclass price. The materials class also includes information and links about the materials and where else you can source it if you prefer). You can also post your questions and queries in the discussions forum of the masterclass to get responses from the community or the artist.
+      </p></div>
+    
+    {%endif%}
+    
+    {% if product.title == 'Madhubani Painting Masterclass (On Demand, Pre-Recorded, Self Paced)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text"> Lesson 1 - Let us take you to one of the most diverse cities in India, its capital New Delhi. Like millions of people, Madhubani master artist Priti Karn calls it home. 
+        </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Lesson 2 - Dive into the extremely fascinating history of the Madhubani art form from Bihar. Learn about the community, mythology and exceptionality of how this art form made its place in the world.
+        </p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text"> Lesson 3 - Know about everything that you will need to create a Madhubani painting. You will be able to recreate this ancient art with widely-available and familiar materials.
+        </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4 - Artwork 1: Prepare your supplies as we dive into making our first artwork. These are established motifs in the art form, and simple to learn.
+        </p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text"> Lesson 5 - Artwork 2: Level up! With this second artwork, we will learn more intricate patterns in animal figures.
+        </p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" > Lesson 6 - Artwork 3: In the last lesson, we will be making a Tree of Life using all the knowledge we have learnt.v </p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+        <div>
+      <p>
+        
+        If you wish to purchase traditional madhubani colours and nib, you can buy this <a style="color: blue" href="#">here</a> 
+         (Materials price is additional and not already included in the masterclass price. The materials class also includes information and links about the materials and where else you can source it if you prefer). You can also post your questions and queries in the discussions forum of the masterclass to get responses from the community or the artist.
+        
+      </p></div>
+    
+    {%endif %}
+    
+    
+    {% if product.title == 'Warli Painting Masterclass - (On Demand, Pre-Recorded, Self Paced)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text"> Lesson 1- Introduction of the Artist : In this lesson, discover the serene village of Ganjad, Dahanu in the Palghar district of Maharashtra. We will take you to our master artist Anil Vangad’s home where you will learn all about your Warli teacher, the Western Ghats and the tribal community that has inhibited it for centuries.
+        </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Lesson 2- Introduction of the Art: Learn all about the world-famous Warli art, eponym of the Warli Adivasi community. Know the history, processes and customs that constitute this totemic art, including their role in various local celebrations.
+        </p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text"> Lesson 3- Introduction about materials in Warli Art: Watch this lesson to know about everything you will need to start your Warli art journey. From authentic, all-natural, and traditional materials to all the modern tips and tricks that will help you navigate this unique art form.
+        </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4- Learn basic motifs used in Warli Art: We will start with understanding the basic motifs that are used in Warli. Practice re-creating these motifs to hone your skills for the upcoming artworks.
+        </p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text">Lesson 5- Small size Warli Artwork: For your first complete artwork, we will paint the traditional “Kambadi dance”, a popular subject of Warli paintings; this dance is performed on a very special occasion by the Warli tribe. 
+        </p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Lesson 6- Warli art on a Wall: In the last lesson, you will complete a Warli artwork on the wall, something you will find in almost every Warli home! Learn at your own speed with step-by-step instructions provided by the master artist.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+        <div>
+      <p>
+        
+      Also find detailed practise sheets, information document about Warli art and behind the scenes of the making of the masterclass. And if you wish to purchase the art kit and materials for this masterclass from us, you can buy this here <a style="color: blue" href="#">here</a>(Materials price is additional and not already included in the masterclass price. The materials class also includes information and links about the materials and where else you can source it if you prefer). You can also post your questions and queries in the discussions forum of the masterclass to get responses from the community or the artist.
+        
+      </p></div>
+    
+    {%endif %}
+    
+    {% if product.title == 'Kashidakari Embroidery Masterclass (On Demand, Pre-Recorded, Self-Paced)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text">Lesson 1: Introduction of the Craftswoman: Get ready to unfold the chapter of the most unseen and untold handicraft of two countries under the golden mud house of Mithrau, Rajasthan. In this lesson, we will take you to our master craftswoman and a living example of women's empowerment Samjhu Devi Ji’s journey where you will learn all about the traditional craft of Kashidakari Embroidery.
+        </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Lesson 2: Introduction of the Craft: Immerse yourself in the world of Kashidakari with Samjhu Devi. In this lesson, you are going to learn the origins, themes and current practices of this embroidery tradition.
+        </p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text">Lesson 3:  Introduction of Materials and processes in Kashidakari : Watch this lesson to know about everything you will need to start your Kashidakari apprenticeship. Master craftswoman’s husband Heera Ram ji tells you exactly what you will need to complete the embroidery stitches that you will be making in the next lesson. Learn about customary and contemporary materials that are used in this art form with detailed worksheets included. 
+        </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4: Learn basic Kashidakari stitches: In the fourth lesson of this masterclass, learn the different types of stitches used to make a complete Kashidakari design.
+        </p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text">Lesson 5: Learn Basic Kashidakari Motifs: With this lesson, we will learn the specific motifs that are native to this embroidery practice. These motifs will help spark your creativity for future designs!
+        </p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Lesson 6: Create a complete Kashidakari design:  If you have completed the previous lessons, you will now be able to finish your very own Kashidakari design in this lesson.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+        <div>
+      {% comment %}    
+      <p>
+        
+      Also find detailed practise sheets, information document about Warli art and behind the scenes of the making of the masterclass. And if you wish to purchase the art kit and materials for this masterclass from us, you can buy this here <a style="color: blue" href="#">here</a>(Materials price is additional and not already included in the masterclass price. The materials class also includes information and links about the materials and where else you can source it if you prefer). You can also post your questions and queries in the discussions forum of the masterclass to get responses from the community or the artist.
+        
+      </p>
+      {% endcomment %}
+    </div>
+    
+    {%endif %}
+
+
+        {% if product.title == 'USTA KALA MASTERCLASS (ON DEMAND, PRE-RECORDED, SELF PACED)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text">Lesson 1: The Golden Man: In this lesson, we will take you to our master craftsman who is one of the last surviving maestros of the Golden Art: Usta Kala.
+        </p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" > Lesson 2: The Craft: Immerse yourself in the world of Ustas with Mohammad Haneef Usta. In this lesson, you are going to learn the origins, themes and current practices of this classic Mughal tradition.</p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text">Lesson 3: Materials and Process: Get a closer look at the traditional and present-day materials that we will be using in the upcoming lessons. </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4: Composition: As we move forward, we will take a closer look at the distinctive calligraphy, sketching and composition techniques of Usta Kala.</p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text">Lesson 5: Small-sized Motif: Prepare your supplies as we dive into making our first artwork. Don’t fret! We will start with a small and easy artwork, and you will have plenty of room to rectify your mistakes.</p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Lesson 6:  Photo Frame: With the last lesson, you will complete a golden photo frame! Get comfortable and learn at your own pace with step-by-step instructions.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+        <div>
+         
+      <p>
+     Usta Kala Kits at MeMeraki: Our team has worked closely with Usta artists Haneef Usta and Javed Usta to create art kits with materials either sourced from Bikaner, or recommended by them to create authentic Usta Kala work. These kits are available on our website to purchase if you prefer a more curated experience. If you wish to source your own materials, we have attached a document with the complete list and alternative options.   
+      </p>
+      
+    </div>
+    
+    {%endif %}
+
+    {% if product.title == 'KERALA MURAL MASTERCLASS (ON DEMAND, PRE-RECORDED, SELF PACED)' %}
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text">Lesson 1: Welcome to your Kerala Mural Masterclass! In your first lesson, you will get acquainted with Master Artist Adarsh who will take you through his life journey.</p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text" >Lesson 2: Delve into the history of this ancient art form that adorned caves and palaces before it was transferred on slips of paper. </p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text">Lesson 3: Get a closer look at the traditional and present-day materials that we will be using in the upcoming lessons. </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Lesson 4: In this lesson, we will learn important motifs and sketching techniques derived from the characters and emotions portrayed in Kerala Mural art.</p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text">Lesson 5: Prepare your supplies as we dive into making our first artwork. Don’t fret! We will start with a small and easy artwork, and you will have plenty of room to rectify your mistakes.</p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Lesson 6: With the last lesson, you will complete a classic Kerala Mural painting! Get comfortable and learn at your own pace with step-by-step instructions.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    
+    {%endif %}
+
+      {% if product.title == 'CHERIYAL SCROLL MASTERCLASS (ON DEMAND, PRE-RECORDED, SELF PACED)' %}
+
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text">Introduction of the Artist (Kalakar ka Parichay):  In the first lesson, we will learn about Master Artist Sai Kiran. Know all about how Adarsh inherited his family legacy of scroll painting.</p>
+      </div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text">Introduction of Materials used in Cheriyal Scroll: Gear up and prepare the materials you will need to start painting. <br>We will learn about both customary materials and modern substitutes for these traditional painting.</p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text">Get a closer look at the traditional and present-day materials that we will be using in the upcoming lessons. </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Artwork 1- Small size: beginner friendly: For our first painting, we will be making a simple illustration of a lady carrying a basket in a rural setting.</p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text">Artwork 2 - Medium size artwork: medium difficulty: Next, we will be delving into mythology and depictict Lord Krishna with a cow. This painting displays two kinds of trees and a more intricate border.</p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Artwork 3 - Bigger size artwork: medium difficulty: In our last lesson, we will use a bigger canvas to depict the intermingling of different people in the village.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    
+    {%endif %}
+    
+    {% if product.title == 'BIKANER ART MASTERCLASS (ON DEMAND, PRE-RECORDED, SELF PACED)' %}
+
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[1] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 1 </h2>
+        <p class="lesson-text">Meet Mahaveer Swami, the last remaining pillar of the Mughal-born Bikaner School of Painting, Join his efforts to safeguard and revive his Bikaner’s heritage artistry.</div>
+    </div>
+    
+        <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 2 </h2>
+        <p class="lesson-text">Understand the birth and evolution of Bikaner art as Master Artist Mahaveer Swami takes you through historical, religious and regional influences that contributed towards its development.</p>
+          </div>
+         <img class="masterclass-desc-image" src="{{ product.media[2] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[3] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 3 </h2>
+        <p class="lesson-text">Learn about the materials that build Mahaveer Swami’s unique palette. This lesson will teach you the basics of natural colour-making using minerals, stones and insects. </p>
+      </div>
+    </div>
+    
+    <div class="masterclass-image-text-box">
+    
+      <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 4 </h2>
+        <p class="lesson-text" >Become familiar with composing a traditional Bikaner painting. This lesson will teach you how to use canvas space effectively, and illustrate precise human anatomy and facial features.</p>
+            </div>
+         <img class="masterclass-desc-image" src="{{ product.media[4] | image_url: width: 300 }}" alt="not found"/>
+
+      </div>
+  
+      <div class="masterclass-image-text-box">
+     <img class="masterclass-desc-image" src="{{ product.media[5] | image_url: width: 300 }}" alt="not found"/>
+      <div class="image-text">
+        <h2 class="lesson-heading"> Lesson 5 </h2>
+        <p class="lesson-text"> Mix and match the subtle colours of Mahaveer Swami’s palette to compose the perfect Bikaner painting. Understand the shades and hues of popular motifs from this short display of his works.</p>
+      </div>
+    </div>
+    
+     <div class="masterclass-image-text-box">
+    
+        <div class="image-text left">
+        <h2 class="lesson-heading"> Lesson 6 </h2>
+        <p class="lesson-text" >Pick up your brushes because we will try to replicate one of Mahaveer Swami’s Krishna paintings. Pace yourself and carve up some time daily to follow this tutorial and bring to life your very own Bikaner painting. This lesson is divided into three videos - sketching, coloring and finishing.</p>
+       </div>
+         <img class="masterclass-desc-image" src="{{ product.media[6] | image_url: width: 300 }}" alt="not found"/>
+    </div>
+    
+    
+    {%endif %}
+  </div>
+  
+
+  
+    <span id="trailer"></span>
+ 
+
+  
+<!-- the code from here is shifted above. It is for video trainler    -->
+
+</section>
+
+<style type="text/css">
+  .lesson-text { 
+        padding-right: 5px;
+  }
+  
+  .masterclass-description-container, .image-text-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 0 10vw; 
+  }
+  
+  .masterclass-details-heading{
+    display: flex; 
+    justify-content: center; 
+    margin-left: 150px;
+    width: 100%; 
+  }
+  
+  .m-desc-con-left, .image-text-container{
+    width: 50vw;
+    height: fit-content; 
+/*     border: 4px solid #44153f;  */
+    margin: 5px 2px; 
+  }
+	.flex-container{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.bg{
+		background-color: #44153f;
+		
+
+	}
+  
+  .masterclass-desc-image{
+    width: 330px; 
+    height: 225px; 
+    
+  }
+  
+  .masterclass-image-text-box{
+    width: 50vw; 
+    display: flex; 
+    justify-content: space-between; 
+    margin: 30px 0px; 
+  }
+  
+  .image-text{
+    margin-left: 40px; 
+    width: 100%;
+  }
+  
+  .image-text.left{
+    margin-left: 0px; 
+  }
+  
+  
+  @media screen and (min-width: 900px) {
+    .section-title {
+    text-align: left; 
+    margin: 0 20vw; 
+  }
+  }
+  
+  
+  
+  .section-title::after {
+    display: none; 
+  }
+  
+  	.bg-head{
+/* 		background-color: #44153f; */
+		text-align: center;
+		justify-content:center;
+	}
+	.box{
+		color: white;
+	}
+
+		.b1,.b2,.b3,.b4{
+			width: 25%;
+		}
+  
+  	.syllabus-container{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-content: center;
+/*       	padding-top: 30px; */
+      	padding-bottom: 15px;
+/*         margin-bottom: 45px; */
+	}
+  
+  	
+	.syllabus-nested-container{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding-left: 5px ;
+		padding-right: 5px;
+	}
+  
+  .syllabus-nested-container p {
+    font-size: 12px
+  }
+  
+	.b{
+		width: 50vw;
+		background-color: #eee7ee91;
+      border-left: 4px solid #58115163; 
+		color: black;
+      font-weight: none; 
+		margin-bottom: 2px;
+		padding: 5px 10px;
+      font-size: 12px; 
+	}
+  
+  .product-details-section-masterclass{
+   				color: white;
+                font-weight: 200;
+                background-repeat: no-repeat;
+  				background-attachment: fixed;
+  				background-position: center; 
+                position: relative; 
+    			padding: 0 10vw; 
+  }
+  
+   .product-details-section-masterclass-text{
+     width: 50vw; 
+   }
+  
+      
+    .product__image.masterclass{
+      width: 25vw; 
+      height: 200px; 
+      margin-left: 10vw;
+    }
+  
+  @media screen and (max-width: 1350px) {
+    .masterclass-desc-image{
+    width: 275px;
+    height: 200px; 
+    
+  }
+    
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .b{
+      width: 550px; 
+    }
+    
+    .m-desc-con-left, .image-text-container {
+      width: 550px; 
+    }
+    .product-details-section-masterclass-text{
+      width: 550px; 
+    }
+    
+  }
+  
+    @media screen and (max-width: 1100px) {
+    .masterclass-desc-image{
+    width: 250px;
+    height: 190px; 
+    
+  }
+     .masterclass-description-container, .image-text-container {
+        padding: 0 5vw;
+      }
+      
+      .lesson-text {
+        font-size: 12px; 
+        padding-right: 5px;
+      }
+    
+  }
+  
+   @media screen and (max-width: 1000px) {
+    .b{
+      width: 475px; 
+    }
+    
+    .m-desc-con-left, .image-text-container {
+      width: 475px; 
+    }
+     .product-details-section-masterclass-text{
+      width: 475px; 
+    }
+    
+  }
+ @media screen and (max-width: 900px) {
+   .m-desc-con-left, .image-text-container, .masterclass-image-text-box {
+      width: 80vw;
+    }
+   .b {
+     width: 80vw; 
+   }
+   
+   .masterclass-details-heading{
+     margin-left: 0px;
+   }
+   
+   .product-details-section-masterclass-text{
+      width: 80vw; 
+    }
+ }
+  
+    @media screen and (max-width: 650px) {
+    .masterclass-desc-image{
+    width: 200px;
+    height: 150px; 
+    
+  }
+      
+      .lesson-text {
+        font-size: 12px; 
+        padding-right: 5px;
+      }
+    
+  }
+
+  	@media screen and (max-width: 575px) {
+      .masterclass-description-container {
+        padding: 0px; 
+      }
+      
+      .m-desc-con-left, .image-text-container {
+        width: 100vw;
+        margin: 0px; 
+      }
+      .image-text-container{
+        padding: 0px
+      }
+       .masterclass-desc-image{
+    width: 100vw;
+    height: 250px; 
+         font-size: 10px; 
+
+  }
+      
+      .b {
+        font-weight: none; 
+      }
+
+      
+       .masterclass-image-text-box{
+         font-size: 8px;
+         width: 100vw;
+         margin: auto; 
+          flex-direction: column;
+         align-items: center;
+         margin: 20px 0px;
+       }
+      
+      .image-text {
+        margin-left: 0px;
+      }
+      
+        .image-text {
+          padding: 10px
+  }
+  
+      
+       .product-details-section-masterclass{
+         padding: 0px
+       }
+      
+      .product-details-section-masterclass-text{
+      width: 100vw; 
+    }
+		.flex-container{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+		.b1,.b2,.b3,.b4{
+			flex: 1 1 auto;
+			width: 100%;
+          	padding-left: 10%;
+          	padding-right: 10%;
+          	font-size: 16px;
+		}
+      .b{
+		width: 100vw;
+		margin-bottom: 2px;
+		padding: 2px 0px;
+	}
+      
+      .syllabus-nested-container p {
+        margin-bottom: 2px;
+      }
+
+
+	}
+
+
+</style>
+
+{% schema %}
+ {
+    "name": "Masterclass Description",
+    "settings": [
+    ],
+  "presets": [
+	{
+	"name": "Masterclass Description",
+	"category": "Workshops"
+	}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}.
+
+	
+{% endstylesheet %}
+  
+
+

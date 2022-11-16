@@ -1,0 +1,51 @@
+<!-- Solution brought to you by Caroline Schnapp -->
+<!-- See this: http://wiki.shopify.com/Related_Products -->
+
+{% assign heading = 'Related Art Kits and Live Workshops' %}
+
+{% if product.tags.size > 0 %}
+
+<br>
+<h1 class="section-title" >{{ heading }}</h1>
+<div class="desktop-12 tablet-6 mobile-3" id="related" data-section-type="related-products-section">
+  <div class="row grid_wrapper">
+          <div class="clear"></div>
+          <ul class="related-products related-product-loop span-12 auto">
+      </ul>
+  </div>
+</div>
+
+<style type="text/css">
+.related-products { list-style-type:none }
+
+.related-products * { font-size:14px; text-align:center; padding:0 }
+.related-products h4  { border:none; margin:10px 0 0 0;font-size: var(--font-size);font-family: var(--main-family);font-weight: var(--main-weight);font-style: var(--main-style);}
+.related-products div.image { max-width:100%; max-height:100%; object-fit:contain }
+.related-products img { display:block; width:100% }
+  
+.related-products { overflow:hidden }
+.related-products span.money { font-size:1em }
+.related-products li:last-child { margin-right:0 }
+</style>
+
+<script>!window.jQuery && document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"><\/script>')</script>
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+  var recommendations = [];
+  {% for tag in product.tags %}
+  recommendations.push('{{ tag | handle }}');
+  {% endfor %}
+  if (recommendations.length) {
+    var list = jQuery('ul.related-products');
+    for (var i=0; i<recommendations.length; i++) {
+      jQuery.getJSON(recommendations[i] + '.js', function(product) {
+        list.append('<li><div class="image"><a href="' + product.url +'"><img src="' + product.images[0] + '" /></a></div><h4><a href="' + product.url + '">' + product.title + '</a></h4><span class="money">' + Shopify.formatMoney(product.price, "{{ shop.money_format }}") + '</span></li>');
+      });
+    }
+  }
+//]]>
+</script>
+
+{% endif %}

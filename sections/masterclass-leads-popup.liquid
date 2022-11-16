@@ -1,0 +1,304 @@
+{%- liquid
+	assign collection_handle = product.metafields.artform.artfrom_name | downcase | replace: ' ','-'
+    assign disc = 10000 | money_without_trailing_zeros
+    assign newPrice = product.price | money_without_currency | minus: 100 | times: 100 | money_without_trailing_zeros
+    
+    for variant in product.variants
+      assign id = variant.id
+      break
+    endfor
+-%}
+
+<div class="popup-container" id="form-container">
+      <img src="{{collections[collection_handle].image | img_url: '2048x' | url}}" class="popup-image">
+   <div class="popup-form">
+          <a id="form-close" class="popup-close" onclick="
+            closePopup();
+          ">x</a>   
+      <br>
+      <div class="form-contents">
+          <div>
+              <h1 style="color: white;">Watch a Preview Lesson for Free!</h1>
+              <h3 style="color: white;">Enter your details to continue...</h3><br>
+          </div>
+          <form method="post" action="https://sheetdb.io/api/v1/94p1i3sniyfff" id="sheetdb-form">
+              <input class="form-field" type="text" name="data[Name]" placeholder="Name" required>
+              <input class="form-field" type="email" name="data[Email]" placeholder="Email" required>
+              <input class="form-field" type="tel" name="data[Contact]" placeholder="Contact" required>
+              <input type="hidden" name="data[Masterclass]" value="{{product.title}}">
+            
+              <button type="submit" id='form-submit' style="width: 50%; margin-left: 24%; color: white; background-color: #f4cb28; font-weight: 900">Submit</button>
+          </form>
+      </div>
+   </div>
+</div>
+
+<div class="popup-container" style="flex-direction: column;" id="video-container">
+      <a class="video-close" id="form-close" onclick="
+            closePopup();
+            stopAllYouTubeVideos();             
+      ">x</a>
+      <iframe width="100%" height="100%" src="{{ product.metafields.masterclass.free_lesson_link }}?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="popup-container" id="buy-now-container">
+    <img src="{{collections[collection_handle].image | img_url: '2048x' | url}}" class="popup-image">
+    <div class="popup-form">
+          <a id="form-close" class="popup-close" onclick="closePopup();">x</a><br>
+          <div class="form-contents">
+          <div>
+              <h1 style="color: white; margin-left: 5%">Liked What you Saw? </h1>
+              <h3 style="color: white; margin-left: 5%">Guess what?! There's a lot more!</h3><br>
+              <p style="color: white; margin-left: 5%" >Buy this masterclass and get access to detailed, high quality tutorials on how to make three {{product.metafields.artform.artfrom_name | capitalize}} artworks. 
+              Also hear from our master artist {{ product.metafields.Instructor.name.value }} about his life and the histroy of {{ product.metafields.artform.artfrom_name  | capitalize }}.</p>
+          </div><br>
+          <h3 style="color: #F4CB28; margin-left: 5%">BUY NOW AND WE'LL ADD AN ADDITIONAL DISCOUNT OF {{ disc}}.</h3><br>
+          <a href="https://www.memeraki.com/cart/{{id}}:1?discount=T48TZ8W38HFW">
+            <button id='form-submit' style="width: 50%; margin-left: 24%; color: white; background-color: red; font-weight: 900">Buy Now {{newPrice }}</button>      
+          </a>
+          <br>
+          </div>
+   </div>
+</div>
+
+<script>
+  console.log("{{ product.url }}")
+  function createPopupCookie() {
+    //document.cookie = 'masterclassPopup=True;'
+    const d = new Date();
+    d.setTime(d.getTime() + (24*60*60*1000));
+    let expires = 'expires='+ d.toUTCString();
+    document.cookie = 'masterclassPopup=True;' + expires + "; path=/collections/masterclasses{{ product.url }};";;
+  }
+
+  function closePopup() {
+    document.querySelectorAll('.popup-container')[0].style.display = 'none';
+    document.querySelectorAll('#video-container')[0].style.display = 'none';
+    document.querySelectorAll('#buy-now-container')[0].style.display = 'none';
+    document.querySelectorAll('.site-overlay')[0].style.visibility = 'hidden';
+    document.querySelectorAll('.site-overlay')[1].style.visibility = 'hidden';
+    document.querySelectorAll('body')[0].style.position = 'static';
+    createPopupCookie();
+  }
+
+  function revealPopup() {
+    document.querySelectorAll('.popup-container')[0].style.display = 'flex';
+    document.querySelectorAll('.popup-container')[1].style.display = 'flex';
+    document.querySelectorAll('#buy-now-container')[0].style.display = 'flex';
+    document.querySelectorAll('.site-overlay')[0].style.visibility = 'visible';
+    document.querySelectorAll('.site-overlay')[1].style.visibility = 'visible';
+    document.querySelectorAll('body')[0].style.position = 'fixed'
+  }
+  
+  var stopAllYouTubeVideos = () => { 
+  var iframes = document.querySelectorAll('iframe');
+  Array.prototype.forEach.call(iframes, iframe => { 
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
+  func: 'stopVideo' }), '*');
+   });
+  }
+  
+  let popupStatus = getCookie("masterclassPopup");
+  if(popupStatus != ""){
+    console.log("");
+  }else{
+    document.querySelectorAll('body')[0].style.position = 'fixed';
+    document.querySelectorAll('.popup-container')[0].style.display = 'flex';
+    document.querySelectorAll('.site-overlay')[0].style.visibility = 'visible';
+    document.querySelectorAll('.site-overlay')[1].style.visibility = 'visible';;
+    createPopupCookie();
+  }
+   
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function timeOutLesson(){
+    stopAllYouTubeVideos();
+    document.getElementById('video-container').style.visibility = 'hidden';
+    document.getElementById('buy-now-container').style.visibility = 'visible';
+      document.querySelectorAll('.popup-container')[2].style.display = 'flex';
+    
+  }
+  
+  var form = document.getElementById('sheetdb-form');
+  form.addEventListener("submit", e => {
+    document.getElementById('form-submit').innerHTML = 'Please Wait...';   
+    document.getElementById('form-submit').disabled = true;
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      document.querySelectorAll('.popup-container')[0].style.display = 'flex';
+      document.querySelectorAll('.popup-container')[1].style.display = 'flex';
+      document.getElementById('video-container').style.visibility = 'visible';
+      document.getElementById('form-container').style.visibility = 'hidden';
+      setTimeout(timeOutLesson, 390000);
+    });
+  });
+</script>
+
+<style>
+    
+    #form-container{
+      visibility: hideen;
+    }
+  
+    #video-container{
+      visibility: hidden;
+    }
+
+    #buy-now-container{
+      visibility: hidden;
+    }
+  
+    .site-overlay{
+        visibility: hidden;
+        opacity: 0.8;
+    }
+  
+    .popup-container{
+        z-index: 9999999;
+        display: none;
+        background-color: #411e2f; 
+        position:fixed;
+        top:50%;
+        left:50%;
+        height: 65%;
+        width: 50%;
+        transform:translate(-50%,-50%);
+    }
+
+    .popup-image{
+        width: 45%;
+        background-position: center;
+    }
+
+    .popup-form{
+        width: 60%; 
+        background-color: #411e2f;
+        align-content: center; 
+    }
+
+    .video-close{
+        background-color: #411e2f;
+        text-align: right;
+        float: right;
+        font-size:25px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+    }
+
+    .popup-close{
+        float: right;
+        margin-right: 8px;
+        margin-top: 8px;
+        top:20px;
+        font-size:25px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: #f4cb28;
+        padding: 3px;
+        padding-left: 11px;
+        padding-right: 11px;
+        border-radius: 50%;
+        border: 2px;
+        cursor: pointer;
+    }
+
+    .form-contents{
+        padding: 10%;
+    }
+
+    .form-field {
+      color: white !important;
+    }
+
+    .form-field:focus {
+      border-color: #f4cb28 !important;
+      color: white !important; 
+    }
+
+    .form-field::placeholder {
+        color: gray;
+    }
+
+    .form-button{
+        height: 46px !important;
+        border: 0;
+        width: 50% !important;
+        margin-top: 30px !important;
+        margin-left: 25% !important;
+        color: white !important;
+        background-color: #f4cb28 !important;
+    }
+
+    .form-button:hover{
+        cursor: pointer;
+        background-color: #ba9f35;
+    }
+
+    
+    @media screen and (max-width: 1200px) {
+       @media screen and (max-height: 750px) {
+          .form-field {
+            height: 35px !important;
+          }
+        }
+
+        #video-container{
+          width: 95%;
+          height: 70%;
+        }
+        
+        .popup-container{
+            max-width: 400px;
+            width: 80%;
+            height: 90%;
+            flex-direction: column;
+        }
+
+        .popup-image{
+            width: 100%;
+            height: 40%;
+            object-fit: fill;
+        }
+
+        .popup-form{
+            width: 100%;
+        }
+
+        .form-field{
+            width: 80%;
+        }
+    }
+
+
+</style>
+{% schema %}
+  {
+    "name": "Masterclass Lead Popup",
+    "settings": []
+  }
+{% endschema %}

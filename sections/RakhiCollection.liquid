@@ -1,0 +1,95 @@
+<h2 class="section-title">Shop By Collection</h2>
+<div class="grid-container">
+  <div class="grid-item">
+      <a href="#category1" onClick="gotoSection(1);"><img class="img" src="{{ collections['christmas-decor'].featured_image | img_url: '512x512'}}" alt="" ></img></a>                  
+  </div>
+  <div class="grid-item">                 
+      <a href="#category2" onClick="gotoSection(2);"><img class="img" src="{{ collections['christmas-gift-list'].featured_image | img_url: '512x512'}}" alt="" ></img></a>
+  </div>
+
+  <div class="grid-item">                
+      <a href="#category3" onClick="gotoSection(3);"><img class="img" src="{{ collections['christmas-art-craft-diy-workshops'].featured_image | img_url: '512x512'}}" alt="" ></img></a>
+  </div>
+
+  <div class="grid-item">
+      <a href="#category4" onClick="gotoSection(4);"><img class="img" src="{{ collections['handpainted-christmas-paintings-in-traditional-indian-art'].featured_image | img_url: '512x512'}}" alt="" ></img></a>
+  </div>
+
+  
+</div>
+  
+  <style>
+  .View-More-Button-Container{
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    
+  }
+  .View-More-Button{
+    width:280px;
+    font-weight: bolder;
+    background-color: #f4cb28;
+    margin-bottom: 0px;
+    margin-top: 8px;
+    padding-bottom: 0px; 
+  }
+  .img{
+    max-width: 100%;
+    height: auto
+  }
+  .grid-item {
+      font-size: 30px;
+      margin: 5px;
+      text-align: center;
+      height: auto;
+      width: auto;
+    
+    }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #431E2F;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 50px;
+
+  }
+  @media (max-width: 600px) {
+  .grid-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      background-color: #431E2F;
+      align-items: center;
+    }
+    .img{
+    max-width: 100%;
+    height: auto
+  }
+    .grid-item {
+      font-size: 30px;
+      margin: 5px;
+      text-align: center;
+      height: auto;
+      width: auto;
+    }
+  }
+</style>
+<script>
+  function gotoSection(i){
+    var divs = document.getElementsByClassName('shopify-section');
+    divs[4+i].scrollIntoView();
+    window.scrollBy(0, -145);
+  }
+</script>
+{% schema %}
+{
+"name": "Section name",
+"settings": []
+}
+{% endschema %}
+
+

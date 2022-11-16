@@ -1,0 +1,61 @@
+{%- liquid
+
+  assign basic_banner = false
+  assign section_banner = false
+  assign full_width = false
+
+  assign basic_banner_img = collection.handle | append: '.jpg'
+
+  if images[basic_banner_img] != blank and collection.description contains '[banner]'
+    assign basic_banner = true
+  elsif section.settings.image != blank
+    assign section_banner = true
+  endif
+
+  if section.settings.display_wide
+   assign full_width = true
+  endif
+
+-%}
+
+{%- if basic_banner or section_banner -%}
+  <section class="collection__section--banner collection__banner-{{ section.id }} lazyload lazyload-fade {% unless full_width %}row{% endunless %}"
+  data-aos="fade"
+  data-section-id="{{ section.id }}" >
+      <div class="collection__banner-image {% unless full_width %}desktop-12 tablet-6 mobile-3{% endunless %}">
+      {%- if basic_banner -%}
+        {% assign img_url = basic_banner_img | file_img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        <img class="lazyload lazyload-fade"
+          data-src="{{ img_url }}"
+          data-sizes="auto"
+          alt="{{ collection.title | escape }}">
+      {%- elsif section.settings.image != blank -%}
+        {% render 'basic-responsive-image', type:  section.settings.image %}
+      {% endif %}
+    </div>
+  </section>
+  <div class="clear"></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "settings": [{
+      "type": "paragraph",
+      "content": "Add a banner image to all collections in your store. Show a unique image per collection by following this [guide](https:\/\/www.weareunderground.com\/blogs\/theme-support\/add-a-custom-banner-image-to-each-collection-page)."
+    },
+    {
+      "type": "checkbox",
+      "id": "display_wide",
+      "label": "Enable full width",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image",
+      "info": "1920px x 600px recommended"
+    }
+  ]
+}
+{% endschema %}

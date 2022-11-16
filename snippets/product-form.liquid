@@ -1,0 +1,224 @@
+{%- liquid
+  if product_type == 'featured_product'
+    assign selector_id = section.id | prepend: 'fp-product-select-'
+  elsif product_type == 'quickview'
+    assign selector_id = product.id | prepend: 'qv-product-select-'
+  elsif product_type == 'product'
+    assign selector_id = product.id | prepend: 'product-select-'
+  endif
+
+  assign call_to_action = 'products.product.add_to_cart' | t
+
+  unless current_variant.available
+    assign call_to_action = 'products.product.sold_out' | t
+  endunless
+  
+  assign price = current_variant.price
+  assign money_price = price | money
+-%}
+
+{% form 'product', product, id: "AddToCartForm", class: "product_form", data-product-form: product_form_config, data-product-id: product.id %}
+
+ <!-- {% render 'product-price', variant: current_variant, product: product %}-->
+
+  {% if product.options.size > 1 %}
+   <div class="select" {% if product.variants.size == 1 or settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
+     <select id="{{ selector_id }}" class="styled-select" name='id'>
+       {% for variant in product.variants %}
+         <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+           {{ variant.title }} - {{ variant.price | money }}
+         </option>
+       {% endfor %}
+     </select>
+   </div>
+   {% if settings.product_variants == 'swatches' %}
+     {% for option in product.options_with_values %}
+       {% render "swatch",
+         option: option,
+         current_variant: current_variant,
+         product: product,
+         show_color_swatches: settings.show_color_swatches,
+         color_swatch_shape: settings.color_swatch_shape,
+         color_swatch_style: settings.color_swatch_style %}
+     {% endfor %}
+   {% endif %}
+  {% elsif product.options.size == 1 and product.variants.size > 1 %}
+  <div class="select" {% if product.variants.size == 1 or settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
+     <label class="single-option--label" for="{{ selector_id }}">{{ product.options[0] }}</label>
+     <select id="{{ selector_id }}" class="styled-select" name='id'>
+       {% for variant in product.variants %}
+         <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+           {{ variant.title }} - {{ variant.price | money }}
+         </option>
+       {% endfor %}
+     </select>
+   </div>
+   {% if settings.product_variants == 'swatches' %}
+     {% for option in product.options_with_values %}
+       {% render "swatch",
+         option: option,
+         current_variant: current_variant,
+         product: product,
+         show_color_swatches: settings.show_color_swatches,
+         color_swatch_shape: settings.color_swatch_shape,
+         color_swatch_style: settings.color_swatch_style %}
+     {% endfor %}
+   {% endif %}
+   {% elsif product.variants.size == 1 %}
+     <select id="{{ selector_id }}" class="styled-select" name="id" {% if product.variants.size == 1 or settings.product_variants == 'swatches' %}style="display: none;"{% endif %}>
+       {% for variant in product.variants %}
+         <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+           {{ variant.title }} - {{ variant.price | money }}
+         </option>
+       {% endfor %}
+     </select>
+   {% else %}
+   <div class="what-is-it">
+     {% if product.options.first != 'Title' %}
+       <label>{{ product.options.first }}:</label>
+       {% for variant in product.variants %}
+         <span class="it-is">{{ variant.option1 | escape }}</span>
+       {% endfor %}
+     {% endif %}
+   </div>
+   <div class="product-variants"></div><!-- product variants -->
+   <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
+  {% endif %}
+
+  {% if show_sku %}
+  <div class="product__sku-container sku js-product-sku-container{% if current_variant.sku == blank %} hide{% endif %}">
+    <span class="product__sku-label">{{ 'customer.order.details.sku' | t }}</span>
+    <span class="product__sku-value js-product-sku">{{ current_variant.sku }}</span>
+  </div><div class="clear"></div>
+  {% endif %}
+
+
+  {% if show_quantity %}
+   <div class="product-qty selector-wrapper">
+      <label for="qty-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
+      <a class="downer quantity-control-down">-</a>
+      <input id="qty-{{ product.id }}" min="1" type="text" name="quantity" class="product-quantity" value="1" {% if current_variant.inventory_management == 'shopify' %}{% unless current_variant.inventory_policy == 'continue' %} max="{{ current_variant.inventory_quantity }}" {% endunless %}{% endif %} />
+      <a class="up quantity-control-up">+</a>
+   </div>
+   <div class="clear"></div>
+ {% endif %}
+
+<style>
+  
+  .add-to-cart-icon{
+    width: 18px; 
+    height: 18px; 
+    margin-left: -226px; 
+    margin-top: 33px; 
+  }
+  
+  
+  @media screen and (max-width: 900px) {
+  
+  .price-flex-box-masterclass {
+    display: flex; 
+    flex-wrap: wrap; 
+   justify-content: center;  
+  }
+    
+    .product-add {
+      display: flex;  
+      width: fit-content; 
+    }
+    
+    .shopify-payment-button {
+      display: flex; 
+      align-items: flex-end; 
+      margin: 0 5px; 
+    }
+    
+    #product-price {
+      margin-bottom: 0px; 
+    }
+    
+    .add-to-cart-icon {
+       position: fixed;
+      margin-left: 75px; 
+
+    }
+    
+  }
+  
+  @media screen and (max-width: 750px) {
+    input#addToCart {
+    width: 225px !important;
+}
+    .shopify-payment-button__button--unbranded {
+    width: 225px !important;
+}
+    
+    .add-to-cart-icon {
+      margin-left: 50px; 
+      margin-top: 18px;
+    }
+  }
+  
+    @media screen and (max-width: 500px) {
+    input#addToCart {
+    width: 145px !important;
+}
+    .shopify-payment-button__button--unbranded {
+    width: 145px !important;
+}
+      
+      .add-to-cart-icon{
+        margin-left: 16px; 
+      }
+  }
+  
+  @media screen and (max-width: 510px) {
+    .price-flex-box-masterclass {
+      justify-content: center; 
+    }
+    
+    
+  }
+</style>
+
+<div class="price-flex-box-masterclass" >
+
+  <div class="product-add">
+    <div class="note note-success js-added-msg" style="display: none">
+      <b>{{ 'products.product.added' | t }}</b>&nbsp;&nbsp;&nbsp;<a class="underline" href="{{ routes.cart_url }}">{{ 'products.product.view_cart' | t }}</a> {{ 'products.product.or' | t }} <a class="underline" href="{{ routes.all_products_collection_url }}">{{ 'products.product.continue' | t }}</a>.
+    </div>
+    <div class="note note-error js-error-msg" style="display: none">
+      <b>{{ 'cart.general.cart_error' | t }}</b>&nbsp;&nbsp;&nbsp;{{ 'cart.general.update_qty_error' | t }}
+    </div>
+    <svg class="add-to-cart-icon" style="fill: white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM272 180H316V224C316 235 324.1 244 336 244C347 244 356 235 356 224V180H400C411 180 420 171 420 160C420 148.1 411 140 400 140H356V96C356 84.95 347 76 336 76C324.1 76 316 84.95 316 96V140H272C260.1 140 252 148.1 252 160C252 171 260.1 180 272 180zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"/></svg>
+    <input id="addToCart" type="submit" name="button" class="add clearfix AddtoCart js-ajax-submit {% if show_payment_button and product.selling_plan_groups.size == 0 %} primary-button{% endif %}" 
+           value="
+                  {%- if product.price_varies -%}
+          {{ 'products.product.from_lowest_price_html' | t: lowest_price: money_price }}
+        {%- else -%}
+          {{ money_price }}
+                  {%- endif -%}" {% unless current_variant.available %}disabled{% endunless %} />
+  </div>
+
+  {% if show_payment_button %}
+    {{ form | payment_button }}
+  {% endif %}
+
+  {% if show_back_in_stock %}
+    <div class="back_in_stock js-back-in-stock"{% if current_variant.available %} style="display: none"{% endif %}>
+      <div class="rte">
+      {% if back_in_stock_text != blank %}
+        {{ back_in_stock_text }}
+      {% else %}
+        <p>Add back in stock text within the Theme Editor.</p>
+      {% endif %}
+      </div><!-- /.rte -->
+    </div>
+  {% endif %}
+  
+</div>
+
+{% endform %}
+
+{% if show_back_in_stock %}
+{% render 'back-in-stock-form', product: product %}
+{% endif %}

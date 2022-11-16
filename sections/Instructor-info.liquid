@@ -1,0 +1,119 @@
+{%- liquid
+
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ','-'
+  assign artist_url = collections[artist_handle].url
+  assign a = 0
+
+-%}
+{% for collection in product.collections %}
+{% if collection.title == "MEMERAKI MASTERCLASSES" %}
+<section>
+  <br>
+  <h2 class="section-title" style="text-align: left; text-decoration: none"> Artist </h2>
+  <div style="align-content: center;"class="container">
+    <a href="{{artist_url}}"> 
+      <img  style="width: 200px; height: 200px; " class="container__image" src="{{product.metafields.Instructor.image.value | img_url: 'master'}}">
+    </a>
+    <div class="container__text">
+      <br>
+      <a href="{{artist_url}}"> 
+        <h2>{{product.metafields.Instructor.name.value}}</h2>
+      </a>
+      {{collections[artist_handle].description}}
+  		<br><br>
+      	<button style=" justify-content: center; width: auto; border-radius: 22px; margin: 0 auto;">
+			<a style="color: white; text-decoration: none; margin: 10px;" href="{{artist_url}}"> More From {{artist_name}}</a>
+    	</button>
+      </div>
+  </div>  
+</section>
+{% assign a = 1 %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% if a==0 %}
+<section>
+  <br>
+  <h2 class="section-title" style="text-align: center; text-decoration: none"> Artist </h2>
+  <div style="align-content: center;"class="container">
+    <a href="{{artist_url}}"> 
+      <img  style="height:300px;width:300px" height="300px" width="300px" class="container__image" src="{{product.metafields.Instructor.image.value | img_url: 'master'}}">
+    </a>
+      <div class="container__text">
+      <a href="{{artist_url}}"> 
+        <br><h2>{{product.metafields.Instructor.name.value}}</h2>
+      </a>
+      {{collections[artist_handle].description}}
+  		<br><br>
+      	<button style=" justify-content: center; width: auto; border-radius: 22px; margin: 0 auto;">
+			<a style="color: white; text-decoration: none; margin: 10px;" href="{{artist_url}}"> More From {{artist_name}}</a>
+    	</button>
+      </div>
+  </div>  
+</section>
+{% endif %}
+
+{% schema %}
+ {
+    "name": "Instructor Bio",
+    "settings": [
+      
+    ],
+  "presets": [
+	{
+	"name": "Instructor-Bio",
+	"category": "Workshops"
+	}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}.
+	
+section {
+  padding: 10%;
+  margin-left: 15%;
+}
+
+.container {
+  padding: 20px 35px 40px;
+}
+
+
+@media screen and (min-width: 769px) {
+  .container__image {
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 50%;
+  }
+  .container__text {
+    display: inline-block;
+	margin-left: 50px;
+    width: 49%;
+  }
+ }
+
+ @media screen and (max-width: 768px) {
+   .container__image {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     border-radius: 50%;
+   }
+   .container__text {
+     justify-content: center;
+     text-align: center;
+   }
+  }
+}
+
+
+
+{% endstylesheet %}
+  
+{% comment %}
+
+{% endcomment %}
+
+

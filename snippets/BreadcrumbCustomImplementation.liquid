@@ -1,0 +1,228 @@
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' %}
+
+{% assign t = template | split: '.' | first %}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol>
+    <li>
+      <a href="/" title="Home">Home</a>
+    </li>
+
+  {% case t %}
+  {% when 'page' %}
+
+    <li>
+      {{ page.title }}
+    </li>
+
+  {% when 'product' %}
+
+    {% if collection.url %}
+      <li>
+        {{ collection.title | link_to: collection.url }}
+      </li>
+    {% endif %}
+
+    {%- liquid
+	assign collection_handle = product.metafields.artform.artfrom_name | downcase | replace: ' ','-'
+    assign collection_url = collections[collection_handle].url
+    -%}
+    {% if product.metafields.artform.artfrom_name != blank %}
+      <li>
+        <a href="https:{{collection_url }}"> {{product.metafields.artform.artfrom_name | capitalize}} </a>
+      </li>
+    {% endif %}
+
+    <li>
+      {{ product.title }}
+    </li>
+
+  {% when 'collection' and collection.handle %}
+
+    {% if current_tags %}
+      <li>{{ collection.title | link_to: collection.url }}</li>
+      <li>
+        {% capture tag_url %}{{ collection.url }}/{{ current_tags | join: "+"}}{% endcapture %}
+        {{ current_tags | join: " + "}}
+      </li>
+    {% else %}
+      <li>
+        {{ collection.title }}
+      </li>
+    {% endif %}
+
+  {% when 'blog' %}
+
+    {% if current_tags %}
+      <li>{{ blog.title | link_to: blog.url }}</li>
+      <li>
+        {% capture tag_url %}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{% endcapture %}
+        {{ current_tags | join: " + " }}
+      </li>
+    {% else %}
+      <li>
+        {{ blog.title }}
+      </li>
+    {% endif %}
+
+
+  {% when 'article' %}
+
+    <li>{{ blog.title | link_to: blog.url }}</li>
+    <li>
+      {{ article.title }}
+    </li>
+
+  {% else %}
+
+    <li aria-current="page">
+      {{ page_title }}
+    </li>
+
+  {% endcase %}
+
+  </ol>
+</nav>
+
+<!-- Mobile Breadcrumb-->
+<nav class="mobile-breadcrumbs" role="navigation" aria-label="breadcrumbs">
+<ol>
+    <li>
+      <a href="/" title="Home">Home</a>
+    </li>
+
+  {% case t %}
+  {% when 'page' %}
+
+    <li>
+      <a href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+    </li>
+
+  {% when 'product' %}
+
+    {% if collection.url %}
+      <li>
+        {{ collection.title | link_to: collection.url }}
+      </li>
+    {% endif %}
+    {%- liquid
+	assign collection_handle = product.metafields.artform.artfrom_name | downcase | replace: ' ','-'
+    assign collection_url = collections[collection_handle].url
+    -%}
+    {% if product.metafields.artform.artfrom_name != blank %}
+      <li>
+        <a href="https:{{collection_url }}"> {{product.metafields.artform.artfrom_name | capitalize}} </a>
+      </li>
+    {% endif %}
+
+
+  {% when 'collection' and collection.handle %}
+
+    {% if current_tags %}
+      <li>{{ collection.title | link_to: collection.url }}</li>
+      <li>
+        {% capture tag_url %}{{ collection.url }}/{{ current_tags | join: "+"}}{% endcapture %}
+        <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+      </li>
+    {% endif %}
+
+  {% when 'blog' %}
+
+    {% if current_tags %}
+      <li>{{ blog.title | link_to: blog.url }}</li>
+      <li>
+        {% capture tag_url %}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{% endcapture %}
+        <a href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+      </li>
+    {% endif %}
+
+
+  {% when 'article' %}
+
+    <li>{{ blog.title | link_to: blog.url }}</li>
+    <li>
+      <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+    </li>
+
+  {% endcase %}
+
+  </ol>
+</nav>
+
+
+<!-- Mobile Breadcrumb end -->
+
+{% endunless %}
+
+
+
+<style>
+.mobile-breadcrumbs{
+  display:none;
+  color: #757272;
+}
+.breadcrumbs {
+  font-size: .85em;
+  margin: 0 0 2em;
+  margin-left: 32px;
+  color: #757272;
+/*    margin is changed from 34 to 32 */
+}
+
+@media (max-width: 600px) {
+  .breadcrumbs{
+  display:none;
+  }
+/*   .breadcrumbs{
+  font-size: .85em;
+  margin: 0 0 2em;
+  margin-left: 10px;
+  } This was in my copy only the margin left is changed for mobile view from 0 to 10px */
+  .mobile-breadcrumbs{
+  font-size: 1em;
+  margin: 0 0 2em;
+  margin-left: 7px;
+  text-align: center;
+  display:block;
+  }
+}
+
+.breadcrumbs a, .mobile-breadcrumbs a {
+  color: #757272;
+}
+
+.breadcrumbs ol, .mobile-breadcrumbs ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li, .mobile-breadcrumbs li {
+  display: inline-block;
+  
+}
+
+.breadcrumbs a:hover, .mobile-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs li:not(:last-child):after, .mobile-breadcrumbs li:not(:last-child):after {
+  content: "›\00a0";
+  display: inline-block;
+  padding-left: .75ch;
+  speak: none;
+}
+
+.breadcrumbs [aria-current="page"], .mobile-breadcrumbs [aria-current="page"] {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.breadcrumbs [aria-current="page"]:hover,
+.breadcrumbs [aria-current="page"]:focus, 
+.mobile-breadcrumbs [aria-current="page"]:hover,
+.mobile-breadcrumbs [aria-current="page"]:focus{
+  text-decoration: underline;
+}
+</style>

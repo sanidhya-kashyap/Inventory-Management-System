@@ -1,0 +1,256 @@
+{
+  "sections": {
+    "1625752154523bf545": {
+      "type": "slideshow",
+      "blocks": {
+        "175818fe-2083-4b10-9a0a-4e4e48eb7a8a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/indian-traditional-arts-masterclass-learn-from-traditional-artist-memeraki-Desktop.png",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/indian-traditional-arts-masterclass-learn-from-traditional-artist-memeraki.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "shopify:\/\/collections\/masterclasses",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "Button 2 text",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "0af4bf64-5494-48ca-812c-1c577a2d2d4a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LIVE-ART-AND-CRAFT-WORKSHOP-LEARN-FROM-MASTER-ARTISTS-MEMERAKI-DESKTOP.png",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/Live-Art-and-craft-workshop-learn-from-master-artists-memeraki.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "https:\/\/www.memeraki.com\/collections\/live-art-workshops",
+            "button_text": "",
+            "second_link": "shopify:\/\/collections\/live-art-workshops",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "fa1c5ba5-c6cb-47c4-84ff-8b3bc78b8dc0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BUY-INDIAN-TRADITIONAL-PAINTINGS-MEMERAKI-DESKTOP_2.png",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/Buy-indian-traditional-paintings-Memeraki.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "https:\/\/www.memeraki.com\/collections\/paintings?sort_by=best-selling",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "175818fe-2083-4b10-9a0a-4e4e48eb7a8a",
+        "0af4bf64-5494-48ca-812c-1c577a2d2d4a",
+        "fa1c5ba5-c6cb-47c4-84ff-8b3bc78b8dc0"
+      ],
+      "settings": {
+        "enable_autoplay": true,
+        "slider_speed": 5,
+        "pager": "dots",
+        "video_audio": "on",
+        "slide_heading_size": 28,
+        "subheading_size": 16,
+        "cta_size": 16,
+        "section_padding": "none"
+      }
+    },
+    "166469973001e62813": {
+      "type": "memeraki-product-categories",
+      "settings": {
+      }
+    },
+    "1628115324d4b05084": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "image": "shopify:\/\/shop_images\/WhatsApp_Image_2020-09-10_at_12.15.26_PM.jpg",
+        "layout": "left",
+        "image_width": "50%",
+        "text_align": "left",
+        "text_position": "center",
+        "title": "Learn From Master Artists Across India",
+        "text": "",
+        "link": "shopify:\/\/collections\/live-art-workshops",
+        "button": "View Workshops",
+        "color_scheme": "cs1",
+        "section_padding": "both"
+      }
+    },
+    "1625752966582d2e67": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "UPCOMING LIVE WORKSHOPS",
+        "collection": "live-art-workshops",
+        "carousel": true,
+        "grid": 4,
+        "limit": 15,
+        "color_scheme": "cs1",
+        "section_padding": "both"
+      }
+    },
+    "16257529729c6c2524": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/6_6_1051x_cfa25a1d-58bb-4034-b2c4-0834bc3ceef6.webp",
+        "scale": 5,
+        "page_height": 300,
+        "title": "A MOVEMENT TO PROTECT OUR CULTURAL HERITAGE",
+        "subheading": "",
+        "button_text": "",
+        "link": "",
+        "overlay_opacity": 40,
+        "text_color": "#ededed",
+        "button_text_color": "#ffffff",
+        "button_color": "#000000",
+        "background": "rgba(0,0,0,0)",
+        "caption_horizontal": 50,
+        "caption_vertical": 50,
+        "text_align": "center",
+        "section_padding": "both"
+      }
+    },
+    "1628115108645bdee6": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "FEATURED PAINTINGS",
+        "collection": "paintings",
+        "carousel": true,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "cs1",
+        "section_padding": "both"
+      }
+    },
+    "1639414259a761498b": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/painting_bag.png",
+        "scale": 5,
+        "page_height": 400,
+        "title": "CREATING SUSTAINABLE LIVELIHOODS FOR TRADITIONAL ARTISTS",
+        "subheading": "",
+        "button_text": "",
+        "link": "",
+        "overlay_opacity": 0,
+        "text_color": "#ededed",
+        "button_text_color": "#ffffff",
+        "button_color": "#000000",
+        "background": "rgba(0,0,0,0)",
+        "caption_horizontal": 50,
+        "caption_vertical": 50,
+        "text_align": "center",
+        "section_padding": "both"
+      }
+    },
+    "1639414352b8f8ab28": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "title": "BLOG",
+        "post_limit": 3,
+        "blog_layout_grid": true,
+        "post_tags": false,
+        "show_author": true,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "16257529781b844d78": {
+      "type": "collection-list",
+      "blocks": {
+        "16257529781b844d78-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "handpainted-wood-clutches"
+          }
+        },
+        "16257529781b844d78-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "silk-clutches"
+          }
+        },
+        "16257529781b844d78-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "evening-clutches"
+          }
+        },
+        "943159b1-ae1c-4a3b-a06e-f08b26d21c04": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paper-mache"
+          }
+        }
+      },
+      "block_order": [
+        "16257529781b844d78-0",
+        "16257529781b844d78-1",
+        "16257529781b844d78-2",
+        "943159b1-ae1c-4a3b-a06e-f08b26d21c04"
+      ],
+      "settings": {
+        "full_width": false,
+        "title": "LAST PIECES IN STOCK",
+        "grid": 4,
+        "color_scheme": "cs1",
+        "section_padding": "both"
+      }
+    }
+  },
+  "order": [
+    "1625752154523bf545",
+    "166469973001e62813",
+    "1628115324d4b05084",
+    "1625752966582d2e67",
+    "16257529729c6c2524",
+    "1628115108645bdee6",
+    "1639414259a761498b",
+    "1639414352b8f8ab28",
+    "16257529781b844d78"
+  ]
+}

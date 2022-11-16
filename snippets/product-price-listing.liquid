@@ -1,0 +1,155 @@
+{% comment %}
+    Renders a list of product's price (regular, sale, unit)
+    Accompanies product listings (collection page, search result) and not updated dynamically
+    Accepts:
+    - variant: {Object} Variant Liquid object (optional)
+    - product: {Object} Product Liquid object (optional)
+    - show_vendor: {Boolean} Show the product's vendor depending on the section setting (optional)
+
+    Usage:
+    {% include 'product-price-listing', product: product %}
+{% endcomment %}
+{%- liquid
+  if product.title
+    assign compare_at_price = product.compare_at_price
+    assign price = product.price
+    assign available = product.available
+    assign variant = product.variants.first
+  else
+    assign compare_at_price = 1999
+    assign price = 1999
+    assign available = true
+  endif
+
+  assign money_price = price | money
+-%}
+
+<!--<style>
+  .price__sale, .price__regular {
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+  }
+  
+  .price-final-value {
+    background: #9d0000; 
+    padding: 7px 10px;  
+  }
+  
+  .price-final-value span {
+    color: white; 
+  }
+  
+  .price--on-sale .price__sale {
+    flex-direction: column; 
+  }  
+  
+</style>-->
+
+<style>
+  .price__regular {
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+  }
+  
+  .price-final-value {
+    background: #380433; 
+    padding: 7px 10px;  
+  }
+  
+  .price-final-value span {
+    color: white; 
+  }
+  
+  .price--on-sale .price__sale {
+    display:flex;
+    flex-direction: column; 
+    width:100%
+  }  
+  @media screen and (max-width: 500px) {
+     .add-to-cart-icon{
+    position:absolute;
+       margin-left: 5px;
+  }
+  }
+</style>
+
+<div class="price price--listing
+  {%- if available == false %} price--sold-out {% endif -%}
+  {%- if compare_at_price > price %} price--on-sale {% endif -%}
+  {%- if product.price_varies == false and product.compare_at_price_varies %} price--compare-price-hidden {% endif -%}
+  {%- if variant.unit_price_measurement %} price--unit-available {% endif -%}"
+>
+
+  {%- comment -%}
+    Explanation of description list:
+      - div.price__regular: Displayed when there are no variants on sale
+      - div.price__sale: Displayed when a variant is a sale
+      - div.price__unit: Displayed when the first variant has a unit price
+      - div.price__availability: Displayed when the product is sold out
+  {%- endcomment -%}
+  <dl class="price__regular">
+    <dt>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.general.regular_price' | t }}</span>
+    </dt>
+    <dd class="price-final-value" style="margin-top:15px; ">
+      <a  href="{{ product.url | within: collection }}" class="js-product-details-link"><span class="price-item price-item--regular" style="color:white !important">
+        <svg class=""  style="fill: white; width: 18px; height: 18px; padding-top: 6px; margin-right: 7px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM272 180H316V224C316 235 324.1 244 336 244C347 244 356 235 356 224V180H400C411 180 420 171 420 160C420 148.1 411 140 400 140H356V96C356 84.95 347 76 336 76C324.1 76 316 84.95 316 96V140H272C260.1 140 252 148.1 252 160C252 171 260.1 180 272 180zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"/></svg>
+    
+        {%- if product.price_varies -%}
+          {{ 'products.product.from_lowest_price_html' | t: lowest_price: money_price }}
+        {%- else -%}
+          {{ money_price }}
+        {%- endif -%}
+        </span></a>
+    </dd>
+  </dl>
+  <dl class="price__sale">
+    <dt>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.general.sale_price' | t }}</span>
+    </dt> 
+    <dd class="price-final-value" style="margin-top:15px">
+     <a  href="{{ product.url | within: collection }}" class="js-product-details-link"> <span class="price-item price-item--sale">
+       <svg class=""  style="fill: white; width: 18px; height: 18px; padding-top: 6px; margin-right: 7px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM272 180H316V224C316 235 324.1 244 336 244C347 244 356 235 356 224V180H400C411 180 420 171 420 160C420 148.1 411 140 400 140H356V96C356 84.95 347 76 336 76C324.1 76 316 84.95 316 96V140H272C260.1 140 252 148.1 252 160C252 171 260.1 180 272 180zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"/></svg>
+    
+        {%- if product.price_varies -%}
+          {{ 'products.product.from_lowest_price_html' | t: lowest_price: money_price }}
+        {%- else -%}
+          {{ money_price }}
+        {%- endif -%}
+      </span>
+      </a>
+    </dd>
+    <dt>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.general.regular_price' | t }}</span>
+    </dt>
+    <dd>
+      <s class="price-item price-item--regular">
+        {{ compare_at_price | money }}
+      </s>
+    </dd>
+  </dl>
+  <dl class="price__unit">
+    <dt>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.unit_price_label' | t }}</span>
+    </dt>
+    <dd class="price-unit-price">
+      {%- capture unit_price_separator -%}
+        <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+      {%- endcapture -%}
+      {%- capture unit_price_base_unit -%}
+        <span>
+          {%- if variant.unit_price_measurement -%}
+            {%- if variant.unit_price_measurement.reference_value != 1 -%}
+              {{- variant.unit_price_measurement.reference_value -}}
+            {%- endif -%}
+            {{ variant.unit_price_measurement.reference_unit }}
+          {%- endif -%}
+        </span>
+      {%- endcapture -%}
+
+      <span>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+    </dd>
+  </dl>
+</div>

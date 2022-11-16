@@ -1,0 +1,112 @@
+{%- liquid
+    assign collection_url = collections[collection_handle].url
+    assign show_sku = settings.product_show_sku
+	assign show_vendor = settings.product_show_vendor
+	assign show_quantity = settings.product_show_quantity
+	assign show_payment_button = settings.product_show_payment_button
+	assign current_variant = product.selected_or_first_available_variant
+    
+    assign collection_handle = product.metafields.artform.artfrom_name | downcase
+    assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "BreadcrumbList", 
+  "itemListElement": [{
+    "@type": "ListItem", 
+    "position": 1, 
+    "name": "Memeraki",
+    "item": "https://www.memeraki.com/"  
+  },{
+    "@type": "ListItem", 
+    "position": 2, 
+    "name": "Masterclass",
+    "item": "https://www.memeraki.com/collections/masterclasses"  
+  }]
+}
+</script>
+
+
+<section style="height: 100vh; padding-bottom: 30px;">
+  <div style="padding: 25px;
+              height: 100vh;
+              background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url({{product.images[-1] | img_url: 'master'}});
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover; ">
+    	<h1 style="color: white; font-size:40px; padding-top: 30vh;">{{ product.title }}</h1>
+    	<div style="margin-top:20px; color:'white'; display: inline;">
+    		<button style="width: 250px; padding:2px 55px 5px 55px;" onclick="javascript:document.getElementById('description').scrollIntoView({behavior: 'smooth'});">Learn More</button>
+<!--           javascript:window.scroll({ top: 692, left: 0, behavior: 'smooth' }); -->
+            <button style=" width: 250px; padding:2px 55px 5px 55px;" onclick="javascript:document.getElementById('trailer').scrollIntoView({behavior: 'smooth'});" >&#9658 Watch Trailer</button>
+      	</div>
+  </div>
+
+</section>
+
+
+{% schema %}
+ {
+    "name": "Hero Image",
+    "settings": [
+    ],
+  "presets": [
+	{
+	"name": "Hero Image",
+	"category": "Workshops"
+	}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+.tags{
+  font-family: 'Lato', sans-serif;
+  padding-left: 9px;
+  padding-right: 9px;
+  margin-bottom: 5px;
+  border-width: 2px; 
+  border-radius: 17px; 
+
+  background-color: #380433;
+  color: white; 
+  text-align: center; 
+  height: 32px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px ;
+}
+
+.hero-imageButton{
+  font-family: 'Lato', sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 55vh;
+  border-width: 2px; 
+  border-radius: 17px; 
+  width: auto;
+  background-color: #380433;
+  color: white; 
+  text-align: center; 
+  height: 32px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px ;
+}
+{% endstylesheet %}
+  
+{% javascript %}
+
+{% endjavascript %}
+
+{% comment %}
+
+{% endcomment %}
+
+

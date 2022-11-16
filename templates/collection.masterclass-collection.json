@@ -1,0 +1,238 @@
+{
+  "sections": {
+    "1639415114bc233a31": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "16394151146052fa96-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BANNER_1_06d6b763-a627-4c0e-aaf9-f45da56e16ef.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/BANNER_1_06d6b763-a627-4c0e-aaf9-f45da56e16ef.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "16394151146052fa96-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BANNER-2.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/BANNER-2.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "9d1aa717-6bc8-48a2-8259-8f2e9ffa9956": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BANNER-3.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/BANNER-3.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "0fe8786f-09ee-414f-82d6-3357506b2fc2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BANNER-4.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/BANNER-4.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        },
+        "32c75808-5d84-4e4b-9106-517146e4bf53": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BANNER-5.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/BANNER-5.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "rgba(0,0,0,0)",
+            "caption_background_opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "16394151146052fa96-0",
+        "16394151146052fa96-1",
+        "9d1aa717-6bc8-48a2-8259-8f2e9ffa9956",
+        "0fe8786f-09ee-414f-82d6-3357506b2fc2",
+        "32c75808-5d84-4e4b-9106-517146e4bf53"
+      ],
+      "settings": {
+        "enable_autoplay": false,
+        "slider_speed": 5,
+        "pager": "dots",
+        "video_audio": "off",
+        "slide_heading_size": 22,
+        "subheading_size": 14,
+        "cta_size": 14,
+        "section_padding": "both"
+      }
+    },
+    "1639415416e89b2439": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "2e992f7a-6949-43d1-8eed-2e5ede325170": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "rich_text": "<p>Welcome to the world of traditional Indian masterclasses! We bring you unknown, historical and hidden art forms from all over India. Explore with us the world of heritage Indian arts that have contributed to the country’s long and rich history. From monuments to textiles, these art and craft forms have brought their local charm and extraordinary techniques to different empires, cultures and businesses that have existed in the subcontinent.<\/p>",
+            "center": true,
+            "block_size": 5
+          }
+        }
+      },
+      "block_order": [
+        "2e992f7a-6949-43d1-8eed-2e5ede325170"
+      ],
+      "settings": {
+        "title": "Take a masterclass now",
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "display_wide": true
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "full_width": false,
+        "grid": 4,
+        "products_per_page": 30,
+        "infinite_scroll": false,
+        "show_image": false,
+        "description_position": "top_description",
+        "is_sticky": false,
+        "sort_by": false
+      }
+    },
+    "1639415549bd28de6f": {
+      "type": "masterclass-accordian",
+      "blocks": {
+        "e698854e-868e-45e0-9131-d1768ad72b45": {
+          "type": "accordion",
+          "settings": {
+            "ac_section_heading": "FAQ",
+            "allow_multiple": false,
+            "ac_heading_1": "What is the difference between Masterclasses and LIVE workshops?",
+            "ac_content_1": "<p>Masterclasses are complete pre-recorded courses of 7-8 parts that have been researched and recorded by us at the Master artists homes. LIVE workshops happen in real time over zoom along with the Master Artist and a small group. Live workshops have different levels. We only have a few Masterclasses right now - Lippan art from Kutch and Pichwai art from Nathdwara, Rajasthan and are producing and adding more every month. While we cover more than 60 heritage art and craft forms in our live workshops already.<\/p>",
+            "ac_heading_2": "I am a beginner, which class would you recommend for me?",
+            "ac_content_2": "<p>You could attend a beginner friendly live workshop (or even a masterclass if its Lippan or Pichwai you are interested in) and then join the foundations or advanced LIVE workshops. The different levels for the LIVE workshops are- Beginner, Foundations and Advanced<\/p>",
+            "ac_heading_3": "Are materials included in the masterclasses and LIVE workshops?",
+            "ac_content_3": "<p>Materials are not included in the masterclasses but you can order from our list of authentic art kits and materials in addition to the masterclass. For the live workshops, materials are included in some of the live workshops as part of the workshop and it would be mentioned in the workshop description.<\/p>",
+            "ac_heading_4": "What is covered in the different levels of the LIVE workshops and in the Masterclasses?",
+            "ac_content_4": "<p>Beginner Friendly- These are usually 1-2 classes of 2 hours each and one of the simpler artworks and motifs of that art style are covered in the beginner friendly workshops as an introduction to that art form.<br\/>Foundations- In the foundations live workshops, the workshops are structured to teach you the basic motifs and foundations of that art style , the focus is not on completing a painting but the elements taught in each class are incorporated in a painting and a few different compositions are also taught <br\/>Advanced- in the Advanced live workshop, usually the focus is on completing a more elaborate and intricate painting - no basic motifs are covered in the advanced workshops. <br\/>Masterclass-A masterclass is structured as 7-8 pre-recorded classes covering introduction of the artform, introduction of the artist, introduction of the different traditional materials used in that art and then 3 artworks are usually taught ranging from beginner to intermediate.<\/p>",
+            "ac_heading_5": "Do I get a certificate for completing a LIVE Workshop or a Masterclass?",
+            "ac_content_5": "<p>Yes, going forward, our platform will automatically award you a certificate on behalf of MeMeraki for completing a workshop with us and being a patron of the arts. This will be accessible via the ‘My Workshops’ section under each workshop that you have attended after Nov 2021. <\/p>",
+            "ac_heading_6": "I do not live in India, can I still attend a LIVE Workshop? Will you ship materials internationally?",
+            "ac_content_6": "<p>Yes, we have many patrons attending our workshops from across the world. We ship the art kits internationally for the workshops where materials are included. International shipping charges are INR2000. Even if you are ordering an art kit separately in addition to a MASTERCLASS, we can ship internationally.<\/p>",
+            "ac_heading_7": "Will I have access to the recording of the workshop after the workshop?",
+            "ac_content_7": "<p>Yes, you will be able to access the recording of all the workshops you have attended through the ‘My Workshops’ section to be able to practice at your own pace later.<\/p>",
+            "ac_heading_8": "What happens to the recordings of the previous workshops I have attended?",
+            "ac_content_8": "<p>The previous workshops recordings will still be available to you via google drive as earlier. But going forward for all new workshops post Nov 2021, the workshops will be accessible through our website and platform only.<\/p>",
+            "ac_heading_9": "",
+            "ac_content_9": "<p>Description and content for Item 9.<\/p>",
+            "ac_heading_10": "",
+            "ac_content_10": "<p>Description and content for Item 10.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e698854e-868e-45e0-9131-d1768ad72b45"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "1639415114bc233a31",
+    "1639415416e89b2439",
+    "banner",
+    "main",
+    "1639415549bd28de6f"
+  ]
+}
