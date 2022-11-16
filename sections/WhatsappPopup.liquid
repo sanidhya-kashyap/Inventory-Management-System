@@ -1,11 +1,10 @@
-<div class="expl" id="popup1">
+<div class="expl" id="popup1" >
     <div class="close" onclick="hide()">
         <div class="x">x</div>
     </div>
    
 
     <div class="message sent" >
-        {%- comment -%} <a href="https://api.whatsapp.com/send?phone=919971593574&text=Hi">Need help? Click here to talk to us</a>    {%- endcomment -%}
         <a  target="_blank" id="wStrip" href="https://api.whatsapp.com/send?phone=919971593574&text=Hi, I have a query" >Need help? Click here to talk to us</a>   
         
         </div>
@@ -26,28 +25,57 @@
     const x = document.getElementsByTagName("h1")[0].innerHTML
     whatsappLink=document.getElementById('wStrip')
     whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I am looking for ${x.trim()} product the link is ${link}`
-
-    {% elsif template contains 'blog' %}
+{% endif %}
+    {% if template contains 'blog' %}
     const link = window.location.href
     const x = document.getElementsByTagName("h1")[0].innerHTML
     whatsappLink=document.getElementById('wStrip')
     whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I was reading ${x.trim()} and wanted some more information about it, ${link}`
+
 
 {%else%}
     const link = window.location.href
     whatsappLink=document.getElementById('wStrip')
     whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I need assistance and I am on ${link} page`
 {% endif %}
+
+{% if template contains 'collection' %}
+        
     function show() {
         document.getElementById("popup1").classList.add("fadeIn");
+        document.getElementById("popup1").style.visibility = "visible"; 
         
     }
     function hide() {
         document.getElementById("popup1").style.visibility = "hidden";
     }
-    setTimeout(show, 1);
+    setTimeout(show, 90000);
+{%endif%}
+    {% if template contains 'blog' %}
+        
+        function show() {
+            document.getElementById("popup1").classList.add("fadeIn");
+            document.getElementById("popup1").style.visibility = "visible"; 
+            
+        }
+        function hide() {
+            document.getElementById("popup1").style.visibility = "hidden";
+        }
+        setTimeout(show, 90000);
 
-    
+    {% else %}
+    function show() {
+        document.getElementById("popup1").classList.add("fadeIn");
+        document.getElementById("popup1").style.visibility = "visible"; 
+        
+    }
+    function hide() {
+        document.getElementById("popup1").style.visibility = "hidden";
+    }
+    setTimeout(show,30000);
+
+{%endif%}
+
 </script>
 <style>
 
@@ -56,6 +84,8 @@ body {
 margin: 0px;
 padding: 0px;
 }
+
+
 .popup {
 width: 297px;
 height: 60px;
@@ -100,7 +130,7 @@ margin-bottom: -2px;
 cursor: pointer;
 }
 .expl{
-/* visibility: hidden; */
+visibility: hidden;
 opacity: 0;
 position: fixed;
 bottom: 0;
