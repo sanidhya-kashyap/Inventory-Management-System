@@ -20,12 +20,23 @@
     whatsappLink=document.getElementById('wStrip')
     whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I have a query regarding the ${x.trim()} collection the link is ${link}`
     
-{% endif %}
-{% if template contains 'product' %}
+
+{% elsif template contains 'product' %}
     const link = window.location.href
     const x = document.getElementsByTagName("h1")[0].innerHTML
     whatsappLink=document.getElementById('wStrip')
-    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi I am looking for ${x.trim()} product the link is ${link}`
+    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I am looking for ${x.trim()} product the link is ${link}`
+
+    {% elsif template contains 'blog' %}
+    const link = window.location.href
+    const x = document.getElementsByTagName("h1")[0].innerHTML
+    whatsappLink=document.getElementById('wStrip')
+    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I was reading ${x.trim()} and wanted some more information about it, ${link}`
+
+{%else%}
+    const link = window.location.href
+    whatsappLink=document.getElementById('wStrip')
+    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I need assistance and I am on ${link} page`
 {% endif %}
     function show() {
         document.getElementById("popup1").classList.add("fadeIn");
