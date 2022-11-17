@@ -13,18 +13,18 @@
 
 <Section>
   <div class="cards-heading">
-    <h1>Top Artists</h1>
+    <h1>{{ section.settings.title }}</h1>
     <a href="https://www.memeraki.com">
       <h4 style='color: #f4cb28'>View All</h4>
     </a>
   </div>
 
-  <div class=" thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
+  <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
     {% for block in section.blocks %}
       <div class="carousel-cell thumbnail-card">
         <a href="{{ block.settings.card_collection.url }}">
           <div class="thumbnail">
-            {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag }}
+            {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
         </div>
         <div class="thumbnail-name">
             <h3>{{ block.settings.card_collection.title }}</h3>
@@ -33,98 +33,10 @@
       </div>
     {% endfor %}
 
-      {% comment %} <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/adarsh-310550_900x.jpg?v=1661325700" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Adarsh</h3>
-        </div>  
-        </a>
-      </div> 
-
       <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/apindra-swain-780772_900x.jpg?v=1661325715" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Apindra Swain</h3>
-        </div>  
-        </a>
-      </div> 
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/ashutosh-verma-987942_900x.jpg?v=1661325726" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Ashutosh Verma</h3>
-        </div>  
-        </a>
-      </div>  
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/abdul-salim-965575_900x.jpg?v=1661325694" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Abdul Salim</h3>
-        </div>  
-        </a>
-      </div>  
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/bapi-chitrakar-377237_900x.jpg?v=1661325735" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Bapi Chitrakar</h3>
-        </div>  
-        </a>
-      </div>  
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/chandrakant-bhulabhai-mata-ni-pachedi-artist-844377_900x.jpg?v=1661325743" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Chandrakant Bhulabhai</h3>
-        </div>  
-        </a>
-      </div>  
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/chetan-gangavane-149461_900x.jpg?v=1661325750" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Chetan Gangavane</h3>
-        </div>  
-        </a>
-      </div>  
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
-          <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/daya-ben-418296_900x.jpg?v=1661325769" width="auto" height="100" alt="" >
-        </div>
-        <div class="thumbnail-name">
-            <h3>Daya Ben</h3>
-        </div>  
-        </a>
-      </div>   {% endcomment %}
-
-      <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
+        <a href="{{ section.settings.view_all_url }}">
           <div id="last-card" class="thumbnail">
-            <h3 style="color: white;">More Artists</h3>
+            <h3 style="color: white;">{{ section.settings.last_card }}</h3>
           </div>  
         </a>
       </div>  
@@ -149,9 +61,12 @@
 
   .shopify-section-thumbnail-cards{
     margin: 10px 20px 50px 20px;
-
     padding-left: 30px;
 
+  }
+
+  .thumbnail-container{
+    margin-top: 20px;
   }
 
   #last-card{
@@ -168,9 +83,7 @@
       float: right;
       display: inline;
   }
-  .thumbnail-container{
-      margin-top: 20px;;   
-  }
+  
 
   .thumbnail-card{
       margin-right: 45px;
@@ -190,6 +103,10 @@
       max-height: 200px;
       max-width: 200px;
       border-radius: 0px 35px 0px 0px;
+  }
+
+  .thumbnail-name{
+    max-width: 200px;
   }
 
   .thumbnail > img{
@@ -216,6 +133,11 @@
         "type": "text",
         "id": "title",
         "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "last_card",
+        "label": "Last Card Text"
       },
       {
         "type": "url",
