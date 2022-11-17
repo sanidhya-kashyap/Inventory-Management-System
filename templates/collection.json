@@ -77,8 +77,89 @@
         "328b2940-58b3-42fb-ab86-f682aea7c0ba"
       ],
       "settings": {
-        "title": "Explore By",
+        "title": "Top Artists",
         "view_all_url": "https:\/\/www.memeraki.com\/pages\/memeraki-artists"
+      }
+    },
+    "835257d0-3dd1-463d-8339-c0981958e6fc": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "1776d9af-b052-4622-bb82-6b1d90ec7d97": {
+          "type": "card",
+          "settings": {
+            "card_collection": "aipan"
+          }
+        },
+        "c56710d8-c1c0-49b5-aa80-73c3824c49ef": {
+          "type": "card",
+          "settings": {
+            "card_collection": "madhubani"
+          }
+        },
+        "1467f820-c508-4c8b-8c02-67b4b7a5272d": {
+          "type": "card",
+          "settings": {
+            "card_collection": "applique"
+          }
+        },
+        "2a5b4afd-358a-4282-b5ab-b5f2903c4ac8": {
+          "type": "card",
+          "settings": {
+            "card_collection": "assamese-scroll"
+          }
+        },
+        "15fb7092-15af-4f2b-8b08-87c71ba97458": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bikaner"
+          }
+        },
+        "f328b402-0eb3-4321-aa52-56ba9dd4486c": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bani-thani"
+          }
+        },
+        "b752bf9e-f2bd-450e-88d3-3b772d111e59": {
+          "type": "card",
+          "settings": {
+            "card_collection": "gond"
+          }
+        },
+        "decc1da1-0e67-4de5-a6d1-610e2dc883bb": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ganjifa"
+          }
+        },
+        "6e590db3-4cc4-4384-81b3-fec0653a13a6": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kishangarh-art"
+          }
+        },
+        "e062eaa6-a341-4eba-87cc-5b7b845f166e": {
+          "type": "card",
+          "settings": {
+            "card_collection": "phad"
+          }
+        }
+      },
+      "block_order": [
+        "1776d9af-b052-4622-bb82-6b1d90ec7d97",
+        "c56710d8-c1c0-49b5-aa80-73c3824c49ef",
+        "1467f820-c508-4c8b-8c02-67b4b7a5272d",
+        "2a5b4afd-358a-4282-b5ab-b5f2903c4ac8",
+        "15fb7092-15af-4f2b-8b08-87c71ba97458",
+        "f328b402-0eb3-4321-aa52-56ba9dd4486c",
+        "b752bf9e-f2bd-450e-88d3-3b772d111e59",
+        "decc1da1-0e67-4de5-a6d1-610e2dc883bb",
+        "6e590db3-4cc4-4384-81b3-fec0653a13a6",
+        "e062eaa6-a341-4eba-87cc-5b7b845f166e"
+      ],
+      "settings": {
+        "title": "Explore By",
+        "view_all_url": ""
       }
     },
     "banner": {
@@ -138,6 +219,7 @@
   },
   "order": [
     "cc043627-f86e-4d75-a834-1db295a91352",
+    "835257d0-3dd1-463d-8339-c0981958e6fc",
     "banner",
     "main",
     "1646105122e98f6180"
