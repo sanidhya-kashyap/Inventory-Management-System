@@ -21,7 +21,6 @@
 
   <div class=" thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
     {% for block in section.blocks %}
-      {{block.settings.collection.image}}
       <div class="carousel-cell thumbnail-card">
         <a href="{{ block.settings.card_collection.url }}">
           <div class="thumbnail">
