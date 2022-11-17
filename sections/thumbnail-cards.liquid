@@ -21,10 +21,11 @@
 
   <div class=" thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
     {% for block in section.blocks %}
+      {{block.settings.collection.image}}
       <div class="carousel-cell thumbnail-card">
         <a href="{{ block.settings.collection.url }}">
           <div class="thumbnail">
-            {{ block.settings.card_image | image_url: height: 600 | image_tag}}
+            {{ block.settings.collection.image | image_url: height: 600 | image_tag }}
         </div>
         <div class="thumbnail-name">
             <h3>{{ block.settings.card_title }}</h3>
@@ -147,8 +148,10 @@
     border-radius: 0;
   }
 
-  #shopify-section-thumbnail-cards{
-    margin: 10px 20px 50px 20px;  
+  .shopify-section-thumbnail-cards{
+    margin: 10px 20px 50px 20px;
+
+    padding-left: 30px;
 
   }
 
@@ -208,6 +211,7 @@
 {% schema %}
   {
     "name": "Thumbnail Cards",
+    "class": "shopify-section-thumbnail-cards",
     "settings": [
       {
         "type": "text",
