@@ -11,14 +11,6 @@
             "card_collection": ""
           }
         },
-        "95cb45b5-9b56-4117-bddf-9b6cd6769a45": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify:\/\/shop_images\/Untitled336_20221107122751.png",
-            "card_title": "Some Artist",
-            "card_collection": ""
-          }
-        },
         "d400f39b-5942-43ef-a633-96856e3842ac": {
           "type": "card",
           "settings": {
@@ -26,12 +18,20 @@
             "card_title": "Jijulal",
             "card_collection": "jijulal"
           }
+        },
+        "95cb45b5-9b56-4117-bddf-9b6cd6769a45": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Untitled336_20221107122751.png",
+            "card_title": "Some Artist",
+            "card_collection": ""
+          }
         }
       },
       "block_order": [
         "841715eb-7f94-4e62-b25c-caafeed0d648",
-        "95cb45b5-9b56-4117-bddf-9b6cd6769a45",
-        "d400f39b-5942-43ef-a633-96856e3842ac"
+        "d400f39b-5942-43ef-a633-96856e3842ac",
+        "95cb45b5-9b56-4117-bddf-9b6cd6769a45"
       ],
       "settings": {
         "title": "Explore By",
