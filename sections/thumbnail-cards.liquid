@@ -20,19 +20,20 @@
   </div>
 
   <div class=" thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
-
+    {% for block in section.blocks %}
       <div class="carousel-cell thumbnail-card">
-        <a href="{{ product.url | within: collection }}">
+        <a href="{{ block.settings.collection.url }}">
           <div class="thumbnail">
-            <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/anil-wangad-983444_900x.jpg?v=1661325710" width="auto" height="100" alt="" >
+            {{ section.settings.image_with_text_image | image_url: height: 100 | image_tag }}
         </div>
         <div class="thumbnail-name">
-            <h3>Anil Wangad</h3>
+            <h3>{{ block.settings.card_title }}</h3>
         </div>  
         </a>
       </div>
+    {% endfor %}
 
-      <div class="carousel-cell thumbnail-card">
+      {% comment %} <div class="carousel-cell thumbnail-card">
         <a href="{{ product.url | within: collection }}">
           <div class="thumbnail">
             <img loading="lazy" src="http://cdn.shopify.com/s/files/1/1194/1498/collections/adarsh-310550_900x.jpg?v=1661325700" width="auto" height="100" alt="" >
@@ -118,7 +119,7 @@
             <h3>Daya Ben</h3>
         </div>  
         </a>
-      </div>  
+      </div>   {% endcomment %}
 
       <div class="carousel-cell thumbnail-card">
         <a href="{{ product.url | within: collection }}">
@@ -212,16 +213,43 @@
         "type": "text",
         "id": "title",
         "label": "Heading"
+      },
+      {
+        "type": "url",
+        "id": "view_all_url",
+        "label": "View All URL"
       }
     ],
-    "presets": [
+    "max_blocks": 10,
+    "blocks": [
+       {
+         "name": "Card",
+         "type": "card",
+         "settings": [
+           {
+             "type": "image_picker",
+             "id": "card_image",
+             "label": "Image"
+           },
+           {
+            "type": "text",
+            "id": "card_title",
+            "label": "Title"
+          },
+          {
+            "type": "collection",
+            "id": "card_collection",
+            "label": "Collection"
+          }
+         ]
+       }
+    ],
+    "presets":[
       {
         "name": "Thumbnail Cards",
-        "settings": [
-          {
-            "title" : "Explore"
-          }
-        ]
+        "settings": {
+          "title": "Explore By"
+        }
       }
     ]
   }
