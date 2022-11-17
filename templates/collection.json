@@ -78,6 +78,7 @@
       ],
       "settings": {
         "title": "Top Artists",
+        "last_card": "More Artists",
         "view_all_url": "https:\/\/www.memeraki.com\/pages\/memeraki-artists"
       }
     },
@@ -159,6 +160,7 @@
       ],
       "settings": {
         "title": "Top Artforms",
+        "last_card": "More Artforms",
         "view_all_url": "https:\/\/www.memeraki.com\/pages\/memeraki-art-forms"
       }
     },
