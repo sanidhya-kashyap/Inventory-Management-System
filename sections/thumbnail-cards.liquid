@@ -24,10 +24,10 @@
       <div class="carousel-cell thumbnail-card">
         <a href="{{ block.settings.collection.url }}">
           <div class="thumbnail">
-            {{ block.settings.card_image | image_url: height: 400 | image_tag }}
+            {{ block.settings.card_image | image_url | image_tag: height: 400}}
         </div>
         <div class="thumbnail-name">
-            <h3>{{ block.settings.card_title }} {{ block.settings.card_image}}</h3>
+            <h3>{{ block.settings.card_title }}</h3>
         </div>  
         </a>
       </div>
