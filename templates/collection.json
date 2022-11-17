@@ -6,36 +6,79 @@
         "841715eb-7f94-4e62-b25c-caafeed0d648": {
           "type": "card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/Rajendra_Sharma.jpg",
-            "card_title": "Rajendra Sharma",
             "card_collection": "adarsh"
           }
         },
         "d400f39b-5942-43ef-a633-96856e3842ac": {
           "type": "card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/Jijulal.jpg",
-            "card_title": "Jijulal",
-            "card_collection": "jijulal"
+            "card_collection": "anil-wangad"
           }
         },
         "95cb45b5-9b56-4117-bddf-9b6cd6769a45": {
           "type": "card",
           "settings": {
-            "card_image": "shopify:\/\/shop_images\/Untitled336_20221107122751.png",
-            "card_title": "Some Artist",
             "card_collection": "ashutosh-verma"
+          }
+        },
+        "17a7144b-c437-4885-bc6f-b42ee4a43c33": {
+          "type": "card",
+          "settings": {
+            "card_collection": "apindra-swain"
+          }
+        },
+        "131d4ede-4d33-432c-a30b-bd316f18cc02": {
+          "type": "card",
+          "settings": {
+            "card_collection": "abdul-salim"
+          }
+        },
+        "648041ac-c6ad-42d9-9689-beed8e7403e8": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bapi-chitrakar"
+          }
+        },
+        "5f2bc3f6-dc58-4365-8619-8c5d7c2b61da": {
+          "type": "card",
+          "settings": {
+            "card_collection": "chetan-gangwane"
+          }
+        },
+        "2b51ee58-16e7-44dd-b76c-d8bcec869b2b": {
+          "type": "card",
+          "settings": {
+            "card_collection": "daya-ben"
+          }
+        },
+        "2ce1ed90-4693-4abd-a2fb-1905e2737b68": {
+          "type": "card",
+          "settings": {
+            "card_collection": "pratima-bharti"
+          }
+        },
+        "328b2940-58b3-42fb-ab86-f682aea7c0ba": {
+          "type": "card",
+          "settings": {
+            "card_collection": "dilip-chittara"
           }
         }
       },
       "block_order": [
         "841715eb-7f94-4e62-b25c-caafeed0d648",
         "d400f39b-5942-43ef-a633-96856e3842ac",
-        "95cb45b5-9b56-4117-bddf-9b6cd6769a45"
+        "95cb45b5-9b56-4117-bddf-9b6cd6769a45",
+        "17a7144b-c437-4885-bc6f-b42ee4a43c33",
+        "131d4ede-4d33-432c-a30b-bd316f18cc02",
+        "648041ac-c6ad-42d9-9689-beed8e7403e8",
+        "5f2bc3f6-dc58-4365-8619-8c5d7c2b61da",
+        "2b51ee58-16e7-44dd-b76c-d8bcec869b2b",
+        "2ce1ed90-4693-4abd-a2fb-1905e2737b68",
+        "328b2940-58b3-42fb-ab86-f682aea7c0ba"
       ],
       "settings": {
         "title": "Explore By",
-        "view_all_url": ""
+        "view_all_url": "https:\/\/www.memeraki.com\/pages\/memeraki-artists"
       }
     },
     "banner": {
