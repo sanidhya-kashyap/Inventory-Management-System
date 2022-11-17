@@ -14,7 +14,8 @@
         "95cb45b5-9b56-4117-bddf-9b6cd6769a45": {
           "type": "card",
           "settings": {
-            "card_title": "",
+            "card_image": "shopify:\/\/shop_images\/Untitled336_20221107122751.png",
+            "card_title": "Some Artist",
             "card_collection": ""
           }
         },
