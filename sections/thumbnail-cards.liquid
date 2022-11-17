@@ -23,9 +23,9 @@
     {% for block in section.blocks %}
       {{block.settings.collection.image}}
       <div class="carousel-cell thumbnail-card">
-        <a href="{{ block.settings.collection.url }}">
+        <a href="{{ block.settings.card_collection.url }}">
           <div class="thumbnail">
-            {{ block.settings.card_collection.featured_image.src  }}
+            {{ block.settings.card_collection.featured_image.src }}
         </div>
         <div class="thumbnail-name">
             <h3>{{ block.settings.card_collection.title }}</h3>
