@@ -1,9 +1,26 @@
+{%-liquid
+    if template contains 'article'
+        assign page_title = article.title
+        assign timer_val = 90000
+        assign msg_template = "Hi, I was reading " | append: page_title | append: "and wanted some more information about it, ${link}." 
+    elsif template contains 'product'
+        assign page_title = product.title
+        assign timer_val = 30000
+        assign msg_template = "Hi, I am looking for " | append: page_title | append: "and the link is ${link}."
+    elsif template contains 'collection'
+        assign page_title = collection.title
+        assign timer_val = 90000
+        assign msg_template = "Hi, I have a query regarding the collection " | append: page_title | append: "the link is ${link}."
+    else
+        assign timer_val = 30000
+        assign msg_template = "Hi, I need assistance and I am on ${link} page."
+    endif
+-%}
+
 <div class="expl" id="popup1" >
     <div class="close" onclick="hide()">
         <div class="x">x</div>
     </div>
-   
-
     <div class="message sent" >
         <a  target="_blank" id="wStrip" href="https://api.whatsapp.com/send?phone=919971593574&text=Hi, I have a query" >Need help? Click here to talk to us</a>   
         
@@ -13,74 +30,26 @@
 </div>
 
 <script>
-
-{% if template contains 'collection' %}
-    alert("Hello")
-    const link = window.location.href
-    const x = document.getElementsByTagName("h1")[0].innerHTML
-    whatsappLink=document.getElementById('wStrip')
-    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I have a query regarding the ${x.trim()} collection the link is ${link}`
-    
-
-{% elsif template contains 'product' %}
-    const link = window.location.href
-    const x = document.getElementsByTagName("h1")[0].innerHTML
-    whatsappLink=document.getElementById('wStrip')
-    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I am looking for ${x.trim()} product the link is ${link}`
-{% endif %}
-    {% if template contains 'article' %}
-    const link = window.location.href
-    const x = document.getElementsByTagName("h1")[0].innerHTML
-    whatsappLink=document.getElementById('wStrip')
-    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I was reading ${x.trim()} and wanted some more information about it, ${link}`
-
-
-{%else%}
-    const link = window.location.href
-    whatsappLink=document.getElementById('wStrip')
-    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text=Hi, I need assistance and I am on ${link} page`
-{% endif %}
-
-{% if template contains 'collection' %}
-        
+    const link = window.location.href;
+    {% comment %} const x = document.getElementsByTagName("h1")[0].innerHTML; {% endcomment %}
+    whatsappLink=document.getElementById('wStrip');
+    whatsappLink.href=`https://api.whatsapp.com/send?phone=919971593574&text={{ msg_template }}`;
+       
     function show() {
         document.getElementById("popup1").classList.add("fadeIn");
         document.getElementById("popup1").style.visibility = "visible"; 
         
     }
+
     function hide() {
         document.getElementById("popup1").style.visibility = "hidden";
     }
-    setTimeout(show, 90000);
-{%endif%}
-    {% if template contains 'article' %}
-        
-        function show() {
-            document.getElementById("popup1").classList.add("fadeIn");
-            document.getElementById("popup1").style.visibility = "visible"; 
-            
-        }
-        function hide() {
-            document.getElementById("popup1").style.visibility = "hidden";
-        }
-        setTimeout(show, 90000);
+    setTimeout(show, {{ timer_val }});
 
-    {% else %}
-    function show() {
-        document.getElementById("popup1").classList.add("fadeIn");
-        document.getElementById("popup1").style.visibility = "visible"; 
-        
-    }
-    function hide() {
-        document.getElementById("popup1").style.visibility = "hidden";
-    }
-    setTimeout(show,30000);
-
-{%endif%}
 
 </script>
-<style>
 
+<style>
     
 body {
 margin: 0px;
