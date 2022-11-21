@@ -1,6 +1,6 @@
 {%- capture flickity_options -%}
 {
-  "prevNextButtons": false,
+  "prevNextButtons": true,
   "pageDots": true,
   "draggable": true,
   "contain": true,
@@ -27,12 +27,13 @@
             {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
         </div>
         <div class="thumbnail-name">
-            <h3>{{ block.settings.card_collection.title }}</h3>
+            <p>{{ block.settings.card_collection.title }}</p>
         </div>  
         </a>
       </div>
     {% endfor %}
 
+    {% if section.settings.enable_view_all == true %} 
       <div class="carousel-cell thumbnail-card">
         <a href="{{ section.settings.view_all_url }}">
           <div id="last-card" class="thumbnail">
@@ -40,9 +41,8 @@
           </div>  
         </a>
       </div>  
-      
+    {% endif %}  
   </div>
-
   
 </Section>
 
@@ -86,7 +86,7 @@
   
 
   .thumbnail-card{
-      margin-right: 45px;
+      margin-right: 15px;
       margin-top: 10px;
   }
 
@@ -98,15 +98,16 @@
 
   .thumbnail{
       background-color: #411e2f;
-      height: 200px;
-      width: 200px;
+      height: 150px;
+      width: 150px;
       max-height: 200px;
       max-width: 200px;
       border-radius: 0px 35px 0px 0px;
   }
 
   .thumbnail-name{
-    max-width: 200px;
+    max-width: 150px;
+    
   }
 
   .thumbnail > img{
@@ -152,6 +153,11 @@
         "type": "text",
         "id": "last_card",
         "label": "Last Card Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_view_all",
+        "label": "Show View More Card at the End"
       },
       {
         "type": "url",
