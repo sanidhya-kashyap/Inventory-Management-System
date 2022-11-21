@@ -11314,3 +11314,8 @@ input[type="search"]#Search::-webkit-search-results-decoration {
  
 }
 }
+.drop:hover {
+  font-weight: bold;
+  color: #f4cb28;
+  cursor: pointer;
+}
