@@ -1,6 +1,6 @@
 <div class="art-container">
   <div class="alphabet">
-    <a href="#letter-a"><span>A</span></a>
+    <a href="#letter-a" onclick="gotoSection(1)"><span>A</span></a>
     <span>B</span><span>C</span>
     <span>D</span><span>E</span>
     <span>F</span><span>G</span>
@@ -11,7 +11,7 @@
     <span>P</span><span>Q</span>
     <span>R</span><span>S</span>
     <span>T</span><span>U</span>
-    <a href="#letter-v"><span>V</span></a><span>W</span>
+    <a href="#letter-v" ><span>V</span></a><span>W</span>
     <span>X</span><span>Y</span>
     <span>Z</span>
   </div>
@@ -19,27 +19,20 @@
     <div class="art-col" >
       <h3 id="letter-a">A</h3>
       <hr>
+      {% for block in section.blocks %}
+  
       <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/anil-wangad-983444_540x.jpg?v=1661325710" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/anil-wangad">Anil Wangad</a>
+        <div class="artist-img" >
+          {{ block.settings.card_collection.image.src | image_url: height: 200 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }} 
+        </div>
+        <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+          <h6>{{ block.settings.card_collection.title }}</h6> </a>
       </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/adarsh-310550_540x.jpg?v=1661325700" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/adarsh" >Adarsh</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/apindra-swain-780772_540x.jpg?v=1661325715" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/apindra-swain">Apindra Swain</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/ashutosh-verma-987942_540x.jpg?v=1661325726" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/ashutosh-verma">Ashutosh Verma</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/abdul-salim-965575_540x.jpg?v=1661325694" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/abdul-salim">Abdul Salim</a>
-      </div>
+
+    {% endfor %}
+
     </div>
+  
 
 
 
@@ -418,13 +411,55 @@ hr{
 </style>
 
 
-{% javascript %}
-{% endjavascript %}
-
+<script>
+  function gotoSection(i){
+    var divs = document.getElementsByClassName('shopify-section');
+    divs[4+i].scrollIntoView();
+    window.scrollBy(0, -145);
+  }
+</script>
 
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Artist Alphabetical list",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "last_card",
+        "label": "Last Card Text"
+      },
+      {
+        "type": "url",
+        "id": "view_all_url",
+        "label": "View All URL"
+      }
+    ],
+    
+    "blocks": [
+       {
+         "name": "Card",
+         "type": "card",
+         "settings": [
+          {
+            "type": "collection",
+            "id": "card_collection",
+            "label": "Collection"
+          }
+         ]
+       }
+    ],
+    "presets":[
+      {
+        "name": "artists Cards",
+        "settings": {
+          "title": "Explore By"
+        }
+      }
+    ]
   }
 {% endschema %}
