@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "<p>20% site wide sale<\/p>",
+          "announcement_text": "",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
