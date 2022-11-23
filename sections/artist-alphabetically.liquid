@@ -14,321 +14,160 @@
     <a href="#letter-v" ><span>V</span></a><span>W</span>
     <span>X</span><span>Y</span>
     <span>Z</span>
-  </div>
-  <div class="art-row">
-    <div class="art-col" >
-      <h3 id="letter-a">A</h3>
-      <hr>
-      {% for block in section.blocks %}
-  
-      <div class="artist">
-        <div class="artist-img" >
-          {{ block.settings.card_collection.image.src | image_url: height: 200 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }} 
-        </div>
-        <a class="artist-a" href="{{ block.settings.card_collection.url }}">
-          <h6>{{ block.settings.card_collection.title }}</h6> </a>
+</div>
+
+{% assign array = section.blocks | map: 'settings' %}
+{% assign collection_array = array | map: 'card_collection' | sort %}
+
+{% for block in collection_array %}
+  {{block}}<br>
+{% endfor %} 
+
+{% assign collection_size = collection_array | size %}
+{% assign start_index = 0 %}
+{{ collection_size }}
+
+ 
+    <div class="art-row">
+      <div class="art-col" >
+        <h3 id="letter-a">A</h3>
+        <hr>
+        {{start_index}}
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "a" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
 
-    {% endfor %}
-
-    </div>
-  
-
-
-
-    <div class="art-col">
-      <h3>B</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/bapi-chitrakar-377237_540x.jpg?v=1661325735" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/bapi-chitrakar" >Bapi Chitrakar</a>
+      <div class="art-col">
+        <h3>B</h3>
+        <hr>
+        {{start_index}}
+        
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "b" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
-    </div>
 
-
-    <div class="art-col">
-      <h3>C</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/chandrakant-bhulabhai-mata-ni-pachedi-artist-844377_540x.jpg?v=1661325743" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/chandrakant" >Chandrakant Bhulabhai, Mata ni Pachedi artist</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/chetan-gangavane-149461_540x.jpg?v=1661325750" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/chetan-gangwane" >Chetan Gangavane</a>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="art-row">
-    <div class="art-col">
-      <h3>D</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/products/the-jungle-book-memerakicom-473020_540x.jpg?v=1661328284" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/debdatt-patnaik">Debdatt Patnaik</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/daya-ben-418296_900x.jpg?v=1661325769" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/daya-ben">Daya Ben</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/dk-pratima-bharti-265710_900x.jpg?v=1661325793" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/pratima-bharti">DK & Pratima Bharti</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/dilip-chittara-312288_900x.jpg?v=1661325776" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/dilip-chittara">Dilip Chittara</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/dilip-rama-bahotha-727850_900x.jpg?v=1661325782" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/dilip-bahotha">Dilip Rama Bahotha</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/dinesh-molela-183147_900x.jpg?v=1661325787" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/dinesh-molela">Dinesh Molela</a>
-      </div>
-    </div>
-
-
-    <div class="art-col">
-      <h3>H</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/harinath-n-kalamkari-artist-151382_900x.jpg?v=1661325816" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/harinath-n">Harinath N Kalamkari Artist</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/blue-flowers-memerakicom-472588_900x.jpg?v=1661326361" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/hussain-baba-arts">Hussain, Baba Arts</a>
+      <div class="art-col">
+        <h3>C</h3>
+        <hr>
+        {{start_index}}
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "c" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
 
-    <div class="art-col">
-      <h3>I</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/ishwar-naik-809371_900x.jpg?v=1661325819" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/ishwar-naik">Ishwar Naik</a>
+    <div class="art-row">
+      <div class="art-col">
+        <h3>D</h3>
+        <hr>
+        
       </div>
-    </div>
-  </div>
 
 
-  <div class="art-row">
-    <div class="art-col">
-      <h3>J</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/jayesh-sharma-360625_900x.jpg?v=1661325831" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/jayesh-sharma">Jayesh Sharma</a>
+      <div class="art-col">
+        <h3>H</h3>
+        <hr>
+        
       </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/birds-of-a-feather-green-tote-memerakicom-466966_900x.jpg?v=1661326330" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/jagdish-chand">Jagdish Chand</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/jabbar-khatri-657075_900x.jpg?v=1661325822" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/jabbar-khatri">Jabbar Khatri</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/javed-219492_900x.jpg?v=1661325825" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/javed">Javed</a>
+
+
+      <div class="art-col">
+        <h3>I</h3>
+        <hr>
+        
       </div>
     </div>
+
+
+    <div class="art-row">
+      <div class="art-col">
+        <h3>J</h3>
+        <hr>
+        
+      </div>
       <div class="art-col">
         <h3>K</h3>
         <hr>
-        <div class="artist">
-          <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/kalyan-joshi-473006_900x.jpg?v=1661325845" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/kalyan-joshi">Kalyan Joshi</a>
-        </div>
-        <div class="artist">
-          <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/kanday-anjanapp-573952_900x.jpg?v=1661325852" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/kanday-anjanapp">Kanday Anjanapp</a>
-        </div>
-        <div class="artist">
-          <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/krishna-tashi-palmo-495191_900x.jpg?v=1661325880" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/krishna-tashi-palmo">Krishna Tashi Palmo</a>
-        </div>
-        <div class="artist">
-          <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/kritika-joshi-148343_900x.jpg?v=1661325887" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/kritika-joshi">Kritika Joshi</a>
-        </div>
-  </div>
-  <div class="art-col">
-    <h3>M</h3>
-    <hr>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/manish-jha-182023_900x.jpg?v=1661325901" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/manish-jha">Manish Jha</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/manorama-devi-607267_900x.jpg?v=1661325909" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/manorama-devi">Manorama Devi</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/manoranjan-chitrakar-455417_900x.jpg?v=1661325911" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/manoranjan-chitrakar">Manoranjan Chitrakar</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/md-nasir-667261_900x.jpg?v=1661326217" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/md-nasir">Md Nasir</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/mira-devi-890334_900x.jpg?v=1661326223" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/mira-devi">Mira Devi</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/minakshi-251171_900x.jpg?v=1661326219" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/minakshi">Minakshi</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/mridu-mochum-464300_900x.jpg?v=1661325931" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/mridu-mochum">Mridu Mochum</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/mohan-prajapati-993574_900x.jpg?v=1661326228" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/mohan-prajapati">Mohan Prajapati</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/mukesh-kumar-dhiman-566846_900x.jpg?v=1661325938" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/mukesh-artist">Mukesh Kumar Dhiman</a>
-    </div>
-  </div>
-  </div>
-  <div class="art-row">
-    <div class="art-col">
-      <h3>N</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/nalemitha-330664_540x.jpg?v=1661325943" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/nalemitha">Nalemitha</a>
+          
       </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/nazada-390797_540x.jpg?v=1661325948" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/nazada">Nazada</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/naushad-546447_540x.jpg?v=1661325945S" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/naushad">Naushad</a>
+      <div class="art-col">
+        <h3>M</h3>
+        <hr>
+      
       </div>
     </div>
+    
+    <div class="art-row">
+      <div class="art-col">
+        <h3>N</h3>
+        <hr>
+        
+      </div>
       <div class="art-col">
         <h3>P</h3>
         <hr>
-        <div class="artist">
-          <img class="artist-img" src="	https://cdn.shopify.com/s/files/1/1194/1498/collections/paresh-701627_540x.jpg?v=1661326233" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/paresh">Paresh</a>
-        </div>
-        <div class="artist">
-          <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/priti-karn-608010_540x.jpg?v=1661325974" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/priti-karn">Priti Karn</a>
-        </div>
-  
-  </div>
-  <div class="art-col">
-    <h3>R</h3>
-    <hr>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/amritsari-pair-miniature-painting-by-rajendra-sharma-memerakicom-920650_540x.jpg?v=1661326053" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/rajender-sharma">Rajendra Sharma</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/return-to-the-root-eco-leather-tote-memerakicom-360676_540x.jpg?v=1661327896" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/rajender-shyam">Rajendra Shyam</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/ranjeet-jha-947533_540x.jpg?v=1661325989" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/ranjeet">Ranjeet Jha</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/riyaz-835995_540x.jpg?v=1661325991" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/riyazhttps://www.memeraki.com/collections/riyaz">Riyaz</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/rizwan-khatri-110214_540x.jpg?v=1661325995" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/rizwan-khatri-rogan-art">Rizwan Khatri</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/rukmani-devi-184908_540x.jpg?v=1661325997" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/rukmani-devi">Rukmani Devi</a>
-    </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/a-tale-of-two-lovers-memerakicom-892834_540x.jpg?v=1661328770" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/ruby-sharma">Ruby Sharma</a>
-    </div>
     
-  </div>
-  </div>
-  <div class="art-row">
-    <div class="art-col">
-      <h3>S</h3>
-      <hr>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/products/the-jungle-book-memerakicom-476893_540x.jpg?v=1661328330" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/sahajan">Sahajan</a>
       </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/sai-kiran-dhanalakota-906170_540x.jpg?v=1661325999" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/sai-kiran-dhanalakota">Sai Kiran Dhanalakota</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/sakina-khatun-700751_540x.jpg?v=1661326004" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/sakina-khatun">Sakina Khatun</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/saroj-venkat-shyam-771927_540x.jpg?v=1661326024" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/saroj-venkat-shyam">Saroj Venkat Shyam</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/samjhau-devi-371275_540x.jpg?v=1661326246" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/samjhau-devi">Samjhau Devi</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/shanti-devi-paswaan-786279_540x.jpg?v=1661326043" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/shanti-devi-paswaan">Shanti Devi Paswaan</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/shehzad-ali-sherani-pichwai-artist-837858_540x.jpg?v=1661326050" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/shehzad-ali-sherani">Shehzad Ali Sherani Pichwai Artist</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/sudheer-178684_540x.jpg?v=1661326068" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/sudheer">Sudheer</a>
-      </div>
-      <div class="artist">
-        <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/subhash-bhil-382676_540x.jpg?v=1661326063" alt="">
-        <a class="artist-a" href="https://www.memeraki.com/collections/subhash-bhil">Subhash Bhil</a>
+
+      <div class="art-col">
+        <h3>R</h3>
+        <hr>
       </div>
     </div>
+
+    <div class="art-row">
+      <div class="art-col">
+        <h3>S</h3>
+        <hr>
+      </div>
       <div class="art-col">
         <h3>T</h3>
         <hr>
-        <div class="artist">
-          <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/tashi-296008_540x.jpg?v=1661326255" alt="">
-          <a class="artist-a" href="https://www.memeraki.com/collections/tashi">Tashi</a>
-        </div>
-
-  
-  </div>
-  <div class="art-col" id="letter-v">
-    <h3>V</h3>
-    <hr>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/venkat-shyam-625878_540x.jpg?v=1661326093" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/venkat-raman-singh-shyam">Venkat Shyam</a>
+      </div>
+    <div class="art-col" id="letter-v">
+      <h3>V</h3>
+      <hr>
     </div>
-    <div class="artist">
-      <img class="artist-img" src="https://cdn.shopify.com/s/files/1/1194/1498/collections/vidya-soni-129657_540x.jpg?v=1661326099" alt="">
-      <a class="artist-a" href="https://www.memeraki.com/collections/vidya-soni">Vidya Soni</a>
-    </div>
-    
-    
   </div>
-</div>
 
 
 
@@ -421,22 +260,12 @@ hr{
 
 {% schema %}
   {
-    "name": "Artist Alphabetical list",
+    "name": "Alphabetical list",
     "settings": [
       {
         "type": "text",
         "id": "title",
         "label": "Heading"
-      },
-      {
-        "type": "text",
-        "id": "last_card",
-        "label": "Last Card Text"
-      },
-      {
-        "type": "url",
-        "id": "view_all_url",
-        "label": "View All URL"
       }
     ],
     
@@ -455,9 +284,9 @@ hr{
     ],
     "presets":[
       {
-        "name": "artists Cards",
+        "name": "Alphabetical List",
         "settings": {
-          "title": "Explore By"
+          "title": "Explore"
         }
       }
     ]
