@@ -1,45 +1,45 @@
 <div class="art-container">
+  <h1 class="artist-name">Our Artists</h1>
+  {%- comment -%} <hr class="name-hr"> {%- endcomment -%}
   <div class="alphabet">
-    <a href="#letter-a" onclick="gotoSection(1)"><span>A</span></a>
-    <span>B</span><span>C</span>
-    <span>D</span><span>E</span>
-    <span>F</span><span>G</span>
-    <span>H</span><span>I</span>
-    <span>J</span><span>K</span>
-    <span>L</span><span>M</span>
-    <span>N</span><span>O</span>
-    <span>P</span><span>Q</span>
-    <span>R</span><span>S</span>
-    <span>T</span><span>U</span>
-    <a href="#letter-v" ><span>V</span></a><span>W</span>
-    <span>X</span><span>Y</span>
-    <span>Z</span>
+    <a href="#letter-a"><span>A</span></a>
+    <a href="#letter-b"><span>B</span></a><a href="#letter-c"><span>C</span></a>
+    <a href="#letter-d"><span>D</span></a><a href="#letter-e"><span>E</span></a>
+    <a href="#letter-f"><span>F</span></a><a href="#letter-g"><span>G</span></a>
+    <a href="#letter-h"><span>H</span></a><a href="#letter-i"><span>I</span></a>
+    <a href="#letter-j"><span>J</span></a><a href="#letter-k"><span>K</span></a>
+    <a href="#letter-l"><span>L</span></a><a href="#letter-m"><span>M</span></a>
+    <a href="#letter-n"><span>N</span></a><a href="#letter-o"><span>O</span></a>
+    <a href="#letter-p"><span>P</span></a><a href="#letter-q"><span>Q</span></a>
+    <a href="#letter-r"><span>R</span></a><a href="#letter-s"><span>S</span></a>
+    <a href="#letter-t"><span>T</span></a><a href="#letter-u"><span>U</span></a>
+    <a href="#letter-v"><span>V</span></a><a href="#letter-w"><span>W</span></a>
+    <a href="#letter-x"><span>X</span></a><a href="#letter-y"><span>Y</span></a>
+    <a href="#letter-z"><span>Z</span></a>
 </div>
 
 {% assign array = section.blocks | map: 'settings' %}
 {% assign collection_array = array | map: 'card_collection' | sort %}
 
 {% for block in collection_array %}
-  {{block}}<br>
+  {%- comment -%} {{block}}<br> {%- endcomment -%}
 {% endfor %} 
 
 {% assign collection_size = collection_array | size %}
 {% assign start_index = 0 %}
-{{ collection_size }}
+
 
  
     <div class="art-row">
       <div class="art-col" >
-        <h3 id="letter-a">A</h3>
+       <a name="letter-a"><h3 >A</h3></a> 
         <hr>
-        {{start_index}}
         {% for index in (start_index..collection_size) %}
           {% assign first_letter = collection_array[index] | slice: 0 %}
           {% if first_letter == "a" %}
-          
             <div class="artist">
                 {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+              <a class="artist-a" href="{{ collection_array[index].url }}">
                 {{ collection_array[index].title }}
               </a>
             </div>
@@ -51,17 +51,14 @@
       </div>
 
       <div class="art-col">
-        <h3>B</h3>
+        <a name="letter-b"><h3 >B</h3></a> 
         <hr>
-        {{start_index}}
-        
         {% for index in (start_index..collection_size) %}
           {% assign first_letter = collection_array[index] | slice: 0 %}
           {% if first_letter == "b" %}
-          
             <div class="artist">
                 {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+              <a class="artist-a" href="{{ collection_array[index].url }}">
                 {{ collection_array[index].title }}
               </a>
             </div>
@@ -73,16 +70,14 @@
       </div>
 
       <div class="art-col">
-        <h3>C</h3>
+        <a name="letter-c"><h3 >C</h3></a> 
         <hr>
-        {{start_index}}
         {% for index in (start_index..collection_size) %}
           {% assign first_letter = collection_array[index] | slice: 0 %}
           {% if first_letter == "c" %}
-          
             <div class="artist">
-                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              <a class="artist-a" href="{{ block.settings.card_collection.url }}">
+                {{ collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
                 {{ collection_array[index].title }}
               </a>
             </div>
@@ -97,88 +92,494 @@
 
     <div class="art-row">
       <div class="art-col">
-        <h3>D</h3>
+        <a name="letter-d"><h3 >D</h3></a> 
         <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "d" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
         
       </div>
 
 
       <div class="art-col">
-        <h3>H</h3>
+        <a name="letter-e"><h3 >E</h3></a> 
         <hr>
-        
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "e" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
 
 
       <div class="art-col">
-        <h3>I</h3>
+        <a name="letter-f"><h3 >F</h3></a> 
         <hr>
-        
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "f" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
 
     <div class="art-row">
       <div class="art-col">
-        <h3>J</h3>
+        <a name="letter-g"><h3 >G</h3></a> 
         <hr>
-        
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "g" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-h"><h3 >H</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "h" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-i"><h3 >I</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "i" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-j"><h3 >J</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "j" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
       <div class="art-col">
-        <h3>K</h3>
+        <a name="letter-k"><h3 >K</h3></a> 
         <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "k" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-l"><h3 >L</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "l" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-m"><h3 >M</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "m" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="art-col">
+        <a name="letter-n"><h3 >N</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "n" %}
           
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
+
       <div class="art-col">
-        <h3>M</h3>
+        <a name="letter-o"><h3 >O</h3></a> 
         <hr>
-      
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "o" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
       </div>
     </div>
-    
     <div class="art-row">
       <div class="art-col">
-        <h3>N</h3>
+        <a name="letter-p"><h3 >P</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "p" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="art-col">
+        <a name="letter-q"><h3 >Q</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "q" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-r"><h3 >R</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "r" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-s"><h3 >S</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "s" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="art-col">
+        <a name="letter-t"><h3 >T</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "t" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-u"><h3 >U</h3></a> 
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "u" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-v"><h3 >V</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "v" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="art-col">
+        <a name="letter-w"><h3 >W</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "w" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="art-col">
+        <a name="letter-x"><h3 >X</h3></a> 
+
+        <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "x" %}
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-y"><h3 >Y</h3></a> 
         <hr>
         
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "y" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </div>
       <div class="art-col">
-        <h3>P</h3>
+        <a name="letter-z"><h3 >Z</h3></a> 
         <hr>
+        {% for index in (start_index..collection_size) %}
+          {% assign first_letter = collection_array[index] | slice: 0 %}
+          {% if first_letter == "z" %}
+          
+            <div class="artist">
+                {{  collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              <a class="artist-a" href="{{ collection_array[index].url }}">
+                {{ collection_array[index].title }}
+              </a>
+            </div>
+          {% else %}
+            {% assign start_index = index %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
     
-      </div>
-
-      <div class="art-col">
-        <h3>R</h3>
-        <hr>
-      </div>
-    </div>
-
-    <div class="art-row">
-      <div class="art-col">
-        <h3>S</h3>
-        <hr>
-      </div>
-      <div class="art-col">
-        <h3>T</h3>
-        <hr>
-      </div>
-    <div class="art-col" id="letter-v">
-      <h3>V</h3>
-      <hr>
-    </div>
   </div>
 
 
 
 <style>
-
+html{
+  scroll-padding-top: 150px !important;
+}
 .art-container{
   display:flex;
   flex-direction:column;
 
   width: 100vw;
   padding: 0px 25px;
+}
+.artist-name{
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.name-hr{
+  border-top: 2px solid black;
+  margin-left: 317px;
+    margin-top: -20px;
+    width: 85px;
+    margin-bottom:20px ;
 }
 .alphabet{
   display: flex;
@@ -215,6 +616,7 @@
   display: flex;
   margin-top: 30px;
   flex-wrap: wrap;
+  padding: 0px 40px;
 }
 .art-col{
   flex: 1;
@@ -251,11 +653,15 @@ hr{
 
 
 <script>
-  function gotoSection(i){
-    var divs = document.getElementsByClassName('shopify-section');
-    divs[4+i].scrollIntoView();
-    window.scrollBy(0, -145);
-  }
+ // function gotoSection(i){
+   // var divs = document.getElementsByClassName('shopify-section');
+    //divs[7+i].scrollIntoView();
+    //window.scrollBy(0,-200);
+  
+  //  console.log(divs)
+   //divs[0].style.marginTop="200px";
+    
+ // }
 </script>
 
 {% schema %}
