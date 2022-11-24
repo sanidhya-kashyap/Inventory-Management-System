@@ -1,7 +1,7 @@
 {%- capture flickity_options -%}
 {
-  "prevNextButtons": true,
-  "pageDots": true,
+  "prevNextButtons": {{ section.settings.enable_nav_arrows }},
+  "pageDots": {{ section.settings.enable_nav_bar }},
   "draggable": true,
   "contain": true,
   "freeScroll": true,
@@ -13,8 +13,8 @@
 
 <Section>
   <div class="cards-heading">
-    <h1>{{ section.settings.title }}</h1>
-    <a href="https://www.memeraki.com">
+    <h1 class="">{{ section.settings.title }}</h1>
+    <a href="{{ section.settings.view_all_url }}">
       <h4 style='color: #f4cb28'>View All</h4>
     </a>
   </div>
@@ -23,11 +23,20 @@
     {% for block in section.blocks %}
       <div class="carousel-cell thumbnail-card">
         <a href="{{ block.settings.card_collection.url }}">
-          <div class="thumbnail">
-            {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
+          <div {% if block.settings.transparent_bg == false %} style="background-color: {{ block.settings.css_color_val }}" {% endif %} class="thumbnail">
+              {% case block.settings.use_custom_image %}
+                {% when "collection_image" %}
+                  {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
+                {% when "cdn_image" %}
+                  {{ block.settings.card_img | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
+              {% endcase %}
         </div>
         <div class="thumbnail-name">
-            <p>{{ block.settings.card_collection.title }}</p>
+            {% if block.settings.use_custom_label == true %}
+              <p>{{ block.settings.custom_label }}</p>
+            {% else %}
+              <p>{{ block.settings.card_collection.title }}</p>
+            {% endif %}
         </div>  
         </a>
       </div>
@@ -61,8 +70,8 @@
 
   .shopify-section-thumbnail-cards{
     margin: 10px 20px 50px 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .thumbnail-container{
@@ -70,6 +79,7 @@
   }
 
   #last-card{
+    background-color: #411e2f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +107,6 @@
   }
 
   .thumbnail{
-      background-color: #411e2f;
       height: 150px;
       width: 150px;
       max-height: 200px;
@@ -107,7 +116,7 @@
 
   .thumbnail-name{
     max-width: 150px;
-    
+    overflow: hidden;
   }
 
   .thumbnail > img{
@@ -135,6 +144,28 @@
     }
   }
 
+  @media screen and (max-width: 980px) {
+    .thumbnail{
+      height: 100px;
+      width: 100px;
+    }
+
+    .thumbnail-card{
+      margin-right: 8px;
+    }
+
+    .thumbnail-name{
+      max-width: 99px;
+    }
+
+    .flickity-page-dots{
+      display: none;
+    }
+
+    .flickity-button{
+      display: none;
+    }
+  }
   
 
 </style>
@@ -163,6 +194,18 @@
         "type": "url",
         "id": "view_all_url",
         "label": "View All URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_nav_arrows",
+        "label": "Show Navigation Arrows",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_nav_bar",
+        "label": "Show Navigation Bar at Bottom",
+        "default": true
       }
     ],
     "max_blocks": 10,
@@ -175,6 +218,54 @@
             "type": "collection",
             "id": "card_collection",
             "label": "Collection"
+          },
+          {
+            "type": "radio",
+            "id": "use_custom_image",
+            "label": "Use Custom Image",
+            "options": [
+              {
+                "value": "collection_image",
+                "label": "Collection Image"
+              },
+              {
+                "value": "cdn_image",
+                "label": "Upload Image"
+              },
+              {
+                "value": "css_color",
+                "label": "Define CSS Color"
+              }
+            ],
+            "default": "collection_image"
+          },
+          {
+            "type": "color",
+            "id": "css_color_val",
+            "label": "Pick CSS Color ",
+            "default": "#411e2f"
+          },
+          {
+            "type": "image_picker",
+            "id": "card_img",
+            "label": "Select Card Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "transparent_bg",
+            "label": "Make Background Transparent",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_custom_label",
+            "label": "Use Custom Label",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "custom_label",
+            "label": "Custom Label"
           }
          ]
        }
