@@ -2747,6 +2747,79 @@
         ],
         "settings": {
         }
+      },
+      "artist-alphabetically": {
+        "type": "artist-alphabetically",
+        "blocks": {
+          "18883afd-fca5-40bc-9f51-61cd25796cd2": {
+            "type": "card",
+            "settings": {
+              "card_collection": "abdul-salim"
+            }
+          },
+          "ce283e62-e6b7-4f3f-9fce-7f756c186041": {
+            "type": "card",
+            "settings": {
+              "card_collection": "adarsh"
+            }
+          },
+          "8a58f079-dcf4-4718-8387-3210585abe01": {
+            "type": "card",
+            "settings": {
+              "card_collection": "jayesh-sharma"
+            }
+          },
+          "5ccdead9-6561-41a8-b5fe-d634c3728f5b": {
+            "type": "card",
+            "settings": {
+              "card_collection": "venkat-raman-singh-shyam"
+            }
+          },
+          "52e71298-6b37-48d3-902c-b0b95ab9063a": {
+            "type": "card",
+            "settings": {
+              "card_collection": "bapi-chitrakar"
+            }
+          },
+          "67118a4c-f099-4180-b682-2ef76ae61191": {
+            "type": "card",
+            "settings": {
+              "card_collection": "chetan-gangwane"
+            }
+          },
+          "97eece75-3c6f-435b-b9ac-2f1a94a0c0a3": {
+            "type": "card",
+            "settings": {
+              "card_collection": "dinesh-molela"
+            }
+          },
+          "ae450c8b-73bf-4dc9-b7a2-65d3d461d1b8": {
+            "type": "card",
+            "settings": {
+              "card_collection": "faizan"
+            }
+          },
+          "cb6163f4-d762-4b05-8a72-cb74ef157f46": {
+            "type": "card",
+            "settings": {
+              "card_collection": "geeta-bariya"
+            }
+          }
+        },
+        "block_order": [
+          "18883afd-fca5-40bc-9f51-61cd25796cd2",
+          "ce283e62-e6b7-4f3f-9fce-7f756c186041",
+          "8a58f079-dcf4-4718-8387-3210585abe01",
+          "5ccdead9-6561-41a8-b5fe-d634c3728f5b",
+          "52e71298-6b37-48d3-902c-b0b95ab9063a",
+          "67118a4c-f099-4180-b682-2ef76ae61191",
+          "97eece75-3c6f-435b-b9ac-2f1a94a0c0a3",
+          "ae450c8b-73bf-4dc9-b7a2-65d3d461d1b8",
+          "cb6163f4-d762-4b05-8a72-cb74ef157f46"
+        ],
+        "settings": {
+          "title": ""
+        }
       }
     },
     "content_for_index": [
