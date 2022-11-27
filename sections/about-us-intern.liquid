@@ -5,10 +5,10 @@
   <div style="width: 70vw; margin-bottom: 30px; text-align: center; "> We have young, hardworking and engaged individuals interning at Memeraki at all times. Meet the bright people that contribute towards our work in protecting our artistic heritage:
   </div>
       <div class="intern-grid">
-        {%for block in section.blocks %}
+        {% for block in section.blocks %}
         <div class="intern-grid-box">
         {% comment %} <img class="intern-image" src="{{block.settings.internImage | img_url: 'master'}}" />  {% endcomment %}
-        <img class="intern-image" src="{{block.settings.internImage | img_url: 'master'}}" />    
+          {{ block.settings.internImage | image_url: height: 400 | image_tag: class: 'intern-image' }}    
           <p class="intern-testinomial"> {{ block.settings.internWords }} </p>
         </div>
         {%endfor %}
@@ -17,81 +17,82 @@
 </div>
 
 {% schema %}
-  {
-    "name": "About us Intern",
-    "settings": [],
-"blocks": [
 {
-		"type": "image",
-        "name": "about us intern image",
-        "settings": [
-						{
-						"type": "image_picker",
-						"label": "internImage", 
-						"id": "internImage"
-						}, 
-						{
-						"type": "text",
-						"label": "intern words", 
-						"id": "internWords"
-						}
-					]
-}
+  "name": "About us Intern",
+  "settings": [
 
-]
-  }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "about us intern image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "internImage",
+          "id": "internImage"
+        },
+        {
+          "type": "text",
+          "label": "intern words",
+          "id": "internWords"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
 <style>
   .what-we-do {
-        margin: 30px 0;
-        font-size: 32px;
-        color: #431e2f;
-        text-align: center;
-      }
+    margin: 30px 0;
+    font-size: 32px;
+    color: #431e2f;
+    text-align: center;
+  }
 
-      .intern-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        max-width: fit-content; 
-        margin: 0 auto;
-        justify-content: center;
-        gap: 20px; 
-      }
+  .intern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: fit-content; 
+    margin: 0 auto;
+    justify-content: center;
+    gap: 20px; 
+  }
   
-	  .intern-image{
-        width: 200px; 
-        height: 200px; 
-        border-radius: 50%; 
-      }
+  .intern-image{
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+  }
 
-      .intern-grid-box {
-        width: 300px; 
-/*         border-radius: 50%; */
-/*         background-color: rgb(56, 93, 93); */
-/*         margin: 20px; */
-        display: flex; 
-        height:L 500px; 
-        flex-direction: column; 
-        align-items: center; 
-        text-align: center; 
-      }
-      .intern-testinomial {
-        margin-top: 20px; 
-      }
+  .intern-grid-box {
+    width: 300px; 
+    display: flex; 
+    height:L 500px; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+  }
+
+  .intern-testinomial {
+    margin-top: 20px; 
+  }
   
   @media screen and (max-width: 930px) {
     .intern-grid {
       grid-template-columns: 1fr 1fr;
     }
   } 
+
   @media screen and (max-width: 700px) {
     .intern-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+
 {% endstylesheet %}
 
 {% javascript %}

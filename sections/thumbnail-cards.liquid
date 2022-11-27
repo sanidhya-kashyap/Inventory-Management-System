@@ -1,0 +1,288 @@
+{%- capture flickity_options -%}
+{
+  "prevNextButtons": {{ section.settings.enable_nav_arrows }},
+  "pageDots": {{ section.settings.enable_nav_bar }},
+  "draggable": true,
+  "contain": true,
+  "freeScroll": true,
+  "cellAlign": "left",
+  "groupCells": true,
+  "arrowShape": {"x0": 20, "x1": 60, "y1": 40, "x2": 60, "y2": 35, "x3": 25}
+}
+{%- endcapture -%}
+
+<Section>
+  <div class="cards-heading">
+    <h1 class="">{{ section.settings.title }}</h1>
+    <a href="{{ section.settings.view_all_url }}">
+      <h4 style='color: #f4cb28'>View All</h4>
+    </a>
+  </div>
+
+  <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
+    {% for block in section.blocks %}
+      <div class="carousel-cell thumbnail-card">
+        <a href="{{ block.settings.card_collection.url }}">
+          <div {% if block.settings.transparent_bg == false %} style="background-color: {{ block.settings.css_color_val }}" {% endif %} class="thumbnail">
+              {% case block.settings.use_custom_image %}
+                {% when "collection_image" %}
+                  {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
+                {% when "cdn_image" %}
+                  {{ block.settings.card_img | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
+              {% endcase %}
+        </div>
+        <div class="thumbnail-name">
+            {% if block.settings.use_custom_label == true %}
+              <p>{{ block.settings.custom_label }}</p>
+            {% else %}
+              <p>{{ block.settings.card_collection.title }}</p>
+            {% endif %}
+        </div>  
+        </a>
+      </div>
+    {% endfor %}
+
+    {% if section.settings.enable_view_all == true %} 
+      <div class="carousel-cell thumbnail-card">
+        <a href="{{ section.settings.view_all_url }}">
+          <div id="last-card" class="thumbnail">
+            <h3 style="color: white;">{{ section.settings.last_card }}</h3>
+          </div>  
+        </a>
+      </div>  
+    {% endif %}  
+  </div>
+  
+</Section>
+
+<style>
+  .flickity-page-dots {
+    bottom: -22px;
+  }
+
+  /* dots are lines */
+  .flickity-page-dots .dot {
+    height: 4px;
+    width: 20px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .shopify-section-thumbnail-cards{
+    margin: 10px 20px 50px 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .thumbnail-container{
+    margin-top: 20px;
+  }
+
+  #last-card{
+    background-color: #411e2f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cards-heading > h1{
+      display: inline;
+      width: 100%;
+  }
+  .cards-heading > a {
+      float: right;
+      display: inline;
+  }
+  
+
+  .thumbnail-card{
+      margin-right: 15px;
+      margin-top: 10px;
+  }
+
+  .thumbnail-card > a{
+      text-decoration: none;
+      color: black;
+      
+  }
+
+  .thumbnail{
+      height: 150px;
+      width: 150px;
+      max-height: 200px;
+      max-width: 200px;
+      border-radius: 0px 35px 0px 0px;
+  }
+
+  .thumbnail-name{
+    max-width: 150px;
+    overflow: hidden;
+  }
+
+  .thumbnail > img{
+      width: 100%;
+      height: 100%;
+      border-radius: 0px 30px 0px 0px;
+  }
+
+  .thumbnail > div > h3{
+    color: white;
+    margin: 20% 20%;
+  }
+
+  @media screen and (max-width: 980px) {
+    .thumbnail{
+      height: 150px;
+      width: 150px;
+    }
+    .thumbnail-card{
+      margin-right: 30px;
+    }
+    .shopify-section-thumbnail-cards{
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  @media screen and (max-width: 980px) {
+    .thumbnail{
+      height: 100px;
+      width: 100px;
+    }
+
+    .thumbnail-card{
+      margin-right: 8px;
+    }
+
+    .thumbnail-name{
+      max-width: 99px;
+    }
+
+    .flickity-page-dots{
+      display: none;
+    }
+
+    .flickity-button{
+      display: none;
+    }
+  }
+  
+
+</style>
+
+{% schema %}
+  {
+    "name": "Thumbnail Cards",
+    "class": "shopify-section-thumbnail-cards",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "last_card",
+        "label": "Last Card Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_view_all",
+        "label": "Show View More Card at the End"
+      },
+      {
+        "type": "url",
+        "id": "view_all_url",
+        "label": "View All URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_nav_arrows",
+        "label": "Show Navigation Arrows",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_nav_bar",
+        "label": "Show Navigation Bar at Bottom",
+        "default": true
+      }
+    ],
+    "max_blocks": 10,
+    "blocks": [
+       {
+         "name": "Card",
+         "type": "card",
+         "settings": [
+          {
+            "type": "collection",
+            "id": "card_collection",
+            "label": "Collection"
+          },
+          {
+            "type": "radio",
+            "id": "use_custom_image",
+            "label": "Use Custom Image",
+            "options": [
+              {
+                "value": "collection_image",
+                "label": "Collection Image"
+              },
+              {
+                "value": "cdn_image",
+                "label": "Upload Image"
+              },
+              {
+                "value": "css_color",
+                "label": "Define CSS Color"
+              }
+            ],
+            "default": "collection_image"
+          },
+          {
+            "type": "color",
+            "id": "css_color_val",
+            "label": "Pick CSS Color ",
+            "default": "#411e2f"
+          },
+          {
+            "type": "image_picker",
+            "id": "card_img",
+            "label": "Select Card Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "transparent_bg",
+            "label": "Make Background Transparent",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_custom_label",
+            "label": "Use Custom Label",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "custom_label",
+            "label": "Custom Label"
+          }
+         ]
+       }
+    ],
+    "presets":[
+      {
+        "name": "Thumbnail Cards",
+        "settings": {
+          "title": "Explore By"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %} 

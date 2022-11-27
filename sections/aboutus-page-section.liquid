@@ -1,69 +1,66 @@
 <div class="about-us">
-<!--       <img src="{{ section.settings.memerakiLogo | img_url}}" alt="Memeraki" /> -->
+
       <p class="about-desc">
-        {{ section.settings.aboutUsDescription}}
+        {{ section.settings.aboutUsDescription }}
       </p>
     </div>
     <div>
-      <img class="about-banner" src="{{section.settings.aboutUsBanner | img_url: 'master'}}" alt="Banner" />
+      {{ section.settings.aboutUsBanner | image_url: width: 1600 | image_tag: class: 'about-banner' }}
     </div>
 
     <div class="about-us-mission">
       <h2>Our Mission</h2>
       <p class="our-mission">
          Our Mission is to create a world where anyone in the world can explore an authentic connection with their culture through the master artists who have been inheriting artistic knowledge from generations.
-        <br>
-We aim to create sustainable livelihoods for traditional artisans and use technology as a differentiator. Not just that, we have set out to digitize more than 3000 arts and crafts of India with online and offline experiences, including handcrafted products that integrate into modern lifestyles.
-
+        <br>We aim to create sustainable livelihoods for traditional artisans and use technology as a differentiator. Not just that, we have set out to digitize more than 3000 arts and crafts of India with online and offline experiences, including handcrafted products that integrate into modern lifestyles.
       </p>
     </div>
 
 <div>
       <h2 class="what-we-do">What we do</h2>
       <div class="what-we-do-grid">
-        {%for block in section.blocks %}
-        <div class="what-we-do-grid-box">
-        <img class="what-we-do-image" src="{{block.settings.whatWeDoImage | img_url: 'master'}}" />   
-        </div>
-        {%endfor %}
+        {% for block in section.blocks %}
+          <div class="what-we-do-grid-box">
+            {{ block.settings.whatWeDoImage | image_url: width: 800, height: 800 | image_tag: class: 'what-we-do-image' }} 
+          </div>
+        {% endfor %}
       </div>
 </div>
 
 {% schema %}
-  {
-    "name": "about us",
-    "settings": [  {
-						"type": "image_picker", 
-						"label": "Memeraki Logo", 
-						"id": "memerakiLogo"
-					},{
-						"type":"richtext",
-						"label": "description of the page",
-						"id": "aboutUsDescription"
-
-				},  
-				  {
-						"type": "image_picker", 
-						"label": "Banner", 
-						"id": "aboutUsBanner"
-					}
-			
-],
-"blocks": [
 {
-		"type": "image",
-        "name": "about us what we do image",
-        "settings": [
-						{
-						"type": "image_picker",
-						"label": "whatWeDoImage", 
-						"id": "whatWeDoImage"
-						}						
-					]
+  "name": "about us",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Memeraki Logo",
+      "id": "memerakiLogo"
+    },
+    {
+      "type": "richtext",
+      "label": "description of the page",
+      "id": "aboutUsDescription"
+    },
+    {
+      "type": "image_picker",
+      "label": "Banner",
+      "id": "aboutUsBanner"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "about us what we do image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "whatWeDoImage",
+          "id": "whatWeDoImage"
+        }
+      ]
+    }
+  ]
 }
-
-]
-  }
 {% endschema %}
 
 
@@ -72,121 +69,126 @@ We aim to create sustainable livelihoods for traditional artisans and use techno
   
   @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps&family=Josefin+Sans:wght@300&display=swap');
+    
+  p {
+    color: rgba(70, 70, 70, 0.785);
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .about-us img {
+    width: 225px;
+  }
+
+  .about-desc {
+    color: rgba(70, 70, 70, 0.785);
+    font-size: 24px;
+  }
+
+  .about-banner {
+    width: 100%;
+    max-height: 60vh;
+    margin-top: 30px;
+  }
+
+  .our-mission {
+    width: 70vw;
+  }
+
+  .about-us-mission {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-us-mission h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #431e2f;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .what-we-do-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: fit-content;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .what-we-do-grid-box {
+    width: 300px;
+    height: 300px;
+  }
   
-	p {
-        color: rgba(70, 70, 70, 0.785);
-        font-size: 18px;
-      font-family: 'Josefin Sans', sans-serif;
-      }
-      .about-us {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-
-      .about-us img {
-        width: 225px;
-      }
-      .about-desc {
-        color: rgba(70, 70, 70, 0.785);
-        font-size: 24px;
-      }
-
-      .about-banner {
-        width: 100%;
-        max-height: 60vh;
-        margin-top: 30px;
-      }
-
-      .our-mission {
-        width: 70vw;
-      }
-      .about-us-mission {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .about-us-mission h2 {
-        font-size: 32px;
-        margin-bottom: 30px;
-        color: #431e2f;
-        font-family: 'Josefin Sans', sans-serif;
-      }
-
-      .what-we-do-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        width: fit-content;
-        margin: 0 auto;
-        justify-content: center;
-      }
-
-      .what-we-do-grid-box {
-        width: 300px;
-        height: 300px;
-/*         margin: 20px; */
-      }
+  .what-we-do-image{
+    width: 300px;
+    height: 300px;
+  }
   
-  	  .what-we-do-image{
-        width: 300px;
-          height: 300px;
-      }
-  
-   .what-we-do{
-        margin: 30px 0;
-        font-size: 32px;
-        color: #431e2f;
-        text-align: center;
-     font-family: 'Elsie Swash Caps', cursive;
-font-family: 'Josefin Sans', sans-serif;
-      }
+  .what-we-do{
+    margin: 30px 0;
+    font-size: 32px;
+    color: #431e2f;
+    text-align: center;
+    font-family: 'Elsie Swash Caps', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+  }
   
   @media screen and (max-width: 1000px) {
+
     .what-we-do-grid{ 
        grid-template-columns: 1fr 1fr; 
     }
-    
     .our-mission{
       width: 80vw; 
     }
-  
+
   }
          
    @media screen and (max-width: 700px) {
-     .what-we-do-grid-box {
-        width: 200px;
+    .what-we-do-grid-box {
+      width: 200px;
+      height: 200px;
+      margin: 5px;
+    }
+
+    .what-we-do-image{
+      width: 200px;
         height: 200px;
-        margin: 5px;
-      }
-  
-  	  .what-we-do-image{
-        width: 200px;
-          height: 200px;
-      }
-      .our-mission{
-        width: 98vw; 
-      }
+    }
+
+    .our-mission{
+      width: 98vw; 
+    }
   }
-@media only screen and (min-width: 300px) and (max-width: 400px){
-       .what-we-do-grid-box{
-        width: 160px;
-        height: 210px;
-        margin: 5px;
-      }
-}
+
+  @media only screen and (min-width: 300px) and (max-width: 400px){
+      .what-we-do-grid-box{
+      width: 160px;
+      height: 210px;
+      margin: 5px;
+    }
+  }
+
   @media only screen and (min-width: 400px) and (max-width: 450px){
-       .what-we-do-grid-box{
-        width: 190px;
-        height: 200px;
-        margin: 5px;
-      }
-}    
-    </style>
+      .what-we-do-grid-box{
+      width: 190px;
+      height: 200px;
+      margin: 5px;
+    }
+  }    
+</style>
 {% endstylesheet %}
 
 {% javascript %}
