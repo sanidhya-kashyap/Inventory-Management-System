@@ -70,7 +70,7 @@
 </script>
 
 {% style %}
-
+   
   .announcement__bar-section {
     --topbar-font-size: {{ section.settings.announcement_text_size }}px;
     --topbar-text-color: {{ settings.announcement_bar_text_color }};
@@ -147,6 +147,13 @@
       display: none;
     }
   {% endif %}
+
+  /*   CUSTOM CODE */
+   @media screen and (max-width: 570px)
+  .announcement__bar-section {
+      line-height: 15px;
+      margin: 3px;
+  }
 {% endstyle %}
 
 {% schema %}
