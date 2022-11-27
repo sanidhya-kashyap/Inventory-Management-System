@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "",
+          "announcement_text": "<p>20% OFF SITE WIDE! On 29th and 30th December. Click here to register for Sale now<\/p>",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
