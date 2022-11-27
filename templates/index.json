@@ -3,6 +3,56 @@
     "1625752154523bf545": {
       "type": "slideshow",
       "blocks": {
+        "47735e62-3395-48b0-a4b5-4b6bd286e0d7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner_-_Mobile.jpg",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "#salepopup",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "transparent",
+            "caption_background_opacity": 20
+          }
+        },
+        "aead5dde-1245-4891-94e1-8a6a0475e515": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner-_desktop.png",
+            "overlay": false,
+            "text_align": "left",
+            "caption_horizontal": 50,
+            "caption_vertical": 50,
+            "mobile_image": "shopify:\/\/shop_images\/memeraki_christmas_2022_Collection_banner_discover_traditional_conscious_christmas_gifting_and_decor_b0b46178-7ebb-469b-91d4-47ba90ca53a2.jpg",
+            "hide_caption_background": false,
+            "caption_below": false,
+            "heading": "",
+            "subheading": "",
+            "link": "shopify:\/\/collections\/christmas",
+            "button_text": "",
+            "second_link": "",
+            "second_button_text": "",
+            "slide_text_color": "#000000",
+            "cta_color": "#ffffff",
+            "cta_background": "#000000",
+            "cta_background_hover": "#000000",
+            "caption_background": "transparent",
+            "caption_background_opacity": 20
+          }
+        },
         "175818fe-2083-4b10-9a0a-4e4e48eb7a8a": {
           "type": "image",
           "settings": {
@@ -77,64 +127,14 @@
             "caption_background": "rgba(0,0,0,0)",
             "caption_background_opacity": 20
           }
-        },
-        "aead5dde-1245-4891-94e1-8a6a0475e515": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/banner-_desktop.png",
-            "overlay": false,
-            "text_align": "left",
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "mobile_image": "shopify:\/\/shop_images\/memeraki_christmas_2022_Collection_banner_discover_traditional_conscious_christmas_gifting_and_decor_b0b46178-7ebb-469b-91d4-47ba90ca53a2.jpg",
-            "hide_caption_background": false,
-            "caption_below": false,
-            "heading": "",
-            "subheading": "",
-            "link": "shopify:\/\/collections\/christmas",
-            "button_text": "",
-            "second_link": "",
-            "second_button_text": "",
-            "slide_text_color": "#000000",
-            "cta_color": "#ffffff",
-            "cta_background": "#000000",
-            "cta_background_hover": "#000000",
-            "caption_background": "transparent",
-            "caption_background_opacity": 20
-          }
-        },
-        "47735e62-3395-48b0-a4b5-4b6bd286e0d7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner_-_Mobile.jpg",
-            "overlay": false,
-            "text_align": "left",
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "mobile_image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner.jpg",
-            "hide_caption_background": false,
-            "caption_below": false,
-            "heading": "",
-            "subheading": "",
-            "link": "#salepopup",
-            "button_text": "",
-            "second_link": "",
-            "second_button_text": "",
-            "slide_text_color": "#000000",
-            "cta_color": "#ffffff",
-            "cta_background": "#000000",
-            "cta_background_hover": "#000000",
-            "caption_background": "transparent",
-            "caption_background_opacity": 20
-          }
         }
       },
       "block_order": [
+        "47735e62-3395-48b0-a4b5-4b6bd286e0d7",
+        "aead5dde-1245-4891-94e1-8a6a0475e515",
         "175818fe-2083-4b10-9a0a-4e4e48eb7a8a",
         "0af4bf64-5494-48ca-812c-1c577a2d2d4a",
-        "fa1c5ba5-c6cb-47c4-84ff-8b3bc78b8dc0",
-        "aead5dde-1245-4891-94e1-8a6a0475e515",
-        "47735e62-3395-48b0-a4b5-4b6bd286e0d7"
+        "fa1c5ba5-c6cb-47c4-84ff-8b3bc78b8dc0"
       ],
       "settings": {
         "enable_autoplay": true,
