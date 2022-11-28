@@ -125,7 +125,7 @@
     {% endif %}
      <h3 style="font-weight: bold; text-align: left;" >{{ product.title }}</h3> 
     </a>
-    <h4 id="product-details-instructor-name" style="margin-bottom:0"> {{ product.metafields.Instructor.name}} </h4>
+    <h4 id="product-details-instructor-name" style="margin-bottom:0; margin-top: 5px;"> {{ product.metafields.Instructor.name}} </h4>
 	{% for collection in product.collections %}
     	{% if collection.title == "MEMERAKI MASTERCLASSES" %}
     		<p class="product-details-masterclass-small-description">
