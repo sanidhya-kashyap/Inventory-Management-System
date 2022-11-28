@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">Register for our annual sale on 29th & 30th December and get 20% OFF site wide. <\/a><\/p>",
+          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">Register for our annual sale on 29th & 30th November and get 20% OFF site wide. <\/a><\/p>",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
@@ -2819,6 +2819,11 @@
         ],
         "settings": {
           "title": ""
+        }
+      },
+      "WhatsappPopup": {
+        "type": "WhatsappPopup",
+        "settings": {
         }
       }
     },
