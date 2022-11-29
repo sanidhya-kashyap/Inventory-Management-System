@@ -2785,6 +2785,18 @@
             "settings": {
               "card_collection": "bapi-chitrakar"
             }
+          },
+          "f13c9bff-eb5e-42cc-9716-e402c7059959": {
+            "type": "card",
+            "settings": {
+              "card_collection": "anjana-kumari"
+            }
+          },
+          "ca82272a-479f-4f4c-9873-b02f9899ab26": {
+            "type": "card",
+            "settings": {
+              "card_collection": "chandrakant"
+            }
           }
         },
         "block_order": [
@@ -2792,7 +2804,9 @@
           "d5048211-e9f1-4beb-8efe-efab0765a607",
           "9eb57215-47e7-411b-90cf-848b677d7416",
           "165cc82f-de41-47d6-b3c2-99ff6d97caa5",
-          "f91fc096-8011-49c6-8e99-402472eb0cc2"
+          "f91fc096-8011-49c6-8e99-402472eb0cc2",
+          "f13c9bff-eb5e-42cc-9716-e402c7059959",
+          "ca82272a-479f-4f4c-9873-b02f9899ab26"
         ],
         "settings": {
           "title": ""
