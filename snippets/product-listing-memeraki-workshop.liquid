@@ -12,15 +12,16 @@
   endcase
 
 -%}
+{%- liquid
 
-<style>
-  .artist-name {   
-    position:absolute;
-    left:1em;
-    color: #9d0000; 
-    font-weight:800;
-  }
-</style>
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign artist_url = collections[artist_handle].url
+
+  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+
+-%}
+
 
 
 <div class="ci">
@@ -86,60 +87,67 @@
         </button>
     {% endif %}
   </div> {% endcomment %}
-  <<a class="workshop-hyperlinks" href="https://www.memeraki.com"><div class="workshop-product-container">
-    <div class="workshop-image">
+  <a class="workshop-hyperlinks" href="{{ product.url }}"><div class="workshop-product-container">
+    <div class="workshop-image" style=' background-image: url({{product.images[1] | image_url: height: 600 }});'>
         <div class="workshop-tags">
-            <div class="tag">Advanced</div>
-            <div class="tag">Materials Included</div>
+          {% for tag in workshop_tags %}
+            <div class=tag>{{tag}}</div>
+          {%endfor%}
         </div>
     </div>
     <div class="workshop-info">
         <div class="workshop-title">
-            <h3>Online Paper Mache Christmas Decor Workshop with Riyaz</h3>
+            <h3 style="">{{product.title}}</h3>
         </div>
         <div class="workshop-dates">
             Monday, 23 Jan 2023
         </div>
-        <a class="workshop-hyperlinks" href="https://www.google.com"><div class="artist">
-                <img class="artist-image" src="./dilip-chittara-312288_900x.webp" alt="">
-                <span>K Siva Prasad Reddy</span>                    
+        <a class="workshop-hyperlinks" href="{{ collections[artist_handle].url }}"><div class="artist">
+         
+          <img  loading="lazy" class="artist-image" style="" height="300" width="300" class="container__image" src="{{ collections[artist_handle] | image_url: height: 150 }}">
+
+                <span class="artist-name">{{ artist_name }}</span>                    
         </div></a>
+        <button class="enroll-now" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
     </div>
-    <a class="workshop-enroll workshop-hyperlinks" href="https://www.memeraki.com/collections">
-        <button class="enroll-now">Enroll Now</button>
-    </a>
-</div></a>>
+    
+</div></a>
 </div>
 {% comment %} New Code {% endcomment %}
 <style>
 .workshop-hyperlinks{
   text-decoration: none;
-  color: white;
+  color: white; !important
+  padding: 0;
 }
 
 .workshop-product-container {
   /* background-color: #411e2f; */
   background: rgb(65,30,47);
   background: linear-gradient(180deg, rgba(244,203,40,100) 1%, rgba(65,30,47,1) 90%);
-  height: 30%;
-  width: 27%;
-  border-radius: 25px  ;
+  {% comment %} height: 30%; {% endcomment %}
+  width: 100%;
+  height: 60%;
+  border-radius: 25px ;
   transition: width 1250ms, height 1500ms;
 }
 
 .workshop-product-container:hover { 
-  height: 31%;
-  width: 28%;
-  transition: width 1250ms, height 1500ms;
+  {% comment %} height: 31%; {% endcomment %}
+  {% comment %} width: 102%;
+  transition: width 1000ms, height 1250ms; {% endcomment %}
+  {% comment %} box-shadow: 5px 5px lightgreen; {% endcomment %}
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 .workshop-image {
   background-color: gray;
-  background-image: url(./img2.webp);
+  {% comment %} background-image: url({{product.featured_media | image_url: height: 600 }}); {% endcomment %}
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 60%;
+  height: 50%;
   border-radius: 25px 25px 0 0;
 }
 
@@ -169,17 +177,25 @@
 
 
 .workshop-info {
-  padding: 0 20px 20px 27px;
-  color: white;
+  {% comment %} padding: 0 10px 20px 10px; {% endcomment %}
+  color: white; !important
+  justify: left;
   height: 30%;
 }
 
-.workshop-title>h3 {
+.workshop-title > h3 {
+  padding: 0 10px 0px 10px; 
   margin-bottom: 7px;
+  text-align: left; 
+  color: white; 
+  margin-top: 6px;
+  width; 105px;
 }
 
 .workshop-dates {
+  padding: 0 10px 0px 10px; 
   color: #f4cb28;
+  text-align: left;
   margin-bottom: 12px;
   font-weight: bolder;
 }
@@ -194,6 +210,7 @@
   background-color: #f4cb28;
   border-radius: 0 0 25px 25px; */
   /*  */
+  padding: 0 10px 0px 10px; 
   display: flex;
   align-items:center;
   font-weight: bold;
@@ -211,27 +228,24 @@
 
 .artist-name {
   /* display: inline; */
-  margin-bottom: 40px;
-  border-style: dotted;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: white;
 }
 
-/* .workshop-enroll{
-  height: 60%;
-} */
+.workshop-enroll{
+  height: 50px;
+} 
 
 .enroll-now {
-  /* margin-top: 10px;
-  margin-left: 25%; */
+  margin: 40px 0px 0px 0px;
+  {% comment %} margin-left: 25%;  {% endcomment %}
   background-color: #f4cb28;
   color: white;
   font-weight: bolder;
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 22px 22px;
   border-style: none;
   height: 55px;
   width: 100%;
+  
 }
 
 .enroll-now:hover {
@@ -261,7 +275,7 @@
 
 </style>
 
-<div class="product-details">
+{% comment %} <div class="product-details">
   <div style="display: flex; flex-direction:column">
   <a href="{{ product.url | within: collection }}" class="js-product-details-link" style="height:70px">
      {% if settings.vendor %}
@@ -338,4 +352,4 @@
   </div>
  {% endunless %}
 
-</div>
+</div> {% endcomment %}
