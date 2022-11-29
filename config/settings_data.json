@@ -2811,11 +2811,6 @@
         "settings": {
           "title": ""
         }
-      },
-      "WhatsappPopup": {
-        "type": "WhatsappPopup",
-        "settings": {
-        }
       }
     },
     "content_for_index": [
