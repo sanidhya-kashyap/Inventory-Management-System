@@ -1,0 +1,2623 @@
+{% liquid
+  assign number = section.settings.products_per_page
+  assign sidebar_grid = 'lg-hide md-span-12 sm-span-12 auto'
+  assign full_width = section.settings.full_width
+
+  if section.settings.description_position == 'top_description' and collection.description != blank
+    assign top_description = true
+  else
+    assign top_description = false
+  endif
+
+  case section.settings.grid
+  when 2
+    assign grid_item_width = 'span-6 md-span-6 sm-span-6 auto'
+  when 3
+    assign grid_item_width = 'span-4 md-span-4 sm-span-12 auto'
+  when 4
+    assign grid_item_width = 'span-3 md-span-4 sm-span-6 auto'
+  when 5
+    assign grid_item_width = ''
+  when 6
+    assign grid_item_width = 'span-2 md-span-4 sm-span-6 auto'
+  endcase
+
+  assign show_sidebar = false
+  assign filtering_enabled = false
+  assign horizontal_filtering_enabled = false
+  assign sort_by_enabled = false
+
+  for block in section.blocks
+    if block.type == 'menu' or block.type == 'image' or block.type == 'text' or block.type == 'side_filter'
+      assign show_sidebar = true
+      assign sidebar_grid = 'span-3 md-span-12 sm-span-12 auto'
+    endif
+    if block.type == 'dropdown_filter'
+      assign horizontal_filtering_enabled = true
+    endif
+    if block.type == 'side_filter'
+      assign filtering_enabled = true
+    endif
+  endfor
+
+  if section.settings.sort_by
+    assign sort_by_enabled = true
+  endif
+
+  assign filter_count = 0
+  for filter in collection.filters
+    if filter.type == 'price_range'
+      if filter.min_value.value != nil or filter.max_value.value != nil
+        assign filter_count = 1
+      endif
+    endif
+
+    assign filter_count = filter_count | plus: filter.active_values.size
+  endfor
+
+  if section.settings.show_image and collection.image != blank
+    assign collection_image = true
+    assign desc_width = 'desktop-9'
+  else
+    assign collection_image = false
+    assign desc_width = 'desktop-12'
+  endif
+
+%}
+<div class="collection-page-{{ section.id }} main__section" data-section-id="{{ section.id }}" data-section-type="collection-section">
+  {% paginate collection.products by number %}
+    <div id="CollectionProductGrid">
+      {% if full_width %}<div class="gridlock-fluid">{% endif %}
+        <div class="row">
+          <div id="main-content" class="grid_wrapper">
+
+
+            <div class="collection__page--section-title section-title span-12 sm-span-12 auto">
+              <h1>
+                {% if collection.handle == 'all' %}
+                  {{ 'collections.general.all_products' | t }}
+                {% else %}
+                  {{ collection.title }}
+                {% endif %}
+              </h1>
+            </div>
+            {% if collection.title != "Bundles and Offers on Workshops" %}
+            
+
+            {%- if show_sidebar -%}
+              <div class="collection__page--sidebar desktop-sidebar {{ sidebar_grid }} sm-hide tablet-hide" data-collection-sidebar-filters>
+                {% render 'collection-sidebar',
+                  collection: collection, block: block %}
+              </div>
+            {%- endif -%}
+            {% endif %}
+
+            <div class="collection__page--content {% if show_sidebar and collection.title != "Bundles and Offers on Workshops" %}span-9{% else %}span-12{% endif %} md-span-12 sm-span-12 auto">
+              {% if top_description %}
+                <div id="collection-description">
+                  <div class="rte {{ desc_width }}">
+                  {% assign len = collection.description | size %} 
+                  {% if len < 135 %}
+                    {{ collection.description | remove: "[banner]" }}
+                  {%  else %} 
+                    <div id="truncated-desc">
+                      {{ collection.description | remove: "[banner]" | strip_html | truncatewords: 25 }}&nbsp;<a style="color: #411e2f" href="#" onClick="
+                        document.getElementById('truncated-desc').style.display = 'none';
+                        document.getElementById('full-desc').style.display = 'inherit';"><b>Read More</b></a>
+                    </div>
+                    <div id="full-desc" style="display: none">
+                      {{ collection.description | remove: "[banner]" | strip_html}}&nbsp;<a href="#" onClick="
+                        document.getElementById('truncated-desc').style.display = 'inherit';
+                        document.getElementById('full-desc').style.display = 'none';"><b>Show Less</b></a>
+                    </div>
+                 {% endif %}
+                  </div>
+{% comment %}                   {%- if collection_image -%}
+                    <div class="collection__page-image desktop-3 mobile-3">
+                      <img src="{{ collection.image | img_url: '350x' }}" alt="{{ collection.image.alt }}">
+                    </div>
+                  {%- endif -%} {% endcomment %}
+                </div>
+                
+              {% endif %}
+
+              {%- if show_sidebar -%}
+              <div class="collection__page--sidebar mobile-sidebar {{ sidebar_grid }} lg-hide">
+                <div class="slideout__trigger--open">
+                  <button class="slideout__trigger-filters js-slideout-open" data-wau-slideout-target="collection-sidebar" data-slideout-direction="right" aria-label="Open filters" tabindex="0" type="button" name="button">
+                    Filters
+                  </button>
+                </div>
+                <div style="display:none;" data-wau-slideout-content="collection-sidebar">
+                  <div class="slideout__trigger--close">
+                    <button class="slideout__trigger-collection-sidebar js-slideout-close" data-slideout-direction="right" aria-label="Close sidebar" tabindex="0" type="button" name="button">
+                      <div class="icn-close"></div>
+                    </button>
+                  </div>
+                  {% render 'collection-sidebar',
+                    collection: collection, block: block %}
+                </div>
+              </div>
+            {%- endif -%}
+
+              {% if section.blocks.size != 0 %}
+                <div class="collection__page--full-width-filters js-col-filter-full">
+
+                  {%- if horizontal_filtering_enabled or sort_by_enabled -%}
+                    <form id="CollectionFiltersForm" class="desktop-12 tablet-6 mobile-3 contained" data-collection-filters>
+                      {% render 'collection-horizontal-toolbar',
+                        collection: collection,
+                        block: block,
+                        paginate: paginate,
+                        horizontal_filtering_enabled: horizontal_filtering_enabled,
+                        sort_by_enabled: sort_by_enabled %}
+                    </form>
+                  {%- endif -%}
+
+                  {% if filter_count > 0 %}
+                    <div class="filtering__results desktop-12 tablet-6 mobile-3 contained js-filters-reset">
+                      <ul class="current_tags">
+                        {%- for filter in collection.filters -%}
+                          {%- for value in filter.active_values -%}
+                            <li class="current_filters--filter current_tag">
+                              <a class="js-current-filter" href="{{ value.url_to_remove }}">
+                                {{ value.label | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                          {% if filter.type == "price_range" %}
+                            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                              <li class="current_filters--filter current_tag">
+                                <a class="js-current-filter" href="{{ filter.url_to_remove }}">
+                                  {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+                                </a>
+                              </li>
+                            {%- endif -%}
+                          {% endif %}
+                        {%- endfor -%}
+                        <li><a class="current_filters--clear js-current-filter clear-tags" href="{{ collection.url }}">{{ 'sections.collection_template.clear_all' | t }}</a></li>
+                      </ul>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="clear"></div>
+              {% endif %}
+
+              {%- if collection.products.size >= 1 -%}
+                <div id="main-collection-product-grid"
+                     data-id="{{ section.id }}"
+                     class="grid_wrapper product-loop{% if section.settings.infinite_scroll %} is_infinite{% endif %}" {% if section.settings.infinite_scroll %}data-collection-infinite-scroll{% endif %}>
+                  {% for product in collection.products %}
+                    <div class="{{ grid_item_width }} product-index" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}" data-aos="{{ settings.scroll_animation }}" data-product-id="{{ product.id }}">
+                      {% render 'product-listing', collection: collection, product: product %}
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="clear"></div>
+               {% render 'pagination', paginate: paginate %}
+               <div class="clear"></div>
+              {%- else -%}
+                 <div id="main-collection-product-grid"
+                      data-id="{{ section.id }}"
+                      class="grid_wrapper product-loop">
+                   <div class="span-12 auto">
+                     <span class="rte">{{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underline" }}</span>
+                   </div>
+                 </div>
+                 <div class="clear"></div>
+              {%- endif -%}
+
+              {% if top_description == false %}
+                <div id="collection-description">
+                  <div class="rte {{ desc_width }}">
+                    {{ collection.description | remove: "[banner]" }}
+                  </div>
+{% comment %}                   {%- if collection_image -%}
+                    <div class="collection__page-image desktop-3 mobile-3">
+                      <img src="{{ collection.image | img_url: '350x' }}" alt="{{ collection.image.alt }}">
+                    </div>
+                  {%- endif -%} {% endcomment %}
+                </div>
+              {% endif %}
+
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      {% if full_width %}</div>{% endif %}
+      
+      
+      
+<!--       faq Contents -->   
+  <style>
+
+    
+     .custom-accordian {
+                margin-left:220px;
+                margin-right: 220px;
+            }
+        
+          /* Media Query for Mobile Devices */
+        @media (max-width: 480px) {
+            .custom-accordian {
+                margin-left:10px;
+                margin-right: 10px;
+            }
+        }
+          
+        /* Media Query for low resolution  Tablets, Ipads */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .custom-accordian {
+                margin-left:40px;
+                margin-right: 40px;
+            }
+        }
+          
+        /* Media Query for Tablets Ipads portrait mode */
+        @media (min-width: 768px) and (max-width: 1024px){
+           .custom-accordian {
+                margin-left:100px;
+                margin-right: 100px;
+            }
+        }
+          
+        /* Media Query for Laptops and Desktops */
+        @media (min-width: 1025px) and (max-width: 1280px){
+            .custom-accordian {
+                margin-left:150px;
+                margin-right: 150px;
+            }
+        }
+        
+       
+    
+.accordion {
+  padding-left: 8px;
+background-color: #ededed;
+color: #000;
+cursor: pointer;
+height: auto;
+word-wrap: break-word;
+  overflow: hidden;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 10px;
+transition: 0.3s;
+  margin: 0px 0px 3px 0px;
+}
+
+
+.panel {
+padding: 0 5px;
+background-color: white;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.2s ease-out;
+border-bottom: 0px solid transparent;
+}
+</style>    
+      
+      
+      
+{% if collection.title=='Kalamkari' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Kalamkari Art?</button>
+<div class="panel">
+  Kalamkari literally translates to ‘kalam’ meaning pen and ‘kaari’ meaning craftsmanship. Kalamkari is a hand-painted scroll painting that has been a part of Indian painting tradition for a long time. </p>
+</div>     
+  
+  
+<button class="accordion">What is the origin of Kalamkari art and where is Kalamkari Art from?</button>
+<div class="panel">
+  According to a few sources, Kalamkari has been practiced for about 3000 years now, although there is no evidence to substantiate this fact. The literary evidence states its first use was during the reign of Krishnadeva Raya from the Vijayanagara empire. It is the art of painting with a bamboo pen and natural dyes. Kalamkari flourished around and on the patronage of the temples. This gave the kalamkari paintings an almost religious identity in the form of temple scrolls, hangings, chariot banners etc.
+  </div>
+
+<button class="accordion">What are the main themes and motifs in Kalamkari art? </button>
+<div class="panel">
+Traditionally, themes from the epics and Puranas are depicted in Kalamkari paintings. The scrolls are depicted in a form of horizontal panels. The important episodes of the stories receive a larger layout. Along with the narrative stories, the kalamkari paintings also have a figurative depiction of the deities. Other themes of kalamkari paintings include the depiction of flowers, peacocks, paisleys, and other motifs inspired or directly derived from the Persian motifs. Today one of the most famous motifs is the tree of life, which symbolizes growth and prosperity.
+</div>
+      
+<button class="accordion">What are the different styles of Kalamkari art?</button>
+<div class="panel">
+  There are two forms of Kalamkari, the one practiced in Srikalahasti is probably the one that most of us associate with, while the other is the one practiced at Machilipatnam. Kalamkari evolved with the patronage of the Mughal kingdom and the Golconda Sultanate.
+</div>
+
+      
+<button class="accordion">What is the Machilipatnam style in Kalamkari art?</button>
+<div class="panel">
+ In the Machilipatnam style wooden blocks are used to create the basic structure of the painting, while bamboo pens are used to fill in the colors.
+ </div>
+      
+      
+      <button class="accordion">What is the Srikalahasti style in Kalamkari art?</button>
+<div class="panel">
+The Srikalahasti style of Kalamkari uses a bamboo pen to make intricate designs and fill in the colors.
+      </div>
+      
+      
+      
+      <button class="accordion" style="margin-top:0px">How is Srikalahasti style different from Machilipatnam style in Kalamkari art?</button>
+<div class="panel">
+The Srikalahasti style of Kalamkari uses a bamboo pen to make intricate designs and fill in the colors while in the Machilipatnam style wooden blocks are used to create the basic structure of the painting, while bamboo pens are used to fill in the colors.
+      </div>
+      
+      
+   <button class="accordion">What are the different steps involved in Kalamkari art?</button>
+<div class="panel">
+There are as many as 23 steps to prepare a kalamkari painting. The steps include starching, sketching, outlining, filling in the color are a few of them. 
+      </div>
+
+      
+            <button class="accordion">What kind of colours and materials are used in Kalamkari art? </button>
+<div class="panel">
+Only natural colors are used in Kalamkari paintings. Traditionally, black, red, yellow and indigo are used in kalamkari. The Swarnamukhi river provides ample water for the delicate processes of kalamkari. Tribals from the forests near the region of Srikalakasti provide the artists with a few natural elements required for the painting process.
+      </div>
+      
+      
+            <button class="accordion">Who are the famous personalities and artists in Kalamkari art?</button>
+<div class="panel">
+The present status of Kalamkari is due to the hard work of Kamaladevi Chattopadhyay. It has received the Geographical Indication tag from the Government of India.At MeMeraki we work with Master Artists across Indian traditional art forms and for Kalamkari we are working with two renowned artists - Harinath N and Sudheer. </div>
+  
+</div>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Kalamkari Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Kalamkari literally translates to ‘kalam’ meaning pen and ‘kaari’ meaning craftsmanship. Kalamkari is a hand-painted scroll painting that has been a part of Indian painting tradition for a long time."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Kalamkari art and where is Kalamkari Art from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "According to a few sources, Kalamkari has been practiced for about 3000 years now, although there is no evidence to substantiate this fact. The literary evidence states its first use was during the reign of Krishnadeva Raya from the Vijayanagara empire. It is the art of painting with a bamboo pen and natural dyes. Kalamkari flourished around and on the patronage of the temples. This gave the kalamkari paintings an almost religious identity in the form of temple scrolls, hangings, chariot banners etc."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Traditionally, themes from the epics and Puranas are depicted in Kalamkari paintings. The scrolls are depicted in a form of horizontal panels. The important episodes of the stories receive a larger layout. Along with the narrative stories, the kalamkari paintings also have a figurative depiction of the deities. Other themes of kalamkari paintings include the depiction of flowers, peacocks, paisleys, and other motifs inspired or directly derived from the Persian motifs. Today one of the most famous motifs is the tree of life, which symbolizes growth and prosperity."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different styles of Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are two forms of Kalamkari, the one practiced in Srikalahasti is probably the one that most of us associate with, while the other is the one practiced at Machilipatnam. Kalamkari evolved with the patronage of the Mughal kingdom and the Golconda Sultanate."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the Machilipatnam style in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In the Machilipatnam style wooden blocks are used to create the basic structure of the painting, while bamboo pens are used to fill in the colors."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the Srikalahasti style in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Srikalahasti style of Kalamkari uses a bamboo pen to make intricate designs and fill in the colors."
+    }
+  },{
+    "@type": "Question",
+    "name": "How is Srikalahasti style different from Machilipatnam style in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Srikalahasti style of Kalamkari uses a bamboo pen to make intricate designs and fill in the colors while in the Machilipatnam style wooden blocks are used to create the basic structure of the painting, while bamboo pens are used to fill in the colors."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are as many as 23 steps to prepare a kalamkari painting. The steps include starching, sketching, outlining, filling in the color are a few of them."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only natural colors are used in Kalamkari paintings. Traditionally, black, red, yellow and indigo are used in kalamkari. The Swarnamukhi river provides ample water for the delicate processes of kalamkari. Tribals from the forests near the region of Srikalakasti provide the artists with a few natural elements required for the painting process."
+    }
+  },{
+    "@type": "Question",
+    "name": "Who are the famous personalities and artists in Kalamkari art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The present status of Kalamkari is due to the hard work of Kamaladevi Chattopadhyay. It has received the Geographical Indication tag from the Government of India.At MeMeraki we work with Master Artists across Indian traditional art forms and for Kalamkari we are working with two renowned artists - Harinath N and Sudheer."
+    }
+  }]
+}
+</script>
+
+
+  {% elsif collection.title=='live-art-workshops' %}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "BreadcrumbList", 
+  "itemListElement": [{
+    "@type": "ListItem", 
+    "position": 1, 
+    "name": "Memeraki",
+    "item": "https://www.memeraki.com/"  
+  },{
+    "@type": "ListItem", 
+    "position": 2, 
+    "name": "Live Art Workshops",
+    "item": "https://www.memeraki.com/collections/live-art-workshops"  
+  }]
+}
+</script>
+  
+  {% elsif collection.title=='Lippan Kaam' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Lippan Kaam?</button>
+<div class="panel">
+Chhittar Kaam is the mural tradition from the Kutch region in Gujarat. The craft form was traditionally done using the wild ass or camel dung, which means lippan in Gujarati, and hence its more famous name Lippan Kaam. The mud work, done in relief has been practiced by the various communities in the region.
+  </div>
+  
+<button class="accordion">What is the origin of Lippan Kaam and where is it from?</button>
+<div class="panel">
+ The various communities migrated from the other side of the border in many waves, the latest being after the Indo-Pakistan war of 1971.
+The major communities which practice Lippan kaam today are the Rebaris, the Harijans and the Mutwas, though there are many more sub-tribes which practice the craft. The Mutwa and Rebari community migrated from the Sindh to Kutch about 400 and 700 years ago respectively. While the Harijan community migrated from the Marwada region in Rajasthan. These communities primarily practice embroidery, pastoralism, livestock and horse rearing
+</div>
+  
+<button class="accordion">What are the main themes and motifs in Lippan Kaam? </button>
+<div class="panel">
+The motifs are derived from everyday life with animals such as peacocks, camels, elephants, temples and geometric patterns. Each community has a distinct style of lippan and can be differentiated from the others.
+</div>
+  
+<button class="accordion">What kind of colours and materials are used in Lippan Kaam? </button>
+<div class="panel">
+Earlier, it used camel or wild ass dung and clay, but later the evolutionists used the husk of bajra as an alternative. Today the artists have shifted to using newspapers to avoid the pungent smell as well as to keep the termites away. The characteristic white colour of the Lippan kaam was earlier made using white clay or white sand from the Kutch. Today however, most artists use synthetic white paint.
+  </div>
+  
+<button class="accordion">What is Lippan Kaam?</button>
+<div class="panel">
+Chhittar Kaam is the mural tradition from the Kutch region in Gujarat. The craft form was traditionally done using the wild ass or camel dung, which means lippan in Gujarati, and hence its more famous name Lippan Kaam. The mud work, done in relief has been practiced by the various communities in the region.
+  </div>
+  
+</div>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Lippan Kaam?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Chhittar Kaam is the mural tradition from the Kutch region in Gujarat. The craft form was traditionally done using the wild ass or camel dung, which means lippan in Gujarati, and hence its more famous name Lippan Kaam. The mud work, done in relief has been practiced by the various communities in the region"
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Lippan Kaam and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": " The various communities migrated from the other side of the border in many waves, the latest being after the Indo-Pakistan war of 1971.
+The major communities which practice Lippan kaam today are the Rebaris, the Harijans and the Mutwas, though there are many more sub-tribes which practice the craft. The Mutwa and Rebari community migrated from the Sindh to Kutch about 400 and 700 years ago respectively. While the Harijan community migrated from the Marwada region in Rajasthan. These communities primarily practice embroidery, pastoralism, livestock and horse rearing.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Lippan Kaam? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The motifs are derived from everyday life with animals such as peacocks, camels, elephants, temples and geometric patterns. Each community has a distinct style of lippan and can be differentiated from the others."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Lippan Kaam? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Earlier, it used camel or wild ass dung and clay, but later the evolutionists used the husk of bajra as an alternative. Today the artists have shifted to using newspapers to avoid the pungent smell as well as to keep the termites away. The characteristic white colour of the Lippan kaam was earlier made using white clay or white sand from the Kutch. Today however, most artists use synthetic white paint."
+    }
+  
+  }]
+}
+</script>
+
+  {% elsif collection.title=='Mandana' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is the origin of Mandana Art and where is it from?</button>
+<div class="panel">
+Regardless of written records being absent, the origin of Mandana paintings dates back to the Vedic age, 1500 to 500 BCE. This theory’s relevance is the similarities between the designs in Mandana art and the designs found on the Vastu purusha mandalas. Vastu purusha mandalas are altars of Vedic pujas and the architecture of ancient Vedic temples.
+  </div>  
+  
+<button class="accordion">What are the main themes and motifs in Mandana Art?</button>
+<div class="panel">
+The cultural deities, altars of Vedic yajna, plants, animals, and birds that are considered auspicious, mostly peacocks are the most sought-after designs that are found in these paintings.
+  </div> 
+
+<button class="accordion">What are the different steps involved in Mandana Art?</button>
+<div class="panel">
+The making of Mandana paintings is an art in itself. It inculcates the traditions and cultures of its people into a simple, yet attractive painting. The clay and the mixture of water and cow dung mark the beginning of the process as it plasters the traditional pattern of the floor. The brush made of twigs, cotton and a small portion of squirrel hair are the painting tools. The colors used are red and white, as these are the only ones easily available in abundance in the area. Brick and chalk are the sources of red and white colors.
+  </div> 
+  
+
+<button class="accordion">What kind of colours and materials are used in Lippan Kaam?</button>
+<div class="panel">
+Earlier, it used camel or wild ass dung and clay, but later the evolutionists used the husk of bajra as an alternative. Today the artists have shifted to using newspapers to avoid the pungent smell as well as to keep the termites away. The characteristic white colour of the Lippan kaam was earlier made using white clay or white sand from the Kutch. Today however, most artists use synthetic white paint.
+  </div> 
+  
+</div>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is the origin of Mandana Art and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Regardless of written records being absent, the origin of Mandana paintings dates back to the Vedic age, 1500 to 500 BCE. This theory’s relevance is the similarities between the designs in Mandana art and the designs found on the Vastu purusha mandalas. Vastu purusha mandalas are altars of Vedic pujas and the architecture of ancient Vedic temples."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Mandana Art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The cultural deities, altars of Vedic yajna, plants, animals, and birds that are considered auspicious, mostly peacocks are the most sought-after designs that are found in these paintings."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Mandana Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The making of Mandana paintings is an art in itself. It inculcates the traditions and cultures of its people into a simple, yet attractive painting. The clay and the mixture of water and cow dung mark the beginning of the process as it plasters the traditional pattern of the floor. The brush made of twigs, cotton and a small portion of squirrel hair are the painting tools. The colors used are red and white, as these are the only ones easily available in abundance in the area. Brick and chalk are the sources of red and white colors."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Lippan Kaam? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Earlier, it used camel or wild ass dung and clay, but later the evolutionists used the husk of bajra as an alternative. Today the artists have shifted to using newspapers to avoid the pungent smell as well as to keep the termites away. The characteristic white colour of the Lippan kaam was earlier made using white clay or white sand from the Kutch. Today however, most artists use synthetic white paint."
+    
+  }
+  }]
+}
+</script>  
+  
+  {% elsif collection.title=='Rogan Art' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is the origin of Rogan Art and where is it from?</button>
+<div class="panel">
+The art of Rogan dates back centuries, having its origin in Persia, it descended to the village of Nirona.
+  </div>  
+  
+<button class="accordion">What are the main themes and motifs in Rogan Art?</button>
+<div class="panel">
+The floral, geometric and calligraphic motifs were traditionally used for the art of Rogan painting. The traditional floral motifs were small, like chauphulla, tik, ghonta( marigold) and keyri (mango). The floral borders included panfarei, single fareei (flower and seed pod), kangsi or phullivel (comb like pattern and phulvels), popat gulvel (parrots and flowers). Fauna was also a common element in stylised forms, haathi, with or without ambadi (Howdah and rider). Other figurative elements are mahiyarin – two women wearing ghagras, chunaris, churning curd and a garud. During ancient times, calligraphy motifs were used in Persian alphabets.
+  </div> 
+  
+<button class="accordion">What are the different steps involved in Rogan Art?</button>
+<div class="panel">
+Its long dedication is the reason for its high cost. Each process is long and independent, handled mostly by skilled artisans. The Rogan jelly is prepared by burning castor oil, which is not fit for humans and produces a foul odour as well.
+The traditional method to procure dye was through natural sources such as stone and plants. The colours like blue (vadadi), green (leelo), orange, red (lal) and white (safed) were used in pure form. The colours were obtained from varied sources 
+To prepare the Rogan colour paste, the artisans have to be highly skilled. The main equipment used for the preparation of colour paste is kharal, a manual stone grinder, to mix the colour paste. The ingredients are napthol, white chalk powder and water.
+  </div> 
+  
+<button class="accordion">What kind of colours and materials are used in Rogan Art? </button>
+<div class="panel">
+Traditionally, the equipment was hand made using organic material, which is now replaced by its inexpensive metal alternatives. The original ingredients of Rogan painting were castor oil, dyes, kerosene oil and wood.
+  </div> 
+  </div>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is the origin of Rogan Art and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The art of Rogan dates back centuries, having its origin in Persia, it descended to the village of Nirona."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Rogan Art?  ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The floral, geometric and calligraphic motifs were traditionally used for the art of Rogan painting. The traditional floral motifs were small, like chauphulla, tik, ghonta( marigold) and keyri (mango). The floral borders included panfarei, single fareei (flower and seed pod), kangsi or phullivel (comb like pattern and phulvels), popat gulvel (parrots and flowers). Fauna was also a common element in stylised forms, haathi, with or without ambadi (Howdah and rider). Other figurative elements are mahiyarin – two women wearing ghagras, chunaris, churning curd and a garud. During ancient times, calligraphy motifs were used in Persian alphabets."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Rogan Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Its long dedication is the reason for its high cost. Each process is long and independent, handled mostly by skilled artisans. The Rogan jelly is prepared by burning castor oil, which is not fit for humans and produces a foul odour as well.
+The traditional method to procure dye was through natural sources such as stone and plants. The colours like blue (vadadi), green (leelo), orange, red (lal) and white (safed) were used in pure form. The colours were obtained from varied sources 
+To prepare the Rogan colour paste, the artisans have to be highly skilled. The main equipment used for the preparation of colour paste is kharal, a manual stone grinder, to mix the colour paste. The ingredients are napthol, white chalk powder and water.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Rogan Art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Traditionally, the equipment was hand made using organic material, which is now replaced by its inexpensive metal alternatives. The original ingredients of Rogan painting were castor oil, dyes, kerosene oil and wood.."
+    
+  }
+  }]
+}
+</script>
+  
+    {% elsif collection.title=='Terracotta' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Terracotta Art?</button>
+<div class="panel">
+Terracotta has been an intricate part of the Indian sub-continent since time immemorial. The use of terracotta to make sculptures and pottery dates back to the pre-Harappan and Harappan era. Each region has its own characteristic and stylistic features for the use of terracotta in its craft, one of them being the Molela craft from Rajasthan.
+  </div>  
+  
+<button class="accordion">What is the origin of Terracotta Art and where is it from?</button>
+<div class="panel">
+The origin of the molela craft is unknown. However, various legends ascribe the craft to a blind potter who dreamt of Shri Devnarayan. The deity had asked the blind potter to make his image. Initially the potter was hesitant to comply owing to his blindness, however, he agreed with the wish of his god. The next morning, his eyesight was restored and people from his community started preparing and worshiping such votive plaques for wish fulfilment.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Terracotta Art?</button>
+<div class="panel">
+The most important deities depicted are Devnarayan and Nagaraja. Although there are many other deities depicted as well. Specific colours are used to identify different deities such as blue is used for kala bhairav and orange is used for gora bhairav.
+  </div> 
+  
+<button class="accordion">What kind of colours and materials are used in Terracotta Art?</button>
+<div class="panel">
+The colours are prepared using natural stones and minerals found in the region.Specific colours are used to identify different deities such as blue is used for kala bhairav and orange is used for gora bhairav.
+  </div> 
+  
+<button class="accordion">What are the different steps involved in Terracotta Art?</button>
+<div class="panel">
+The colours are prepared using natural stones and minerals found in the region. The colours for molela are prepared from natural stone and mineral colours. Palewa is the clay slip which is used to prepare different colours when mixed with different stone and minerals. For example, red is prepared by mixing geru to the palewa and water mixture. Dawrigund, a vegetable gum is used as a binder. Jala, a locally available laquer coat is used for the shine instead of using commercial varnish since the votive plaques were traditionally religious in nature.
+  </div> 
+  </div>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Terracotta Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Terracotta has been an intricate part of the Indian sub-continent since time immemorial. The use of terracotta to make sculptures and pottery dates back to the pre-Harappan and Harappan era. Each region has its own characteristic and stylistic features for the use of terracotta in its craft, one of them being the Molela craft from Rajasthan."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Terracotta Art and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The origin of the molela craft is unknown. However, various legends ascribe the craft to a blind potter who dreamt of Shri Devnarayan. The deity had asked the blind potter to make his image. Initially the potter was hesitant to comply owing to his blindness, however, he agreed with the wish of his god. The next morning, his eyesight was restored and people from his community started preparing and worshiping such votive plaques for wish fulfilment."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Terracotta Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The most important deities depicted are Devnarayan and Nagaraja. Although there are many other deities depicted as well. Specific colours are used to identify different deities such as blue is used for kala bhairav and orange is used for gora bhairav."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Terracotta Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colours are prepared using natural stones and minerals found in the region. The colours for molela are prepared from natural stone and mineral colours. Palewa is the clay slip which is used to prepare different colours when mixed with different stone and minerals. For example, red is prepared by mixing geru to the palewa and water mixture. Dawrigund, a vegetable gum is used as a binder. Jala, a locally available laquer coat is used for the shine instead of using commercial varnish since the votive plaques were traditionally religious in nature."
+    
+  }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Terracotta Art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colours are prepared using natural stones and minerals found in the region.Specific colours are used to identify different deities such as blue is used for kala bhairav and orange is used for gora bhairav."
+    }
+  }]
+}
+</script>
+
+{% elsif collection.title=='Cheriyal Scroll' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Cheriyal Scroll?</button>
+<div class="panel">
+ Cheriyal Scroll Painting is a popular and modified version of Nakashi art, considered highly rich in the local motifs. This art form is unique to the state of Telangana and made mostly in Hyderabad currently. This traditional art form is considered an inseparable part of the profession comprising the story-telling and balladeer community called Kaki Padagollu. They have displayed these scrolls which are also accompanied by music and dance. 
+  </div>  
+  
+<button class="accordion">What are the main themes and motifs in Cheriyal Scroll?</button>
+<div class="panel">
+The theme revolves around stories from Indian mythology as well as the shorter stories related to the Puranas and Epics.The major themes are Krishna Leela, Mahabharata, Ramayana, Shiva Puranam, Markandey Puranam along with the ballads and folk stories of Gauda, Madiga and other communities.
+  </div> 
+  
+<button class="accordion">What are the different steps involved in Cheriyal Scroll paintings?</button>
+<div class="panel">
+The process involves firstly working on the canvas which is made of Khadi cotton, starch, white mud and a paste of tamarind seeds and gum water. After the canvas is done, the artist prepares the outline directly using a brush on the canvas. These outlines are defined clearly, followed by details and the addition of colours.
+  </div> 
+  
+<button class="accordion">What kind of colours and materials are used in Cheriyal Scroll?</button>
+<div class="panel">
+Some materials being used in the process are khadi cloth, gum, tamarind,chalk powder and naturally sourced colours
+  </div> 
+  </div>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Cheriyal Scroll?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Cheriyal Scroll Painting is a popular and modified version of Nakashi art, considered highly rich in the local motifs. This art form is unique to the state of Telangana and made mostly in Hyderabad currently. This traditional art form is considered an inseparable part of the profession comprising the story-telling and balladeer community called Kaki Padagollu. They have displayed these scrolls which are also accompanied by music and dance."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Cheriyal Scroll? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The theme revolves around stories from Indian mythology as well as the shorter stories related to the Puranas and Epics.The major themes are Krishna Leela, Mahabharata, Ramayana, Shiva Puranam, Markandey Puranam along with the ballads and folk stories of Gauda, Madiga and other communities. "
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Cheriyal Scroll paintings?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The process involves firstly working on the canvas which is made of Khadi cotton, starch, white mud and a paste of tamarind seeds and gum water. After the canvas is done, the artist prepares the outline directly using a brush on the canvas. These outlines are defined clearly, followed by details and the addition of colours."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Cheriyal Scroll? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Some materials being used in the process are khadi cloth, gum, tamarind,chalk powder and naturally sourced colours."
+    
+  }
+  }]
+}
+</script>
+   
+  {% elsif collection.title=='Palm Leaf Engraving / Talapatra' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Talapatra Art?</button>
+<div class="panel">
+'Tala' refers to palm and ‘Patra’ means leaf. Quite literally, talapatra is an art form of the Palm Leaf.
+  </div>  
+  
+<button class="accordion">What is the origin of Talapatra Art and where is it from?</button>
+<div class="panel">
+Talapatra Khodai from Odisha, as an art form, has shown the world that art is in no way limited.
+The art form has a long history, as palm leaves were often used as manuscripts in the past. As complicated as the process of painting on a leaf is, the result is just as beautiful.
+ </div> 
+  
+<button class="accordion">What are the main themes and motifs in Talapatra Art? </button>
+<div class="panel">
+Mythological stories like Ramayana and Mahabharata find a place in the art form, where they are depicted visually on the leaves. Recently, the oldest version of Valmiki's Ramayana was found in Nepal. It is said to have been done as a Manuscript on palm leaves.
+  </div> 
+  
+  <button class="accordion">What are the different steps involved in making Talapatra paintings? </button>
+<div class="panel">
+The Palm leaves are dried under the sun for two to three months.  After being soaked in water they are further subjected to the treatment of a turmeric solution to make sure that they last longer.
+After successfully drying up, they are finally ready to paint. They are tied together to make a scroll out of many palm leaves, a story is then drawn intricately onto the scroll. They are stitched in such a fine manner that it is impossible to make out that the scroll is made out of many leaves, appearing as if the scroll is all there is. The drawing is made with fine details as well, making sure even the smallest of the features are drawn correctly.
+  </div> 
+  
+  <button class="accordion">What kind of colours and materials are used in Talapatra Art?   </button>
+<div class="panel">
+The artists use many techniques to ensure that the drawing is perfected. The drawing is then painted with natural colours.
+  </div> 
+  </div>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Talapatra Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "'Tala' refers to palm and ‘Patra’ means leaf. Quite literally, talapatra is an art form of the Palm Leaf."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Talapatra Art and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Talapatra Khodai from Odisha, as an art form, has shown the world that art is in no way limited.
+The art form has a long history, as palm leaves were often used as manuscripts in the past. As complicated as the process of painting on a leaf is, the result is just as beautiful.
+ "
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Talapatra Art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mythological stories like Ramayana and Mahabharata find a place in the art form, where they are depicted visually on the leaves. Recently, the oldest version of Valmiki's Ramayana was found in Nepal. It is said to have been done as a Manuscript on palm leaves."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in making Talapatra paintings? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Palm leaves are dried under the sun for two to three months.  After being soaked in water they are further subjected to the treatment of a turmeric solution to make sure that they last longer.
+After successfully drying up, they are finally ready to paint. They are tied together to make a scroll out of many palm leaves, a story is then drawn intricately onto the scroll. They are stitched in such a fine manner that it is impossible to make out that the scroll is made out of many leaves, appearing as if the scroll is all there is. The drawing is made with fine details as well, making sure even the smallest of the features are drawn correctly.
+" 
+  }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Talapatra Art?  ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The artists use many techniques to ensure that the drawing is perfected. The drawing is then painted with natural colours.  "
+  }
+  }]
+}
+</script>
+   
+   {% elsif collection.title=='Soof' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Soof embroidery?</button>
+<div class="panel">
+Soof means ‘neat and clean. It is a style of embroidery known for its intricate geometric patterns.This embroidery is done by the women of Sodha Community, with its own unique style.
+  </div>  
+  
+<button class="accordion">What are the main themes and motifs in Soof? </button>
+<div class="panel">
+The building blocks of the embroidery are lath, soof (triangles) and leher (wave).There is no outline or drawing done on the fabric to guide the artist.grid.The motifs are not drawn directly on the fabric, Instead, the design is mentally conceptualised and calculated according two the design, the cloth size and count and rendered onto it by counting the warp and weft threads of the fabric.
+  </div> 
+  
+<button class="accordion">What are the different steps involved in Soof embroidery?</button>
+<div class="panel">
+The embroidery is done on the opposite side of the cloth,patterns are created counting the warp and weft threads that are used as the base.When turned over, the front displays an embroidery that is so fine and precise that it is mistaken for machine embroidery.
+  </div> 
+  
+<button class="accordion">What kind of materials are required for Soof embroidery? </button>
+<div class="panel">
+Soof requires fabric that has a basket weave—the warp and weft have to be the same count. Patterns are created by counting the warp and weft threads that are used as the base grid. The embroidery is rendered on a horizontal and vertical grid. However, the most daring innovation was creating complex compositions on diagonal grids.
+  </div> 
+  </div>
+ 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Soof embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Soof means ‘neat and clean. It is a style of embroidery known for its intricate geometric patterns.This embroidery is done by the women of Sodha Community, with its own unique style."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Soof? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The building blocks of the embroidery are lath, soof (triangles) and leher (wave).There is no outline or drawing done on the fabric to guide the artist.grid.The motifs are not drawn directly on the fabric, Instead, the design is mentally conceptualised and calculated according two the design, the cloth size and count and rendered onto it by counting the warp and weft threads of the fabric."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Soof embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The embroidery is done on the opposite side of the cloth,patterns are created counting the warp and weft threads that are used as the base.When turned over, the front displays an embroidery that is so fine and precise that it is mistaken for machine embroidery."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of materials are required for Soof embroidery? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Soof requires fabric that has a basket weave—the warp and weft have to be the same count. Patterns are created by counting the warp and weft threads that are used as the base grid. The embroidery is rendered on a horizontal and vertical grid. However, the most daring innovation was creating complex compositions on diagonal grids.
+" 
+  }
+  }]
+}
+</script>
+  
+     {% elsif collection.title=='Kantha' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Kantha embroidery?</button>
+<div class="panel">
+Kantha embroidery draws our attention to the resourcefulness of our women in the past, their sustainable way of living, and the socio-cultural life. The rural women reused the pieces of fabric, threads and fashioned them into a new product. Kantha is primarily a traditional embroidery craft from east and west Bengal, and parts of Bihar.
+  </div>  
+  
+<button class="accordion">What is the origin of Kantha and where is it from?</button>
+<div class="panel">
+The craft has been around us for centuries, being passed on from generation to generation, but there is no known specimen earlier than 1800 CE.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Kantha?</button>
+<div class="panel">
+Kantha embroidery draws our attention to the resourcefulness of our women in the past, their sustainable way of living, and the socio-cultural life
+  </div> 
+  
+  <button class="accordion">What kind of materials are required for Kantha embroidery?</button>
+<div class="panel">
+The rural women reused the pieces of fabric, threads and fashioned them into a new product.
+  </div> 
+  
+<button class="accordion">What are the different types of stitches in Kantha?</button>
+<div class="panel">
+There are different kinds of Kanthas which are made for different purposes.
+
+Lep Kantha – It is an embroidered wrap for body, to be used during winters.
+Oar Kantha – It is a rectangular pillow cover
+Sujni Kantha – The word sujni is derived from the word ‘sojan’ which means sewn cloth. It is an embroidered ceremonial wrap. It can also be used as a sitting mat to honour guests during ceremonial occasions such as weddings. These are also used as bed covers. These are generally rectangular in shape.
+Baytan Kantha – It is used as a wrap for books and valuables. These are generally square in shape. There is a wide border with several rows of human and animal designs. The centre has an elaborate lotus.
+Durjani Kantha – It consists of square wraps which are stitched together to form a wallet. It has an embroidered border and elaborate lotus in the middle. It can be used to hold rosary beads, betel nuts, money, etc.
+Arshilata Kantha – It literally translates to mirror Kantha, but its utility is to wrap and cover. These wraps are used for mirrors and combs, and are narrower and rectangular. It has a wide border on all four sides.
+Rumal Kantha – Like its name suggests, it is used as a handkerchief. Its centre consists of a lotus with other traditional motifs around it. 
+  </div> 
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Kantha embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Kantha embroidery draws our attention to the resourcefulness of our women in the past, their sustainable way of living, and the socio-cultural life. The rural women reused the pieces of fabric, threads and fashioned them into a new product. Kantha is primarily a traditional embroidery craft from east and west Bengal, and parts of Bihar."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Kantha and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The craft has been around us for centuries, being passed on from generation to generation, but there is no known specimen earlier than 1800 CE."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Kantha? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Kantha embroidery draws our attention to the resourcefulness of our women in the past, their sustainable way of living, and the socio-cultural life
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different types of stitches in Kantha?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are different kinds of Kanthas which are made for different purposes.
+
+Lep Kantha – It is an embroidered wrap for body, to be used during winters.
+Oar Kantha – It is a rectangular pillow cover
+Sujni Kantha – The word sujni is derived from the word ‘sojan’ which means sewn cloth. It is an embroidered ceremonial wrap. It can also be used as a sitting mat to honour guests during ceremonial occasions such as weddings. These are also used as bed covers. These are generally rectangular in shape.
+Baytan Kantha – It is used as a wrap for books and valuables. These are generally square in shape. There is a wide border with several rows of human and animal designs. The centre has an elaborate lotus.
+Durjani Kantha – It consists of square wraps which are stitched together to form a wallet. It has an embroidered border and elaborate lotus in the middle. It can be used to hold rosary beads, betel nuts, money, etc.
+Arshilata Kantha – It literally translates to mirror Kantha, but its utility is to wrap and cover. These wraps are used for mirrors and combs, and are narrower and rectangular. It has a wide border on all four sides.
+Rumal Kantha – Like its name suggests, it is used as a handkerchief. Its centre consists of a lotus with other traditional motifs around it.
+
+" 
+  }
+  },{
+    "@type": "Question",
+    "name": "What kind of materials are required for Kantha embroidery? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The rural women reused the pieces of fabric, threads and fashioned them into a new product."
+    }
+  }]
+}
+</script>
+       {% elsif collection.title=='Phulkari' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Phulkari?</button>
+<div class="panel">
+Phulkari is an umbrella term used for the various patterns and traditions it involves. It literally means ‘floral work’.
+  </div>  
+  
+<button class="accordion">What is the origin of Phulkari and where is it from?</button>
+<div class="panel">
+The origin of traditional phulkari has not been traced yet, though the references go back to the Vedic ages. Anotherr belief is that it was introduced in Kashmir by the Persians. However, the Kashmiri embroidery as we see it today, is different from that of Punjab and Haryana. 
+Phulkari in its present form is the accumulation of the evolution of the embroidery tradition during the reign of Maharaja Ranjit Singh in the 15th century.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Phulkari?</button>
+<div class="panel">
+The phulkari’s have intricate compositions with pleasing and harmonious colours. The designs are geometric and stylised. Most of the motifs are inspired by life existing around the artists, and so are their names. Such as karela bagh, mirchi bagh, chandrama bagh, kakri bagh, dhania bagh, mor bagh, tota bagh, etc.
+  </div> 
+  
+  <button class="accordion">What are the different types of stitches in Phulkari?</button>
+<div class="panel">
+The different phulkari’s can be divided as follows:
+
+Thirma – Embroidered on a white base, it was worn by the older women and the widows.
+Chope – It was gifted by the maternal grandmother on her granddaughter’s last bath before her wedding.
+Suber – Similar to Chope, it was gifted to the bride by her maternal grandmother, to be worn during her phera.
+Varida bagh – It was gifted by either the mother-in-law, or the grandmother of the groom to the bride when she entered her new household. It is done on a red background with yellow silk thread in small lozenges.
+Dasharn dwar – It was donated to religious places upon the fulfilment of a wish.
+Sainchi – It represents the rural life in the villages of Punjab. These were used for daily wear.
+Til Patra – It was gifted to the domestic servants on the auspicious occasions, such as marriages.
+ </div> 
+  
+<button class="accordion">What are the different steps involved in Phulkari Embroidery?</button>
+<div class="panel">
+Phulkari is worked entirely from the back in geometric, floral or figural motifs. A combination of these is called phulkari chaddar or a woman’s veil cloth. It is exchanged as a gift during weddings or heirloom.
+  </div>
+  
+  <button class="accordion">What kind of colours are required for Phulkari embroidery?</button>
+<div class="panel">
+The Phulkaris are brightly coloured, and the most often used shades are yellow, gold, red, orange, cerise, deep blue and white. The motifs are a geometric nuance as the embroidery is done over counted threads of fabric. This is done in such a fashion that even the empty spaces emerge as motifs or the outlines.
+  </div>
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Phulkari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Phulkari is an umbrella term used for the various patterns and traditions it involves. It literally means ‘floral work’."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Phulkari and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The origin of traditional phulkari has not been traced yet, though the references go back to the Vedic ages. Anotherr belief is that it was introduced in Kashmir by the Persians. However, the Kashmiri embroidery as we see it today, is different from that of Punjab and Haryana. 
+Phulkari in its present form is the accumulation of the evolution of the embroidery tradition during the reign of Maharaja Ranjit Singh in the 15th century. 
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Phulkari? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The phulkari’s have intricate compositions with pleasing and harmonious colours. The designs are geometric and stylised. Most of the motifs are inspired by life existing around the artists, and so are their names. Such as karela bagh, mirchi bagh, chandrama bagh, kakri bagh, dhania bagh, mor bagh, tota bagh, etc.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different types of stitches in Phulkari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The different phulkari’s can be divided as follows:
+
+Thirma – Embroidered on a white base, it was worn by the older women and the widows.
+Chope – It was gifted by the maternal grandmother on her granddaughter’s last bath before her wedding.
+Suber – Similar to Chope, it was gifted to the bride by her maternal grandmother, to be worn during her phera.
+Varida bagh – It was gifted by either the mother-in-law, or the grandmother of the groom to the bride when she entered her new household. It is done on a red background with yellow silk thread in small lozenges.
+Dasharn dwar – It was donated to religious places upon the fulfilment of a wish.
+Sainchi – It represents the rural life in the villages of Punjab. These were used for daily wear.
+Til Patra – It was gifted to the domestic servants on the auspicious occasions, such as marriages.
+
+" 
+  }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Phulkari Embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Phulkari is worked entirely from the back in geometric, floral or figural motifs. A combination of these is called phulkari chaddar or a woman’s veil cloth. It is exchanged as a gift during weddings or heirloom.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of colours are required for Phulkari embroidery? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Phulkaris are brightly coloured, and the most often used shades are yellow, gold, red, orange, cerise, deep blue and white. The motifs are a geometric nuance as the embroidery is done over counted threads of fabric. This is done in such a fashion that even the empty spaces emerge as motifs or the outlines.
+"
+    }
+  }]
+}
+</script>
+  
+         {% elsif collection.title=='Zardozi' %} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Zardozi?</button>
+<div class="panel">
+Zardozi is a form of metal-thread embroidery most famous in the state of Lucknow. It is also practiced in parts of Farrukhabad, Chennai, and Bhopal It is a fine technique of embroidery which is used to add a touch of royalty to the fabric
+  </div>  
+  
+<button class="accordion">What is the origin of Zardozi and where is it from?</button>
+<div class="panel">
+The embroidery originated in Persia and it translates to ‘zar’ which means gold and ‘dozi’ meaning embroidery.
+Even though the Zardozi as we know it today has Persian roots, silver and gold thread weaving was also done in ancient India. According to some historians, the Hiranya, or the sacred gold cloth, is the present-day equivalent of the zari embroidery. The 6th-century Acharanga Sutra, sacred Jain literature mentions that gold-embroidered clothes should not be used by the monks. Marco Polo in the 13th century writes about the fabrics ‘skillfully embroidered with gold and silver wire’ from the Tamil-Pandya kingdom.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Zardozi?</button>
+<div class="panel">
+The motifs are majorly based on nature, such as leaves, flowers, fruits, animals, and birds. One of the most common motifs is the mango, or kairi. Also common are geometrical patterns, jalis, paisleys inspired from the Persian designs.
+  </div> 
+  
+  <button class="accordion">What are the different steps involved in Zardozi Embroidery?</button>
+<div class="panel">
+The required design is traced on a fabric. Usually, silk, organza, velvet, or satin is used for this process. The entire design is poked with a needle and then outlined. It is followed by fixing the fabric on the adda so that the fabric does not move. This requires the artists to keep the tools, needles, curved hooks, wires, threads, sequins, gems, beads at hand’s reach.
+
+The zari for zardozi is made by flattening the gold and silver into wires called ‘badla’. It is then wrapped around silk threads. The resulting gold thread is also called sunehri, while the silver thread is called rupehri. </div> 
+  
+<button class="accordion">What are the different steps involved in Phulkari Embroidery?</button>
+<div class="panel">
+Zardozi traditionally uses threads made of gold, silver, or copper. The thread is held at the reverse side of the fabric, while the aari (needle) is held at the top. Along with the metallic threads, the craftsmen also use beads, pearls, sequins, precious and semi-precious stones to make intricate designs.
+  </div>
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Zardozi?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zardozi is a form of metal-thread embroidery most famous in the state of Lucknow. It is also practiced in parts of Farrukhabad, Chennai, and Bhopal It is a fine technique of embroidery which is used to add a touch of royalty to the fabric."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Zardozi and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The embroidery originated in Persia and it translates to ‘zar’ which means gold and ‘dozi’ meaning embroidery.
+Even though the Zardozi as we know it today has Persian roots, silver and gold thread weaving was also done in ancient India. According to some historians, the Hiranya, or the sacred gold cloth, is the present-day equivalent of the zari embroidery. The 6th-century Acharanga Sutra, sacred Jain literature mentions that gold-embroidered clothes should not be used by the monks. Marco Polo in the 13th century writes about the fabrics ‘skillfully embroidered with gold and silver wire’ from the Tamil-Pandya kingdom.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Zardozi?  ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The motifs are majorly based on nature, such as leaves, flowers, fruits, animals, and birds. One of the most common motifs is the mango, or kairi. Also common are geometrical patterns, jalis, paisleys inspired from the Persian designs."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Zardozi Embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The required design is traced on a fabric. Usually, silk, organza, velvet, or satin is used for this process. The entire design is poked with a needle and then outlined. It is followed by fixing the fabric on the adda so that the fabric does not move. This requires the artists to keep the tools, needles, curved hooks, wires, threads, sequins, gems, beads at hand’s reach.
+
+The zari for zardozi is made by flattening the gold and silver into wires called ‘badla’. It is then wrapped around silk threads. The resulting gold thread is also called sunehri, while the silver thread is called rupehri." 
+  }
+  },{
+    "@type": "Question",
+    "name": "What kind of materials are required for Zardozi embroidery? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zardozi traditionally uses threads made of gold, silver, or copper. The thread is held at the reverse side of the fabric, while the aari (needle) is held at the top. Along with the metallic threads, the craftsmen also use beads, pearls, sequins, precious and semi-precious stones to make intricate designs.
+"
+    }
+  }]
+}
+</script>
+  
+       {% elsif collection.title=='Kashidakari'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Kashidakari?</button>
+<div class="panel">
+Kashidakari is the most famous embroidery of the Kashmir valley. The term ‘kashidakari’ literally means ‘needle work’.The term Kashidakari is used as an umbrella term which covers all the different types of embroideries.
+  </div>  
+  
+<button class="accordion">What is the origin of Kashidakari and where is it from?</button>
+<div class="panel">
+The craft has been around us for centuries, being passed on from generation to generation, but there is no known specimen earlier than 1800 CE.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Kashidakari?</button>
+<div class="panel">
+The motifs are inspired from their geographical surroundings and what the artists saw around them. They are inspired from the birds such as parrots, woodpeckers and kingfishers; the floral motifs are inspired from lotus, lily, saffron flower, iris and tulips. The other designs include grapes, plums, almonds and cherries. An important motif in the Kashmir region is the chinar leaf.
+  </div> 
+  
+  <button class="accordion">What are the different types of stitches in Kashidakari?</button>
+<div class="panel">
+The motifs are inspired from their geographical surroundings and what the artists saw around them. They are inspired from the birds such as parrots, woodpeckers and kingfishers; the floral motifs are inspired from lotus, lily, saffron flower, iris and tulips. The other designs include grapes, plums, almonds and cherries. An important motif in the Kashmir region is the chinar leaf.
+  </div> 
+  
+<button class="accordion">What are the different steps involved in Kashidakari Embroidery?</button>
+<div class="panel">
+It uses many different embroidery techniques such as crewel or ari work, rezkar, tilla, sozni and dori work. Sozni embroider uses fly stitch, stem stitch and darning stitches. The ari embroidery uses aari to fill in the motifs with chain stitch.  It uses stitches such as chain stitches or zalakdodozi, open work or doria work, buttonhole stitch or vatachik and gold work or talibar. The embroidery is used for phirans or the woolen kurtas and namdahs or the woolen rugs and stoles.
+  </div>
+  
+<button class="accordion">What are the different steps involved in Kashidakari Embroidery?</button>
+<div class="panel">
+It uses many different embroidery techniques such as crewel or ari work, rezkar, tilla, sozni and dori work. Sozni embroider uses fly stitch, stem stitch and darning stitches. The ari embroidery uses aari to fill in the motifs with chain stitch.  It uses stitches such as chain stitches or zalakdodozi, open work or doria work, buttonhole stitch or vatachik and gold work or talibar. The embroidery is used for phirans or the woolen kurtas and namdahs or the woolen rugs and stoles.
+  </div>
+  
+  <button class="accordion">What kind of materials are required for Kashidakari embroidery?</button>
+<div class="panel">
+It is done using a single thread on fabrics such as silk, wool or cotton using thick threads.
+The colours used are safed (white), zingari (green), uda (purple), firozi (blue) and gulnar (crimson).
+  </div>
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Kashidakari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Kashidakari is the most famous embroidery of the Kashmir valley. The term ‘kashidakari’ literally means ‘needle work’.The term Kashidakari is used as an umbrella term which covers all the different types of embroideries."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Kashidakari and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The craft has been around us for centuries, being passed on from generation to generation, but there is no known specimen earlier than 1800 CE."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Kashidakari? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The motifs are inspired from their geographical surroundings and what the artists saw around them. They are inspired from the birds such as parrots, woodpeckers and kingfishers; the floral motifs are inspired from lotus, lily, saffron flower, iris and tulips. The other designs include grapes, plums, almonds and cherries. An important motif in the Kashmir region is the chinar leaf.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different types of stitches in Kashidakari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The motifs are inspired from their geographical surroundings and what the artists saw around them. They are inspired from the birds such as parrots, woodpeckers and kingfishers; the floral motifs are inspired from lotus, lily, saffron flower, iris and tulips. The other designs include grapes, plums, almonds and cherries. An important motif in the Kashmir region is the chinar leaf.
+" 
+  }
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Kashidakari Embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It uses many different embroidery techniques such as crewel or ari work, rezkar, tilla, sozni and dori work. Sozni embroider uses fly stitch, stem stitch and darning stitches. The ari embroidery uses aari to fill in the motifs with chain stitch.  It uses stitches such as chain stitches or zalakdodozi, open work or doria work, buttonhole stitch or vatachik and gold work or talibar. The embroidery is used for phirans or the woolen kurtas and namdahs or the woolen rugs and stoles."
+    }
+  },{
+    "@type": "Question",
+    "name": "What kind of materials are required for Kashidakari embroidery?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It is done using a single thread on fabrics such as silk, wool or cotton using thick threads.
+The colours used are safed (white), zingari (green), uda (purple), firozi (blue) and gulnar (crimson).
+"
+    }
+  }]
+}
+</script>
+
+  {% elsif collection.title=='Chikankari'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Chikankari?</button>
+<div class="panel">
+The term chikankari is derived from the Persian word chikan, which means embroidery on garments and kari, which means work.
+  </div>  
+  
+<button class="accordion">What is the origin of Chikankari and where is it from?</button>
+<div class="panel">
+There are no direct historical texts which document the arrival and development of chikankari in India. However, there are two different narratives as for its origin. The first and most famous narrative attributes its origins to the Mughal empress Noor Jahan which was later adopted by the Nawabs of Lucknow. While the second confers it to a sufi saint who taught the craft to a man in return for his hospitality. Yet another belief is that it originated in the East Bengal province, where chikan means fine.
+  </div> 
+  
+<button class="accordion">What are the main themes and motifs in Chikankari?</button>
+<div class="panel">
+Inspiration for the various types of motifs comes from what the embroiders see around them, their local flora and fauna. Such as the chameli phool, karn phool or earrings, cowries, murri or puffed rice, dhaniya or coriander seeds, peepal leaves, lotus, marigold, lillies turank, akheri or paisley. The crescent moon is used for prayer caps and has religious significance. The motifs are also inspired from the mountains, rivers, tree of life among others. Local fauna has also inspired the chikankari motifs as seen in the depiction of realistic or symbolic fish, as well as peacocks. The local Islamic architecture inspired the embroiders to make intricate jail patterns on the fabric.
+  </div> 
+  
+  
+<button class="accordion">What are the different types of stitches in Chikankari?</button>
+<div class="panel">
+There are as many as 40 different stitches used in Chikankari. The most famous stitches categories are flat stitch, embossed stitch and jaali stitch.There are as many as 40 different stitches used in Chikankari. The most famous stitches categories are flat stitch, embossed stitch and jaali stitch.
+    </div>
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Chikankari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The term chikankari is derived from the Persian word chikan, which means embroidery on garments and kari, which means work."
+    }
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Chikankari and where is it from?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are no direct historical texts which document the arrival and development of chikankari in India. However, there are two different narratives as for its origin. The first and most famous narrative attributes its origins to the Mughal empress Noor Jahan which was later adopted by the Nawabs of Lucknow. While the second confers it to a sufi saint who taught the craft to a man in return for his hospitality. Yet another belief is that it originated in the East Bengal province, where chikan means fine.
+"
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Chikankari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Inspiration for the various types of motifs comes from what the embroiders see around them, their local flora and fauna. Such as the chameli phool, karn phool or earrings, cowries, murri or puffed rice, dhaniya or coriander seeds, peepal leaves, lotus, marigold, lillies turank, akheri or paisley. The crescent moon is used for prayer caps and has religious significance. The motifs are also inspired from the mountains, rivers, tree of life among others. Local fauna has also inspired the chikankari motifs as seen in the depiction of realistic or symbolic fish, as well as peacocks. The local Islamic architecture inspired the embroiders to make intricate jail patterns on the fabric."
+    }
+  },{
+    "@type": "Question",
+    "name": "What are the different types of stitches in Chikankari?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are as many as 40 different stitches used in Chikankari. The most famous stitches categories are flat stitch, embossed stitch and jaali stitch.
+"
+    }
+  }]
+}
+</script>
+
+
+
+  
+    
+       {% elsif collection.title=='Pichwai Art'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Pichwai Art?
+</button>
+<div class="panel">
+The term Pichwai is a Hindi word, literally meaning “of behind “(pich-back and wai-of), a traditional art form practiced in Nathdwara, Rajasthan. The Pichwai is an intricate painting that depicts theatrical scenes from Lord Krishna’s life, typically hung behind the sanctum of his own manifestation, Shrinathji - the youthful manifestation of Krishna.
+</div>  
+  
+<button class="accordion">What is the origin of Pichwai art and where is Pichwai Art from?
+</button>
+<div class="panel">
+In the 15th century, perhaps as a reaction to the increasingly ascetic direction in which Hinduism was going, there was born in North India, a new off-set of Krishna worship called the Pushti Marg, or the Path of Grace. Due to its philosophical belief of monism, the Pushti Marg maintains that all existence is derived from a single Supreme Power and that all living beings carry its essence within them. Pushti which means God’s grace and lila meaning the revelation of himself in his divine play is where Bhakti lies, the path to the adoration of Krishna. According to the popular legend, Krishna as a child lifted the Govardhan Parvat on his little finger to save the villagers of Vrindavan from the thunderstorms and flood. This episode is of crucial relevance to this artform and depicted as Shrinathji, the childhood form of Lord Krishna. The main Pushti Marg swaroop (form) of Shrinathji represents Krishna at the age of seven.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Pichwai art? </button>
+<div class="panel">
+Creating a pichwai can take several months, and requires immense skill, as the smallest details need to be painted with precision. The themes vary from Lord Krishna childhood tales, Radha Krishna paintings and various festivals celebrating Krishna, like Janmashtami, Govardhan Puja, Sharad Purnima, Holi, Annakut etc. Although most pichwais feature Krishna in his various swaroops, particularly those of childhood and adolescence, and primarily that of Shrinathji, some hangings and paintings also feature other important figures in the Pushti Marg pantheon or history, including specific goswamis or priests.
+</div> 
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Pichwai Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The term Pichwai is a Hindi word, literally meaning “of behind “(pich-back and wai-of), a traditional art form practiced in Nathdwara, Rajasthan. The Pichwai is an intricate painting that depicts theatrical scenes from Lord Krishna’s life, typically hung behind the sanctum of his own manifestation, Shrinathji - the youthful manifestation of Krishna.
+"}
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Pichwai art and where is Pichwai Art from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In the 15th century, perhaps as a reaction to the increasingly ascetic direction in which Hinduism was going, there was born in North India, a new off-set of Krishna worship called the Pushti Marg, or the Path of Grace. Due to its philosophical belief of monism, the Pushti Marg maintains that all existence is derived from a single Supreme Power and that all living beings carry its essence within them. Pushti which means God’s grace and lila meaning the revelation of himself in his divine play is where Bhakti lies, the path to the adoration of Krishna. According to the popular legend, Krishna as a child lifted the Govardhan Parvat on his little finger to save the villagers of Vrindavan from the thunderstorms and flood. This episode is of crucial relevance to this artform and depicted as Shrinathji, the childhood form of Lord Krishna. The main Pushti Marg swaroop (form) of Shrinathji represents Krishna at the age of seven.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Pichwai art?  ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Creating a pichwai can take several months, and requires immense skill, as the smallest details need to be painted with precision. The themes vary from Lord Krishna childhood tales, Radha Krishna paintings and various festivals celebrating Krishna, like Janmashtami, Govardhan Puja, Sharad Purnima, Holi, Annakut etc. Although most pichwais feature Krishna in his various swaroops, particularly those of childhood and adolescence, and primarily that of Shrinathji, some hangings and paintings also feature other important figures in the Pushti Marg pantheon or history, including specific goswamis or priests.
+"
+    }
+  }]
+}
+</script>
+
+       {% elsif collection.title=='Thangka Art'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Thangka Art?
+</button>
+<div class="panel">
+A thangka, is a Tibetan Buddhist painting on cotton, silk appliqué, usually depicting a Buddhist deity, scene, or mandala.
+</div>  
+  
+<button class="accordion">What is the origin of Thangka art and where is Thangka Art from?
+
+</button>
+<div class="panel">
+The Tibetan Thangka painting finds its roots from the folk arts of pata and mandala. Even with its Indian base, it reached its zenith under the Nepalese and the Chinese artists. In the 7th century, buddhism developed as an art form under the reign of Songsten Gampo. His atelier included both Nepalese and Chinese artists and developed a style which included elements from both. During the 11th century, the Kashmiri monk Rinchen Zangpo introduced artists from Kashmir to Tibet. Together the Thangka painting was influenced by the central Indian, Kashmiri, Nepalese and its own indigenous art style which continued well into the 17th century. From the beginnings of the 18th century, the Chinese influence on the painting tradition also started to be felt.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs?</button>
+<div class="panel">
+The major theme in Thanks paintings remain Budhha and his life stories.
+</div> 
+  
+<button class="accordion">What are the different styles of Thangka art?</button>
+<div class="panel">
+The three major Tibetan painting styles are Menri, Mensar and Karma Gadri. Since the Thangka paintings are governed by the iconographic rules, the three styles can be differentiated by their backgrounds. Menri style includes the representation of nature in a flow with much less focus on the details. The Mensar school is characterised by the details and round, thick clouds. The karma gadri paintings are not as prevalent today as the other two. They are depicted in a realistic manner and are not stylised. There is a lot of open space and the green colour pre-dominates.
+</div> 
+
+<button class="accordion">What are the different steps involved in Thangka  art?
+</button>
+<div class="panel">
+The first stage in any Thangka are the central lines. The central vertical line is the most important axis. It forms the centre of the composition and the main figure. There are 8 major lines: 2 diagonals, the vertical and horizontal axis, the four outer borders. The deities are arranged according to the buddhist tradition in the order of: buddhas, boddhisattvas, goddesses, wrathful figures, and humans. Once the figures are drawn, the surrounding elements are made.
+The paint is first applied to the background elements and then moved towards the main figures. Paints are applied one at a time and the lighter shades are applied first. The basic sequence of colours is blue, green, red, orange, yellow, ochre, brown, pink, white and gold. Once the initial layer of paint has dried, the Thangka is painted. There are two methods of shading: dry and wet. The outlining of the Thangka is done in the end. The colours for outlines vary according to the paint applied, from indigo to white.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Thangka art? 
+</button>
+<div class="panel">
+Since Thangka is a piece of meditation, there is a set of rules and instructions that are to be followed before the artist begins painting it. Traditionally there are a lot of rules such as abstaining from meat, onion and garlic, alcohol, etc. However, in the most basic sense, it requires us to have a clean and pure mind, body and surrounding. While painting a Thangka, one should abstain from having impure thoughts. The most common way of doing this is by meditating.
+</div> 
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Thangka Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A thangka, is a Tibetan Buddhist painting on cotton, silk appliqué, usually depicting a Buddhist deity, scene, or mandala.
+"}
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Thangka art and where is Thangka Art from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Tibetan Thangka painting finds its roots from the folk arts of pata and mandala. Even with its Indian base, it reached its zenith under the Nepalese and the Chinese artists. In the 7th century, buddhism developed as an art form under the reign of Songsten Gampo. His atelier included both Nepalese and Chinese artists and developed a style which included elements from both. During the 11th century, the Kashmiri monk Rinchen Zangpo introduced artists from Kashmir to Tibet. Together the Thangka painting was influenced by the central Indian, Kashmiri, Nepalese and its own indigenous art style which continued well into the 17th century. From the beginnings of the 18th century, the Chinese influence on the painting tradition also started to be felt.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The major theme in Thanks paintings remain Budhha and his life stories.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different styles of Thangka art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The three major Tibetan painting styles are Menri, Mensar and Karma Gadri. Since the Thangka paintings are governed by the iconographic rules, the three styles can be differentiated by their backgrounds. Menri style includes the representation of nature in a flow with much less focus on the details. The Mensar school is characterised by the details and round, thick clouds. The karma gadri paintings are not as prevalent today as the other two. They are depicted in a realistic manner and are not stylised. There is a lot of open space and the green colour pre-dominates.
+
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Thangka  art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The first stage in any Thangka are the central lines. The central vertical line is the most important axis. It forms the centre of the composition and the main figure. There are 8 major lines: 2 diagonals, the vertical and horizontal axis, the four outer borders. The deities are arranged according to the buddhist tradition in the order of: buddhas, boddhisattvas, goddesses, wrathful figures, and humans. Once the figures are drawn, the surrounding elements are made.
+The paint is first applied to the background elements and then moved towards the main figures. Paints are applied one at a time and the lighter shades are applied first. The basic sequence of colours is blue, green, red, orange, yellow, ochre, brown, pink, white and gold. Once the initial layer of paint has dried, the Thangka is painted. There are two methods of shading: dry and wet. The outlining of the Thangka is done in the end. The colours for outlines vary according to the paint applied, from indigo to white.
+
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Thangka art? 
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Since Thangka is a piece of meditation, there is a set of rules and instructions that are to be followed before the artist begins painting it. Traditionally there are a lot of rules such as abstaining from meat, onion and garlic, alcohol, etc. However, in the most basic sense, it requires us to have a clean and pure mind, body and surrounding. While painting a Thangka, one should abstain from having impure thoughts. The most common way of doing this is by meditating.
+"}
+  }]
+}
+</script>
+
+
+       {% elsif collection.title=='Madhubani'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Madhubani Art?
+</button>
+<div class="panel">
+Madhubani Art (or Mithila painting) is a style of Indian painting, practiced in the Mithila region of India and Nepal. It was named after Madhubani District of Bihar, India which is where it is originated.
+</div>  
+  
+<button class="accordion">What is the origin of Madhubani art and where is Madhubani Art from?
+</button>
+<div class="panel">
+Madhubani painting is said to have developed in the ancient city of Mithila, the birth place of Sita, daughter of king Janak. It is said that the Mithila paintings were commissioned by the king to commemorate the marriage of his daughter to Lord Rama of Ayodhya. It was recognised as kulin art or art of the pure castes. It continues to flourish as a household art, mainly as social customs and practises. Due to the growing demand of this artform, the artists cease to confine themselves to walls and have started painting on canvases, paper and other objects.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Madhubani art?</button>
+<div class="panel">
+The themes for the paintings differ depending on the function or the event that they are painted for. However, the central theme remains love and fertility. All deities of the hindu pantheon and the rural local traditions can be found in the art.
+
+Some of the favoured subjects are – bride surrounded by fishes and other auspicious symbols, bridegroom wearing his nuptial crown, hunting and ploughing scenes, trees, animals, etc.
+
+</div> 
+  
+<button class="accordion">What are the different styles of Madhubani art?
+</button>
+<div class="panel">
+The wall paintings of Madhubani can be divided into figurate and non-figurative wall paintings. The former is more colourful and richer in symbols. The Kohbar has the most illustrious wall drawings. It is of three types: Kohbar of north Bihar/ madhubani style; Kohbar of eastern Uttar Pradesh; border drawings with creeper motifs.
+</div> 
+
+<button class="accordion">What are the different steps involved in Madhubani art?
+</button>
+<div class="panel">
+Thin layers of mud and cow dung are used to coat the surface. It acts as a preservative and a strengthening agent. It is considered auspicious and a harbinger of prosperity. It is followed by imagery made using powdered rice and paint using fingers, bamboo twigs, cotton rags and nowadays pens. Traditionally no space is left in the painting. It is filled with flowers, birds, animals, tattoo designs etc.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Madhubani art? 
+</button>
+<div class="panel">
+The colours are governed by the five basic elements of life – earth, water, fire, sky, and air. These are denoted by various shades; earth by yellow, water by white, fire by red, sky by blue and air by black. These elements are also explained using three basic forms – triangle, circle and square. A triangle that has its tip towards the sky denotes fire and the one with its tip downwards depict water. Square depicts the earth. The circumference of the circle is used to denote air, while the inner portion depicts sky. Sky and air, fire and water are inter-related. All these forms emerge from a bindu, which represents Shiva and Shakti. A mishra bindu is formed when the formless Shiva visualises his form in Shakti.
+</div> 
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Madhubani Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Madhubani Art (or Mithila painting) is a style of Indian painting, practiced in the Mithila region of India and Nepal. It was named after Madhubani District of Bihar, India which is where it is originated.
+"}
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Madhubani art and where is Madhubani Art from?
+
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Madhubani painting is said to have developed in the ancient city of Mithila, the birth place of Sita, daughter of king Janak. It is said that the Mithila paintings were commissioned by the king to commemorate the marriage of his daughter to Lord Rama of Ayodhya. It was recognised as kulin art or art of the pure castes. It continues to flourish as a household art, mainly as social customs and practises. Due to the growing demand of this artform, the artists cease to confine themselves to walls and have started painting on canvases, paper and other objects.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Madhubani art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The themes for the paintings differ depending on the function or the event that they are painted for. However, the central theme remains love and fertility. All deities of the hindu pantheon and the rural local traditions can be found in the art.
+
+Some of the favoured subjects are – bride surrounded by fishes and other auspicious symbols, bridegroom wearing his nuptial crown, hunting and ploughing scenes, trees, animals, etc.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different styles of Madhubani art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The wall paintings of Madhubani can be divided into figurate and non-figurative wall paintings. The former is more colourful and richer in symbols. The Kohbar has the most illustrious wall drawings. It is of three types: Kohbar of north Bihar/ madhubani style; Kohbar of eastern Uttar Pradesh; border drawings with creeper motifs.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Madhubani art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Thin layers of mud and cow dung are used to coat the surface. It acts as a preservative and a strengthening agent. It is considered auspicious and a harbinger of prosperity. It is followed by imagery made using powdered rice and paint using fingers, bamboo twigs, cotton rags and nowadays pens. Traditionally no space is left in the painting. It is filled with flowers, birds, animals, tattoo designs etc.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Madhubani art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colours are governed by the five basic elements of life – earth, water, fire, sky, and air. These are denoted by various shades; earth by yellow, water by white, fire by red, sky by blue and air by black. These elements are also explained using three basic forms – triangle, circle and square. A triangle that has its tip towards the sky denotes fire and the one with its tip downwards depict water. Square depicts the earth. The circumference of the circle is used to denote air, while the inner portion depicts sky. Sky and air, fire and water are inter-related. All these forms emerge from a bindu, which represents Shiva and Shakti. A mishra bindu is formed when the formless Shiva visualises his form in Shakti.
+"}
+  }]
+}
+</script>
+  
+
+       {% elsif collection.title=='Mata ni Pachedi'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Mata ni Pachedi art?
+</button>
+<div class="panel">
+Mata ni Pachedi in literal terms refers to “behind the mother goddess”. It is a cloth that makes a temple of the goddess. It is an art form from Gujarat.
+</div>    
+<button class="accordion">What is the origin of Mata ni Pachedi art and where is Mata ni Pachedi from?
+</button>
+<div class="panel">
+When people of the nomadic Vaghari community of Gujarat were not allowed to enter temples, they made their own shrines with depictions of the Mother Goddess on cloth. This is believed to be the origin of Mata ni Pachedi.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Mata ni Pachedi? </button>
+<div class="panel">
+The major theme of the paintings remain female deity, especially Indie Goddesses, around which other architectural elements are also inserted in a stylised format.
+</div> 
+  
+<button class="accordion">What are the different styles of Madhubani art?
+</button>
+<div class="panel">
+The wall paintings of Madhubani can be divided into figurate and non-figurative wall paintings. The former is more colourful and richer in symbols. The Kohbar has the most illustrious wall drawings. It is of three types: Kohbar of north Bihar/ madhubani style; Kohbar of eastern Uttar Pradesh; border drawings with creeper motifs.
+</div> 
+
+<button class="accordion">What are the different steps involved in Mata ni Pachedi?
+</button>
+<div class="panel">
+The process involves firstly destarching and soaking the cloth in a harda solution, and preparing the cloth. It is a step by step and an extremely intricate process followed by the artist drawing a detailed draft of the painting using black colour derived from iron on the cloth and then painting it.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Mata ni Pachedi?
+</button>
+<div class="panel">
+All the colours used in the process are naturally made and processed. The major colours being used are Red and Black.
+</div> 
+  </div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Mata ni Pachedi art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mata ni Pachedi in literal terms refers to “behind the mother goddess”. It is a cloth that makes a temple of the goddess. It is an art form from Gujarat."}
+  },{
+    "@type": "Question",
+    "name": "What is the origin of Mata ni Pachedi art and where is Mata ni Pachedi from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "When people of the nomadic Vaghari community of Gujarat were not allowed to enter temples, they made their own shrines with depictions of the Mother Goddess on cloth. This is believed to be the origin of Mata ni Pachedi.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Mata ni Pachedi? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The major theme of the paintings remain female deity, especially Indie Goddesses, around which other architectural elements are also inserted in a stylised format.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Mata ni Pachedi?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The process involves firstly destarching and soaking the cloth in a harda solution, and preparing the cloth. It is a step by step and an extremely intricate process followed by the artist drawing a detailed draft of the painting using black colour derived from iron on the cloth and then painting it.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Mata ni Pachedi?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "All the colours used in the process are naturally made and processed. The major colours being used are Red and Black.
+"}
+  }]
+}
+</script>
+
+
+   {% elsif collection.title=='paintings' %}
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "BreadcrumbList", 
+  "itemListElement": [{
+    "@type": "ListItem", 
+    "position": 1, 
+    "name": "Memeraki",
+    "item": "https://www.memeraki.com/"  
+  },{
+    "@type": "ListItem", 
+    "position": 2, 
+    "name": "Masterclass",
+    "item": "https://www.memeraki.com/collections/paintings"  
+  }]
+}
+</script>
+  
+       {% elsif collection.title=='Pattachitra'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Pattachitra art?
+</button>
+<div class="panel">
+Literally meaning a ‘painting done on cloth’, Pattachitra mainly hails from the state of Odisha. As an artform dating back to the 12th century, it’s utterly fascinating to trace back its roots- to evaluate where it has reached today, it is important to know where it has come from.
+</div>    
+<button class="accordion">What is the origin of Pattachitra art and where is Pattachitra Art from?
+</button>
+<div class="panel">
+Pattachitra came into existence in order to depict Lord Jagannath’s tales. Krishna’s leelas have been an important motif for the paintings as well.The artiste caste of Odisha, the Mahapatras or Maharanas originally began to engage themselves in this art.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Pattachitra art? </button>
+<div class="panel">
+The main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+</div> 
+  
+<button class="accordion">What are the different steps involved in Pattachitra art?
+</button>
+<div class="panel">
+Before the actual process of painting even begins, the artist has to start with the preparation of the canvas on which the painting will take place: the cloth. The cloth is coated with the stone powder of chalk and glue made using tamarind seeds. This is done to give it a soft, smooth finish, making it strong and semi absorbent for the paint.
+A rough sketch of the painting is then made using a brush. The colours to be used majorly in the painting are further applied- they consist of yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+After the colours are filled in, the artists use a black brush to create fine strokes for the finishing. To make the painting durable and water resistant, it is held over a charcoal fire and lacquer is applied to the surface.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Pattachitra art?
+</button>
+<div class="panel">
+The colours to be used majorly in the painting are yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.</div> 
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Pattachitra Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Literally meaning a ‘painting done on cloth’, Pattachitra mainly hails from the state of Odisha. As an artform dating back to the 12th century, it’s utterly fascinating to trace back its roots- to evaluate where it has reached today, it is important to know where it has come from.
+"}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Pattachitra art and where is Pattachitra Art from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pattachitra came into existence in order to depict Lord Jagannath’s tales. Krishna’s leelas have been an important motif for the paintings as well.The artiste caste of Odisha, the Mahapatras or Maharanas originally began to engage themselves in this art.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Pattachitra art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Pattachitra art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Before the actual process of painting even begins, the artist has to start with the preparation of the canvas on which the painting will take place: the cloth. The cloth is coated with the stone powder of chalk and glue made using tamarind seeds. This is done to give it a soft, smooth finish, making it strong and semi absorbent for the paint.
+A rough sketch of the painting is then made using a brush. The colours to be used majorly in the painting are further applied- they consist of yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+After the colours are filled in, the artists use a black brush to create fine strokes for the finishing. To make the painting durable and water resistant, it is held over a charcoal fire and lacquer is applied to the surface.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Pattachitra art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colours to be used majorly in the painting are yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack."}
+  }]
+}
+</script>
+
+       {% elsif collection.title=='Tanjore'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Tanjore art?
+</button>
+<div class="panel">
+The Tanjore paintings are popularly known as Paladai Padam, which means painting on a wooden plank.
+</div>    
+<button class="accordion">What is the origin of Tanjore art and where is Tanjore Art from?
+</button>
+<div class="panel">
+The painting tradition developed when the Chola empire was at its zenith. It originated in Thanjavur, a small town about 300 kilometers from Chennai which gave it the name ‘Thanjavur paintings’, now popularly known as Tanjore paintings. The religious paintings of Thanjavur show that spirituality is the essence of all creative work. The art continued to flourish from the 16th to the 18th century under the patronage of successive rulers such as the Nayakas, Marathas, Rajus of Tanjore and Trichi, and Naidus of Madurai.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Tanjore art? </button>
+<div class="panel">
+The themes of Tanjore painting are based on Hindu gods and goddesses. The most famous of the deities is Krishna, who is depicted in various styles and poses. Also prevalent are scenes from the puranas and other religious scriptures.The themes for Tanjore paintings are inspired from the classical dances, literature and other paintings of the region.
+</div> 
+  
+<button class="accordion">Is real gold used in making Tanjore paintings?
+</button>
+<div class="panel">
+Yes,real gold foil work is used in the making.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Tanjore art?
+</button>
+<div class="panel">
+Tanjore Paintings have a bright colour scheme, use of precious and semi-precious stone work, and real gold foil work which give a life to the paintings.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Tanjore Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Tanjore paintings are popularly known as Paladai Padam, which means painting on a wooden plank.
+"}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Tanjore art and where is Tanjore Art from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The painting tradition developed when the Chola empire was at its zenith. It originated in Thanjavur, a small town about 300 kilometers from Chennai which gave it the name ‘Thanjavur paintings’, now popularly known as Tanjore paintings. The religious paintings of Thanjavur show that spirituality is the essence of all creative work. The art continued to flourish from the 16th to the 18th century under the patronage of successive rulers such as the Nayakas, Marathas, Rajus of Tanjore and Trichi, and Naidus of Madurai."}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Tanjore art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The themes of Tanjore painting are based on Hindu gods and goddesses. The most famous of the deities is Krishna, who is depicted in various styles and poses. Also prevalent are scenes from the puranas and other religious scriptures.The themes for Tanjore paintings are inspired from the classical dances, literature and other paintings of the region.
+"}
+  },{
+    "@type": "Question",
+    "name": "Is real gold used in making Tanjore paintings?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes,real gold foil work is used in the making.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Pattachitra art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tanjore Paintings have a bright colour scheme, use of precious and semi-precious stone work, and real gold foil work which give a life to the paintings.
+"}
+  }]
+}
+</script>
+
+       {% elsif collection.title=='Sanjhi'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Sanjhi Art?
+</button>
+<div class="panel">
+Sanjhi paper cutting is the traditional craft practiced in the region of Mathura-Vrindavan.
+The word Sanjhi is derived from the word saaj, saja or sajavat, all of which mean decoration. Alternatively, it also means sanjha or evening, which is the time when Sanjhi is traditionally made.
+</div>    
+<button class="accordion">What is the origin of Sanjhi art and where is Sanjhi Art from?
+</button>
+<div class="panel">
+The craft of Sanjhi originated as a folk art form practiced by the unmarried girls for a good husband and children. The folk tradition involves the creation of Sanjhi on the walls using stones and mirrors on a cow dung base.
+Eventually with the rise of Vallabhacharya sect and the growth of Bhakti movement in North India in the 15th an 16th century, the craft came to be associated with Vaishnavas in the form of temple traditions. It takes it roots back to the divine relationship of Radha-Krishna. Hence, the two traditions of Sanjhi are folk tradition and temple tradition.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Sanjhi art? </button>
+<div class="panel">
+The motifs used in sanjhi revolve around the stories of Krishna up until his departure from Vrindavan. Hence, the scenes depicted are from Vrindavan and include peacocks, monkeys, cows, kadamba trees, and the river Yamuna. The sanjhi also have creepers and floral borders. Later it came to include the motifs inspired from the Mughal patterns such as jali work, and the Persian way of depicting animals and flowers.
+</div> 
+  
+<button class="accordion">What are the different steps involved in Sanjhi art?
+</button>
+<div class="panel">
+The process of preparing sanjhi involves a lot of precision, even though the only tools used in the process is a pair of scissors. Traditionally, no sketch was prepared for the Sanjhi cuttings and it was prepared based on the thought process and feelings of the artist himself. The creation of sanjhi is an expression of love and devotion to the almighty. Today, the Sanjhi artists are experimenting with different mediums to display the sanjhi such as glass, mirrors and frames.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Sanjhi art?
+</button>
+<div class="panel">
+The process of preparing sanjhi involves a lot of precision, even though the only tools used in the process is a pair of scissors and paper.</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Sanjhi Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sanjhi paper cutting is the traditional craft practiced in the region of Mathura-Vrindavan.
+The word Sanjhi is derived from the word saaj, saja or sajavat, all of which mean decoration. Alternatively, it also means sanjha or evening, which is the time when Sanjhi is traditionally made.
+"}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Sanjhi art and where is Sanjhi Art from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The craft of Sanjhi originated as a folk art form practiced by the unmarried girls for a good husband and children. The folk tradition involves the creation of Sanjhi on the walls using stones and mirrors on a cow dung base.
+Eventually with the rise of Vallabhacharya sect and the growth of Bhakti movement in North India in the 15th an 16th century, the craft came to be associated with Vaishnavas in the form of temple traditions. It takes it roots back to the divine relationship of Radha-Krishna. Hence, the two traditions of Sanjhi are folk tradition and temple tradition.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Sanjhi art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The motifs used in sanjhi revolve around the stories of Krishna up until his departure from Vrindavan. Hence, the scenes depicted are from Vrindavan and include peacocks, monkeys, cows, kadamba trees, and the river Yamuna. The sanjhi also have creepers and floral borders. Later it came to include the motifs inspired from the Mughal patterns such as jali work, and the Persian way of depicting animals and flowers.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Sanjhi art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The process of preparing sanjhi involves a lot of precision, even though the only tools used in the process is a pair of scissors. Traditionally, no sketch was prepared for the Sanjhi cuttings and it was prepared based on the thought process and feelings of the artist himself. The creation of sanjhi is an expression of love and devotion to the almighty. Today, the Sanjhi artists are experimenting with different mediums to display the sanjhi such as glass, mirrors and frames.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Sanjhi art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The process of preparing sanjhi involves a lot of precision, even though the only tools used in the process is a pair of scissors and paper.
+"}
+}]
+}
+</script>
+
+       {% elsif collection.title=='Miniature Paintings'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Miniature painting?
+</button>
+<div class="panel">
+As the name suggests, miniature paintings are colorful handmade paintings painted in small , miniaturised size.
+</div>    
+<button class="accordion">What is the origin of Miniature painting and where is it from?
+</button>
+<div class="panel">
+Miniature paintings originated in India around 750 A.D when the Palas ruled over the eastern part of India. Since religious teachings of the Buddha, accompanied by his images, were written on palm leaves, these paintings became popular. As these paintings were done on palm leaves, they had to be miniature in nature because of space constraints. With the rise of the Mughal Empire, miniature paintings started growing on a level unknown before. Thanks to Akbar’s love for art, Indian miniature paintings combined elements of Persian style of painting, to give rise to the Mughal style of painting. These miniature paintings further evolved with the influence of European paintings in the Mughal court. 
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Miniature painitng? </button>
+<div class="panel">
+One of the outstanding features of these paintings is the intricate brushwork which contributes to their unique identity.
+The most common theme used in the miniature paintings of India comprises the Ragas or a pattern of musical notes, and religious and mythological stories.
+</div> 
+   
+<button class="accordion">What kind of colours and materials are used in Miniature painting?
+</button>
+<div class="panel">
+The colors used in the paintings are derived from various natural sources like vegetables, indigo, precious stones, gold and silver.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Miniature painting?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "As the name suggests, miniature paintings are colorful handmade paintings painted in small , miniaturised size."}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Miniature painting and where is it from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Miniature paintings originated in India around 750 A.D when the Palas ruled over the eastern part of India. Since religious teachings of the Buddha, accompanied by his images, were written on palm leaves, these paintings became popular. As these paintings were done on palm leaves, they had to be miniature in nature because of space constraints. With the rise of the Mughal Empire, miniature paintings started growing on a level unknown before. Thanks to Akbar’s love for art, Indian miniature paintings combined elements of Persian style of painting, to give rise to the Mughal style of painting. These miniature paintings further evolved with the influence of European paintings in the Mughal court. 
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Miniature painting? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "One of the outstanding features of these paintings is the intricate brushwork which contributes to their unique identity.
+The most common theme used in the miniature paintings of India comprises the Ragas or a pattern of musical notes, and religious and mythological stories.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Miniature painting?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colors used in the paintings are derived from various natural sources like vegetables, indigo, precious stones, gold and silver.
+"}
+  }]
+}
+</script>
+  
+       {% elsif collection.title=='Kerala Mural Painting'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Kerala Mural painting?
+</button>
+<div class="panel">
+The word ‘Mural’ in itself is derived from the Latin word ‘Murus’ meaning ‘Walls’. There are almost around 150 temples in Kerala whose walls have been adorned by this artform.
+</div>    
+<button class="accordion">What is the origin of Kerala Mural painting and where is it from?
+</button>
+<div class="panel">
+The murals of Kerala are paintings mostly made on temple walls which date back to the 8th Century.The oldest mural can be found in Thirunadhikkara Cave Temple in Tamil Nadu- a 9th century rock-cut cave temple near Kanyakumari. 
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Kerala Mural painitng? </button>
+<div class="panel">
+Illustrating narratives from Hindu mythology, Apart from depicting characters, the paintings also show trees, animals and other aspects of nature in order to set a background for the narrative to settle in.
+</div> 
+  
+<button class="accordion">What are the different steps involved in Kerala Mural painting?
+</button>
+<div class="panel">
+The technique involved in making the paintings is quite specific in itself, from preparing the ground by plastering the walls using different substances to sketching the outline, applying colours and finalising the decorations. And because the artwork is mainly inspired by  mythology,a lot of attention needs to be offered during the process of sketching and colouring- for the sketches now not only carry an aesthetic purpose, but also a sense of divinity.The aesthetics thus need to be moulded in a way so that the paintings are further able to establish an aura of spirituality. 
+</div> 
+   
+<button class="accordion">What kind of colours and materials are used in Kerala Mural painting?
+</button>
+<div class="panel">
+The process of making the paintings is intricate and involves using symmetrical motifs- ensuring that the final result is neat and tidy. The dyes used in the process are entirely natural, prepared from mineral pigments and vegetables. The five colours used mainly in the paintings are- yellow, red, green, black and white.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Kerala Mural painting?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The word ‘Mural’ in itself is derived from the Latin word ‘Murus’ meaning ‘Walls’. There are almost around 150 temples in Kerala whose walls have been adorned by this artform.
+"},{
+    "@type": "Question",
+    "name": "What is the origin of Kerala Mural painting and where is it from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The murals of Kerala are paintings mostly made on temple walls which date back to the 8th Century.The oldest mural can be found in Thirunadhikkara Cave Temple in Tamil Nadu- a 9th century rock-cut cave temple near Kanyakumari. 
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Kerala Mural painting? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Illustrating narratives from Hindu mythology, Apart from depicting characters, the paintings also show trees, animals and other aspects of nature in order to set a background for the narrative to settle in.
+"},{
+    "@type": "Question",
+    "name": "What are the different steps involved in Kerala Mural painting?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The technique involved in making the paintings is quite specific in itself, from preparing the ground by plastering the walls using different substances to sketching the outline, applying colours and finalising the decorations. And because the artwork is mainly inspired by  mythology,a lot of attention needs to be offered during the process of sketching and colouring- for the sketches now not only carry an aesthetic purpose, but also a sense of divinity.The aesthetics thus need to be moulded in a way so that the paintings are further able to establish an aura of spirituality. 
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Kerala Mural painting?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The process of making the paintings is intricate and involves using symmetrical motifs- ensuring that the final result is neat and tidy. The dyes used in the process are entirely natural, prepared from mineral pigments and vegetables. The five colours used mainly in the paintings are- yellow, red, green, black and white.
+"}
+  }]
+}
+</script>
+
+       {% elsif collection.title=='Kalighat'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is the origin of Kalighat art and where is it from?
+</button>
+<div class="panel">
+The Kalighat paintings developed in the 19th century in the Bengal presidency. The travelling scroll painters or the patuas had been practising folk art of Pattachitra. The new manners and customs of the British settlers, the revivalist exercises of the Mughal and theatres as well as the use of Sanskrit on stage was absorbed by the rural artists who had migrated to Calcutta and developed it into a popular urban genre. The period of Kalighat paintings coincides with the age of mechanical reproduction in the form of woodcut, lithography, oleography and printing.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Kalighat art? </button>
+<div class="panel">
+The artists primarily depicted what surrounded the artists. Their dietary practices made fish a recurring and common motif in the paintings. Another important element in the Kalighat paintings was the cat. Paintings depicting Cat with a Fish depict the religious hypocrisy, where the cat is a satirical representation of the false aesthetic. The artists also painted the religious figures such as Durga, episodes from the epics, and other sacred texts. Many paintings commented on the priests, perhaps depicting the social customs that prevailed during that period. Babus with their hair groomed in the Albert style, wearing expensive shawls and buckled shoes, smoking their hookahs and sitting on Victorian chairs was a common depiction.
+</div> 
+
+<button class="accordion">What kind of colours and materials are used in Kalighat art?
+</button>
+<div class="panel">
+The Kalighat painters interacted with the colonial paintings and began the use of water colours, shaded figures, folio-sized mill made papers.
+The colours were applied in a sequence, one at a time. The exposed limbs and faces were painted first, followed by the clothes and other detailing.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is the origin of Kalighat art and where is it from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Kalighat paintings developed in the 19th century in the Bengal presidency. The travelling scroll painters or the patuas had been practising folk art of Pattachitra. The new manners and customs of the British settlers, the revivalist exercises of the Mughal and theatres as well as the use of Sanskrit on stage was absorbed by the rural artists who had migrated to Calcutta and developed it into a popular urban genre. The period of Kalighat paintings coincides with the age of mechanical reproduction in the form of woodcut, lithography, oleography and printing."}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Kalighat art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The artists primarily depicted what surrounded the artists. Their dietary practices made fish a recurring and common motif in the paintings. Another important element in the Kalighat paintings was the cat. Paintings depicting Cat with a Fish depict the religious hypocrisy, where the cat is a satirical representation of the false aesthetic. The artists also painted the religious figures such as Durga, episodes from the epics, and other sacred texts. Many paintings commented on the priests, perhaps depicting the social customs that prevailed during that period. Babus with their hair groomed in the Albert style, wearing expensive shawls and buckled shoes, smoking their hookahs and sitting on Victorian chairs was a common depiction.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Kalighat art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Kalighat painters interacted with the colonial paintings and began the use of water colours, shaded figures, folio-sized mill made papers.
+The colours were applied in a sequence, one at a time. The exposed limbs and faces were painted first, followed by the clothes and other detailing.
+"}
+  }]
+}
+</script>
+  
+       {% elsif collection.title=='Warli'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Warli art?
+</button>
+<div class="panel">
+Warli paintings are painted white on mud walls. The paintings are beautifully executed and resembles pre-historic cave paintings in execution and usually depict scenes of human figures engaged in activities like hunting, dancing, sowing and harvesting.
+</div>    
+<button class="accordion">What is the origin of Warli art and where is it from?
+</button>
+<div class="panel">
+Everyone is familiar with the paintings of Bhimbetka, Madhya Pradesh. The bold lines used to make the paintings are successful in depicting movement as well. There is a stylistic similarity with the paintings found in the pre-historic caves to the paintings done by the tribes of Warli, Chittara and Saora. Hence, these are considered as successors and descendants of the original inhabitants of the Bhimbetka caves.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Warli art? </button>
+<div class="panel">
+The themes symbolise the nature-cultural relationship, social relationship, material culture, religious symbols, dance forms, marriage practises, family life, hunting games, deities, etc.
+</div> 
+  
+<button class="accordion">What are the different styles of Warli art? </button>
+<div class="panel">
+There are two types of Warli painting – ritualistic and non-ritualistic. The ritualistic paintings are the ones which connect the past, present and the future. These paintings are sacred and ritualistic, for example Lagna Chowk, Dev Chowk, Kanna, etc. The non-ritualistic paintings are not associated with any ritual before, during or after the painting. These are done for decorative purposes, the example of this is hunting scenes, agricultural activities, festival scenes like holi, etc.
+</div> 
+  
+<button class="accordion">What are the different steps involved in Warli art?
+</button>
+<div class="panel">
+The technique of Warli is uniquely simple. The mud surface of the house is cleaned and coated with cow-dung; post which it is coated with geru. The figures are then painted on it using white obtained by rice paste.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Warli art?
+</button>
+<div class="panel">
+Unlike other folk painting traditions, the Warli paintings do not use any primary colour. Nor do they narrate any mythological or regional folk story. There is no religious iconography, and it represents nature as the ultimate reality, and depicts the interdependence between humans and nature.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Warli Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Warli paintings are painted white on mud walls. The paintings are beautifully executed and resembles pre-historic cave paintings in execution and usually depict scenes of human figures engaged in activities like hunting, dancing, sowing and harvesting.
+"}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Warli art and where is it from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Everyone is familiar with the paintings of Bhimbetka, Madhya Pradesh. The bold lines used to make the paintings are successful in depicting movement as well. There is a stylistic similarity with the paintings found in the pre-historic caves to the paintings done by the tribes of Warli, Chittara and Saora. Hence, these are considered as successors and descendants of the original inhabitants of the Bhimbetka caves.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Warli art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The themes symbolise the nature-cultural relationship, social relationship, material culture, religious symbols, dance forms, marriage practises, family life, hunting games, deities, etc.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different styles of Warli art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There are two types of Warli painting – ritualistic and non-ritualistic. The ritualistic paintings are the ones which connect the past, present and the future. These paintings are sacred and ritualistic, for example Lagna Chowk, Dev Chowk, Kanna, etc. The non-ritualistic paintings are not associated with any ritual before, during or after the painting. These are done for decorative purposes, the example of this is hunting scenes, agricultural activities, festival scenes like holi, etc.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Warli art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The technique of Warli is uniquely simple. The mud surface of the house is cleaned and coated with cow-dung; post which it is coated with geru. The figures are then painted on it using white obtained by rice paste.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Warli art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Unlike other folk painting traditions, the Warli paintings do not use any primary colour. Nor do they narrate any mythological or regional folk story. There is no religious iconography, and it represents nature as the ultimate reality, and depicts the interdependence between humans and nature.
+"}
+   }]
+}
+</script>
+  
+       {% elsif collection.title=='Bengal Pattachitra'%} 
+<h2 style="text-align:center">FAQs</h2>
+      
+<div class="custom-accordian">
+<button class="accordion">What is Bengal Pattachitra art?
+</button>
+<div class="panel">
+Literally meaning a ‘painting done on cloth’, Pattachitra mainly hails from the state of Odisha.</div>    
+<button class="accordion">What is the origin of Bengal Pattachitra art and where is it from?
+</button>
+<div class="panel">
+Historically, Pattachitra came into existence in order to depict Lord Jagannath’s tales. Krishna’s leelas have been an important motif for the paintings as well. Thus, the main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+
+The artiste caste of Odisha, the Mahapatras or Maharanas originally began to engage themselves in this art.
+</div> 
+  
+<button class="accordion">What are the main themes and motifs in Bengal Pattachitra art? </button>
+<div class="panel">
+The main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+</div> 
+
+<button class="accordion">What are the different steps involved in Bengal Pattachitra art?
+</button>
+<div class="panel">
+Before the actual process of painting even begins, the artist has to start with the preparation of the canvas on which the painting will take place: the cloth. The cloth is coated with the stone powder of chalk and glue made using tamarind seeds. This is done to give it a soft, smooth finish, making it strong and semi absorbent for the paint.
+A rough sketch of the painting is then made using a brush. The colours to be used majorly in the painting are further applied- they consist of yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+After the colours are filled in, the artists use a black brush to create fine strokes for the finishing. To make the painting durable and water resistant, it is held over a charcoal fire and lacquer is applied to the surface.
+</div> 
+  
+<button class="accordion">What kind of colours and materials are used in Bengal Pattachitra art?
+</button>
+<div class="panel">
+The colours majorly used are yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+</div>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is Bengal Pattachitra Art?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Literally meaning a ‘painting done on cloth’, Pattachitra mainly hails from the state of Odisha."}
+},{
+    "@type": "Question",
+    "name": "What is the origin of Bengal Pattachitra art and where is it from?
+",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Historically, Pattachitra came into existence in order to depict Lord Jagannath’s tales. Krishna’s leelas have been an important motif for the paintings as well. Thus, the main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+
+The artiste caste of Odisha, the Mahapatras or Maharanas originally began to engage themselves in this art.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the main themes and motifs in Bengal Pattachitra art? ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The main themes of Pattachitra revolve around religious narratives, mythological stories and folktales.
+"}
+  },{
+    "@type": "Question",
+    "name": "What are the different steps involved in Bengal Pattachitra art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Before the actual process of painting even begins, the artist has to start with the preparation of the canvas on which the painting will take place: the cloth. The cloth is coated with the stone powder of chalk and glue made using tamarind seeds. This is done to give it a soft, smooth finish, making it strong and semi absorbent for the paint.
+A rough sketch of the painting is then made using a brush. The colours to be used majorly in the painting are further applied- they consist of yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+After the colours are filled in, the artists use a black brush to create fine strokes for the finishing. To make the painting durable and water resistant, it is held over a charcoal fire and lacquer is applied to the surface.
+"}
+  },{
+    "@type": "Question",
+    "name": "What kind of colours and materials are used in Bengal Pattachitra art?
+ ",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The colours majorly used are yellow,black, white and red. All these colours are naturally sourced-  Red from the shingle stone, Yellow from haritala stone, White from crushed, boiled, and filtered shells and Black is prepared out of lampblack.
+"}
+   }]
+}
+</script>
+
+
+   {% elsif collection.title=='paintings' %}
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "BreadcrumbList", 
+  "itemListElement": [{
+    "@type": "ListItem", 
+    "position": 1, 
+    "name": "Memeraki",
+    "item": "https://www.memeraki.com/"  
+  },{
+    "@type": "ListItem", 
+    "position": 2, 
+    "name": "Masterclass",
+    "item": "https://www.memeraki.com/collections/paintings"  
+  }]
+}
+</script>
+  
+{% endif %}
+
+      
+<!--     faq contents end -->
+  
+  <!-- for bundles code -->
+  
+
+  {% if collection.title=='Bundles and Offers on Workshops'%} 
+<div style="padding:25px;">
+  <div data-revy-bundle-id='all'>
+  </div>
+  </div>
+<!--   <script type="text/javascript">
+        function codeAddress() {
+            alert('ok');
+            var x = document.getElementById("revy-bundles-wrapper");
+    		x.style.display = "none";
+
+        window.onload = codeAddress;
+        </script> -->
+  {% endif %}
+
+   <!-- bundles code end here-->
+  
+    </div>
+  
+  {% endpaginate %}
+
+  <style media="screen">
+    {% if section.settings.grid == 5 %}
+      @media screen and ( min-width: 981px ) {
+        @supports (display: grid) {
+          .collection-page-{{ section.id }} .product-loop.grid_wrapper {
+              grid-template-columns: repeat(5, 1fr);
+          }
+        }
+      }
+      @media screen and ( min-width: 741px ) and ( max-width: 980px ) {
+        @supports (display: grid) {
+          .collection-page-{{ section.id }} .product-loop.grid_wrapper {
+              grid-template-columns: repeat(3, 1fr);
+          }
+        }
+      }
+      @media screen and ( max-width: 740px ) {
+        @supports (display: grid) {
+          .collection-page-{{ section.id }} .product-loop.grid_wrapper {
+              grid-template-columns: repeat(2, 1fr);
+          }
+        }
+      }
+    {% endif %}
+    {%- if collection.all_products_count >= 1000 -%}
+      .collection-page-{{ section.id }} button.filter-price__trigger.js-show-filters {
+        display: none;
+      }
+    {%- endif -%}
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "max_blocks": 12,
+  "settings":
+  [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width"
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Products per row",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "label": "Products per page",
+      "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite scroll products",
+      "info": "Pagination will not show, products will continuously load as you scroll down the page"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show collection image",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "description_position",
+      "options":
+      [
+        {
+          "value": "top_description",
+          "label": "Top of page"
+        },
+        {
+          "value": "bottom_description",
+          "label": "Bottom of page"
+        }
+      ],
+      "label": "Description and image position",
+      "default": "bottom_description"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_sticky",
+      "label": "Make sidebar sticky",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_by",
+      "label": "Show sort by",
+      "default": true
+    }
+  ],
+  "blocks":
+  [
+    {
+      "type": "menu",
+      "name": "Sidebar menu",
+      "settings":
+      [
+        {
+          "type": "link_list",
+          "id": "side_nav",
+          "label": "Menu",
+          "info": "This menu has limited support for dropdown items"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Menu title",
+          "default": "Explore"
+        }
+      ]
+    },
+    {
+      "type": "side_filter",
+      "name": "Sidebar filter",
+      "limit": 1,
+      "settings": [{
+        "type": "paragraph",
+        "content": "Learn how to add storefront filters [here](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/os20\/customize\/filters)"
+      }]
+    },
+    {
+      "type": "image",
+      "name": "Sidebar image",
+      "settings":
+      [
+        {
+          "type": "paragraph",
+          "content": "For sidebar position on desktop only"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1800px x 400px recommended"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    },
+    {
+      "type": "text_note",
+      "name": "Sidebar text",
+      "settings":
+      [
+        {
+          "type": "paragraph",
+          "content": "For sidebar position on desktop only"
+        },
+        {
+          "type": "text",
+          "id": "textbox_heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "textbox_subheading",
+          "label": "Subheading",
+          "default": "<p>Subheading</p>"
+        },
+        {
+          "type": "select",
+          "id": "subheading_align",
+          "options":
+          [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "label": "Subheading alignment"
+        }
+      ]
+    },
+    {
+      "type": "dropdown_filter",
+      "name": "Dropdown filter",
+      "limit": 1,
+      "settings": [{
+        "type": "paragraph",
+        "content": "Learn how to add storefront filters [here](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/os20\/customize\/filters)"
+      }]
+    }
+  ]
+}
+{% endschema %}
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+acc[i].addEventListener("click", function() {
+this.classList.toggle("active");
+var panel = this.nextElementSibling;
+if (panel.style.maxHeight){
+panel.style.maxHeight = null;
+} else {
+panel.style.maxHeight = panel.scrollHeight + "px";
+}
+});
+}
+
+</script>

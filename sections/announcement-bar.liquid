@@ -52,30 +52,25 @@
        , fill_color: 'var(--announcement-bar-text-color)'
        , wrapper: '.announcement__cart' %}
     </ul>
-    <a href="https://www.memeraki.com/#salepopup" id="popupLink" style="color: white; cursor:pointer" onclick="popupOpen()">
+    {% comment %} <a href="#salepopup" id="popupLink" style="color: white; cursor:pointer" onclick="popupOpen()">
       WINTER SALE!!
-    </a>
+    </a> {% endcomment %}
   </div>
 
 </section>
 <script>
-
-  function popupOpen() {
-
-// document.getElementById('popupLink').href = "https://www.memeraki.com/#salepopup";
-    if (window.location.href == "https://www.memeraki.com/#salepopup") {
-      console.log("working")
-      gsc('show', 288003)
+  window.addEventListener('hashchange', function () {
+    if(window.location.hash && window.location.hash=="#salepopup") {
+      console.log("working");
+      gsc('show', 288003);
+      window.location.hash = "";
     }
-  }
-  if (window.location.href == "https://www.memeraki.com/#salepopup") {
-    console.log("working")
-    gsc('show', 288003)
-  }
+  });
+  
 </script>
 
 {% style %}
-
+   
   .announcement__bar-section {
     --topbar-font-size: {{ section.settings.announcement_text_size }}px;
     --topbar-text-color: {{ settings.announcement_bar_text_color }};
@@ -152,6 +147,15 @@
       display: none;
     }
   {% endif %}
+
+  /*   CUSTOM CODE */
+   @media screen and (max-width: 570px){
+     .announcement__bar-section p{
+       line-height: 18px;
+       margin-top: 28px;
+       margin-bottom: 8px;
+     }
+   }
 {% endstyle %}
 
 {% schema %}
