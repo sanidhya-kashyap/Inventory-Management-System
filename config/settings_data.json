@@ -2773,12 +2773,26 @@
             "settings": {
               "card_collection": "ambika-devi"
             }
+          },
+          "165cc82f-de41-47d6-b3c2-99ff6d97caa5": {
+            "type": "card",
+            "settings": {
+              "card_collection": "anil-wangad"
+            }
+          },
+          "f91fc096-8011-49c6-8e99-402472eb0cc2": {
+            "type": "card",
+            "settings": {
+              "card_collection": "bapi-chitrakar"
+            }
           }
         },
         "block_order": [
           "86458fa2-e552-417f-a0b0-070a54244cff",
           "d5048211-e9f1-4beb-8efe-efab0765a607",
-          "9eb57215-47e7-411b-90cf-848b677d7416"
+          "9eb57215-47e7-411b-90cf-848b677d7416",
+          "165cc82f-de41-47d6-b3c2-99ff6d97caa5",
+          "f91fc096-8011-49c6-8e99-402472eb0cc2"
         ],
         "settings": {
           "title": ""
