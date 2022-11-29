@@ -190,7 +190,7 @@
                   {% for product in collection.products %}
                     <div class="{{ grid_item_width }} product-index" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}" data-aos="{{ settings.scroll_animation }}" data-product-id="{{ product.id }}">
                       {% comment %} Render different thumbnails based on Collection {% endcomment %}
-                      {%if collection == 'live-art-workshops' %} 
+                      {%if collection.handle == 'live-art-workshops' %} 
                         {% render 'product-listing-memeraki-workshop', collection: collection, product: product %}
                       {% else %}
                         {% render 'product-listing', collection: collection, product: product %}
