@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">Register for our annual sale on 29th & 30th November and get 20% OFF site wide. <\/a><\/p>",
+          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">Last day to GET 20% OFF site wide. Register for our annual now.<\/a><\/p>",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
