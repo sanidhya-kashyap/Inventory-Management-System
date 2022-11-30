@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">Last day to GET 20% OFF site wide. Click here to register now for our annual sale.<\/a><\/p>",
+          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">GET 20% OFF site wide, only vaild till 12:00 AM Tonight - Use Code 'NOVSALE' at checkout.<\/a><\/p>",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
