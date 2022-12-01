@@ -1315,7 +1315,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "announcement_text": "<p><a href=\"#salepopup\" title=\"#salepopup\">GET 20% OFF sitewide! Last 3 Hrs to claim the deal. Use Code 'NOVSALE' at checkout. <\/a><\/p>",
+          "announcement_text": "",
           "announcement_text_size": 14,
           "top_nav": "",
           "announcement_cart": false,
