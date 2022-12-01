@@ -21,11 +21,25 @@
           "settings": {
             "card_collection": "adarsh"
           }
+        },
+        "8c6049a3-672d-4d49-a9ce-a33d81d69ab8": {
+          "type": "card",
+          "settings": {
+            "card_collection": "akshay"
+          }
+        },
+        "7894dfbf-c139-4329-8084-5157850097b9": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bapi-chitrakar"
+          }
         }
       },
       "block_order": [
         "b0d54fec-f106-4368-ba4d-fdc73b1cbbd1",
-        "1f37909e-b71e-42ab-a699-1f8173f2acbd"
+        "1f37909e-b71e-42ab-a699-1f8173f2acbd",
+        "8c6049a3-672d-4d49-a9ce-a33d81d69ab8",
+        "7894dfbf-c139-4329-8084-5157850097b9"
       ],
       "settings": {
         "title": "Explore"
