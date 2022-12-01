@@ -2748,82 +2748,68 @@
         "settings": {
         }
       },
-      "artist-alphabetically": {
-        "type": "artist-alphabetically",
+      "WhatsappPopup": {
+        "type": "WhatsappPopup",
+        "settings": {
+        }
+      },
+      "alphabetical-list": {
+        "type": "alphabetical-list",
         "blocks": {
-          "18883afd-fca5-40bc-9f51-61cd25796cd2": {
+          "86458fa2-e552-417f-a0b0-070a54244cff": {
             "type": "card",
             "settings": {
               "card_collection": "abdul-salim"
             }
           },
-          "ce283e62-e6b7-4f3f-9fce-7f756c186041": {
+          "d5048211-e9f1-4beb-8efe-efab0765a607": {
             "type": "card",
             "settings": {
               "card_collection": "adarsh"
             }
           },
-          "8a58f079-dcf4-4718-8387-3210585abe01": {
+          "9eb57215-47e7-411b-90cf-848b677d7416": {
             "type": "card",
             "settings": {
-              "card_collection": "jayesh-sharma"
+              "card_collection": "ambika-devi"
             }
           },
-          "5ccdead9-6561-41a8-b5fe-d634c3728f5b": {
+          "165cc82f-de41-47d6-b3c2-99ff6d97caa5": {
             "type": "card",
             "settings": {
-              "card_collection": "venkat-raman-singh-shyam"
+              "card_collection": "anil-wangad"
             }
           },
-          "52e71298-6b37-48d3-902c-b0b95ab9063a": {
+          "f91fc096-8011-49c6-8e99-402472eb0cc2": {
             "type": "card",
             "settings": {
               "card_collection": "bapi-chitrakar"
             }
           },
-          "67118a4c-f099-4180-b682-2ef76ae61191": {
+          "f13c9bff-eb5e-42cc-9716-e402c7059959": {
             "type": "card",
             "settings": {
-              "card_collection": "chetan-gangwane"
+              "card_collection": "anjana-kumari"
             }
           },
-          "97eece75-3c6f-435b-b9ac-2f1a94a0c0a3": {
+          "ca82272a-479f-4f4c-9873-b02f9899ab26": {
             "type": "card",
             "settings": {
-              "card_collection": "dinesh-molela"
-            }
-          },
-          "ae450c8b-73bf-4dc9-b7a2-65d3d461d1b8": {
-            "type": "card",
-            "settings": {
-              "card_collection": "faizan"
-            }
-          },
-          "cb6163f4-d762-4b05-8a72-cb74ef157f46": {
-            "type": "card",
-            "settings": {
-              "card_collection": "geeta-bariya"
+              "card_collection": "chandrakant"
             }
           }
         },
         "block_order": [
-          "18883afd-fca5-40bc-9f51-61cd25796cd2",
-          "ce283e62-e6b7-4f3f-9fce-7f756c186041",
-          "8a58f079-dcf4-4718-8387-3210585abe01",
-          "5ccdead9-6561-41a8-b5fe-d634c3728f5b",
-          "52e71298-6b37-48d3-902c-b0b95ab9063a",
-          "67118a4c-f099-4180-b682-2ef76ae61191",
-          "97eece75-3c6f-435b-b9ac-2f1a94a0c0a3",
-          "ae450c8b-73bf-4dc9-b7a2-65d3d461d1b8",
-          "cb6163f4-d762-4b05-8a72-cb74ef157f46"
+          "86458fa2-e552-417f-a0b0-070a54244cff",
+          "d5048211-e9f1-4beb-8efe-efab0765a607",
+          "9eb57215-47e7-411b-90cf-848b677d7416",
+          "165cc82f-de41-47d6-b3c2-99ff6d97caa5",
+          "f91fc096-8011-49c6-8e99-402472eb0cc2",
+          "f13c9bff-eb5e-42cc-9716-e402c7059959",
+          "ca82272a-479f-4f4c-9873-b02f9899ab26"
         ],
         "settings": {
           "title": ""
-        }
-      },
-      "WhatsappPopup": {
-        "type": "WhatsappPopup",
-        "settings": {
         }
       }
     },
