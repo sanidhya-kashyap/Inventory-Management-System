@@ -1,3 +1,4 @@
+<section class="section--alphabetical-list" id="section-{{ section.id }}">
 <div class="art-container">
   <h1 class="artist-name">{{section.settings.title}}</h1>
   {%- comment -%} <hr class="name-hr"> {%- endcomment -%}
@@ -28,8 +29,6 @@
 {% assign collection_size = collection_array | size %}
 {% assign start_index = 0 %}
 
-
- 
     <div class="art-row">
       <div class="art-col" >
        <a name="letter-a"><h3 >A</h3></a> 
@@ -644,8 +643,7 @@
       </div>
     
   </div>
-
-
+</section>
 
 <style>
 html{
