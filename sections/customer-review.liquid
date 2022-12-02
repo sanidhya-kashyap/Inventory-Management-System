@@ -4,15 +4,17 @@
       <div class="card">
         <div class="polaroid">
           <a>
-            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            Sanidhya Kashyap
-            <p>Greater Noida</p>
+            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
+            {%- comment -%}
+              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            {%- endcomment -%}
+            {{ block.settings.personName }}
+            <p>{{ block.settings.personLoc }}</p>
           </a>
         </div>
         <div class="cust-review">
           <p class="review-p">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
-            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendusvel laudantium ab animi?
+            {{ block.settings.personWords }}
           </p>
         </div>
       </div>
@@ -20,15 +22,17 @@
       <div class="card">
         <div class="polaroid">
           <a>
-            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            Name
-            <p>Location</p>
+            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
+            {%- comment -%}
+              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            {%- endcomment -%}
+            {{ block.settings.personName }}
+            <p>{{ block.settings.personLoc }}</p>
           </a>
         </div>
         <div class="cust-review">
           <p class="review-p">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
-            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendus el laudantium ab animi?
+            {{ block.settings.personWords }}
           </p>
         </div>
       </div>
@@ -37,15 +41,17 @@
       <div class="card">
         <div class="polaroid">
           <a>
-            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            Name
-            <p>location</p>
+            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
+            {%- comment -%}
+              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            {%- endcomment -%}
+            {{ block.settings.personName }}
+            <p>{{ block.settings.personLoc }}</p>
           </a>
         </div>
         <div class="cust-review">
           <p class="review-p">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
-            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendus vel laudantium ab animi?
+            {{ block.settings.personWords }}
           </p>
         </div>
       </div>
@@ -123,7 +129,7 @@
     top: 7px;
   }
 
-  .polaroid img {
+  .polaroid-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -229,33 +235,31 @@
 {% schema %}
   {
     "name": "Testimonial",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading"
-      }
-    ],
+    "settings": [],
 
     "blocks": [
       {
-        "name": "Card",
-        "type": "card",
+        "name": "image",
+        "type": "testimonial people image",
         "settings": [
           {
-            "type": "collection",
-            "id": "card_collection",
-            "label": "Collection"
+            "type": "image_picker",
+            "id": "personImg",
+            "label": "personImg"
+          }, {
+            "type": "text",
+            "id": "personName",
+            "label": "personName"
+          }, {
+            "type": "text",
+            "id": "personLoc",
+            "label": "personLoc"
+          }, {
+            "type": "text",
+            "id": "personWords",
+            "label": "personWords"
           }
         ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Testimonial",
-        "settings": {
-          "title": "Explore"
-        }
       }
     ]
   }
