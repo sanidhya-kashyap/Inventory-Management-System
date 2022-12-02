@@ -6,9 +6,34 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
+    },
+    "21c60710-ea2b-4c46-b924-637fc2bec5d8": {
+      "type": "alphabetical-list",
+      "blocks": {
+        "6fcec789-8a57-42d7-97ee-ec3a82652f7f": {
+          "type": "card",
+          "settings": {
+            "card_collection": "abdul-salim"
+          }
+        },
+        "7858357d-8702-4cbd-9cb5-db0f66d09d6d": {
+          "type": "card",
+          "settings": {
+            "card_collection": "adarsh"
+          }
+        }
+      },
+      "block_order": [
+        "6fcec789-8a57-42d7-97ee-ec3a82652f7f",
+        "7858357d-8702-4cbd-9cb5-db0f66d09d6d"
+      ],
+      "settings": {
+        "title": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "21c60710-ea2b-4c46-b924-637fc2bec5d8"
   ]
 }
