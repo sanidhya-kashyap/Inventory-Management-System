@@ -9,6 +9,7 @@
     },
     "21c60710-ea2b-4c46-b924-637fc2bec5d8": {
       "type": "alphabetical-list",
+      "disabled": true,
       "blocks": {
         "6fcec789-8a57-42d7-97ee-ec3a82652f7f": {
           "type": "card",
