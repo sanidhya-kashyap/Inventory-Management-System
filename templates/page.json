@@ -3,7 +3,7 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "page_size": "full_width",
+        "page_size": "full_page",
         "sidebar_positon": "right"
       }
     },
