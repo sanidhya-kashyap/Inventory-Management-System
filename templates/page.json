@@ -6,48 +6,9 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
-    },
-    "d8fa6c7a-b8c1-46ec-8f7a-4c9e310c37a6": {
-      "type": "alphabetical-list",
-      "blocks": {
-        "14344fab-96bb-48da-88eb-7bb996ad5594": {
-          "type": "card",
-          "settings": {
-            "card_collection": "abdul-salim"
-          }
-        },
-        "9881bbdf-36ba-4de4-ae3e-b362df9821a2": {
-          "type": "card",
-          "settings": {
-            "card_collection": "adarsh"
-          }
-        },
-        "44f13cf5-f455-4fd1-aa58-4463fbad1b30": {
-          "type": "card",
-          "settings": {
-            "card_collection": "ambika-devi"
-          }
-        },
-        "c1a31c61-137a-4f79-a471-e9ad743c63c0": {
-          "type": "card",
-          "settings": {
-            "card_collection": "anil-wangad"
-          }
-        }
-      },
-      "block_order": [
-        "14344fab-96bb-48da-88eb-7bb996ad5594",
-        "9881bbdf-36ba-4de4-ae3e-b362df9821a2",
-        "44f13cf5-f455-4fd1-aa58-4463fbad1b30",
-        "c1a31c61-137a-4f79-a471-e9ad743c63c0"
-      ],
-      "settings": {
-        "title": ""
-      }
     }
   },
   "order": [
-    "main",
-    "d8fa6c7a-b8c1-46ec-8f7a-4c9e310c37a6"
+    "main"
   ]
 }
