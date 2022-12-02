@@ -18,12 +18,12 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
-        "collection": "",
+        "title": "",
+        "collection": "paintings",
         "carousel": true,
-        "grid": 4,
-        "limit": 8,
-        "color_scheme": "none",
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
         "section_padding": "both"
       }
     },
