@@ -6,62 +6,9 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
-    },
-    "e1bfc27f-d4c2-4d62-929e-40a49a3aeadc": {
-      "type": "alphabetical-list",
-      "blocks": {
-        "b0d54fec-f106-4368-ba4d-fdc73b1cbbd1": {
-          "type": "card",
-          "settings": {
-            "card_collection": "abdul-salim"
-          }
-        },
-        "1f37909e-b71e-42ab-a699-1f8173f2acbd": {
-          "type": "card",
-          "settings": {
-            "card_collection": "adarsh"
-          }
-        },
-        "8c6049a3-672d-4d49-a9ce-a33d81d69ab8": {
-          "type": "card",
-          "settings": {
-            "card_collection": "akshay"
-          }
-        },
-        "7894dfbf-c139-4329-8084-5157850097b9": {
-          "type": "card",
-          "settings": {
-            "card_collection": "bapi-chitrakar"
-          }
-        },
-        "2304e36a-1254-4053-a7a7-15d5f249a073": {
-          "type": "card",
-          "settings": {
-            "card_collection": "ambika-devi"
-          }
-        },
-        "83dee9da-9b68-4a07-83c3-e674f9922351": {
-          "type": "card",
-          "settings": {
-            "card_collection": "chandrakant"
-          }
-        }
-      },
-      "block_order": [
-        "b0d54fec-f106-4368-ba4d-fdc73b1cbbd1",
-        "1f37909e-b71e-42ab-a699-1f8173f2acbd",
-        "8c6049a3-672d-4d49-a9ce-a33d81d69ab8",
-        "7894dfbf-c139-4329-8084-5157850097b9",
-        "2304e36a-1254-4053-a7a7-15d5f249a073",
-        "83dee9da-9b68-4a07-83c3-e674f9922351"
-      ],
-      "settings": {
-        "title": "Explore"
-      }
     }
   },
   "order": [
-    "main",
-    "e1bfc27f-d4c2-4d62-929e-40a49a3aeadc"
+    "main"
   ]
 }
