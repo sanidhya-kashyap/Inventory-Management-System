@@ -11,6 +11,27 @@
 }
 {%- endcapture -%}
 
+{% case section.settings.card_size %}
+  {% when 'small'%}
+    {% capture dimension %}
+    height: 150px;
+    width: 150px;
+    {% endcapture %}
+    {% assign space = '20px' %}
+  {% when 'mid'%}
+    {% capture dimension %}
+    height: 200px;
+    width: 200px;
+    {% endcapture %}
+    {% assign space = '30px' %}
+  {% when 'large'%}
+    {% capture dimension %}
+    height: 250px;
+    width: 250px;
+    {% endcapture %}
+    {% assign space ='40px' %}
+{% endcase %}
+
 <Section>
   <div class="cards-heading">
     <h1 class="">{{ section.settings.title }}</h1>
@@ -20,10 +41,11 @@
   </div>
 
   <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
+
     {% for block in section.blocks %}
-      <div class="carousel-cell thumbnail-card">
+      <div class="carousel-cell thumbnail-card" style="margin-right: {{ space }}">
         <a href="{{ block.settings.card_collection.url }}">
-          <div {% if block.settings.transparent_bg == false %} style="background-color: {{ block.settings.css_color_val }}" {% endif %} class="thumbnail">
+          <div style=" {% if block.settings.transparent_bg == false %} background-color:  {% endif %}{{ block.settings.css_color_val }}; {{dimension}}" class="thumbnail">
               {% case block.settings.use_custom_image %}
                 {% when "collection_image" %}
                   {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
@@ -31,13 +53,15 @@
                   {{ block.settings.card_img | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
               {% endcase %}
         </div>
+
         <div class="thumbnail-name">
             {% if block.settings.use_custom_label == true %}
               <p>{{ block.settings.custom_label }}</p>
             {% else %}
               <p>{{ block.settings.card_collection.title }}</p>
             {% endif %}
-        </div>  
+        </div> 
+
         </a>
       </div>
     {% endfor %}
@@ -45,14 +69,13 @@
     {% if section.settings.enable_view_all == true %} 
       <div class="carousel-cell thumbnail-card">
         <a href="{{ section.settings.view_all_url }}">
-          <div id="last-card" class="thumbnail">
+          <div id="last-card" style="background-color: {{ block.settings.css_color_val }}; {{dimension}}" class="thumbnail">
             <h3 style="color: white;">{{ section.settings.last_card }}</h3>
           </div>  
         </a>
       </div>  
     {% endif %}  
   </div>
-  
 </Section>
 
 <style>
@@ -70,12 +93,13 @@
 
   .shopify-section-thumbnail-cards{
     margin: 10px 20px 50px 20px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 40px;
   }
 
   .thumbnail-container{
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
   #last-card{
@@ -95,8 +119,8 @@
   }
   
 
+
   .thumbnail-card{
-      margin-right: 15px;
       margin-top: 10px;
   }
 
@@ -107,10 +131,6 @@
   }
 
   .thumbnail{
-      height: 150px;
-      width: 150px;
-      max-height: 200px;
-      max-width: 200px;
       border-radius: 0px 35px 0px 0px;
   }
 
@@ -206,6 +226,26 @@
         "id": "enable_nav_bar",
         "label": "Show Navigation Bar at Bottom",
         "default": true
+      },
+      {
+        "type": "radio",
+        "id": "card_size",
+        "label": "Card Size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "mid",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "small"
       }
     ],
     "max_blocks": 10,
@@ -267,6 +307,7 @@
             "id": "custom_label",
             "label": "Custom Label"
           }
+          
          ]
        }
     ],
