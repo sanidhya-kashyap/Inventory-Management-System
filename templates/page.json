@@ -6,27 +6,9 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
-    },
-    "0d293175-c465-41b2-9269-3514850a4fdd": {
-      "type": "alphabetical-list",
-      "blocks": {
-        "e3338f64-56db-4424-a9ff-dd9ec050770a": {
-          "type": "card",
-          "settings": {
-            "card_collection": "aipan"
-          }
-        }
-      },
-      "block_order": [
-        "e3338f64-56db-4424-a9ff-dd9ec050770a"
-      ],
-      "settings": {
-        "title": "Explore"
-      }
     }
   },
   "order": [
-    "main",
-    "0d293175-c465-41b2-9269-3514850a4fdd"
+    "main"
   ]
 }
