@@ -47,7 +47,12 @@
       {% else %}
         {% for product in collection.products limit: prod_limit %}
           <div class="featured__collection-product product-index" id="product-listing-{{ product.id }}" data-product-id="{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
-            {% render 'product-listing', product: product, collection: collection %}
+            {% comment %} Render different thumbnails based on Collection {% endcomment %}
+            {%if collection.handle == 'live-art-workshops' %} 
+              {% render 'product-listing-memeraki-workshop', collection: collection, product: product %}
+            {% else %}
+              {% render 'product-listing', collection: collection, product: product %}
+            {%endif%}
           </div>
         {% endfor %}
       {% endif %}
