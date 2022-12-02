@@ -1,0 +1,262 @@
+<div class="body-review">
+  <div class="container-review">
+    <div class="wrapper">
+      <div class="card">
+        <div class="polaroid">
+          <a>
+            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            Sanidhya Kashyap
+            <p>Greater Noida</p>
+          </a>
+        </div>
+        <div class="cust-review">
+          <p class="review-p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
+            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendusvel laudantium ab animi?
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="polaroid">
+          <a>
+            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            Name
+            <p>Location</p>
+          </a>
+        </div>
+        <div class="cust-review">
+          <p class="review-p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
+            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendus el laudantium ab animi?
+          </p>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="polaroid">
+          <a>
+            <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
+            Name
+            <p>location</p>
+          </a>
+        </div>
+        <div class="cust-review">
+          <p class="review-p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae commodi inventore quisquam deleniti eveniet
+            suscipit, culpa tempore, vel laudantium dicta dolorum obcaecati dignissimos distinctio tenetur! Repellendus vel laudantium ab animi?
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="indicators">
+      <button class="active"></button>
+      <button></button>
+      <button></button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .body-review {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #080808;
+  }
+
+  .container-review {
+    position: relative;
+    width: 1123px;
+    min-width: 350px;
+    min-height: 250px;
+    /* padding-bottom: 40px; */
+    overflow: hidden;
+  }
+
+  .wrapper {
+    width: 300%;
+    /* 1card = 100%, then 3card = 300% */
+    min-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: 1s;
+  }
+
+  .card {
+    width: 100%;
+    background: #44153F;
+    margin: 0 10px;
+    display: flex;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+  }
+
+  .polaroid a {
+    background: #ffffff;
+    display: flex;
+    padding: 40px 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    z-index: 0;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    position: relative;
+    height: 322px;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 34px;
+    justify-content: center;
+  }
+
+  .polaroid a:after {
+    color: #333;
+    font-size: 20px;
+    content: attr(title);
+    position: relative;
+    top: 7px;
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cust-review {
+    width: 120%;
+    height: auto;
+    margin-left: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .review-p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 30px;
+    color: white;
+  }
+
+  .indicators {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .indicators button {
+    background: none;
+    border: none;
+    outline: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid grey;
+    margin-right: 5px;
+    transition: 0.5s;
+  }
+
+  button.active {
+    width: 40px;
+    border-radius: 50px;
+    background: grey;
+  }
+
+  @media only screen and (max-width: 650px) {
+    .card {
+      flex-direction: column;
+    }
+    .review-p {
+      padding: 0 35px;
+      font-size: 17px;
+    }
+    .polaroid a {
+      height: 290px;
+      width: 255px;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .review-p {
+      padding: 0 21px;
+      font-size: 13px;
+    }
+    .polaroid a {
+      height: 211px;
+      width: 206px;
+    }
+  }
+</style>
+
+<script>
+  const wrapper = document.querySelector('.wrapper');
+  const indicators = [...document.querySelectorAll('.indicators button')];
+
+// const card = document.getElementsByClassName('.card')
+// var cards = 0
+// setInterval(changecard, 2000);
+// function changecard() {
+// for (var i = 0; i < card.length; i++) {
+// card[i].style.display = "none";
+// }
+// cards++;
+// if (cards card.length - 1) {
+// cards = 0;
+// card[cards].style.display = "block";
+// }
+
+  let currentTestimonial = 0; // Default Value = 0
+  indicators.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      indicators[currentTestimonial].classList.remove('active');
+      wrapper.style.marginLeft = `-${
+        100 * i
+      }%`;
+      item.classList.add('active');
+      currentTestimonial = i;
+    })
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Testimonial",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+
+    "blocks": [
+      {
+        "name": "Card",
+        "type": "card",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "card_collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonial",
+        "settings": {
+          "title": "Explore"
+        }
+      }
+    ]
+  }
+{% endschema %}

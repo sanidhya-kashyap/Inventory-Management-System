@@ -98,11 +98,12 @@
       })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
 
-    {% if template == 'cart' %}{% include "revy-bundle-script" %}{% endif %}
+    {% if template == 'cart' %}
+      {% include "revy-bundle-script" %}{% endif %}
 
 
   </head>
-<body class="gridlock template-{{ template | handleize }} js-slideout-toggle-wrapper js-modal-toggle-wrapper {% render 'body-classes' %}">
+  <body class="gridlock template-{{ template | handleize }} js-slideout-toggle-wrapper js-modal-toggle-wrapper {% render 'body-classes' %}">
     <div class="js-slideout-overlay site-overlay"></div>
     <div class="js-modal-overlay site-overlay"></div>
 
@@ -130,7 +131,7 @@
 
       </div>
       <!-- /.page-wrap -->
-
+      {% section 'customer-review'%}
       {% section 'footer' %}
       {% section 'WhatsappPopup' %}
 
