@@ -6,41 +6,9 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
-    },
-    "c5513820-bb2a-4b8e-b125-6d388e6533f7": {
-      "type": "alphabetical-list",
-      "blocks": {
-        "e59eeb0f-a796-4fa8-a784-988594608aaf": {
-          "type": "card",
-          "settings": {
-            "card_collection": "adarsh"
-          }
-        },
-        "70e973e8-db43-4393-a05b-357e21430c6e": {
-          "type": "card",
-          "settings": {
-            "card_collection": "ambika-devi"
-          }
-        },
-        "e7548c64-b8cc-4b75-891f-9ef9296e1563": {
-          "type": "card",
-          "settings": {
-            "card_collection": "abdul-salim"
-          }
-        }
-      },
-      "block_order": [
-        "e59eeb0f-a796-4fa8-a784-988594608aaf",
-        "70e973e8-db43-4393-a05b-357e21430c6e",
-        "e7548c64-b8cc-4b75-891f-9ef9296e1563"
-      ],
-      "settings": {
-        "title": "Explore"
-      }
     }
   },
   "order": [
-    "main",
-    "c5513820-bb2a-4b8e-b125-6d388e6533f7"
+    "main"
   ]
 }
