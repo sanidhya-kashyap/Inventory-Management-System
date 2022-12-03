@@ -1,30 +1,24 @@
 <div class="body-review">
   <div class="container">
     <div class="slides">
-      <div class="slide">
-        <div class="polaroid">
-          <a>
-            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-            {{ block.settings.personName }}
-            <p>{{ block.settings.personLoc }}</p>
-          </a>
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="polaroid">
+            <a>
+              {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
+              {{ block.settings.personName }}
+              <p>{{ block.settings.personLoc }}</p>
+            </a>
+          </div>
+          <div class="cust-review">
+            <p class="review-p">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste iure aliquam magni deserunt voluptates nulla odio dolores reprehenderit? Fugiat maxime consequuntur quo quasi animi?
+              {{ block.settings.personWords }}
+            </p>
+          </div>
         </div>
-        <div class="cust-review">
-          <p class="review-p">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste iure aliquam magni deserunt voluptates nulla odio dolores reprehenderit? Fugiat maxime consequuntur quo quasi animi?
-            {{ block.settings.personWords }}
-          </p>
-        </div>
-      </div>
-      <div class="slide">
-        {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-      </div>
-      <div class="slide">
-        {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-      </div>
-      <div class="slide">
-        {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-      </div>
+      {%endfor%}
+
     </div>
     <div class="slide-controls">
       <button id="prev-btn">
@@ -178,7 +172,9 @@
   const slideContainer = document.querySelector('.container');
   const slide = document.querySelector('.slides');
   const nextBtn = document.getElementById('next-btn');
-  const prevBtn = document.getElementById('prev-btn');{%- comment -%}const interval = 3000;{%- endcomment -%}let slides = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prev-btn');
+  const interval = 3000;
+  let slides = document.querySelectorAll('.slide');
   let index = 1;
   let slideId;
 
