@@ -2811,6 +2811,25 @@
         "settings": {
           "title": ""
         }
+      },
+      "customer-review": {
+        "type": "customer-review",
+        "blocks": {
+          "ea16f410-e4d8-4f1a-a8cc-3eff285befc2": {
+            "type": "image",
+            "settings": {
+              "personImg": "shopify:\/\/shop_images\/Warli_tribe_2.jpg",
+              "personName": "sanidhya",
+              "personLoc": "delhi",
+              "personWords": "Nice collection nice work Nice collection nice work Nice collection nice work Nice collection nice work Nice collection nice work Nice collection nice work Nice collection nice workNice collection nice workNice collection nice workNice collection nice workNice collection nice work"
+            }
+          }
+        },
+        "block_order": [
+          "ea16f410-e4d8-4f1a-a8cc-3eff285befc2"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
