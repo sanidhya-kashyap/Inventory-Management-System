@@ -2814,20 +2814,6 @@
       },
       "customer-review": {
         "type": "customer-review",
-        "blocks": {
-          "0a9a54c8-279f-43bb-8c20-4fad00e36643": {
-            "type": "image",
-            "settings": {
-              "personImg": "shopify:\/\/shop_images\/Warli_Mandala.jpg",
-              "personName": "Sanidhya Kashyap",
-              "personLoc": "Greater Noida",
-              "personWords": "nice collection nice work"
-            }
-          }
-        },
-        "block_order": [
-          "0a9a54c8-279f-43bb-8c20-4fad00e36643"
-        ],
         "settings": {
         }
       }
