@@ -8,24 +8,24 @@
   <div class="container-review">
     <div class="wrapper">
       {% for block in section.blocks %}
-      <div class="card">
-        <div class="polaroid">
-          <a>
-            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-            
-              {{ block.settings.personName }}
-           
-              <p>{{ block.settings.personLoc }}</p>
-          </a>
-        </div>
-        <div class="cust-review">
-          <p class="review-p">
-            
-              {{ block.settings.personWords }}
-          </p>
-        </div>
-      </div>
+        <div class="card">
+          <div class="polaroid">
+            <a>
+              {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
+              {{ block.settings.personName }}
+
+              <p>{{ block.settings.personLoc }}</p>
+            </a>
+          </div>
+          <div class="cust-review">
+            <p class="review-p">
+
+              {{ block.settings.personWords }}
+            </p>
+          </div>
+        </div>
+      {%endfor%}
     </div>
     <div class="indicators">
       <button class="active"></button>
