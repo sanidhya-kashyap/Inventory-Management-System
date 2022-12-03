@@ -2841,12 +2841,22 @@
               "personLoc": "YZX",
               "personWords": ". We are fortunate to be able to witness and work amongst an industry expert such as you."
             }
+          },
+          "a4178be2-a26e-4872-b922-00d17b9eea9d": {
+            "type": "image",
+            "settings": {
+              "personImg": "shopify:\/\/shop_images\/Shersingh_Bhabhor.jpg",
+              "personName": "Vikas",
+              "personLoc": "vyb",
+              "personWords": "Your level of quality work remains unprecedented in our organization."
+            }
           }
         },
         "block_order": [
           "54df55c0-2d85-4f5b-8001-0a6919ed1ac5",
           "deeafe7a-7f23-46ad-aea5-ab3c10782e77",
-          "690da60b-db9b-4dba-a581-e65bc288a1d1"
+          "690da60b-db9b-4dba-a581-e65bc288a1d1",
+          "a4178be2-a26e-4872-b922-00d17b9eea9d"
         ],
         "settings": {
         }
