@@ -2022,7 +2022,7 @@ input[type="button"] {
   display: inline-block;
   font-family: var(--main-family) !important;
   font-weight: var(--main-weight);
-  font-size: var(--font-size) !important;
+  font-size: var(--font-size);
   text-decoration: none;
   cursor: pointer;
   margin-bottom: 20px;

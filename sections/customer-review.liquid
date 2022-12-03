@@ -1,10 +1,7 @@
-{%- comment -%}
-  <div class="title-review">
-  <h2>TESTIMONIAL</h2><hr>
-  </div>
-{%- endcomment -%}
-
 <div class="body-review">
+  <h2>
+    {{ section.settings.title | escape }}
+  </h2>
   <div class="container-review">
     <div class="wrapper">
       {% for block in section.blocks %}
@@ -25,10 +22,11 @@
             </p>
           </div>
         </div>
-      {%endfor%}
+      {% endfor %}
     </div>
     <div class="indicators">
       <button class="active"></button>
+      <button></button>
       <button></button>
       <button></button>
     </div>
@@ -43,6 +41,12 @@
     align-items: center;
     justify-content: center;
     color: #080808;
+    flex-direction: column;
+  }
+  .review-hr {
+    width: 89px;
+    height: 2px;
+    color: black;
   }
 
   .container-review {
@@ -55,7 +59,7 @@
   }
 
   .wrapper {
-    width: 300%;
+    width: 400%;
     /* 1card = 100%, then 3card = 300% */
     min-height: 100%;
     display: flex;
@@ -175,20 +179,6 @@
 <script>
   const wrapper = document.querySelector('.wrapper');
   const indicators = [...document.querySelectorAll('.indicators button')];
-
-// const card = document.getElementsByClassName('.card')
-// var cards = 0
-// setInterval(changecard, 2000);
-// function changecard() {
-// for (var i = 0; i < card.length; i++) {
-// card[i].style.display = "none";
-// }
-// cards++;
-// if (cards card.length - 1) {
-// cards = 0;
-// card[cards].style.display = "block";
-// }
-
   let currentTestimonial = 0; // Default Value = 0
   indicators.forEach((item, i) => {
     item.addEventListener('click', () => {
