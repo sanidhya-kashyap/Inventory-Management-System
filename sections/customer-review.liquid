@@ -1,57 +1,27 @@
+{%- comment -%}
+  <div class="title-review">
+  <h2>TESTIMONIAL</h2><hr>
+  </div>
+{%- endcomment -%}
+
 <div class="body-review">
   <div class="container-review">
     <div class="wrapper">
+      {% for block in section.blocks %}
       <div class="card">
         <div class="polaroid">
           <a>
             {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-            {%- comment -%}
-              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            {%- endcomment -%}
-            {{ block.settings.personName }}
-            <p>{{ block.settings.personLoc }}</p>
+            
+              {{ block.settings.personName }}
+           
+              <p>{{ block.settings.personLoc }}</p>
           </a>
         </div>
         <div class="cust-review">
           <p class="review-p">
-            {{ block.settings.personWords }}
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="polaroid">
-          <a>
-            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-            {%- comment -%}
-              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            {%- endcomment -%}
-            {{ block.settings.personName }}
-            <p>{{ block.settings.personLoc }}</p>
-          </a>
-        </div>
-        <div class="cust-review">
-          <p class="review-p">
-            {{ block.settings.personWords }}
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="polaroid">
-          <a>
-            {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
-            {%- comment -%}
-              <img height="250" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"/>
-            {%- endcomment -%}
-            {{ block.settings.personName }}
-            <p>{{ block.settings.personLoc }}</p>
-          </a>
-        </div>
-        <div class="cust-review">
-          <p class="review-p">
-            {{ block.settings.personWords }}
+            
+              {{ block.settings.personWords }}
           </p>
         </div>
       </div>
@@ -239,8 +209,8 @@
 
     "blocks": [
       {
-        "name": "image",
-        "type": "testimonial people image",
+        "name": "Testimonial ",
+        "type": "image",
         "settings": [
           {
             "type": "image_picker",
