@@ -150,28 +150,84 @@
     border-radius: 50px;
     background: grey;
   }
+  @media only screen and (max-width: 1050px) {
+    .container-review {
+      width: 933px;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    .container-review {
+      width: 801px;
+    }
+    .card {
+      padding: 51px;
+    }
+  }
+  @media only screen and (max-width: 770px) {
+    .container-review {
+      width: 775px;
+    }
 
+  }
   @media only screen and (max-width: 650px) {
+    .container-review {
+      width: 566px;
+    }
     .card {
       flex-direction: column;
     }
     .review-p {
-      padding: 0 35px;
+      padding: 0 41px;
       font-size: 17px;
     }
     .polaroid a {
-      height: 290px;
-      width: 255px;
+      padding: 39px 13px 22px;
+      height: 238px;
+      width: 212px;
     }
   }
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 550px) {
+
+    .container-review {
+      width: 548px;
+    }
     .review-p {
       padding: 0 21px;
       font-size: 13px;
     }
     .polaroid a {
+      padding: 39px 13px 22px;
       height: 211px;
       width: 206px;
+    }
+
+  }
+  @media only screen and (max-width: 430px) {
+    .container-review {
+      width: 342px;
+    }
+  }
+  @media only screen and (max-width: 420px) {
+    .container-review {
+      width: 342px;
+    }
+    .card {
+      padding: 24px;
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .container-review {
+      min-width: 193px;
+      width: 240px;
+    }
+    .polaroid a {
+      margin: 0;
+      padding: 34px 13px 18px;
+      height: 152px;
+      width: 139px;
+    }
+    .card {
+      padding: 24px;
     }
   }
 </style>
