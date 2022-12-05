@@ -28,10 +28,12 @@
               <h2>{{ product.metafields.Instructor.name.value }}</h2>
             </a>
             {{ collections[artist_handle].description }}
+            {% if section.settings.show_button == true %}
             <br><br>
               <button style=" justify-content: center; width: auto; border-radius: 22px; margin: 0 auto;">
             <a style="color: white; text-decoration: none; margin: 10px;" href="{{ artist_url }}"> More From {{ artist_name }}</a>
             </button>
+            {% endif %}
             </div>
         </div>  
       </section>
@@ -52,10 +54,12 @@
               <br><h2>{{ product.metafields.Instructor.name.value }}</h2>
             </a>
             {{ collections[artist_handle].description }}
+            {% if section.settings.show_button == true%}
             <br><br>
               <button style=" justify-content: center; width: auto; border-radius: 22px; margin: 0 auto;">
             <a style="color: white; text-decoration: none; margin: 10px;" href="{{ artist_url }}"> More From {{ artist_name }}</a>
             </button>
+            {% endif %}
             </div>
         </div>  
       </section>
@@ -77,6 +81,12 @@
       "type": "collection",
       "id": "artist_collection",
       "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Explore More Button",
+      "default": true
     }
   ],
   "presets": [
