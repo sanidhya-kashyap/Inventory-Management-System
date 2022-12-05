@@ -1,6 +1,6 @@
 <div class="body-review">
   <div class="container-review">
-    <div class="carousel js-flickity" data-flickity-options='{ "imagesLoaded":"true", "autoPlay": "true", "watchCSS":"true" }'>
+    <div class="carousel js-flickity" data-flickity-options='{ "imagesLoaded":"true", "autoPlay": 10000, "watchCSS":"true" }'>
       {% for block in section.blocks %}
         <div class="carousel-cell">
           <div class="polaroid">
@@ -98,7 +98,6 @@
     width: -moz-fit-content;
     width: fit-content;
     width: 120%;
-    height: auto;
     margin-left: 20px;
     position: relative;
     display: flex;
@@ -142,7 +141,7 @@
   }
   @media only screen and (max-width: 650px) {
     .container-review {
-      width: 551px;
+      width: 521px;
     }
     .carousel-cell {
       flex-direction: column;
@@ -183,7 +182,7 @@
 }
 @media only screen and (max-width: 420px) {
   .container-review {
-    width: 373px;
+    width: 349px;
   }
   .carousel-cell {
     padding: 16px;
