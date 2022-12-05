@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "page_size": "thin",
+        "sidebar_positon": "right"
+      }
+    },
+    "cf611f78-bd2b-4091-96ff-bbe849173f59": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "adarsh-artcan-collection",
+        "show_button": false
+      }
+    },
+    "0e49ece9-b692-4a61-aec3-e9e8cf938094": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "adarsh-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    },
+    "74756f9d-9a72-470c-9191-5630c6ec2bf7": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "jijulal-artcan-collection",
+        "show_button": false
+      }
+    },
+    "ba03e308-826a-41c9-86bf-9ebbaface359": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "jijulal-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    },
+    "03a1d875-e0a4-4cdf-b26d-69e7afd6c14b": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "ramesh-artcan-collection",
+        "show_button": false
+      }
+    },
+    "0b74e30a-d463-40c9-8a98-d3af7e720101": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "ramesh-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    },
+    "48fb65d3-67c4-4897-b309-476303b608ee": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "vishu-athira-artcan-collection",
+        "show_button": false
+      }
+    },
+    "ebb5704d-ef46-4364-9009-d3fb7db0b085": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "vishu-athira-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "fff1317e-29a0-4400-8ced-05d8e810f6b5": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "saji-artcan-collection",
+        "show_button": true
+      }
+    },
+    "cf26e1f6-8704-416d-ae2a-882ad7f447b4": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "saji-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    },
+    "90ff8f70-e17f-4e3c-a72f-2f9f35a97dda": {
+      "type": "Instructor-info",
+      "settings": {
+        "set_manually": true,
+        "artist_collection": "shaiju-artcan-collection",
+        "show_button": false
+      }
+    },
+    "9b00fc88-dcec-474d-beea-dccd977d2953": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "collection": "shaiju-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cf611f78-bd2b-4091-96ff-bbe849173f59",
+    "0e49ece9-b692-4a61-aec3-e9e8cf938094",
+    "74756f9d-9a72-470c-9191-5630c6ec2bf7",
+    "ba03e308-826a-41c9-86bf-9ebbaface359",
+    "03a1d875-e0a4-4cdf-b26d-69e7afd6c14b",
+    "0b74e30a-d463-40c9-8a98-d3af7e720101",
+    "48fb65d3-67c4-4897-b309-476303b608ee",
+    "ebb5704d-ef46-4364-9009-d3fb7db0b085",
+    "fff1317e-29a0-4400-8ced-05d8e810f6b5",
+    "cf26e1f6-8704-416d-ae2a-882ad7f447b4",
+    "90ff8f70-e17f-4e3c-a72f-2f9f35a97dda",
+    "9b00fc88-dcec-474d-beea-dccd977d2953"
+  ]
+}
