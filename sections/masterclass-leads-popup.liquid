@@ -10,7 +10,7 @@
 -%}
 
 <div class="popup-container" id="form-container">
-      <img src="{{collections[collection_handle].image | img_url: '2048x' | url}}" class="popup-image">
+      <img src="{{ collections[collection_handle].image | image_url : width: 1024 }}" height= 800 width=200 loading="lazy" class="popup-image">
    <div class="popup-form">
           <a id="form-close" class="popup-close" onclick="
             closePopup();
@@ -42,7 +42,8 @@
 </div>
 
 <div class="popup-container" id="buy-now-container">
-    <img src="{{collections[collection_handle].image | img_url: '2048x' | url}}" class="popup-image">
+    <img src="{{ collections[collection_handle].image | image_url : width: 1024 }}" height= 800 width=200 loading="lazy" class="popup-image">
+    {% comment %} <img src="{{collections[collection_handle].image | img_url: '2048x' | url}}" class="popup-image"> {% endcomment %}
     <div class="popup-form">
           <a id="form-close" class="popup-close" onclick="closePopup();">x</a><br>
           <div class="form-contents">
