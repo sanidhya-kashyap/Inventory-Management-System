@@ -40,7 +40,7 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
+        "title": "",
         "collection": "jijulal-artcan-collection",
         "carousel": true,
         "grid": 3,
@@ -61,7 +61,7 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
+        "title": "",
         "collection": "ramesh-artcan-collection",
         "carousel": true,
         "grid": 3,
@@ -82,9 +82,9 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
+        "title": "",
         "collection": "vishu-athira-artcan-collection",
-        "carousel": false,
+        "carousel": true,
         "grid": 3,
         "limit": 6,
         "color_scheme": "none",
@@ -103,9 +103,9 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
+        "title": "",
         "collection": "saji-artcan-collection",
-        "carousel": false,
+        "carousel": true,
         "grid": 3,
         "limit": 6,
         "color_scheme": "cs2",
@@ -125,11 +125,11 @@
       "settings": {
         "full_width": false,
         "title": "Featured collection",
-        "collection": "",
-        "carousel": false,
-        "grid": 4,
-        "limit": 8,
-        "color_scheme": "none",
+        "collection": "shaiju-artcan-collection",
+        "carousel": true,
+        "grid": 3,
+        "limit": 6,
+        "color_scheme": "cs2",
         "section_padding": "both"
       }
     }
