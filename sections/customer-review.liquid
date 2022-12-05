@@ -1,7 +1,5 @@
 <div class="body-review">
-  <h2>
-    {{ section.settings.title }}
-  </h2>
+  <h2>{{ section.settings.title | escape }}</h2>
   <div class="container-review">
     <div class="wrapper">
       {% for block in section.blocks %}
@@ -25,10 +23,10 @@
       {% endfor %}
     </div>
     <div class="indicators">
-      <button class="active"></button>
-      <button></button>
-      <button></button>
-      <button></button>
+      <div class="btn active"></div>
+      <div class="btn"></div>
+      <div class="btn"></div>
+      <div class="btn"></div>
     </div>
   </div>
 </div>
@@ -120,33 +118,35 @@
   }
 
   .review-p {
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 30px;
+    font-size: 16px;
+    line-height: 28px;
+    margin-top: 2px;
     color: white;
   }
 
   .indicators {
     position: absolute;
-    bottom: 0;
+    display: flex;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  .indicators button {
+  .btn {
     background: none;
     border: none;
     outline: none;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     border: 2px solid grey;
     margin-right: 5px;
     transition: 0.5s;
+    cursor: pointer;
   }
 
-  button.active {
-    width: 40px;
+  .btn.active {
+    width: 30px;
     border-radius: 50px;
     background: grey;
   }
@@ -234,7 +234,7 @@
 
 <script>
   const wrapper = document.querySelector('.wrapper');
-  const indicators = [...document.querySelectorAll('.indicators button')];
+  const indicators = document.querySelectorAll('.btn');
   let currentTestimonial = 0; // Default Value = 0
   indicators.forEach((item, i) => {
     item.addEventListener('click', () => {
@@ -258,6 +258,7 @@
         "name": "Testimonial ",
         "type": "image",
         "settings": [
+
           {
             "type": "image_picker",
             "id": "personImg",
