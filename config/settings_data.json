@@ -2861,19 +2861,19 @@
         "settings": {
         }
       },
-      "customer2": {
-        "type": "customer2",
+      "customer-testimonial": {
+        "type": "customer-testimonial",
         "blocks": {
-          "c68751d9-3127-4a27-b0bb-9a4ec42337fe": {
+          "dbe87439-e0d5-4020-9475-87f9c6e1167f": {
             "type": "image",
             "settings": {
               "personImg": "shopify:\/\/shop_images\/img1.png",
               "personName": "Priti Desai",
               "personLoc": "India",
-              "personWords": "“It was a blessing coming across MeMeraki Art Workshops. Started with my favourite art form Madhubani, which was the first workshop and had an amazing experience with Yosha and her team. The journey began and still continues with so many workshops with varous art forms including, Pichwai, Pattachitra, Gond, Kerala Mural, Phad and many more. It's an honour to learn from great artisans from our own houses in this difficult time. Yosha, it's been a pleasure to be a part of your effort to revive Indian art"
+              "personWords": "It was a blessing coming across MeMeraki Art Workshops. Started with my favourite art form Madhubani, which was the first workshop and had an amazing experience with Yosha and her team. The journey began and still continues with so many workshops with varous art forms including, Pichwai, Pattachitra, Gond, Kerala Mural, Phad and many more. It's an honour to learn from great artisans from our own houses in this difficult time. Yosha, it's been a pleasure to be a part of your effort to revive Indian art."
             }
           },
-          "4987965b-0e67-4b80-91a8-d5dbc0fe6ecb": {
+          "57b084ff-0995-4108-9d4b-339bc23eee3c": {
             "type": "image",
             "settings": {
               "personImg": "shopify:\/\/shop_images\/img2_29e724f6-87eb-4333-8bda-f7e7a8107e1d.png",
@@ -2884,8 +2884,8 @@
           }
         },
         "block_order": [
-          "c68751d9-3127-4a27-b0bb-9a4ec42337fe",
-          "4987965b-0e67-4b80-91a8-d5dbc0fe6ecb"
+          "dbe87439-e0d5-4020-9475-87f9c6e1167f",
+          "57b084ff-0995-4108-9d4b-339bc23eee3c"
         ],
         "settings": {
         }
