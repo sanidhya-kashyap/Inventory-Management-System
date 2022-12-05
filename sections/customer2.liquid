@@ -117,6 +117,98 @@
     content: 'flickity';
     display: none; /* hide :after */
   }
+   @media only screen and (max-width: 1050px) {
+    .container-review {
+      width: 933px;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    .container-review {
+      width: 801px;
+    }
+    .carousel-cell {
+
+      flex-direction: column;
+      /* padding: 51px; */
+      padding: 102px;
+    }
+  }
+  @media only screen and (max-width: 770px) {
+    .container-review {
+      width: 775px;
+    }
+
+  }
+  @media only screen and (max-width: 650px) {
+    .container-review {
+      width: 551px;
+    }
+    .carousel-cell {
+      flex-direction: column;
+
+      padding: 44px;
+    }
+  }
+  .review-p {
+    padding: 0 41px;
+    font-size: 17px;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 238px;
+    width: 212px;
+  }
+}
+@media only screen and (max-width: 550px) {
+
+  .container-review {
+    width: 548px;
+  }
+  .review-p {
+    padding: 0 21px;
+    font-size: 13px;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 211px;
+    width: 206px;
+  }
+
+}
+@media only screen and (max-width: 430px) {
+  .container-review {
+    width: 342px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .container-review {
+    width: 373px;
+  }
+  .carousel-cell {
+    padding: 16px;
+
+  }
+}
+@media only screen and (max-width: 300px) {
+  .container-review {
+    min-width: 193px;
+    width: 274px;
+  }
+  .polaroid a {
+    margin: 0;
+    padding: 34px 13px 18px;
+    height: 152px;
+    width: 139px;
+  }
+  .carousel-cell {
+    padding: 24px;
+
+  }
+  .review-p {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+}
 </style>
 
 {% schema %}
