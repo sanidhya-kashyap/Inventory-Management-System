@@ -2812,55 +2812,6 @@
           "title": ""
         }
       },
-      "customer-review": {
-        "type": "customer-review",
-        "blocks": {
-          "54df55c0-2d85-4f5b-8001-0a6919ed1ac5": {
-            "type": "image",
-            "settings": {
-              "personImg": "shopify:\/\/shop_images\/img1.png",
-              "personName": "Priti Desai",
-              "personLoc": "India",
-              "personWords": "It was a blessing coming across MeMeraki Art Workshops. Started with my favourite art form Madhubani, which was the first workshop and had an amazing experience with Yosha and her team. The journey began and still continues with so many workshops with varous art forms including, Pichwai, Pattachitra, Gond, Kerala Mural, Phad and many more. It's an honour to learn from great artisans from our own houses in this difficult time. Yosha, it's been a pleasure to be a part of your effort to revive Indian art"
-            }
-          },
-          "deeafe7a-7f23-46ad-aea5-ab3c10782e77": {
-            "type": "image",
-            "settings": {
-              "personImg": "shopify:\/\/shop_images\/img2.png",
-              "personName": "Kavita",
-              "personLoc": "USA",
-              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. All the artists they bring have their unique styles to teach and it's so mesmerizing to watch the magic they create. Cannot thank enough Memeraki team to bring these unimaginable heritage arts of India, and we get to learn from the best. I feel blessed to say that there was never a dull moment even in these tough times. It became my routine to check their website to see what classes are being offered next. Can’t end my comments without mentioning- the amazing support the team gives during and before\/after the classes - the cherry on the top. Thanks to Yosha and the team for an amazing overall experience"
-            }
-          },
-          "690da60b-db9b-4dba-a581-e65bc288a1d1": {
-            "type": "image",
-            "settings": {
-              "personImg": "shopify:\/\/shop_images\/img1.png",
-              "personName": "Priti Desai",
-              "personLoc": "India",
-              "personWords": "It was a blessing coming across MeMeraki Art Workshops. Started with my favourite art form Madhubani, which was the first workshop and had an amazing experience with Yosha and her team. The journey began and still continues with so many workshops with varous art forms including, Pichwai, Pattachitra, Gond, Kerala Mural, Phad and many more. It's an honour to learn from great artisans from our own houses in this difficult time. Yosha, it's been a pleasure to be a part of your effort to revive Indian art"
-            }
-          },
-          "a4178be2-a26e-4872-b922-00d17b9eea9d": {
-            "type": "image",
-            "settings": {
-              "personImg": "shopify:\/\/shop_images\/img2.png",
-              "personName": "Kavita",
-              "personLoc": "USA",
-              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. All the artists they bring have their unique styles to teach and it's so mesmerizing to watch the magic they create. Cannot thank enough Memeraki team to bring these unimaginable heritage arts of India, and we get to learn from the best. I feel blessed to say that there was never a dull moment even in these tough times. It became my routine to check their website to see what classes are being offered next. Can’t end my comments without mentioning- the amazing support the team gives during and before\/after the classes - the cherry on the top. Thanks to Yosha and the team for an amazing overall experience"
-            }
-          }
-        },
-        "block_order": [
-          "54df55c0-2d85-4f5b-8001-0a6919ed1ac5",
-          "deeafe7a-7f23-46ad-aea5-ab3c10782e77",
-          "690da60b-db9b-4dba-a581-e65bc288a1d1",
-          "a4178be2-a26e-4872-b922-00d17b9eea9d"
-        ],
-        "settings": {
-        }
-      },
       "customer-testimonial": {
         "type": "customer-testimonial",
         "blocks": {
@@ -2879,7 +2830,7 @@
               "personImg": "shopify:\/\/shop_images\/img2_29e724f6-87eb-4333-8bda-f7e7a8107e1d.png",
               "personName": "Kavita",
               "personLoc": "USA",
-              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. All the artists they bring have their unique styles to teach and it's so mesmerizing to watch the magic they create. Cannot thank enough Memeraki team to bring these unimaginable heritage arts of India, and we get to learn from the best. I feel blessed to say that there was never a dull moment even in these tough times. It became my routine to check their website to see what classes are being offered next. Can’t end my comments without mentioning- the amazing support the team gives during and before\/after the classes - the cherry on the top. Thanks to Yosha and the team for an amazing overall experience."
+              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. All the artists they bring have their unique styles to teach and it's so mesmerizing to watch the magic they create. Cannot thank enough Memeraki team to bring these unimaginable heritage arts of India, and we get to learn from the best."
             }
           }
         },
