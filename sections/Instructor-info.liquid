@@ -1,9 +1,16 @@
 {%- liquid
-  assign artist_name = product.metafields.Instructor.name.value
-  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
-  assign artist_url = collections[artist_handle].url
+  if section.settings.set_manually == true
+    assign artist_name = section.settings.artist_collection.title
+    assign artist_handle = section.settings.artist_collection.handle
+    assign artist_url = section.settings.artist_collection.url
+  else
+    assign artist_name = product.metafields.Instructor.name.value
+    assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+    assign artist_url = collections[artist_handle].url
+  endif
   assign a = 0
 -%}
+
 {% if artist_url != '' %}
   {% for collection in product.collections %}
     {% if collection.title == 'MEMERAKI MASTERCLASSES' %}
@@ -103,8 +110,7 @@
   ],
   "presets": [
     {
-      "name": "Instructor-Bio",
-      "category": "Workshops"
+      "name": "Instructor-Bio"
     }
   ]
 }
