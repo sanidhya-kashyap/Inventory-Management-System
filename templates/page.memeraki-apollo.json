@@ -124,7 +124,7 @@
       "type": "featured-collection",
       "settings": {
         "full_width": false,
-        "title": "Featured collection",
+        "title": "",
         "collection": "shaiju-artcan-collection",
         "carousel": true,
         "grid": 3,
