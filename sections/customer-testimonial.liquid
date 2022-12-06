@@ -96,8 +96,6 @@
 
 
   .cust-review {
-    width: -moz-fit-content;
-    width: fit-content;
     width: 120%;
     margin-left: 20px;
     position: relative;
@@ -117,8 +115,8 @@
     content: 'flickity';
     display: none; /* hide :after */
   }
-  .flickity-page-dots {
-    display: none;
+  .flickity-page-dots .dot {
+    background: white;
   }
   @media only screen and (max-width: 1050px) {
     .container-review {
@@ -189,7 +187,12 @@
   }
   .carousel-cell {
     padding: 16px;
-
+    height: 100vh;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .carousel-cell {
+    height: 134vh;
   }
 }
 @media only screen and (max-width: 300px) {
@@ -205,14 +208,13 @@
   }
   .carousel-cell {
     padding: 24px;
-
+    height: 100vh;
   }
   .review-p {
     padding: 0 10px;
     font-size: 11px;
   }
 }
-======= >>>>>>> 3bd6852ab5eb9bdba82e1636cc884bfdb482972e
 </style>
 
 {% schema %}
