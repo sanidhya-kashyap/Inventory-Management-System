@@ -6,7 +6,7 @@
         "text": "",
         "text_align": "left",
         "blog_layout_grid": true,
-        "post_tags": true,
+        "post_tags": false,
         "show_author": true
       }
     }
