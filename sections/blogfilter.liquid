@@ -1,14 +1,26 @@
-<aside>
- 
-    <ul>
-      <li>
-        {%- for tag in blog.all_tags -%}
-          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      </li>
-    </ul>
- 
-</aside>
+<div id="sidebar-tags">
+	{% comment %}
+      Blog tags
+    {% endcomment %}
+    {% if blog.all_tags.size > 0 %}
+      <h3 class="h4">{{ 'blogs.sidebar.tags' | t }}</h3>
+      <ul class="blog-listing">
+        {% for tag in blog.all_tags %}
+        	{% unless section.settings.blog_category contains tag %}
+        	  		{% assign tag = tag |downcase %}
+                  {% unless tag contains 'january' or tag contains 'february' or tag contains 'march' or tag contains 'april'  or tag contains 'may'  or tag contains 'june'  or tag contains 'july'  or tag contains 'august'  or tag contains 'september'  or tag contains 'october'  or tag contains 'november'  or tag contains 'december' %}
+                    {% if current_tags contains tag %}
+                    <li>{{ tag }}</li>
+                    {% else %}
+                    <li>{{ tag | link_to_tag: tag }}</li>
+                    {% endif %}
+                  {% endunless %}
+        		
+        	{% endunless %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+</div>
 
 {% schema %}
 {
