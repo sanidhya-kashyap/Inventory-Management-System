@@ -2840,6 +2840,26 @@
         ],
         "settings": {
         }
+      },
+      "Upcoming-workshop": {
+        "type": "Upcoming-workshop",
+        "blocks": {
+          "c6bded70-3ca3-4f4d-9790-efe934be6fec": {
+            "type": "image",
+            "settings": {
+              "eventimg": "shopify:\/\/shop_images\/IMG_20210805_161910.jpg",
+              "eventpersonImg": "shopify:\/\/shop_images\/Screenshot_17.png",
+              "eventpersonName": "Mahaveer Swami",
+              "eventdate": "23 January 2023",
+              "eventname": "6th December: ONLINE BIKANER PAINTING WORKSHOP WITH MAHAVEER SWAMI"
+            }
+          }
+        },
+        "block_order": [
+          "c6bded70-3ca3-4f4d-9790-efe934be6fec"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
