@@ -5,23 +5,14 @@
         <div class="carousel-cell-workshop">
           <div class="workshop-img">
             {{ block.settings.eventimg | image_url: height: 250 | image_tag: class: 'img-w' }}
-            {%- comment -%}
-              <img class="img-w" src="https://avatars.mds.yandex.net/i?id=84dbd50839c3d640ebfc0de20994c30d-4473719-images-taas-consumers&n=27&h=480&w=480" alt="">
-            {%- endcomment -%}
             <p class="title-w">
               {{ block.settings.eventname }}
-              {%- comment -%}
-                6th December: ONLINE BIKANER PAINTING WORKSHOP WITH MAHAVEER SWAMI
-              {%- endcomment -%}
             </p>
             <p class="date-w">
               {{ block.settings.eventdate }}
             </p>
             <div class="img-name">
               {{ block.settings.eventpersonImg | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
-              {%- comment -%}
-                <img class="img-inside-img" src="https://avatars.mds.yandex.net/i?id=84dbd50839c3d640ebfc0de20994c30d-4473719-images-taas-consumers&n=27&h=480&w=480" alt="">
-              {%- endcomment -%}
               <p class="artist-w">
                 {{ block.settings.eventpersonName }}
               </p>
