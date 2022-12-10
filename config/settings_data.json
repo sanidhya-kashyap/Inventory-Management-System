@@ -2840,6 +2840,11 @@
         ],
         "settings": {
         }
+      },
+      "Upcoming-workshop": {
+        "type": "Upcoming-workshop",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
