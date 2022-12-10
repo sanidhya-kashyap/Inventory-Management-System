@@ -2843,66 +2843,6 @@
       },
       "Upcoming-workshop": {
         "type": "Upcoming-workshop",
-        "blocks": {
-          "bac9bf6a-c045-434f-8f15-8e3ddd7b717c": {
-            "type": "image",
-            "settings": {
-              "eventimg": "shopify:\/\/shop_images\/IMG_20210805_161910.jpg",
-              "eventpersonImg": "shopify:\/\/shop_images\/Screenshot_17.png",
-              "eventpersonName": "MAHVEER",
-              "eventdate": "23 JAN 2023",
-              "eventname": "11th December: ONLINE GOND PAINTING WORKSHOP WITH KAILASH PRADHAN"
-            }
-          },
-          "1e63083d-2db1-4c5c-a646-7671375bb9c5": {
-            "type": "image",
-            "settings": {
-              "eventpersonName": "",
-              "eventdate": "",
-              "eventname": ""
-            }
-          },
-          "9aa3fea3-93ad-4d7d-9f9b-596909ae9005": {
-            "type": "image",
-            "settings": {
-              "eventpersonName": "",
-              "eventdate": "",
-              "eventname": ""
-            }
-          },
-          "31ee9c3f-878c-4988-9480-91590c9d0781": {
-            "type": "image",
-            "settings": {
-              "eventpersonName": "",
-              "eventdate": "",
-              "eventname": ""
-            }
-          },
-          "b1d540e5-dba5-4e4a-bdca-92801759903e": {
-            "type": "image",
-            "settings": {
-              "eventpersonName": "",
-              "eventdate": "",
-              "eventname": ""
-            }
-          },
-          "5999f723-c40f-4b13-815f-25058aae647e": {
-            "type": "image",
-            "settings": {
-              "eventpersonName": "",
-              "eventdate": "",
-              "eventname": ""
-            }
-          }
-        },
-        "block_order": [
-          "bac9bf6a-c045-434f-8f15-8e3ddd7b717c",
-          "1e63083d-2db1-4c5c-a646-7671375bb9c5",
-          "9aa3fea3-93ad-4d7d-9f9b-596909ae9005",
-          "31ee9c3f-878c-4988-9480-91590c9d0781",
-          "b1d540e5-dba5-4e4a-bdca-92801759903e",
-          "5999f723-c40f-4b13-815f-25058aae647e"
-        ],
         "settings": {
         }
       }
