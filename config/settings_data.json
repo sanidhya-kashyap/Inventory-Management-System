@@ -2853,10 +2853,136 @@
               "eventdate": "23 January 2023",
               "eventname": "6th December: ONLINE BIKANER PAINTING WORKSHOP WITH MAHAVEER SWAMI"
             }
+          },
+          "fc4c5074-f7b5-4255-a9fb-332c38c5b749": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "b1e37350-4ea1-4a9f-90fe-e4d7070250f0": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "5f50405f-4da5-4299-854b-81b62b3a65c0": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "3d1a7d85-8039-4e6b-a91c-b68dc8a66f0d": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "e90a4512-c7cf-45eb-b805-2ec1c17870b9": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "6abaa192-cb61-4f9a-8e1a-e52454a3b302": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "bf9b2b99-b70c-478d-a549-ea7e53e720fd": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "3a156a65-789e-4399-8c83-9fcd0e43cbe0": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "ada1b407-8fbe-439e-bd28-4c06d97189bd": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "ec3d33de-ed57-4eca-b922-41ab859eb4b0": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "faaa3969-a9c5-4993-aed7-628fc728c634": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "67483f62-19f8-4403-ac08-35960181d963": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "79164dbe-80d3-4379-8b38-db54d7ca66f1": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "aa1c389d-c36c-4701-9bc2-cf7921166d99": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
           }
         },
         "block_order": [
-          "c6bded70-3ca3-4f4d-9790-efe934be6fec"
+          "c6bded70-3ca3-4f4d-9790-efe934be6fec",
+          "fc4c5074-f7b5-4255-a9fb-332c38c5b749",
+          "b1e37350-4ea1-4a9f-90fe-e4d7070250f0",
+          "5f50405f-4da5-4299-854b-81b62b3a65c0",
+          "3d1a7d85-8039-4e6b-a91c-b68dc8a66f0d",
+          "e90a4512-c7cf-45eb-b805-2ec1c17870b9",
+          "6abaa192-cb61-4f9a-8e1a-e52454a3b302",
+          "bf9b2b99-b70c-478d-a549-ea7e53e720fd",
+          "3a156a65-789e-4399-8c83-9fcd0e43cbe0",
+          "ada1b407-8fbe-439e-bd28-4c06d97189bd",
+          "ec3d33de-ed57-4eca-b922-41ab859eb4b0",
+          "faaa3969-a9c5-4993-aed7-628fc728c634",
+          "67483f62-19f8-4403-ac08-35960181d963",
+          "79164dbe-80d3-4379-8b38-db54d7ca66f1",
+          "aa1c389d-c36c-4701-9bc2-cf7921166d99"
         ],
         "settings": {
         }
