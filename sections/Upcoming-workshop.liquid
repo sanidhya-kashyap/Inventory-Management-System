@@ -1,32 +1,23 @@
-{%- liquid
-  assign collection = collections[section.settings.collection]
--%}
-{%- liquid
-
-  assign artist_name =  product.metafields.Instructor.name.value
-  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
-  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
-
--%}
-
 <div class="body-workshop">
   <div class="container-workshop">
     <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
-      {% for product in collection.products %}
+      {% for block in section.blocks %}
         <div class="carousel-cell-workshop">
           <div class="workshop-img">
-            {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
+            {{ block.settings.eventimg | image_url: height: 250 | image_tag: class: 'img-w' }}
             <p class="title-w">
-              {{ product.title }}
+              {{ block.settings.eventname }}
             </p>
             <p class="date-w">
-              Monday, 23 Jan 2023
+              {{ block.settings.eventdate }}
             </p>
-            <a class="workshop-hyperlinks" href="{{ collections[artist_handle].url }}"><div class="aartist">
-          <img  loading="lazy" class="aartist-image" style="" height="300" width="300" class="container__image" src="{{ collections[artist_handle] | image_url: height: 150 }}">
-          <span class="aartist-name">{{ artist_name }}</span>                    
-        </div></a>
-            <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
+            <div class="img-name">
+              {{ block.settings.eventpersonImg | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
+              <p class="artist-w">
+                {{ block.settings.eventpersonName }}
+              </p>
+            </div>
+            <button class="button-w">Enroll Now</button>
 
           </div>
         </div>
@@ -127,117 +118,42 @@
 </style>
 
 {% schema %}
-{
-  "name": "Featured collection",
-  "settings":
-  [
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Featured collection"
-    },
-    {
-      "id": "collection",
-      "type": "collection",
-      "label": "Collection"
-    },
-    {
-      "id": "carousel",
-      "type": "checkbox",
-      "label": "Display in carousel"
-    },
-    {
-      "type": "range",
-      "id": "grid",
-      "min": 2,
-      "max": 5,
-      "step": 1,
-      "label": "Products per row",
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "limit",
-      "min": 2,
-      "max": 30,
-      "step": 1,
-      "label": "Products shown",
-      "default": 8
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "cs1",
-          "label": "1"
-        },
-        {
-          "value": "cs2",
-          "label": "2"
-        },
-        {
-          "value": "cs3",
-          "label": "3"
-        }
-      ],
-      "default": "none"
-    },
-    {
-      "type": "select",
-      "id": "section_padding",
-      "label": "Section spacing",
-      "options": [
-        {
-          "value": "top",
-          "label": "Top"
-        },
-        {
-          "value": "bottom",
-          "label": "Bottom"
-        },
-        {
-          "value": "both",
-          "label": "Both"
-        },
-        {
-          "value": "none",
-          "label": "None"
-        }
-      ],
-      "default": "both"
-    }
-  ],
-  "presets":
-  [
-    {
-      "name": "Featured collection"
-    }
-  ],
-  "templates":
-  [
-    "404",
-    "article",
-    "blog",
-    "cart",
-    "collection",
-    "list-collections",
-    "index",
-    "page",
-    "product",
-    "search",
-    "customers/account"
-  ]
-}
+  {
+    "name": "Workshops",
+    "settings": [],
+    "max_blocks": 15,
+    "blocks": [
+      {
+        "name": "Workshops",
+        "type": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "eventimg",
+            "label": "eventimg"
+          },
+
+          {
+            "type": "image_picker",
+            "id": "eventpersonImg",
+            "label": "eventpersonImg"
+          },
+          {
+            "type": "text",
+            "id": "eventpersonName",
+            "label": "eventpersonName"
+          },
+          {
+            "type": "text",
+            "id": "eventdate",
+            "label": "eventdate"
+          }, {
+            "type": "text",
+            "id": "eventname",
+            "label": "eventname"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
