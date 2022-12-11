@@ -1,7 +1,11 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+-%}
+
 <div class="body-workshop">
   <div class="container-workshop">
     <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
-      {% for block in section.blocks %}
+      {% for product in collection.products %}
         <div class="carousel-cell-workshop">
           <div class="workshop-img">
             {{ block.settings.eventimg | image_url: height: 250 | image_tag: class: 'img-w' }}
