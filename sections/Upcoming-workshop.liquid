@@ -1,7 +1,7 @@
 <div class="body-workshop">
   <div class="container-workshop">
     <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
-      {% for block in section.blocks %}
+      {% for product in collection.products %}
         <div class="carousel-cell-workshop">
           <div class="workshop-img">
             {{ block.settings.eventimg | image_url: height: 250 | image_tag: class: 'img-w' }}
@@ -21,7 +21,7 @@
 
           </div>
         </div>
-      {% endfor %}
+      {%endfor%}
     </div>
   </div>
 </div>
@@ -40,10 +40,10 @@
 
   .container-workshop {
     position: relative;
-    width: 1179px;
+    width: 100%;
     min-width: 350px;
     min-height: 250px;
-    /* padding-bottom: 40px; */
+    padding: 10px;
     overflow: hidden;
   }
 
@@ -96,6 +96,24 @@
     border-radius: 0 0 25px 25px;
     border-style: none;
     margin-top: 19px;
+  }
+  @media only screen and (max-width: 950px) {
+    .carousel-cell-workshop {
+      width: 50%;
+      height: 65vh;
+      margin: 0 10px;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+
+    .container-workshop {
+      padding: 10px;
+    }
+    .carousel-cell-workshop {
+      width: 85%;
+      height: 84vh;
+      margin: 0 10px;
+    }
   }
 </style>
 
