@@ -1,7 +1,12 @@
 {%- liquid
   assign collection = collections[section.settings.collection]
+-%}
+{%- liquid
+
   assign artist_name =  product.metafields.Instructor.name.value
   assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+
 -%}
 
 <div class="body-workshop">
