@@ -2844,6 +2844,14 @@
       "Upcoming-workshop": {
         "type": "Upcoming-workshop",
         "settings": {
+          "full_width": false,
+          "title": "Featured collection",
+          "collection": "live-art-workshops",
+          "carousel": true,
+          "grid": 4,
+          "limit": 8,
+          "color_scheme": "none",
+          "section_padding": "both"
         }
       }
     },
