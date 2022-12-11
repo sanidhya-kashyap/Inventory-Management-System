@@ -2843,6 +2843,37 @@
       },
       "Upcoming-workshop": {
         "type": "Upcoming-workshop",
+        "blocks": {
+          "8f685f49-f46d-4e82-842b-514d42058743": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "c01afad2-3deb-443e-9328-86488ea9be2d": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          },
+          "3df5c598-5f95-4ca1-8c16-af3af186b623": {
+            "type": "image",
+            "settings": {
+              "eventpersonName": "",
+              "eventdate": "",
+              "eventname": ""
+            }
+          }
+        },
+        "block_order": [
+          "8f685f49-f46d-4e82-842b-514d42058743",
+          "c01afad2-3deb-443e-9328-86488ea9be2d",
+          "3df5c598-5f95-4ca1-8c16-af3af186b623"
+        ],
         "settings": {
         }
       }
