@@ -122,42 +122,117 @@
 </style>
 
 {% schema %}
-  {
-    "name": "Workshops",
-    "settings": [],
-    "max_blocks": 15,
-    "blocks": [
-      {
-        "name": "Workshops",
-        "type": "image",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "eventimg",
-            "label": "eventimg"
-          },
-
-          {
-            "type": "image_picker",
-            "id": "eventpersonImg",
-            "label": "eventpersonImg"
-          },
-          {
-            "type": "text",
-            "id": "eventpersonName",
-            "label": "eventpersonName"
-          },
-          {
-            "type": "text",
-            "id": "eventdate",
-            "label": "eventdate"
-          }, {
-            "type": "text",
-            "id": "eventname",
-            "label": "eventname"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "Featured collection",
+  "settings":
+  [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "id": "carousel",
+      "type": "checkbox",
+      "label": "Display in carousel"
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "Products per row",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "label": "Products shown",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "cs1",
+          "label": "1"
+        },
+        {
+          "value": "cs2",
+          "label": "2"
+        },
+        {
+          "value": "cs3",
+          "label": "3"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "both"
+    }
+  ],
+  "presets":
+  [
+    {
+      "name": "Featured collection"
+    }
+  ],
+  "templates":
+  [
+    "404",
+    "article",
+    "blog",
+    "cart",
+    "collection",
+    "list-collections",
+    "index",
+    "page",
+    "product",
+    "search",
+    "customers/account"
+  ]
+}
 {% endschema %}
