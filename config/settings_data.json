@@ -2844,7 +2844,7 @@
       "Upcoming-workshop": {
         "type": "Upcoming-workshop",
         "blocks": {
-          "8f685f49-f46d-4e82-842b-514d42058743": {
+          "56d93549-2793-4fbc-8c65-f399e7ac88bf": {
             "type": "image",
             "settings": {
               "eventpersonName": "",
@@ -2852,7 +2852,7 @@
               "eventname": ""
             }
           },
-          "c01afad2-3deb-443e-9328-86488ea9be2d": {
+          "a60e2b55-0ca3-4d6b-8237-e2b871288f98": {
             "type": "image",
             "settings": {
               "eventpersonName": "",
@@ -2860,7 +2860,7 @@
               "eventname": ""
             }
           },
-          "3df5c598-5f95-4ca1-8c16-af3af186b623": {
+          "a27b0b78-fc5b-414e-bfb7-decc433fed25": {
             "type": "image",
             "settings": {
               "eventpersonName": "",
@@ -2870,9 +2870,9 @@
           }
         },
         "block_order": [
-          "8f685f49-f46d-4e82-842b-514d42058743",
-          "c01afad2-3deb-443e-9328-86488ea9be2d",
-          "3df5c598-5f95-4ca1-8c16-af3af186b623"
+          "56d93549-2793-4fbc-8c65-f399e7ac88bf",
+          "a60e2b55-0ca3-4d6b-8237-e2b871288f98",
+          "a27b0b78-fc5b-414e-bfb7-decc433fed25"
         ],
         "settings": {
         }
