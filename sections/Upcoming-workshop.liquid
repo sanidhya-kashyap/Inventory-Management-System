@@ -22,12 +22,10 @@
             <p class="date-w">
               Monday, 23 Jan 2023
             </p>
-            <div class="img-name">
-              {{ collections[artist_handle] | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
-              <p class="artist-w">
-                {{ artist_name }}
-              </p>
-            </div>
+            <a class="workshop-hyperlinks" href="{{ collections[artist_handle].url }}"><div class="aartist">
+          <img  loading="lazy" class="aartist-image" style="" height="300" width="300" class="container__image" src="{{ collections[artist_handle] | image_url: height: 150 }}">
+          <span class="aartist-name">{{ artist_name }}</span>                    
+        </div></a>
             <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
 
           </div>
