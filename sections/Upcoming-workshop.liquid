@@ -1,5 +1,7 @@
 {%- liquid
   assign collection = collections[section.settings.collection]
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
 -%}
 
 <div class="body-workshop">
@@ -8,20 +10,20 @@
       {% for product in collection.products %}
         <div class="carousel-cell-workshop">
           <div class="workshop-img">
-            {{ block.settings.eventimg | image_url: height: 250 | image_tag: class: 'img-w' }}
+            {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
             <p class="title-w">
-              {{ block.settings.eventname }}
+              {{ product.title }}
             </p>
             <p class="date-w">
-              {{ block.settings.eventdate }}
+              Monday, 23 Jan 2023
             </p>
             <div class="img-name">
-              {{ block.settings.eventpersonImg | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
+              {{ collections[artist_handle] | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
               <p class="artist-w">
-                {{ block.settings.eventpersonName }}
+                {{ artist_name }}
               </p>
             </div>
-            <button class="button-w">Enroll Now</button>
+            <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
 
           </div>
         </div>
