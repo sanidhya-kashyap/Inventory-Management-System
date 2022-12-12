@@ -1,16 +1,22 @@
 {%- liquid
   assign collection = collections[section.settings.collection]
-  assign artist_name =  product.metafields.Instructor.name.value
-  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
   
 -%}
+
 <div class="body-workshop">
   <div class="container-workshop">
     <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
       {% for product in collection.products %}
         <div class="carousel-cell-workshop">
-          <div class="workshop-img">
-            {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
+          {% if product.images[1] != nil %}
+            <div class="workshop-img">
+              {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
+              {% else %}
+              <div class="workshop-img">
+                <div class="img-w">
+
+                </div>
+            {% endif %}
             <p class="title-w">
               {{ product.title }}
             </p>
@@ -18,9 +24,11 @@
               Monday, 23 Jan 2023
             </p>
             <div class="img-name">
-              <img loading="lazy" class="img-inside-img" style="" height="" width="" class="container__image" src="{{ collections[artist_handle] | image_url: height: 50 }}">
+              <div class="img-inside">
+              {{ product.metafields.Instructor.image | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
+            </div>
               <p class="artist-w">
-                {{ artist_name }}
+                {{ product.metafields.Instructor.name.value }}
               </p>
             </div>
             <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
@@ -60,21 +68,31 @@
     margin-right: 10px;
     background: linear-gradient(180deg, rgba(244,203,40,100) 1%, rgba(65,30,47,1) 90%);
     border-radius: 25px;
+    cursor: pointer;
   }
   .carousel-cell-workshop:hover {
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .img-w {
+    background: gray;
     height: 250px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
   }
+  .img-inside {
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
   img.img-inside-img {
+    background-color: gray;
     height: 50px;
     width: 50px;
     border-radius: 50%;
   }
   p.title-w {
+    height: 72px;
     color: white;
     font-size: 16px;
     font-weight: bolder;
