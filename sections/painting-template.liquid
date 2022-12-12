@@ -470,7 +470,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
         "productURL": "https://www.memeraki.com{{ product.url }}",
         "productImageURL": "https:{{ product.featured_image | image_url }}"
       }`;
-      console.log(body);
       console.log(postReqestPlannerData('https://fb7a58ae-41dc-454f-9c44-49f353b4c968-prod.e1-us-east-azure.choreoapis.dev/qugi/requestartplanner/1.0.0/newLead',body)); 
     }
   })
