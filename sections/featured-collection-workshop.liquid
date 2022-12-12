@@ -1,6 +1,7 @@
 {%- liquid
   assign collection = collections[section.settings.collection]
-  
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
   
 -%}
 <div class="body-workshop">
@@ -17,7 +18,7 @@
               Monday, 23 Jan 2023
             </p>
             <div class="img-name">
-              <img loading="lazy" class="img-inside-img" style="" height="" width="" class="container__image" src="{{ product.metafields.Instructor.Image.value  | image_url: height: 50 }}">
+              <img loading="lazy" class="img-inside-img" style="" height="" width="" class="container__image" src="{{ collections[artist_handle] | image_url: height: 50 }}">
               <p class="artist-w">
                 {{ artist_name }}
               </p>
@@ -69,7 +70,6 @@
     border-top-right-radius: 25px;
   }
   img.img-inside-img {
-    background-color: gray;
     height: 50px;
     width: 50px;
     border-radius: 50%;
