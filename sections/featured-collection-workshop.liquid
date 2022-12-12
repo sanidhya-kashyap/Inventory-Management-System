@@ -1,0 +1,227 @@
+{%- liquid
+  assign collection = collections[section.settings.collection]
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  
+-%}
+<div class="body-workshop">
+  <div class="container-workshop">
+    <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
+      {% for product in collection.products %}
+        <div class="carousel-cell-workshop">
+          <div class="workshop-img">
+            {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
+            <p class="title-w">
+              {{ product.title }}
+            </p>
+            <p class="date-w">
+              Monday, 23 Jan 2023
+            </p>
+            <div class="img-name">
+              <img loading="lazy" class="img-inside-img" style="" height="" width="" class="container__image" src="{{ collections[artist_handle] | image_url: height: 50 }}">
+              <p class="artist-w">
+                {{ artist_name }}
+              </p>
+            </div>
+            <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .body-workshop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #080808;
+    flex-direction: column;
+    margin: 50px 0;
+  }
+
+  .container-workshop {
+    position: relative;
+    width: 100%;
+    min-width: 350px;
+    min-height: 250px;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+
+  .carousel-cell-workshop {
+    width: 28%;
+    height: 84vh;
+    margin-right: 10px;
+    background: linear-gradient(180deg, rgba(244,203,40,100) 1%, rgba(65,30,47,1) 90%);
+    border-radius: 25px;
+  }
+  .img-w {
+    height: 250px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  img.img-inside-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  p.title-w {
+    color: white;
+    font-size: 16px;
+    font-weight: bolder;
+    margin: 0 10px;
+  }
+  p.date-w {
+    font-size: 14px;
+    color: #f4cb28;
+    font-weight: bolder;
+    margin: 10px 12px;
+  }
+  .img-name {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+
+  p.artist-w {
+    margin: 0 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+  .button-w {
+    background-color: #f4cb28;
+    color: white;
+    font-weight: bolder;
+    border-radius: 0 0 25px 25px;
+    border-style: none;
+    margin-top: 19px;
+  }
+  @media only screen and (max-width: 950px) {
+    .carousel-cell-workshop {
+      width: 50%;
+      height: 65vh;
+      margin: 0 10px;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+
+    .container-workshop {
+      padding: 10px;
+    }
+    .carousel-cell-workshop {
+      width: 85%;
+      height: 84vh;
+      margin: 0 10px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full width"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "id": "carousel",
+        "type": "checkbox",
+        "label": "Display in carousel"
+      }, {
+        "type": "range",
+        "id": "grid",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      }, {
+        "type": "range",
+        "id": "limit",
+        "min": 2,
+        "max": 30,
+        "step": 1,
+        "label": "Products shown",
+        "default": 8
+      }, {
+        "type": "select",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          }, {
+            "value": "cs1",
+            "label": "1"
+          }, {
+            "value": "cs2",
+            "label": "2"
+          }, {
+            "value": "cs3",
+            "label": "3"
+          }
+        ],
+        "default": "none"
+      }, {
+        "type": "select",
+        "id": "section_padding",
+        "label": "Section spacing",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          }, {
+            "value": "bottom",
+            "label": "Bottom"
+          }, {
+            "value": "both",
+            "label": "Both"
+          }, {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "default": "both"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection"
+      }
+    ],
+    "templates": [
+      "404",
+      "article",
+      "blog",
+      "cart",
+      "collection",
+      "list-collections",
+      "index",
+      "page",
+      "product",
+      "search",
+      "customers/account"
+    ]
+  }
+{% endschema %}
