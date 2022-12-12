@@ -2844,13 +2844,18 @@
       "Upcoming-workshop": {
         "type": "Upcoming-workshop",
         "settings": {
+        }
+      },
+      "featured-collection-workshop": {
+        "type": "featured-collection-workshop",
+        "settings": {
           "full_width": false,
           "title": "Featured collection",
           "collection": "live-art-workshops",
-          "carousel": true,
+          "carousel": false,
           "grid": 4,
           "limit": 8,
-          "color_scheme": "none",
+          "color_scheme": "cs1",
           "section_padding": "both"
         }
       }
