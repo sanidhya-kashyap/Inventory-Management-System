@@ -67,7 +67,8 @@
         {% if section.settings.show_author %}
         <span class="posted_by">
           {% capture article_user_fullname %}
-            {{ article.user.first_name }} {{ article.user.last_name }}
+<!--             {{ article.user.first_name }} {{ article.user.last_name }} -->
+          {{ blog.author }}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
