@@ -1,4 +1,4 @@
-{% assign name = article.metafields.blog.author | split: ","%}
+{% assign name = article.metafields.blog.author | split %}
 <section class="main__section" data-section-id="{{ section.id }}">
   <div class="row">
     {% assign current = article.handle %}
