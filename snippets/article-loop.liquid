@@ -69,7 +69,7 @@
 <!--           {% capture article_user_fullname %}
             {{ article.user.first_name }} {{ article.user.last_name }}
           {% endcapture %} -->
-          {{ 'blogs.article.byline' | t: author: (article.metafields.blog.author)[0] }}
+          {{ 'blogs.article.byline' | t: author: article.metafields.blog.author }}
         </span>
       {% endif %}
       {% if article.tags.size > 0 and section.settings.post_tags %}
