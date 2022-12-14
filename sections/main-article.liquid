@@ -1,3 +1,4 @@
+{% assign name = article.metafields.blog.author %}
 <section class="main__section" data-section-id="{{ section.id }}">
   <div class="row">
     {% assign current = article.handle %}
@@ -30,7 +31,7 @@
                     {{ article.user.first_name }} {{ article.user.last_name }}
                   {% endcapture %}
                   <span class="posted_by">
-                    By {{ article.metafields.blog.author[0] }}
+                    By {{ name }}
                   </span>
                 {% endif %}
                 {% if article.tags.size > 0 and section.settings.post_tags %}
