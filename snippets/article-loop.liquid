@@ -68,7 +68,7 @@
         <span class="posted_by">
 <!--           {{ article.user.first_name }} {{ article.user.last_name }} -->
           {% capture article_user_fullname %}
-            {{ blog.author }}
+            {{ article.author }}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
