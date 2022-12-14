@@ -31,7 +31,7 @@
                     {{ article.user.first_name }} {{ article.user.last_name }}
                   {% endcapture %}
                   <span class="posted_by">
-                    By {{ name | first }}
+                    By {{ name.value[0]}}
                   </span>
                 {% endif %}
                 {% if article.tags.size > 0 and section.settings.post_tags %}
