@@ -30,7 +30,7 @@
                     {{ article.user.first_name }} {{ article.user.last_name }}
                   {% endcapture %}
                   <span class="posted_by">
-                    By {{ article_user_fullname }}
+                    By {{ article.metafields.blog.author }}
                   </span>
                 {% endif %}
                 {% if article.tags.size > 0 and section.settings.post_tags %}
