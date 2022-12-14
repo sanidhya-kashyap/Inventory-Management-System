@@ -74,7 +74,7 @@
                {{ name }}
              {% endfor %}
           {% endcapture %}
-          {{ 'blogs.article.byline' | t: author: name[1] }}
+          {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
       {% endif %}
       {% if article.tags.size > 0 and section.settings.post_tags %}
