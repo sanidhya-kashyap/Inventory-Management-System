@@ -66,11 +66,8 @@
         </span>
         {% if section.settings.show_author %}
         <span class="posted_by">
-<!--           {{ article.user.first_name }} {{ article.user.last_name }} -->
-            {% assign author = article.metafields.blog.author %}
-                
           {% capture article_user_fullname %}
-            {{ author[0]}}
+            {{ article.user.first_name }} {{ article.user.last_name }}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
