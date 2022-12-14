@@ -3,127 +3,82 @@
   
 -%}
 
-<div class="body-workshop">
-  <div class="container-workshop">
-    <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
-      {% for product in collection.products %}
-        <div class="carousel-cell-workshop">
-          {% if product.images[1] != nil %}
-            <div class="workshop-img">
-              {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
-              {% else %}
-              <div class="workshop-img">
-                <div class="img-w">
+{% if section.settings.title != blank %}
+  <div class="section-title row">
+    <h2>
+      <a href="{{ collection.url }}">{{ section.settings.title | escape }}</a>
+    </h2>
+  </div>
+  <div class="clear"></div>
+{% endif %}
+<div class="container-workshop">
+  <div class="carousel-workshop" data-flickity='{"wrapAround":true, "cellAlign": "left", "dragThreshold":"15","pauseAutoPlayOnHover":false,"pageDots": false}'>
+    {% for product in collection.products %}
+      <div class="carousel-cell-workshop">
+        {% render 'product-listing-memeraki-workshop', collection: collection, product: product %}
 
-                </div>
-            {% endif %}
-            <p class="title-w">
-              {{ product.title }}
-            </p>
-            <p class="date-w">
-              Monday, 23 Jan 2023
-            </p>
-            <div class="img-name">
-              <div class="img-inside">
-              {{ product.metafields.Instructor.image | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
-            </div>
-              <p class="artist-w">
-                {{ product.metafields.Instructor.name.value }}
-              </p>
-            </div>
-            <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
-          </div>
+        {% comment %} {% if product.images[1] != nil %}
+        <div class="workshop-img">
+        {{ product.images[1] | image_url: height: 250 | image_tag: class: 'img-w' }}
+        {% else %}
+        <div class="workshop-img">
+        <div class="img-w">
+
         </div>
-      {% endfor %}
-    </div>
+        {% endif %}
+        <p class="title-w">
+        {{ product.title }}
+        </p>
+        <p class="date-w">
+        Monday, 23 Jan 2023
+        </p>
+        <div class="img-name">
+        <div class="img-inside">
+
+        {{ collections[artist_handle] | image_url: height: 50 | image_tag: class: 'img-inside-img' }}
+        </div>
+        <p class="artist-w">
+        {{ artist_name }}
+        </p>
+        </div>
+        <button class="button-w" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
+        </div>{% endcomment %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
 
 <style>
-  .body-workshop {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #080808;
-    flex-direction: column;
-    margin: 50px 0;
-  }
 
   .container-workshop {
     position: relative;
     width: 100%;
     min-width: 350px;
     min-height: 250px;
-    padding: 40px;
+    padding: 0 40px;
     overflow: hidden;
   }
 
 
   .carousel-cell-workshop {
-    width: 25%;
-    height: 84vh;
+    width: 24%;
+    height: 92vh;
     margin-right: 10px;
-    background: linear-gradient(180deg, rgba(244,203,40,100) 1%, rgba(65,30,47,1) 90%);
-    border-radius: 25px;
-    cursor: pointer;
+
   }
-  .carousel-cell-workshop:hover {
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  .img-w {
-    background: gray;
-    height: 250px;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-  }
-  .img-inside {
-    background-color: gray;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-  }
-  img.img-inside-img {
-    background-color: gray;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-  }
-  p.title-w {
-    height: 72px;
-    color: white;
-    font-size: 16px;
-    font-weight: bolder;
-    margin: 0 10px;
-  }
-  p.date-w {
-    font-size: 14px;
-    color: #f4cb28;
-    font-weight: bolder;
-    margin: 10px 12px;
-  }
-  .img-name {
-    display: flex;
-    align-items: center;
-    margin: 10px;
+  @media only screen and (max-width: 1600px) {
+    .container-workshop {
+      height: 602px;
+    }
   }
 
-  p.artist-w {
-    margin: 0 10px;
-    color: white;
-    font-size: 15px;
-    font-weight: bolder;
+  @media only screen and (max-width: 1050px) {
+    .carousel-cell-workshop {
+      width: 33.3%;
+    }
   }
-  .button-w {
-    background-color: #f4cb28;
-    color: white;
-    font-weight: bolder;
-    border-radius: 0 0 25px 25px;
-    border-style: none;
-    margin-top: 19px;
-  }
+
   @media only screen and (max-width: 950px) {
     .carousel-cell-workshop {
       width: 50%;
@@ -131,6 +86,19 @@
       margin: 0 10px;
     }
   }
+  @media only screen and (max-width: 900px) {
+    .carousel-cell-workshop {
+      width: 40%;
+
+    }
+  }
+  @media only screen and (max-width: 700px) {
+    .carousel-cell-workshop {
+      width: 50%;
+
+    }
+  }
+
   @media only screen and (max-width: 550px) {
 
     .container-workshop {
@@ -138,7 +106,7 @@
     }
     .carousel-cell-workshop {
       width: 85%;
-      height: 84vh;
+      height: 81vh;
       margin: 0 10px;
     }
   }

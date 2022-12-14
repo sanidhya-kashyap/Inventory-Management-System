@@ -106,7 +106,7 @@
 
         <a class="workshop-hyperlinks" href="{{ collections[artist_handle].url }}"><div class="aartist">
           <img  loading="lazy" class="aartist-image" style="" height="300" width="300" class="container__image" src="{{ collections[artist_handle] | image_url: height: 150 }}">
-          <span class="aartist-name">{{ artist_name }}</span>                    
+          <span class="aartist-name"> {{ artist_name }} </span>                    
         </div></a>
 
         <button class="enroll-now" onclick='window.location.href="{{ product.url }}"'>Enroll Now</button>
@@ -237,6 +237,7 @@
 .enroll-now:hover {
   cursor: pointer;
 }
+
 @media screen and (min-width: 741px) and (max-width: 980px){ 
 .featured__collection-carousel .featured__collection-product {
     width: 50% !important;
