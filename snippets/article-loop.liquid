@@ -68,7 +68,8 @@
         <span class="posted_by">
 <!--           {{ article.user.first_name }} {{ article.user.last_name }} -->
           {% capture article_user_fullname %}
-            {{ article.metafields.blog.author | index: 1 }}
+            {% assign author = article.metafields.blog.author %}
+            {{ author[0] }}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
