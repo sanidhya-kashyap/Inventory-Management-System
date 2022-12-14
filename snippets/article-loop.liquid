@@ -65,15 +65,15 @@
           {{ 'blogs.article.posted_on_date_html' | t: date: published_at }}
         </span>
         {% if section.settings.show_author %}
-        <span class="posted_by">
+<!--         <span class="posted_by">
           {% capture article_user_fullname %}
             {{ article.user.first_name }} {{ article.user.last_name }}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
-        </span>
-<!--       <span class="posted_by">
-          {{ 'blogs.article.byline' | t: author:  article.metafields.blog.author }}
         </span> -->
+      <span class="posted_by">
+          {{ 'blogs.article.byline' | t: author:  article.metafields.blog.author.value[0] }}
+        </span>
       {% endif %}
       {% if article.tags.size > 0 and section.settings.post_tags %}
         <ul>
