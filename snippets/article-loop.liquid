@@ -70,7 +70,7 @@
             {% assign author = article.metafields.blog.author %}
                 
           {% capture article_user_fullname %}
-            {{ author }}
+            {{ author[0]}}
           {% endcapture %}
           {{ 'blogs.article.byline' | t: author: article_user_fullname }}
         </span>
