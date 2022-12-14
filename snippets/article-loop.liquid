@@ -69,7 +69,11 @@
 <!--           {% capture article_user_fullname %}
             {{ article.user.first_name }} {{ article.user.last_name }}
           {% endcapture %} -->
-          {% assign name = article.metafields.blog.author %}
+          {% capture article_user_fullname %}
+             {% for name in article.metafields.blog.author %}
+               {{ name }}
+             {% endfor %}
+          {% endcapture %}
           {{ 'blogs.article.byline' | t: author: name[1] }}
         </span>
       {% endif %}
