@@ -70,7 +70,7 @@
             {{ article.user.first_name }} {{ article.user.last_name }}
           {% endcapture %} -->
           {% assign name = article.metafields.blog.author %}
-          {{ 'blogs.article.byline' | t: author: name[0] }}
+          {{ 'blogs.article.byline' | t: author: name[1] }}
         </span>
       {% endif %}
       {% if article.tags.size > 0 and section.settings.post_tags %}
