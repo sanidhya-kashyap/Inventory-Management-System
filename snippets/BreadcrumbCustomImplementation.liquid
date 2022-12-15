@@ -111,7 +111,7 @@
     -%}
     {% if product.metafields.artform.artfrom_name != blank %}
       <li>
-        <a href="https:{{collection_url }}"> {{product.metafields.artform.artfrom_name | capitalize}} </a>
+        <a href="https:{{ collection_url }}"> {{product.metafields.artform.artfrom_name | capitalize}} </a>
       </li>
     {% endif %}
 
@@ -160,12 +160,14 @@
 .mobile-breadcrumbs{
   display:none;
   color: #757272;
+  padding-top: 10px;
 }
 .breadcrumbs {
   font-size: .85em;
   margin: 0 0 2em;
   margin-left: 32px;
   color: #757272;
+  padding-top: 10px;
 /*    margin is changed from 34 to 32 */
 }
 
