@@ -24,7 +24,7 @@
             "cta_color": "#ffffff",
             "cta_background": "#000000",
             "cta_background_hover": "#000000",
-            "caption_background": "transparent",
+            "caption_background": "rgba(0,0,0,0)",
             "caption_background_opacity": 20
           }
         },
@@ -49,7 +49,7 @@
             "cta_color": "#ffffff",
             "cta_background": "#000000",
             "cta_background_hover": "#000000",
-            "caption_background": "transparent",
+            "caption_background": "rgba(0,0,0,0)",
             "caption_background_opacity": 20
           }
         },
@@ -238,6 +238,19 @@
         "section_padding": "both"
       }
     },
+    "bdbb76fd-9468-42af-81e8-9fed270a57c4": {
+      "type": "featured-collection-workshop",
+      "settings": {
+        "full_width": false,
+        "title": "Featured collection",
+        "collection": "live-art-workshops",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
     "1639414352b8f8ab28": {
       "type": "featured-blog",
       "settings": {
@@ -302,6 +315,7 @@
     "16257529729c6c2524",
     "1628115108645bdee6",
     "1639414259a761498b",
+    "bdbb76fd-9468-42af-81e8-9fed270a57c4",
     "1639414352b8f8ab28",
     "16257529781b844d78"
   ]
