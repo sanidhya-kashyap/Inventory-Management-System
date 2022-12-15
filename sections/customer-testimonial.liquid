@@ -16,7 +16,7 @@
             <p class="review-p">
               <span class="inverted-comma">"</span>
               {{ block.settings.personWords }}
-              <span class="inverted-comma">"</span>
+              {% comment %} <span class="inverted-comma">"</span> {% endcomment %}
             </p>
           </div>
 
@@ -111,13 +111,16 @@
     color: black;
     font-family: 'Crimson-text';
   }
+  .inverted-comma {
+    font-size: 80px;
+  }
   /* Ensures that Flickity waits until CSS has loaded to calculate the height of the cells */
   .carousel:after {
     content: 'flickity';
     display: none; /* hide :after */
   }
   .flickity-page-dots .dot {
-    background: white;
+    background: black;
   }
   @media only screen and (max-width: 1050px) {
     .container-review {
@@ -147,15 +150,11 @@
     }
     .carousel-cell {
       flex-direction: column;
-
       padding: 44px;
     }
   }
   .review-p {
     padding: 0 41px;
-    {% comment %}
-      font-size: 17px;
-    {% endcomment %}
   }
 
 }
@@ -166,7 +165,6 @@
   }
   .review-p {
     padding: 0 21px;
-    font-size: 13px;
   }
   .polaroid a {
     padding: 39px 13px 22px;
@@ -178,6 +176,9 @@
 @media only screen and (max-width: 430px) {
   .container-review {
     width: 342px;
+  }
+  .review-p {
+    font-size: 19px;
   }
 }
 @media only screen and (max-width: 420px) {
