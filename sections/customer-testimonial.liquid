@@ -14,7 +14,9 @@
           </div>
           <div class="cust-review">
             <p class="review-p">
+              <span class="inverted-comma">"</span>
               {{ block.settings.personWords }}
+              <span class="inverted-comma">"</span>
             </p>
           </div>
 
@@ -41,7 +43,7 @@
 
   .container-review {
     position: relative;
-    width: 1179px;
+    width: 100%;
     min-width: 350px;
     min-height: 250px;
     /* padding-bottom: 40px; */
@@ -50,10 +52,8 @@
 
   .carousel-cell {
     width: 100%;
-    background: #44153F;
     margin: 0 10px;
     display: flex;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     justify-content: center;
     align-items: center;
@@ -71,11 +71,11 @@
     text-align: center;
     text-decoration: none;
     z-index: 0;
-    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    box-shadow: 2px 1px 24px rgb(0 0 0 / 10%);
     position: relative;
-    height: 322px;
+    height: 352px;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     margin: 0 34px;
     justify-content: center;
   }
@@ -105,10 +105,11 @@
   }
 
   .review-p {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 28px;
     margin-top: 30px;
-    color: white;
+    color: black;
+    font-family: 'Crimson-text';
   }
   /* Ensures that Flickity waits until CSS has loaded to calculate the height of the cells */
   .carousel:after {
@@ -152,13 +153,11 @@
   }
   .review-p {
     padding: 0 41px;
-    font-size: 17px;
+    {% comment %}
+      font-size: 17px;
+    {% endcomment %}
   }
-  .polaroid a {
-    padding: 39px 13px 22px;
-    height: 238px;
-    width: 212px;
-  }
+
 }
 @media only screen and (max-width: 550px) {
 
