@@ -12,12 +12,12 @@
                 ;
               }
             </style>
-            <a class="testimonial_font">
+            <a>
               {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
-              {{ block.settings.personName }}
+              <p class="testimonial_font">{{ block.settings.personName }}</p>
 
-              <p>{{ block.settings.personLoc }}</p>
+              <p class="testimonial_font">{{ block.settings.personLoc }}</p>
             </a>
           </div>
           <div class="cust-review">
