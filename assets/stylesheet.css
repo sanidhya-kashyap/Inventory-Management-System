@@ -17,6 +17,12 @@ For InterAkt iframe patch
   height: 80px;
   width: 80px
 }
+
+@media only screen and (min-width: 981px){
+  #kiwi-big-iframe-wrapper{
+    display: hidden;
+}
+}
 /*Patch ends here*/
 
 *, :after, :before {
