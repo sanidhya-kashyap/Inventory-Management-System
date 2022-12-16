@@ -4,7 +4,15 @@
       {% for block in section.blocks %}
         <div class="carousel-cell">
           <div class="polaroid">
-            <a>
+
+            <style>
+              {{ section.settings.single_title_family | font_face }}
+              .testimonial_font {
+                font-family: {{ section.settings.single_title_family }}
+                ;
+              }
+            </style>
+            <a class="testimonial_font">
               {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
               {{ block.settings.personName }}
@@ -78,6 +86,7 @@
     width: 350px;
     margin: 0 34px;
     justify-content: center;
+    font-family: 'alfie-n4';
   }
 
   .polaroid a:after {
@@ -244,16 +253,24 @@
         "name": "Testimonial ",
         "type": "image",
         "settings": [
+          {
+            "type": "font_picker",
+            "id": "testimonial_font",
+            "label": "Navigation",
+            "default": "serif"
+          },
 
           {
             "type": "image_picker",
             "id": "personImg",
             "label": "personImg"
-          }, {
+          },
+          {
             "type": "text",
             "id": "personName",
             "label": "personName"
-          }, {
+          },
+          {
             "type": "text",
             "id": "personLoc",
             "label": "personLoc"
