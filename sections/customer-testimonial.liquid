@@ -1,0 +1,269 @@
+<div class="body-review">
+  <div class="container-review">
+    <div class="carousel js-flickity" data-flickity-options='{ "imagesLoaded":"true", "autoPlay": 10000, "watchCSS":"true" }'>
+      {% for block in section.blocks %}
+        <div class="carousel-cell">
+          <div class="polaroid">
+            <a>
+              {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
+
+              {{ block.settings.personName }}
+
+              <p>{{ block.settings.personLoc }}</p>
+            </a>
+          </div>
+          <div class="cust-review">
+            <p class="review-p">
+              <span class="inverted-comma">"</span>
+              {{ block.settings.personWords }}
+              {% comment %} <span class="inverted-comma">"</span> {% endcomment %}
+            </p>
+          </div>
+
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .body-review {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #080808;
+    flex-direction: column;
+    margin: 50px 0;
+  }
+
+
+  .container-review {
+    position: relative;
+    width: 100%;
+    min-width: 350px;
+    min-height: 250px;
+    /* padding-bottom: 40px; */
+    overflow: hidden;
+  }
+
+  .carousel-cell {
+    width: 100%;
+    margin: 0 10px;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+  }
+
+  .carousel-cell img {
+    width: 100%;
+    height: auto;
+  }
+  .polaroid a {
+    background: #ffffff;
+    display: flex;
+    padding: 40px 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    z-index: 0;
+    box-shadow: 2px 1px 24px rgb(0 0 0 / 10%);
+    position: relative;
+    height: 352px;
+    flex-direction: column;
+    width: 350px;
+    margin: 0 34px;
+    justify-content: center;
+  }
+
+  .polaroid a:after {
+    color: #333;
+    font-size: 20px;
+    content: attr(title);
+    position: relative;
+    top: 7px;
+  }
+
+  .polaroid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  img.polaroid-img {
+    height: 270px;
+  }
+
+  .cust-review {
+    width: 120%;
+    margin-left: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .review-p {
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 30px;
+    color: black;
+    font-family: 'Crimson-text';
+  }
+  .inverted-comma {
+    font-size: 80px;
+  }
+  /* Ensures that Flickity waits until CSS has loaded to calculate the height of the cells */
+  .carousel:after {
+    content: 'flickity';
+    display: none; /* hide :after */
+  }
+  .flickity-page-dots .dot {
+    background: black;
+  }
+  @media only screen and (max-width: 1050px) {
+    .container-review {
+      width: 933px;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    .container-review {
+      width: 801px;
+    }
+    .carousel-cell {
+
+      flex-direction: column;
+      /* padding: 51px; */
+      padding: 102px;
+    }
+  }
+  @media only screen and (max-width: 770px) {
+    .container-review {
+      width: 775px;
+    }
+
+  }
+  @media only screen and (max-width: 650px) {
+    .container-review {
+      width: 521px;
+    }
+    .carousel-cell {
+      flex-direction: column;
+      padding: 44px;
+    }
+  }
+  .review-p {
+    padding: 0 41px;
+  }
+
+}
+@media only screen and (max-width: 550px) {
+
+  .container-review {
+    width: 548px;
+  }
+  .review-p {
+    padding: 0 21px;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 323px;
+    width: 308px;
+  }
+
+}
+@media only screen and (max-width: 430px) {
+  .container-review {
+    width: 342px;
+  }
+  .review-p {
+    font-size: 19px;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 323px;
+    width: 308px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .container-review {
+    width: 349px;
+  }
+  .carousel-cell {
+    padding: 16px;
+    height: 100vh;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 323px;
+    width: 308px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .carousel-cell {
+    height: 134vh;
+  }
+  .polaroid a {
+    padding: 39px 13px 22px;
+    height: 323px;
+    width: 308px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .container-review {
+    min-width: 193px;
+    width: 274px;
+  }
+  .polaroid a {
+    margin: 0;
+    padding: 34px 13px 18px;
+    height: 152px;
+    width: 139px;
+  }
+  .carousel-cell {
+    padding: 24px;
+    height: 100vh;
+  }
+  .review-p {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Testimonial",
+    "settings": [],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "name": "Testimonial ",
+        "type": "image",
+        "settings": [
+
+          {
+            "type": "image_picker",
+            "id": "personImg",
+            "label": "personImg"
+          }, {
+            "type": "text",
+            "id": "personName",
+            "label": "personName"
+          }, {
+            "type": "text",
+            "id": "personLoc",
+            "label": "personLoc"
+          }, {
+            "type": "text",
+            "id": "personWords",
+            "label": "personWords"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

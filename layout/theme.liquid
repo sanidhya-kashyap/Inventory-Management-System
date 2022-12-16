@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" lang="{{ request.locale.iso_code }}">
+<html
+  lang="en"
+  class="no-js"
+  lang="{{ request.locale.iso_code }}">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="Hu-raZAsE88n674Ocm2Wu2NFMCsBOlgdAbYl3fDk7T0"/>
-    <meta name="facebook-domain-verification" content="8qdygl2m6xddsnl8pvvwu3k1g0l3mn"/>
+    <meta name="google-site-verification" content="Hu-raZAsE88n674Ocm2Wu2NFMCsBOlgdAbYl3fDk7T0" />
+    <meta name="facebook-domain-verification" content="8qdygl2m6xddsnl8pvvwu3k1g0l3mn" />
 
     <!-- Establish early connection to external domains -->
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+    <link
+      rel="preconnect"
+      href="https://cdn.shopify.com"
+      crossorigin>
+    <link
+      rel="preconnect"
+      href="https://fonts.shopify.com"
+      crossorigin>
     <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
-    <link rel="preconnect" href="//ajax.googleapis.com" crossorigin/>
+    <link
+      rel="preconnect"
+      href="//ajax.googleapis.com"
+      crossorigin />
+
 
     {%- liquid
 
@@ -24,17 +37,47 @@
   -%}
 
     <!-- Preload onDomain stylesheets and script libraries -->
-    <link rel="preload" href="{{ 'stylesheet.css' | asset_url }}" as="style">
-    <link rel="preload" as="font" href="{{ main_font | font_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ nav_font | font_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ 'eventemitter3.min.js' | asset_url }}" as="script">
-    <link rel="preload" href="{{ 'theme.js' | asset_url }}" as="script">
-    <link rel="preload" href="{{ 'option_selection.js' | shopify_asset_url }}" as="script">
+    <link
+      rel="preload"
+      href="{{ 'stylesheet.css' | asset_url }}"
+      as="style">
+    <link
+      rel="preload"
+      as="font"
+      href="{{ main_font | font_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ nav_font | font_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="font"
+      href="{{ heading_font | font_url }}"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      href="{{ 'eventemitter3.min.js' | asset_url }}"
+      as="script">
+    <link
+      rel="preload"
+      href="{{ 'theme.js' | asset_url }}"
+      as="script">
+    <link
+      rel="preload"
+      href="{{ 'option_selection.js' | shopify_asset_url }}"
+      as="script">
 
 
-    {% if settings.favicon %}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png"/>{% endif %}
-    <link rel="canonical" href="{{ canonical_url }}"/>
+    {% if settings.favicon %}<link
+        rel="shortcut icon"
+        href="{{ settings.favicon | img_url: '32x32' }}"
+        type="image/png" />{% endif %}
+    <link rel="canonical" href="{{ canonical_url }}" />
 
     <title>
       {% if template == 'index' %}
@@ -48,13 +91,16 @@
       {% else %}
         {{ page_title }} &ndash; {{ shop.name }}{% endif %}
     </title>
-    {% if page_description %}<meta name="description" content="{{ page_description }}"/>{% endif %}
+    {% if page_description %}<meta name="description" content="{{ page_description }}" />{% endif %}
 
     {% render 'social-media-meta-tags' %}
     {% render 'structured-data' %}
     {% render 'css-variables' %}
 
-    <link rel="stylesheet" href="{{ 'stylesheet.css' | asset_url }}" type="text/css">
+    <link
+      rel="stylesheet"
+      href="{{ 'stylesheet.css' | asset_url }}"
+      type="text/css">
 
     <style>
       {{ main_font | font_face: font_display: 'swap' }}
@@ -98,15 +144,19 @@
       })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
 
-    {% if template == 'cart' %}{% include "revy-bundle-script" %}{% endif %}
+    {% if template == 'cart' %}
+      {% include "revy-bundle-script" %}{% endif %}
 
 
   </head>
-<body class="gridlock template-{{ template | handleize }} js-slideout-toggle-wrapper js-modal-toggle-wrapper {% render 'body-classes' %}">
+  <body class="gridlock template-{{ template | handleize }} js-slideout-toggle-wrapper js-modal-toggle-wrapper {% render 'body-classes' %}">
     <div class="js-slideout-overlay site-overlay"></div>
     <div class="js-modal-overlay site-overlay"></div>
 
-    <aside class="slideout slideout__drawer-left" data-wau-slideout="mobile-navigation" id="slideout-mobile-navigation">
+    <aside
+      class="slideout slideout__drawer-left"
+      data-wau-slideout="mobile-navigation"
+      id="slideout-mobile-navigation">
       {% section 'mobile-navigation' %}
     </aside>
 
@@ -114,6 +164,7 @@
       {% section 'announcement-bar' %}
 
       {% section 'header' %}
+
 
       <div class="page-wrap">
 
@@ -130,32 +181,69 @@
 
       </div>
       <!-- /.page-wrap -->
-
+      {% section 'featured-collection-workshop' %}
+      {% section 'customer-testimonial' %}
       {% section 'footer' %}
       {% section 'WhatsappPopup' %}
+      {% section 'bottom-bar-mobile' %}
 
-      <div style="display:none;" data-wau-slideout-content="search-sidebar" data-wau-slideout="search-sidebar">
+      <div
+        style="display:none;"
+        data-wau-slideout-content="search-sidebar"
+        data-wau-slideout="search-sidebar">
         <div class="slideout__trigger--close">
-          <button class="slideout__trigger-search-sidebar js-slideout-close" data-slideout-direction="right" aria-label="Close sidebar" tabindex="0" type="button" name="button">
+          <button
+            class="slideout__trigger-search-sidebar js-slideout-close"
+            data-slideout-direction="right"
+            aria-label="Close sidebar"
+            tabindex="0"
+            type="button"
+            name="button">
             <div class="icn-close"></div>
           </button>
         </div>
         <div class="sidebar__search-container">
           <form action="{{ routes.search_url }}" method="get">
             {%- if settings.predictive_search_enabled -%}
-              <predictive-search data-routes="{{ routes.predictive_search_url | default: '/search/suggest' }}" data-show-only-products="{{ settings.search_show_products_only | default: 'false' }}" data-results-per-resource="6" data-input-selector='input[name="q"]' data-results-selector="#predictive-search">
+              <predictive-search
+                data-routes="{{ routes.predictive_search_url | default: '/search/suggest' }}"
+                data-show-only-products="{{ settings.search_show_products_only | default: 'false' }}"
+                data-results-per-resource="6"
+                data-input-selector='input[name="q"]'
+                data-results-selector="#predictive-search">
               {%- endif -%}
-              <input type="text" name="q" id="searchbox-{{ section.id }}" class="searchbox__input" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}" {%- if settings.predictive_search_enabled -%}role="combobox"aria-expanded="false"aria-owns="predictive-search-results-list"aria-controls="predictive-search-results-list"aria-haspopup="listbox"aria-autocomplete="list"autocorrect="off"autocomplete="off"autocapitalize="off"spellcheck="false"{%- endif -%}>
-              <input value="{{ 'general.search.submit' | t }}" name="submit" id="search_button" class="button" type="submit">
+              <input
+                type="text"
+                name="q"
+                id="searchbox-{{ section.id }}"
+                class="searchbox__input"
+                placeholder="{{ 'general.search.placeholder' | t }}"
+                value="{{ search.terms | escape }}"
+                {%- if settings.predictive_search_enabled -%}role="combobox"aria-expanded="false"aria-owns="predictive-search-results-list"aria-controls="predictive-search-results-list"aria-haspopup="listbox"aria-autocomplete="list"autocorrect="off"autocomplete="off"autocapitalize="off"spellcheck="false"{%- endif -%}>
+              <input
+                value="{{ 'general.search.submit' | t }}"
+                name="submit"
+                id="search_button"
+                class="button"
+                type="submit">
 
-              <input name="options[prefix]" type="hidden" value="last">
+              <input
+                name="options[prefix]"
+                type="hidden"
+                value="last">
 
               {% if settings.search_show_products_only %}
-                <input type="hidden" name="type" value="product">
+                <input
+                  type="hidden"
+                  name="type"
+                  value="product">
               {% endif %}
 
               {%- if settings.predictive_search_enabled -%}
-                <div id="predictive-search" class="predictive-search" tabindex="-1"></div>
+                <div
+                  id="predictive-search"
+                  class="predictive-search"
+                  tabindex="-1"></div>
               {%- endif -%}
             </form>
             {%- if settings.predictive_search_enabled -%}
@@ -168,18 +256,27 @@
     <!-- /.site-wrap -->
 
     {%- if settings.cart_type == 'drawer' -%}
-      <aside class="slideout slideout__drawer-right mini-cart" data-wau-slideout="ajax-cart" id="slideout-ajax-cart">
+      <aside
+        class="slideout slideout__drawer-right mini-cart"
+        data-wau-slideout="ajax-cart"
+        id="slideout-ajax-cart">
         {% render 'cart-mini' %}
       </aside>
     {% elsif settings.cart_type == 'modal_cart' %}
-      <div class="modal__container" data-wau-modal="ajax-cart" id="modal-ajax-cart">
+      <div
+        class="modal__container"
+        data-wau-modal="ajax-cart"
+        id="modal-ajax-cart">
         <div class="modal__inner-wrapper">
           {% render 'cart-mini' %}
         </div>
       </div>
     {%- endif -%}
     {%- if settings.quickview -%}
-      <div class="modal__container" data-wau-modal="quickview" id="modal-quickview-cart">
+      <div
+        class="modal__container"
+        data-wau-modal="quickview"
+        id="modal-quickview-cart">
         <div class="modal__inner-wrapper">
           {%- render 'product-quickview' -%}
         </div>
@@ -191,15 +288,18 @@
     <script src="{{ 'theme.js' | asset_url }}"></script>
     <script src="{{ 'option_selection.js' | shopify_asset_url }}"></script>
 
-    <a href="#" title="Click to scroll to top" class="scrollup">
-      {% render 'snip-icons',
-       wrapper: '.scrollup',
-       type: 'apollo',
-       icon: 'up-carrot',
-       classes: 'scrollup--icon',
-       size: '14px',
-       fill: 'var(--text-color)',
-       hover: 'var(--text-color)' %} TOP
+    <a
+      href="#"
+      title="Click to scroll to top"
+      class="scrollup">
+      {% render 'snip-icons', 
+ wrapper: '.scrollup', 
+ type: 'apollo', 
+ icon: 'up-carrot', 
+ classes: 'scrollup--icon', 
+ size: '14px', 
+ fill: 'var(--text-color)', 
+ hover: 'var(--text-color)' %} TOP
     </a>
     {% section 'mailing-popup' %}
     <div class="clear"></div>
@@ -221,7 +321,10 @@
     </script>
 
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true">
       <!-- Background of PhotoSwipe.
       It's a separate element as animating opacity is faster than rgba(). -->
       <div class="pswp__bg"></div>
@@ -238,7 +341,7 @@
         <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
           <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            {% render 'snip-icons'
+            {% render 'snip-icons' 
              , wrapper: '.pswp__button'
              , type: 'apollo'
              , icon: 'left-carrot'
@@ -248,7 +351,7 @@
              , hover: 'var(--text-color)' %}
           </button>
           <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            {% render 'snip-icons'
+            {% render 'snip-icons' 
              , wrapper: '.pswp__button'
              , type: 'apollo'
              , icon: 'right-carrot'
@@ -258,7 +361,7 @@
              , hover: 'var(--text-color)' %}
           </button>
           <button class="pswp__button pswp__button--close" title="Close (Esc)">
-            {% render 'snip-icons'
+            {% render 'snip-icons' 
              , wrapper: '.pswp__button'
              , type: 'apollo'
              , icon: 'close'

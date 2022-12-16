@@ -3,12 +3,123 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "page_size": "thin",
+        "page_size": "full_page",
         "sidebar_positon": "right"
+      }
+    },
+    "16394178425a2939d9": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "1639417842d0c5d282-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "anil-wangad"
+          }
+        },
+        "1639417842d0c5d282-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "adarsh"
+          }
+        },
+        "1639417842d0c5d282-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "apindra-swain"
+          }
+        },
+        "4284c09d-ba51-40d9-943a-20d2ebada4a1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ashutosh-verma"
+          }
+        },
+        "8f22c058-7828-469f-a37f-96d62d7e5bb4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "abdul-salim"
+          }
+        },
+        "0063e1f7-4e85-4da3-bc2d-f61c541ebc08": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bapi-chitrakar"
+          }
+        },
+        "c054e4bb-e640-473d-a289-0e0fda82279d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chandrakant"
+          }
+        },
+        "ba7e3be7-6bd5-4e42-a5b7-19866ac54567": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chetan-gangwane"
+          }
+        },
+        "103f1da8-e19c-4013-be4c-88775b3592ee": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "debdatt-patnaik"
+          }
+        },
+        "9feebf58-5120-409d-850f-39e5e5ee9d8b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "daya-ben"
+          }
+        },
+        "879de114-5ddb-4017-a002-a2a0cb667e2b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pratima-bharti"
+          }
+        },
+        "11f96c35-c18c-401b-814d-d2ed5c38e5f3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dilip-chittara"
+          }
+        }
+      },
+      "block_order": [
+        "1639417842d0c5d282-0",
+        "1639417842d0c5d282-1",
+        "1639417842d0c5d282-2",
+        "4284c09d-ba51-40d9-943a-20d2ebada4a1",
+        "8f22c058-7828-469f-a37f-96d62d7e5bb4",
+        "0063e1f7-4e85-4da3-bc2d-f61c541ebc08",
+        "c054e4bb-e640-473d-a289-0e0fda82279d",
+        "ba7e3be7-6bd5-4e42-a5b7-19866ac54567",
+        "103f1da8-e19c-4013-be4c-88775b3592ee",
+        "9feebf58-5120-409d-850f-39e5e5ee9d8b",
+        "879de114-5ddb-4017-a002-a2a0cb667e2b",
+        "11f96c35-c18c-401b-814d-d2ed5c38e5f3"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "",
+        "grid": 3,
+        "color_scheme": "none",
+        "section_padding": "both"
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "8bbea724-6364-4904-a765-6c962e56f0d2",
+    "82d24e4b-3881-449a-846b-7c045a994dd8",
+    "0985a575-2ee5-4455-9ad3-26d0df1bab85",
+    "d1b62271-070f-4561-b4ab-b4917a7faac3",
+    "0aa0645b-69cb-4b3a-8e6c-49e01523351f",
+    "88416f8b-6173-426b-87ed-dab64cd9c68d",
+    "f6435f16-3eea-4514-ba86-c22726aef851",
+    "2f5b9614-56e0-40aa-8e8b-17a8424101e8",
+    "f36201ea-f7e0-4bc8-821a-8761328fdb0d",
+    "8f4d7a9f-8d5f-451f-9109-90e95a0d2d84",
+    "0e5cf822-e765-4143-9eb5-c78ae8a38b49",
+    "46b7cd83-8658-4d08-802d-c85b586460fc"
   ]
 }

@@ -1,0 +1,58 @@
+<nav class="mobile-nav">
+  <a href="#smile-home" class="bloc-icon">
+    Earn Rewards
+  </a>
+  
+    <div class="vl"></div>
+    <a href="https://www.memeraki.com/account/login?return_url=%2Fpages%2Fsso%3Ftxid%3D3ead6c22-7b0c-11ed-ad1c-16bb97d457cf" class="bloc-icon">
+      My Workshops
+    </a>
+  
+  <div class="vl"></div>
+  <a id="last" href="https://api.whatsapp.com/send?phone=919971593574&text=Hi" class="bloc-icon"  target="_blank" rel="noopener noreferrer">
+    WhatsApp Chat
+  </a>
+
+</nav>
+
+<style>
+  @media screen and (min-width: 600px) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 980px) {
+    .mobile-nav {
+      background: white;
+      position: fixed;
+      bottom: 0;
+      height: 55px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      font-weight: normal;
+      box-shadow: 0px 0 10px rgba(0, 0, 0, 0.4);
+
+    }
+    .bloc-icon {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+    }
+    .vl {
+      border-left: 1px solid #8080805e;
+      height: 30px;
+      margin-top: 12px;
+    }
+    .mobile-nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: black;
+    }
+
+    #last{
+      margin-right: 4px;
+    }
+  }
+</style>
