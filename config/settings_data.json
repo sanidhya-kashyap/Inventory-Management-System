@@ -2830,7 +2830,7 @@
               "personImg": "shopify:\/\/shop_images\/img2_29e724f6-87eb-4333-8bda-f7e7a8107e1d.png",
               "personName": "Kavita",
               "personLoc": "USA",
-              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. Can’t end my comments without mentioning- the amazing support the team gives during and before\/after the classes - the cherry on the top. Thanks to Yosha and the team for an amazing overall experience."
+              "personWords": "Memeraki changed my life for good during this Pandemic! When I first came to know about these online workshops offered by Memeraki, I was a little hesitant to sign up since I was new to painting... But when I saw kids’ work on their social media sites I was so impressed that I gathered the courage to sign up for a class. And before I knew it, I was hooked. Thanks to Yosha and the team for an amazing overall experience."
             }
           }
         },
@@ -2838,11 +2838,6 @@
           "dbe87439-e0d5-4020-9475-87f9c6e1167f",
           "57b084ff-0995-4108-9d4b-339bc23eee3c"
         ],
-        "settings": {
-        }
-      },
-      "Upcoming-workshop": {
-        "type": "Upcoming-workshop",
         "settings": {
         }
       },
@@ -2857,6 +2852,11 @@
           "limit": 8,
           "color_scheme": "cs1",
           "section_padding": "both"
+        }
+      },
+      "bottom-bar-mobile": {
+        "type": "bottom-bar-mobile",
+        "settings": {
         }
       }
     },
