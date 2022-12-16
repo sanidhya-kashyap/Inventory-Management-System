@@ -4,14 +4,6 @@
       {% for block in section.blocks %}
         <div class="carousel-cell">
           <div class="polaroid">
-
-            <style>
-              {{ section.settings.single_title_family | font_face }}
-              .testimonial_font {
-                font-family: {{ section.settings.single_title_family }}
-                ;
-              }
-            </style>
             <a>
               {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
