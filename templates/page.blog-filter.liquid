@@ -1,16 +1,7 @@
 {% section 'blogfilter' %}
 
-{% for group_tag in blog.all_tags %}
-  <h2>{{ group_tag }}</h2>
 
-  {% for article in blog.articles %}
-    {% if article.tags contains group_tag %}
-      <h3>{{ article.title }}</h3>
-      <p>This article's tags: {{ article.tags }}</p>
-    {% endif %}
-  {% endfor %}
 
-{% endfor %}
     <!-- images with text sliders  -->
     <section class="img-txtslider-section product-section">
         <div class="container-fluid">
