@@ -1,14 +1,16 @@
 <nav class="mobile-nav">
-  <a href="https://www.memeraki.com/#smile-home" class="bloc-icon">
-    Reward
+  <a href="#smile-home" class="bloc-icon">
+    Earn Rewards
   </a>
+  
+    <div class="vl"></div>
+    <a href="https://www.memeraki.com/account/login?return_url=%2Fpages%2Fsso%3Ftxid%3D3ead6c22-7b0c-11ed-ad1c-16bb97d457cf" class="bloc-icon">
+      My Workshops
+    </a>
+  
   <div class="vl"></div>
-  <a href="https://www.memeraki.com/account/login?return_url=%2Fpages%2Fsso%3Ftxid%3D3ead6c22-7b0c-11ed-ad1c-16bb97d457cf" class="bloc-icon">
-    My WorkShop
-  </a>
-  <div class="vl"></div>
-  <a href="https://api.whatsapp.com/send?phone=919971593574&text=Hi" class="bloc-icon">
-    WhatsApp
+  <a id="last" href="https://api.whatsapp.com/send?phone=919971593574&text=Hi" class="bloc-icon"  target="_blank" rel="noopener noreferrer">
+    WhatsApp Chat
   </a>
 
 </nav>
@@ -19,15 +21,18 @@
       display: none;
     }
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 980px) {
     .mobile-nav {
-      background: rgb(65, 30, 47);
+      background: white;
       position: fixed;
       bottom: 0;
-      height: 40px;
+      height: 55px;
       width: 100%;
       display: flex;
       justify-content: space-around;
+      font-weight: normal;
+      box-shadow: 0px 0 10px rgba(0, 0, 0, 0.4);
+
     }
     .bloc-icon {
       display: flex;
@@ -36,18 +41,18 @@
       align-items: center;
     }
     .vl {
-      border-left: 2px solid rgba(244, 203, 40);
-      height: 20px;
+      border-left: 1px solid #8080805e;
+      height: 30px;
       margin-top: 12px;
-    }
-    .bloc-icon:hover {
-      background: rgba(244, 203, 40);
-      color: rgb(65, 30, 47);
     }
     .mobile-nav a {
       font-size: 14px;
-      font-weight: bold;
-      color: rgba(244, 203, 40);
+      font-weight: 500;
+      color: black;
+    }
+
+    #last{
+      margin-right: 4px;
     }
   }
 </style>
