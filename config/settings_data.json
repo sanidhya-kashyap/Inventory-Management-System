@@ -1238,7 +1238,7 @@
             "type": "text",
             "settings": {
               "title": "Contact Us",
-              "footer_text": "<p><strong>Customer Queries - <\/strong><a href=\"mailto:wecare@memeraki.com\" target=\"_blank\" title=\"mailto:wecare@memeraki.com\">wecare@memeraki.com<\/a><br\/><\/p><p><strong>WhatsApp - <\/strong>‪+91 99715 93574‬ <\/p><p><strong>Mailing Address - <\/strong>ABC 402, 4rd CENTRUM PLAZA, Golf Course Rd, opp. SunCity, Sector 53, Gurugram, Haryana (122002), India<\/p>"
+              "footer_text": "<p><strong>Customer Queries - <\/strong><a href=\"mailto:wecare@memeraki.com\" target=\"_blank\" title=\"mailto:wecare@memeraki.com\">wecare@memeraki.com<\/a><br\/><\/p><p><strong>WhatsApp - <\/strong>‪+91 99715 93574‬ <\/p><p><strong>Mailing Address - <\/strong>ABC 402, 4rd Centrum Plaza, Golf Course Road, Sector 53, Gurugram, Haryana (122002), India<\/p>"
             }
           },
           "1479499878046": {
@@ -2810,6 +2810,11 @@
         ],
         "settings": {
           "title": ""
+        }
+      },
+      "bottom-bar-mobile": {
+        "type": "bottom-bar-mobile",
+        "settings": {
         }
       }
     },
