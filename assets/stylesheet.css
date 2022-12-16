@@ -15,7 +15,9 @@ For InterAkt iframe patch
 */
 #kiwi-big-iframe-wrapper{
   height: 80px;
-  width: 80px
+  width: 80px;
+  display: none;
+  
 }
 
 @media only screen and (min-width: 981px){
