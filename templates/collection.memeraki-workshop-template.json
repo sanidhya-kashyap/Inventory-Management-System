@@ -1,13 +1,91 @@
 {
   "sections": {
+    "29176bf3-52e6-4014-84a6-9a8b361c057c": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "8bea1573-6968-430a-979a-470e16dd3e30": {
+          "type": "card",
+          "settings": {
+            "card_collection": "adarsh",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "44c35e6b-6bc7-4068-9cde-ca6bd158fd75": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ambika-devi",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "e3059709-d5f6-43bb-8cd6-569eec50548e": {
+          "type": "card",
+          "settings": {
+            "card_collection": "applique",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "29750de3-f5d4-4e4d-b9c0-460dba8714fc": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ashutosh-verma",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "fe615a8c-314b-45b8-a461-c72598226b76": {
+          "type": "card",
+          "settings": {
+            "card_collection": "abdul-salim",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "8bea1573-6968-430a-979a-470e16dd3e30",
+        "44c35e6b-6bc7-4068-9cde-ca6bd158fd75",
+        "e3059709-d5f6-43bb-8cd6-569eec50548e",
+        "29750de3-f5d4-4e4d-b9c0-460dba8714fc",
+        "fe615a8c-314b-45b8-a461-c72598226b76"
+      ],
+      "settings": {
+        "title": "Explore By",
+        "last_card": "",
+        "enable_view_all": false,
+        "view_all_url": "",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": true,
+        "card_size": "small"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "display_wide": true
       }
     },
     "main": {
       "type": "main-collection",
+      "disabled": true,
       "blocks": {
         "33015783-fc74-41ca-873e-a1890ef14fd9": {
           "type": "dropdown_filter",
@@ -56,6 +134,7 @@
     }
   },
   "order": [
+    "29176bf3-52e6-4014-84a6-9a8b361c057c",
     "banner",
     "main",
     "1646105122e98f6180"
