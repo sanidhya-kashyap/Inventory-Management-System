@@ -17,7 +17,7 @@
   assign artist_name =  product.metafields.Instructor.name.value
   assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
   assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
-
+  assign workshop_dates = product.metafields.workshop.date.value
 -%}
 
 
@@ -101,7 +101,10 @@
         </div>
 
         <div class="workshop-dates">
-            Monday, 23 Jan 2023
+          {% if workshop_dates.size > 1 %}
+            From 
+          {% endif %}
+          {{ workshop_dates[0] | date: "%a, %b %d, %Y" }}
         </div>
 
         <a class="workshop-hyperlinks" href="{{ collections[artist_handle].url }}"><div class="aartist">
