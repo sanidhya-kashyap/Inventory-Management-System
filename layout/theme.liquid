@@ -37,11 +37,18 @@
   -%}
 
     <!-- Preload onDomain stylesheets and script libraries -->
+
+    <link rel="preload"
+      as="font"
+      href="{{ testimonial_font | font_url }}"
+      type="font/woff2"
+      crossorigin>
+
     <link
       rel="preload"
       href="{{ 'stylesheet.css' | asset_url }}"
       as="style">
-    <linkrel="preload"
+    <link rel="preload"
       as="font"
       href="{{ main_font | font_url }}"
       type="font/woff2"
