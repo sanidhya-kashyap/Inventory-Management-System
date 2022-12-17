@@ -9,13 +9,13 @@
 
               <style>
                 {{ block.settings.testimonial_font | font_face }}
-                .testimonial_font--{{ section.id }} {
+                .testimonial_font {
                   font-family: {{ block.settings.testimonial_font.family }}
                   ;
                 }
               </style>
 
-              <p class="testimonial_font" id="test-font--{{ section.id }}" >
+              <p class="testimonial_font">
                 <em>
                   {{ block.settings.personName }}</em>
               </p>
