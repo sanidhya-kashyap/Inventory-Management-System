@@ -7,16 +7,28 @@
             <a>
               {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
-              <p class="testimonial_font">{{ block.settings.personName }}</p>
+              <style>
+                {{ block.settings.testimonial_font | font_face }}
+                .testimonial_font {
+                  font-family: {{ block.settings.testimonial_font.family }}
+                  ;
+                }
+              </style>
 
-              <p class="testimonial_font">{{ block.settings.personLoc }}</p>
+              <p class="testimonial_font">
+                <em>
+                  {{ block.settings.personName }}</em>
+              </p>
+
+              <p class="testimonial_font">
+                <em>{{ block.settings.personLoc }}</em>
+              </p>
             </a>
           </div>
           <div class="cust-review">
             <p class="review-p">
               <span class="inverted-comma">"</span>
               {{ block.settings.personWords }}
-              {% comment %} <span class="inverted-comma">"</span> {% endcomment %}
             </p>
           </div>
 
@@ -78,7 +90,10 @@
     width: 350px;
     margin: 0 34px;
     justify-content: center;
-    font-family: 'alfie-n4';
+  }
+
+  .testimonial_font {
+    font-family: 'alfie_n4';
   }
 
   .polaroid a:after {
@@ -112,7 +127,7 @@
     line-height: 28px;
     margin-top: 30px;
     color: black;
-    font-family: 'Crimson-text';
+    font-family: 'crimson_text_n4';
   }
   .inverted-comma {
     font-size: 80px;
@@ -245,17 +260,17 @@
         "name": "Testimonial ",
         "type": "image",
         "settings": [
-          {
-            "type": "font_picker",
-            "id": "testimonial_font",
-            "label": "Navigation",
-            "default": "serif"
-          },
 
           {
             "type": "image_picker",
             "id": "personImg",
             "label": "personImg"
+          },
+          {
+            "type": "font_picker",
+            "id": "testimonial_font",
+            "label": "TestimonialFont",
+            "default": "alfie_n4"
           },
           {
             "type": "text",
