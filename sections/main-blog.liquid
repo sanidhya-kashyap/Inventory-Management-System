@@ -8,17 +8,6 @@
 
 -%}
 
-
-
-<ul>
-      <li>
-        {%- for tag in blog.all_tags -%}
-          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      </li>
-    </ul>
-
-
 <section class="blog-template main__section" data-section-id="{{ section.id }}">
 
   <div class="row">
