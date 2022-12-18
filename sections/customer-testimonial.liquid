@@ -7,14 +7,6 @@
             <a>
               {{ block.settings.personImg | image_url: height: 250 | image_tag: class: 'polaroid-img' }}
 
-              <style>
-                {{ block.settings.testimonial_font | font_face }}
-                .testimonial_font {
-                  font-family: {{ block.settings.testimonial_font.family }}
-                  ;
-                }
-              </style>
-
               <p class="testimonial_font">
 
                 {{ block.settings.personName }}
