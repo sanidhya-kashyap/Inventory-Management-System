@@ -34,26 +34,18 @@
       <div class="art-col" >
        <a name="letter-a"><h3 >A</h3></a> 
         <hr>
-        {% for index in (start_index..collection_size) %}
-          {% assign first_letter = collection_array[index] | slice: 0 %}
-          {% if first_letter == "a" %}
-            {%if collection_array[index].image !=nil%}
-            <div class="artist">
-                {{ collection_array[index].image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
+        {% assign artist_data = collection['anil-wangad']  %}
+        <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              
               <div class="artist">
                 <div class="artist-img2" >
               </div>
-            {%endif%}
-                <a class="artist-a" href="{{ collection_array[index].url }}">
-                {{ collection_array[index].title }}
+              
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
               </a>
             </div>
-          {% else %}
-            {% assign start_index = index %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
       </div>
 
       <div class="art-col">
