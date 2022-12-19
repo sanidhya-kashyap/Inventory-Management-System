@@ -34,7 +34,7 @@
       <div class="art-col" >
        <a name="letter-a"><h3 >A</h3></a> 
         <hr>
-        {% assign artist_data = collections['adarsh'] %}
+        {% assign artist_data = collection['adarsh'] %}
         {% if collection_array[index].image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
