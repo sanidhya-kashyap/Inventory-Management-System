@@ -34,7 +34,21 @@
       <div class="art-col" >
        <a name="letter-a"><h3 >A</h3></a> 
         <hr>
-        {% assign artist_data = collection['adarsh'] %}
+        {% assign artist_data = collections['anil-wangad'] %}
+        {% if collection_array[index].image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['adarsh'] %}
         {% if collection_array[index].image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
