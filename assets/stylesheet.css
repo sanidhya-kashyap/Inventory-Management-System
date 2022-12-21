@@ -22,6 +22,10 @@ For InterAkt iframe patch
   #kiwi-big-iframe-wrapper{
     display: none;
   }
+  
+  #smile-ui-lite-launcher-frame-container{
+    display: none;
+  }
 }
 
 /*Patch ends here*/

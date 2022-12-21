@@ -6,9 +6,62 @@
         "page_size": "thin",
         "sidebar_positon": "right"
       }
+    },
+    "4e13696e-d895-4aa0-999a-125d40888a17": {
+      "type": "alphabetical-list",
+      "blocks": {
+        "b83c1c95-4623-4b0c-98a5-001bd7082240": {
+          "type": "card",
+          "settings": {
+            "card_collection": "abdul-salim"
+          }
+        },
+        "5c1f64d1-8c83-4c89-8a58-6f27e95d4abd": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ambika-devi"
+          }
+        },
+        "0fa6a468-f195-471e-a2ed-1c024a6290e7": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ashutosh-verma"
+          }
+        },
+        "42be62cd-66e6-4c60-8eed-ab33cfa454e7": {
+          "type": "card",
+          "settings": {
+            "card_collection": ""
+          }
+        },
+        "d622062d-14a2-4aac-affb-357321f74899": {
+          "type": "card",
+          "settings": {
+            "card_collection": ""
+          }
+        },
+        "d12b4e05-1205-4edc-b975-af2289cf3e42": {
+          "type": "card",
+          "settings": {
+            "card_collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "b83c1c95-4623-4b0c-98a5-001bd7082240",
+        "5c1f64d1-8c83-4c89-8a58-6f27e95d4abd",
+        "0fa6a468-f195-471e-a2ed-1c024a6290e7",
+        "42be62cd-66e6-4c60-8eed-ab33cfa454e7",
+        "d622062d-14a2-4aac-affb-357321f74899",
+        "d12b4e05-1205-4edc-b975-af2289cf3e42"
+      ],
+      "settings": {
+        "title": "Explore"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "4e13696e-d895-4aa0-999a-125d40888a17"
   ]
 }
