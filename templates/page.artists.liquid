@@ -1,0 +1,1443 @@
+<div class="art-container">
+  <h1 class="artist-name">Artists</h1>
+   <hr class="name-hr">
+  <div class="alphabet">
+    <a href="#letter-a"><span>A</span></a>
+    <a href="#letter-b"><span>B</span></a><a href="#letter-c"><span>C</span></a>
+    <a href="#letter-d"><span>D</span></a><a href="#letter-e"><span>E</span></a>
+    <a href="#letter-f"><span>F</span></a><a href="#letter-g"><span>G</span></a>
+    <a href="#letter-h"><span>H</span></a><a href="#letter-i"><span>I</span></a>
+    <a href="#letter-j"><span>J</span></a><a href="#letter-k"><span>K</span></a>
+    <a href="#letter-l"><span>L</span></a><a href="#letter-m"><span>M</span></a>
+    <a href="#letter-n"><span>N</span></a><a href="#letter-o"><span>O</span></a>
+    <a href="#letter-p"><span>P</span></a><a href="#letter-q"><span>Q</span></a>
+    <a href="#letter-r"><span>R</span></a><a href="#letter-s"><span>S</span></a>
+    <a href="#letter-t"><span>T</span></a><a href="#letter-u"><span>U</span></a>
+    <a href="#letter-v"><span>V</span></a><a href="#letter-w"><span>W</span></a>
+    <a href="#letter-x"><span>X</span></a><a href="#letter-y"><span>Y</span></a>
+    <a href="#letter-z"><span>Z</span></a>
+</div>
+ 
+    <div class="art-row">
+      <div class="art-col" >
+       <a name="letter-a"><h3 >A</h3></a> 
+        <hr>
+        {% assign artist_data = collections['anil-wangad'] %}
+        {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2">
+              </div>
+          
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            
+            </div>
+
+            {% assign artist_data = collections['adarsh'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['akshay'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {% else %}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['ambika-devi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {% else %}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['anjali-vakil'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['anjana-kumari'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['apindra-swain'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['anup-malakar'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+
+            {% assign artist_data = collections['ashutosh-verma'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            </div>
+          
+      </div>
+
+      <div class="art-col">
+        <a name="letter-b"><h3 >B</h3></a> 
+        <hr>
+        {% assign artist_data = collections['bapi-chitrakar'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+        {% assign artist_data = collections['brij-ballabh-and-deepak-sankit'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-c"><h3 >C</h3></a> 
+        <hr>
+        {% assign artist_data = collections['chandrakant'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['chetan-gangwane'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              </div>
+    </div>
+
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-d"><h3 >D</h3></a> 
+        <hr>
+        {% assign artist_data = collections['dinesh-soni'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['dilip-chittara'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['dilip-bahotha'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['dinesh-molela'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['d-lakhsmi-amma'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['daya-ben'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              
+      </div>
+
+
+      <div class="art-col">
+        <a name="letter-e"><h3 >E</h3></a> 
+        <hr>
+      </div>
+
+
+      <div class="art-col">
+        <a name="letter-f"><h3 >F</h3></a> 
+        <hr>
+      </div>
+    </div>
+
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-g"><h3 >G</h3></a> 
+        <hr>
+        {% assign artist_data = collections['geeta-bariya'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-h"><h3 >H</h3></a> 
+        <hr>
+        {% assign artist_data = collections['hafeez-uddin'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['hussain-baba-arts'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['harinath-n'] %}
+              {% if artist_data.image != nil %}
+              <div class="artist">
+                  {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                {%else%}
+                <div class="artist">
+                  <div class="artist-img2" >
+                </div>
+                  {% endif %}
+                  <a class="artist-a" href="{{ artist_data.url }}">
+                  {{ artist_data.title }}
+                </a>
+                </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-i"><h3 >I</h3></a> 
+        {% assign artist_data = collections['ishwar-naik'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-j"><h3 >J</h3></a> 
+        <hr>
+        {% assign artist_data = collections['jabbar-khatri'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['jagdish-chand'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['javed'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['jayesh-sharma'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['jyoti-acharya'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+      </div>
+      <div class="art-col">
+        <a name="letter-k"><h3 >K</h3></a> 
+        <hr>
+        {% assign artist_data = collections['siva-reddy'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['kailash-pradhan'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['kalyan-joshi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['krishna-tashi-palmo'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['kritika-joshi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['kanday-anjanapp'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['kartik-chauhan'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-l"><h3 >L</h3></a> 
+        <hr>
+      </div>
+    </div>
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-m"><h3 >M</h3></a> 
+        <hr>
+        {% assign artist_data = collections['manish-jha'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['manorama-devi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['md-nasir'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['mira-devi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['manoranjan-chitrakar'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['mohan-prajapati'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['mridu-mochum'] %}
+              {% if artist_data.image != nil %}
+              <div class="artist">
+                  {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                {%else%}
+                <div class="artist">
+                  <div class="artist-img2" >
+                </div>
+                  {% endif %}
+                  <a class="artist-a" href="{{ artist_data.url }}">
+                  {{ artist_data.title }}
+                </a>
+                </div>
+
+                {% assign artist_data = collections['mukesh-artist'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                    {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                  {%else%}
+                  <div class="artist">
+                    <div class="artist-img2" >
+                  </div>
+                    {% endif %}
+                    <a class="artist-a" href="{{ artist_data.url }}">
+                    {{ artist_data.title }}
+                  </a>
+                  </div>
+
+                  {% assign artist_data = collections['minakshi'] %}
+                  {% if artist_data.image != nil %}
+                  <div class="artist">
+                      {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                    {%else%}
+                    <div class="artist">
+                      <div class="artist-img2" >
+                    </div>
+                      {% endif %}
+                      <a class="artist-a" href="{{ artist_data.url }}">
+                      {{ artist_data.title }}
+                    </a>
+                    </div>
+
+                    {% assign artist_data = collections['mukul-joshi'] %}
+                  {% if artist_data.image != nil %}
+                  <div class="artist">
+                      {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                    {%else%}
+                    <div class="artist">
+                      <div class="artist-img2" >
+                    </div>
+                      {% endif %}
+                      <a class="artist-a" href="{{ artist_data.url }}">
+                      {{ artist_data.title }}
+                    </a>
+                    </div>
+
+      </div>
+      <div class="art-col">
+        <a name="letter-n"><h3 >N</h3></a> 
+        <hr>
+         {% assign artist_data = collections['nalemitha'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+         {% assign artist_data = collections['neeraj-bondwal'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+         {% assign artist_data = collections['naushad'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+         {% assign artist_data = collections['nazada'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+         
+         {% assign artist_data = collections['nazda-khatoon'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-o"><h3 >O</h3></a> 
+        <hr>
+      </div>
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-p"><h3 >P</h3></a> 
+        <hr>
+        {% assign artist_data = collections['pratima-bharti'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+
+          {% assign artist_data = collections['priti-karn'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+
+          {% assign artist_data = collections['paresh'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+
+          {% assign artist_data = collections['pradnya-ramakant-panchal'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+      </div>
+      <div class="art-col">
+        <a name="letter-q"><h3 >Q</h3></a> 
+
+        <hr>
+       
+      </div>
+
+      <div class="art-col">
+        <a name="letter-r"><h3 >R</h3></a> 
+
+        <hr>
+        {% assign artist_data = collections['rajendra-shyam'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+         {%else%}
+         <div class="artist">
+         <div class="artist-img2" >
+         </div>
+         {% endif %}
+         <a class="artist-a" href="{{ artist_data.url }}">
+         {{ artist_data.title }}
+         </a>
+         </div>
+
+         {% assign artist_data = collections['rajender-sharma'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+
+          {% assign artist_data = collections['rajender-shyam'] %}
+          {% if artist_data.image != nil %}
+          <div class="artist">
+          {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+           {%else%}
+           <div class="artist">
+           <div class="artist-img2" >
+           </div>
+           {% endif %}
+           <a class="artist-a" href="{{ artist_data.url }}">
+           {{ artist_data.title }}
+           </a>
+           </div>
+
+           {% assign artist_data = collections['ranjeet'] %}
+           {% if artist_data.image != nil %}
+           <div class="artist">
+           {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+            {%else%}
+            <div class="artist">
+            <div class="artist-img2" >
+            </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+            </a>
+            </div>
+
+            {% assign artist_data = collections['ramesh-hengadi'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+             {%else%}
+             <div class="artist">
+             <div class="artist-img2" >
+             </div>
+             {% endif %}
+             <a class="artist-a" href="{{ artist_data.url }}">
+             {{ artist_data.title }}
+             </a>
+             </div>
+
+             {% assign artist_data = collections['riyaz'] %}
+             {% if artist_data.image != nil %}
+             <div class="artist">
+             {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+              <div class="artist-img2" >
+              </div>
+              {% endif %}
+              <a class="artist-a" href="{{ artist_data.url }}">
+              {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['rizwan-khatri-rogan-art'] %}
+              {% if artist_data.image != nil %}
+              <div class="artist">
+              {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+               {%else%}
+               <div class="artist">
+               <div class="artist-img2" >
+               </div>
+               {% endif %}
+               <a class="artist-a" href="{{ artist_data.url }}">
+               {{ artist_data.title }}
+               </a>
+               </div>
+
+               {% assign artist_data = collections['rukmani-devi'] %}
+               {% if artist_data.image != nil %}
+               <div class="artist">
+               {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                {%else%}
+                <div class="artist">
+                <div class="artist-img2" >
+                </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+                </a>
+                </div>
+
+                {% assign artist_data = collections['ruby-sharma'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                 {%else%}
+                 <div class="artist">
+                 <div class="artist-img2" >
+                 </div>
+                 {% endif %}
+                 <a class="artist-a" href="{{ artist_data.url }}">
+                 {{ artist_data.title }}
+                 </a>
+                 </div>
+
+           
+    </div>
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-s"><h3 >S</h3></a> 
+        <hr>
+        {% assign artist_data = collections['sahajan'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+         {%else%}
+         <div class="artist">
+         <div class="artist-img2" >
+         </div>
+         {% endif %}
+         <a class="artist-a" href="{{ artist_data.url }}">
+         {{ artist_data.title }}
+         </a>
+         </div>
+
+         {% assign artist_data = collections['sakina-khatun'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+
+          {% assign artist_data = collections['sai-kiran-dhanalakota'] %}
+          {% if artist_data.image != nil %}
+          <div class="artist">
+          {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+           {%else%}
+           <div class="artist">
+           <div class="artist-img2" >
+           </div>
+           {% endif %}
+           <a class="artist-a" href="{{ artist_data.url }}">
+           {{ artist_data.title }}
+           </a>
+           </div>
+
+           {% assign artist_data = collections['samjhau-devi'] %}
+           {% if artist_data.image != nil %}
+           <div class="artist">
+           {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+            {%else%}
+            <div class="artist">
+            <div class="artist-img2" >
+            </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+            </a>
+            </div>
+
+            {% assign artist_data = collections['sanjay-tandekar'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+             {%else%}
+             <div class="artist">
+             <div class="artist-img2" >
+             </div>
+             {% endif %}
+             <a class="artist-a" href="{{ artist_data.url }}">
+             {{ artist_data.title }}
+             </a>
+             </div>
+
+             {% assign artist_data = collections['saroj-venkat-shyam'] %}
+             {% if artist_data.image != nil %}
+             <div class="artist">
+             {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+              <div class="artist-img2" >
+              </div>
+              {% endif %}
+              <a class="artist-a" href="{{ artist_data.url }}">
+              {{ artist_data.title }}
+              </a>
+              </div>
+
+              {% assign artist_data = collections['sanjay-chittara'] %}
+              {% if artist_data.image != nil %}
+              <div class="artist">
+              {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+               {%else%}
+               <div class="artist">
+               <div class="artist-img2" >
+               </div>
+               {% endif %}
+               <a class="artist-a" href="{{ artist_data.url }}">
+               {{ artist_data.title }}
+               </a>
+               </div>
+
+               {% assign artist_data = collections['shehzad-ali-sherani'] %}
+               {% if artist_data.image != nil %}
+               <div class="artist">
+               {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                {%else%}
+                <div class="artist">
+                <div class="artist-img2" >
+                </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+                </a>
+                </div>
+
+                {% assign artist_data = collections['seerat-fatima'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                 {%else%}
+                 <div class="artist">
+                 <div class="artist-img2" >
+                 </div>
+                 {% endif %}
+                 <a class="artist-a" href="{{ artist_data.url }}">
+                 {{ artist_data.title }}
+                 </a>
+                 </div>
+
+                 {% assign artist_data = collections['shanti-devi-paswaan'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                 {%else%}
+                 <div class="artist">
+                 <div class="artist-img2" >
+                 </div>
+                 {% endif %}
+                 <a class="artist-a" href="{{ artist_data.url }}">
+                 {{ artist_data.title }}
+                 </a>
+                 </div>
+
+                 {% assign artist_data = collections['sudheer'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                 {%else%}
+                 <div class="artist">
+                 <div class="artist-img2" >
+                 </div>
+                 {% endif %}
+                 <a class="artist-a" href="{{ artist_data.url }}">
+                 {{ artist_data.title }}
+                 </a>
+                 </div>
+                 {% assign artist_data = collections['shersingh-bhabor'] %}
+                {% if artist_data.image != nil %}
+                <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                 {%else%}
+                 <div class="artist">
+                 <div class="artist-img2" >
+                 </div>
+                 {% endif %}
+                 <a class="artist-a" href="{{ artist_data.url }}">
+                 {{ artist_data.title }}
+                 </a>
+                 </div>
+      </div>
+      <div class="art-col">
+        <a name="letter-t"><h3 >T</h3></a> 
+
+        <hr>
+        {% assign artist_data = collections['tashi'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+        {%else%}
+        <div class="artist">
+        <div class="artist-img2" >
+        </div>
+        {% endif %}
+        <a class="artist-a" href="{{ artist_data.url }}">
+        {{ artist_data.title }}
+        </a>
+        </div>
+      </div>
+
+      <div class="art-col">
+        <a name="letter-u"><h3 >U</h3></a> 
+        <hr>
+      </div>
+    </div>
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-v"><h3 >V</h3></a> 
+
+        <hr>
+        {% assign artist_data = collections['venkat-raman-singh-shyam'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+        {%else%}
+        <div class="artist">
+        <div class="artist-img2" >
+        </div>
+        {% endif %}
+        <a class="artist-a" href="{{ artist_data.url }}">
+        {{ artist_data.title }}
+        </a>
+        </div>
+
+        {% assign artist_data = collections['vidya-soni'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+        {%else%}
+        <div class="artist">
+        <div class="artist-img2" >
+        </div>
+        {% endif %}
+        <a class="artist-a" href="{{ artist_data.url }}">
+        {{ artist_data.title }}
+        </a>
+        </div>
+      </div>
+      <div class="art-col">
+        <a name="letter-w"><h3 >W</h3></a> 
+
+        <hr>
+        
+      </div>
+
+      <div class="art-col">
+        <a name="letter-x"><h3 >X</h3></a> 
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="art-row">
+      <div class="art-col">
+        <a name="letter-y"><h3 >Y</h3></a> 
+        <hr>
+      </div>
+      <div class="art-col">
+        <a name="letter-z"><h3 >Z</h3></a> 
+        <hr>
+      </div>
+    
+  </div>
+
+      </div>
+</div>
+<style>
+html{
+  scroll-padding-top: 150px !important;
+}
+.art-container{
+  display:flex;
+  flex-direction:column;
+  width: 100vw;
+  padding: 0 232px;
+  padding-bottom: 99px;
+}
+.artist-name{
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.name-hr{
+  border-top: 2px solid black;
+  margin-left: 364px;
+    margin-top: -20px;
+    width: 85px;
+    margin-bottom:30px ;
+}
+.alphabet{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.alphabet span{
+  width: 30px;
+  height: 30px;
+  background-color: #44153F;
+  color: white;
+  border-radius: 10px 0px 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin: 3px;
+  cursor: pointer;
+
+}
+
+.alphabet span:hover{
+  background-color: #f4cb28;
+  color: #44153F;
+  border-radius: 0px 10px 0px 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.art-row{
+  background-color: #fff;
+  width:100%;
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  padding: 0px 40px;
+}
+.art-col{
+  flex: 1;
+
+}
+
+
+.artist{
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+hr{
+  width: 200px;
+}
+.artist-img{
+  height: 50px;
+  width: 51px;
+  border-radius: 0px 10px 0px 0px;
+  object-fit: cover;
+}
+.artist-img2{
+  height: 50px;
+  width: 51px;
+  border-radius: 0px 10px 0px 0px;
+  object-fit: cover;
+  background-color:#411e2f
+}
+
+.artist-a{
+  margin: 10px;
+  cursor: pointer;
+}
+
+.artist-a:hover{
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 350px) and (max-width: 400px) {
+  .art-container{
+    padding: 0px 1px;
+    padding-bottom: 99px;
+  }
+  .art-row{
+    padding: 0px 16px;
+  }
+  hr{
+    width: 320px;
+  }
+  .artist-img {
+    height: 65px;
+    width: 65px;
+  }
+
+  .artist-img2 {
+    height: 65px;
+    width: 65px;
+  }
+  .artist-a{
+    font-size: 16px;
+  }
+
+}
+@media only screen and (min-width: 410px) and (max-width: 500px){
+  .art-container{
+    padding: 0px 1px;
+    padding-bottom: 99px;
+  }
+  .art-row{
+    padding: 0px 24px;
+  }
+  hr{
+    width: 350px;
+  }
+  .artist-img {
+    height: 65px;
+    width: 65px;
+  }
+
+  .artist-img2 {
+    height: 65px;
+    width: 65px;
+  }
+  .artist-a{
+    font-size: 16px;
+  }
+
+}
+@media only screen and (min-width: 510px) and (max-width: 600px){
+  .art-container{
+    padding: 0px 1px;
+    padding-bottom: 99px;
+  }
+  .art-row{
+    padding: 0px 24px;
+  }
+  hr{
+    width: 200px;
+  }
+  .artist-img {
+    height: 65px;
+    width: 65px;
+  }
+
+  .artist-img2 {
+    height: 65px;
+    width: 65px;
+  }
+  .artist-a{
+    font-size: 16px;
+  }
+
+}
+@media (max-width: 1050px){
+  .art-container{
+    padding: 0px 1px;
+    padding-bottom: 99px;
+  }
+}
+
+</style>
+
