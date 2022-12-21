@@ -11325,4 +11325,11 @@ font-family: "LibreBaskerville-Regular";
 src: url("LibreBaskerville-Regular.woff2") format("woff2"),
 url("LibreBaskerville-Regular.woff") format("woff");
 }
-.review-p, .testimonial_font { font-family: "LibreBaskerville-Regular"!important;}
+.review-p { font-family: "LibreBaskerville-Regular"!important;}
+
+@font-face {
+font-family: "Mansalva-Regular";
+src: url("Mansalva-Regular.woff2") format("woff2"),
+url("Mansalva-Regular.woff") format("woff");
+}
+.testimonial_font { font-family: "Mansalva-Regular"!important;}
