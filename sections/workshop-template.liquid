@@ -6,8 +6,11 @@
   assign show_payment_button = settings.product_show_payment_button
   assign current_variant = product.selected_or_first_available_variant
   
-  assign flag = 0
   assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+
+  assign artist_name = product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign artist_url = collections[artist_handle].url
 -%}
 
 <div id="product-{{ product.id }}"
@@ -97,8 +100,22 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             		<span class=tags3>{{tag}}</span>
             	{%endfor%}
             </div>
-			{%endif%}
+			      {%endif%}
+
+            {%if collections[artist_handle] != "" %}
+              <a href="{{ artist_url }}">
+                  <div class="instructor-icon-container">
+                  {% if  collections[artist_handle].image != ""%}
+                    {{ collections[artist_handle] | image_url: width: 100 | image_tag: class:"instructor-icon" }}
+                  {% endif %}
+                  <span class="instructor-icon-title">{{ artist_name }}</span>
+                  </div>
+              </a>
+            {% endif %}
           </div>
+
+          
+
           {% capture description %}
             {% if section.blocks.size == 0 %}
               <div class="rte">
@@ -261,7 +278,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
               {{ description }}
               {% endif %}
               {% if product.description contains '<!-- split -->' %}
-              <br />
+              <br/>
               {{ product.description | split: '<!-- split -->' | last }}
               {% endif %}
             </div>
@@ -274,7 +291,49 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
 
   <style>
       
+ {% comment %} Workshop Metafields Info Icon {% endcomment %}
+ .instructor-icon-container{
+  display: flex; 
+  margin-top: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
 
+.instructor-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 12px;
+}
+
+.instructor-icon-title{
+  align-self: center;
+}
+
+.artwork-info{
+  background: rgba(244, 203, 40, 1.0);
+  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
+
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.workshop-metafields-container{
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+
+.workshop-info-icons{
+  height: 25px;
+  width: 25px;
+  margin-right: 25px;
+}
+{% comment %} End {% endcomment %}
 .tags3{
   font-family: 'Lato', sans-serif;
   padding-left: 9px;
