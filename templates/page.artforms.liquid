@@ -1,3 +1,22 @@
+{% comment %} 
+COPY THE CODE BELOW TO ADD NEW ARTFORM 
+{% assign artist_data = collections['Assamese-Scroll'] %}
+        {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2"></div>
+              </div>
+          
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            
+            </div>
+{% endcomment %}
 <div class="art-container">
   <h1 class="artist-name section-title">ArtForms</h1>
   
@@ -30,7 +49,7 @@
                 
               {%else%}
               <div class="artist">
-                <div class="artist-img2">
+                <div class="artist-img2"></div>
               </div>
           
                 {% endif %}
