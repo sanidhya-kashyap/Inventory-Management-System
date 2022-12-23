@@ -126,7 +126,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             {% if  product.metafields.workshop.type != blank %}
               <div class="workshop-metafields-container">
                 <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"lifetime1.png" | asset_url}} >
-                {% if product.metafields.workshop.type ==  'Live' %}
+                {% if product.metafields.workshop.type == 'Live' %}
                   {{ product.metafields.workshop.type }} via Zoom <br>
                 {% elsif product.metafields.workshop.type == 'In Person' %}
                   {{ product.metafields.workshop.type }} <br>
@@ -171,9 +171,50 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             <div class="workshop-metafields-container">
               <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"certificate1.png" | asset_url}} >
               Certificate Upon Completion<br>
-            </div> 
-            
+            </div>       
           </div>
+
+          {%-liquid 
+            assign prod_info = product.description | split: "<!-->"
+
+
+          -%}
+
+          {% capture description %}
+          <div class="drop" class="menu-button" x-role="menu-button">
+            About the Workshop<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p>{{ prod_info[0] }}</p>
+            </div>
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            Key Takeaways<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p></p>
+            </div>
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            {% if  product.metafields.workshop.materials_included == false %}
+              Is the Art Kit included with my order?<i class="p2">+</i>
+              <div class="menu-content" x-role="menu-content">
+                <p>No, we do not provide art kits with this workshop. We will share the list of materials that you will require before the workshop. Our materials list is curated to make sure all required items are easily available.
+                <br><br>However, we sell art kits for some of the art forms seperately which you can <a href="/collections/traditional-art-kits-materials" rel="noopener noreferrer">find here</a>. 
+                </p>
+              </div>
+            {% else %}
+              What will I get in my Art Kit?<i class="p2">+</i>
+              <div class="menu-content" x-role="menu-content">
+                <p></p>
+              </div>
+            {% endif %}
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            What materials do I need to prepare in Advance?<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p></p>
+            </div>
+          </div>
+          {% endcapture %}
 
           {% if show_vendor %}
             <h3>{{ 'products.product.designer' | t }}: {{ product.vendor }}</h3>
@@ -349,7 +390,83 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   width: 25px;
   margin-right: 25px;
 }
-{% comment %} End {% endcomment %}
+{% comment %} Ends Here {% endcomment %}
+{% comment %} Dropdowns CSS starts here {% endcomment %}
+.instructor-icon-container{
+  display: flex; 
+  margin-top: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.instructor-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 12px;
+}
+
+.instructor-icon-title{
+  align-self: center;
+}
+
+.artwork-info{
+  background: rgba(244, 203, 40, 1.0);
+  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
+
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.workshop-metafields-container{
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+
+.workshop-info-icons{
+  height: 25px;
+  width: 25px;
+  margin-right: 25px;
+}
+{% comment %} Dropdown seticon CSS {% endcomment %}
+
+.drop{
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #555;
+  transition: all 0.2s linear;
+  border-bottom: 1px solid #555;   
+}
+
+.menu-title {
+  font-weight: bold;
+}
+
+.menu-button {
+      cursor: pointer;
+      border: 1px solid red;
+      border-radius: 10px;
+    
+}
+
+.drop i{
+      position: relative;
+      float: right;
+}
+  
+.menu-content {
+      display: none;
+      padding: 10px 0px;
+      margin: 0;
+      color: #333;
+}
+{% comment %} Ends Here {% endcomment %}
+
 .tags3{
   font-family: 'Lato', sans-serif;
   padding-left: 9px;
