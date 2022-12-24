@@ -2,14 +2,19 @@
   <a href="#smile-home" class="bloc-icon">
     Earn Rewards
   </a>
-  
-    <div class="vl"></div>
-    <a href="https://www.memeraki.com/account/login?return_url=%2Fpages%2Fsso%3Ftxid%3D3ead6c22-7b0c-11ed-ad1c-16bb97d457cf" class="bloc-icon">
-      My Workshops
-    </a>
-  
+
   <div class="vl"></div>
-  <a id="last" href="https://api.whatsapp.com/send?phone=919971593574&text=Hi" class="bloc-icon"  target="_blank" rel="noopener noreferrer">
+  <a href="https://www.memeraki.com/account/login?return_url=%2Fpages%2Fsso%3Ftxid%3D3ead6c22-7b0c-11ed-ad1c-16bb97d457cf" class="bloc-icon">
+    My Workshops
+  </a>
+
+  <div class="vl"></div>
+  <a
+    id="last"
+    href="https://api.whatsapp.com/send?phone=919971593574&text=Hi"
+    class="bloc-icon"
+    target="_blank"
+    rel="noopener noreferrer">
     WhatsApp Chat
   </a>
 
@@ -21,6 +26,7 @@
       display: none;
     }
   }
+
   @media screen and (max-width: 980px) {
     .mobile-nav {
       background: white;
@@ -31,7 +37,7 @@
       display: flex;
       justify-content: space-around;
       font-weight: normal;
-      box-shadow: 0px 0 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
     }
     .bloc-icon {
@@ -51,8 +57,13 @@
       color: black;
     }
 
-    #last{
+    #last {
       margin-right: 4px;
+    }
+  }
+  @media screen and (min-width: 280px) {
+    .mobile-nav a {
+      font-size: 11px;
     }
   }
 </style>
