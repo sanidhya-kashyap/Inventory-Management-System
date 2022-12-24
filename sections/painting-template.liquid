@@ -119,8 +119,100 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             {% endif %}
           </div>
           {% capture description %}
+            <div class="accordion"> About the Artwork <i class="p2">+</i></div>
+<div class="panel">
+  <p>{{ product.description }}</p>
+</div>
+<hr>
+
+<div class="accordion">Authentication <i class="p2">+</i></div>
+<div class="panel">
+  <p>Each of our artworks are hand painted by master artists across India. We provide an authentication certificate with this artwork signed by the artist.</p>
+</div>
+<hr>
+<div class="accordion">Sizes and Customisation <i class="p2">+</i></div>
+<div class="panel">
+  <p>We take custom artwork orders, please use the WhatsApp chat below or email us at <a href = "mailto: wecare@memeraki.com">wecare@memeraki.com</a> to discuss your requirements in more detail. The sizes mentioned are excluding the borders of the artwork.</p>
+</div>
+<hr>
+<div class="accordion">International Shipping and Taxes <i class="p2">+</i></div>
+<div class="panel">
+  <p>We ship worldwide, shipping charges of 2000 INR are applicable for international orders. Our Prices are inclusive of GST/Taxes. No additional charges are applicable for domestic deliveries.</p>
+</div>
+<hr>
+<div class="accordion">Shipping and Returns <i class="p2">+</i></div>
+<div class="panel">
+  <p>The paintings are made to order and will take 2-3 weeks to be made and will be packed and couriered securely in a tube. Returns are not applicable on made to order artworks.</p>
+</div>
+<hr>
+<div class="accordion">Colour Disclaimer<i class="p2">+</i></div>
+<div class="panel">
+  <p>As all artworks are made to order, that makes every artwork absolutely unique and the actual colour and overall artwork may vary slightly from the artwork image posted here.</p>
+</div>
+<hr>
+<style>
+.accordion {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 0 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-bottom: 10px;
+}
+.accordion i{
+    position: relative;
+    float: right;
+}
+
+.accordion:hover {
+  color: #f4cb28;
+  background-color: white;
+  font-weight: bold;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+</style>
+
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
+
+          {% comment %} <div class="drop" class="menu-button" x-role="menu-button">
+            About the Artwork <i class="p2">+</i>
+=======
+            
           <div class="drop" class="menu-button" x-role="menu-button">
             <span class="main-heading">About the Artwork <i class="p2">+</i></span>
+>>>>>>> d587fe1befbf6dcf2528e5abd8d3c4eb41b2a2e6
             <div class="menu-content" x-role="menu-content">
               <p>{{ product.description }}</p>
             </div>
