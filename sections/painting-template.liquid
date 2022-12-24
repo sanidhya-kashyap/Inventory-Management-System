@@ -120,9 +120,9 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
           </div>
           {% capture description %}
           <div class="drop" class="menu-button" x-role="menu-button">
-            About the Artwork<i class="p2">+</i>
+            <span class="main-heading">About the Artwork <i class="p2">+</i></span>
             <div class="menu-content" x-role="menu-content">
-              <p>{{product.description}}</p>
+              <p>{{ product.description }}</p>
             </div>
           </div>
           <div class="drop" class="menu-button" x-role="menu-button">
@@ -376,6 +376,11 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   justify-content: center;
   align-items: center;
   margin-right: 10px ;
+}
+.main-heading:hover {
+  font-weight: bold;
+  color: #f4cb28;
+  cursor: pointer;
 }
   {% if section.settings.description_background != 'rgba(0,0,0,0)' %}
     :root {
