@@ -18,17 +18,6 @@
     <a href="#letter-z"><span>Z</span></a>
 </div>
 
-{% assign array = section.blocks | map: 'settings' %}
-{% assign collection_array = array | map: 'card_collection' | sort %}
-
-{% for block in collection_array %}
-  {%- comment -%} {{block}}<br> {%- endcomment -%}
-{% endfor %} 
-
-{% assign collection_size = collection_array | size %}
-{% assign start_index = 0 %}
-
-
  
     <div class="art-row">
       <div class="art-col" >
@@ -68,7 +57,7 @@
                 <a class="artist-a" href="{{ artist_data.url }}">
                 {{ artist_data.title }}
               </a>
-              </div>
+            </div>
 
       </div>
 

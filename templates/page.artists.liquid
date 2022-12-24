@@ -17,18 +17,6 @@
     <a href="#letter-x"><span>X</span></a><a href="#letter-y"><span>Y</span></a>
     <a href="#letter-z"><span>Z</span></a>
 </div>
-
-{% assign array = section.blocks | map: 'settings' %}
-{% assign collection_array = array | map: 'card_collection' | sort %}
-
-{% for block in collection_array %}
-  {%- comment -%} {{block}}<br> {%- endcomment -%}
-{% endfor %} 
-
-{% assign collection_size = collection_array | size %}
-{% assign start_index = 0 %}
-
-
  
     <div class="art-row">
       <div class="art-col" >

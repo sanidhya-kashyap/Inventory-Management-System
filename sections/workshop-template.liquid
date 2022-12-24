@@ -6,8 +6,11 @@
   assign show_payment_button = settings.product_show_payment_button
   assign current_variant = product.selected_or_first_available_variant
   
-  assign flag = 0
   assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+
+  assign artist_name = product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign artist_url = collections[artist_handle].url
 -%}
 
 <div id="product-{{ product.id }}"
@@ -97,77 +100,120 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             		<span class=tags3>{{tag}}</span>
             	{%endfor%}
             </div>
-			{%endif%}
+			      {%endif%}
+
+            {% if collections[artist_handle] != "" %}
+              <a href="{{ artist_url }}">
+                  <div class="instructor-icon-container">
+                  {% if  collections[artist_handle].image != ""%}
+                    {{ collections[artist_handle] | image_url: width: 100 | image_tag: class:"instructor-icon" }}
+                  {% endif %}
+                  <span class="instructor-icon-title">{{ artist_name }}</span>
+                  </div>
+              </a>
+            {% endif %}
           </div>
-          {% capture description %}
-            {% if section.blocks.size == 0 %}
-              <div class="rte">
-                {% if product.description contains '[#' %}
-                {{ product.description | split: '[#' | first }}
-                {% else %}
-                {{ product.description | split: '<!-- split -->' | first }}
-                {% endif %}
+
+          <div class="artwork-info">
+
+            {% if product.metafields.artform.artwork_region_ != blank %}
+              <div class="workshop-metafields-container">
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"India-region1.png" | asset_url}} >
+                {{product.metafields.artform.artfrom_name}} ({{ product.metafields.artform.artwork_region_.value[0] }}) <br>
               </div>
             {% endif %}
-            <div class="rte-tab">
-              {% unless section.blocks.size == 0 %}
-                {% for block in section.blocks %}
-                    <input {% if forloop.first %}checked="checked"{% endif %} id="tab{{ forloop.index | plus: 1 }}" type="radio" name="pct" />
-                {% endfor %}
-              {% endunless %}
-              <nav>
-                <ul class="tabbed">
-                  {% unless section.blocks.size == 0 %}
-                    {% for block in section.blocks %}
-                      {% case block.type %}
-                      {% when 'description' %}
-                          <li class="tab{{ forloop.index | plus: 1 }}"><label for="tab{{ forloop.index | plus: 1 }}">{{ 'products.product.details' | t }}</label></li>
-                      {% when 'page' %}
-                      {% assign tab_page = pages[block.settings.page] %}
-                          <li class="tab{{ forloop.index | plus: 1 }}"><label for="tab{{ forloop.index | plus: 1 }}">{{ tab_page.title }}</label></li>
-                      {% when 'text' %}
-                          <li class="tab{{ forloop.index | plus: 1 }}"><label for="tab{{ forloop.index | plus: 1 }}">{{ block.settings.terms_heading }}</label></li>
-                      {% endcase %}
-                    {% endfor %}
-                  {% endunless %}
-                </ul>
-              </nav>
-              <section>
-                {% unless section.blocks.size == 0 %}
-                  {% for block in section.blocks %}
-                    {% case block.type %}
-                    {% when 'description' %}
-                      <div id="{{ block.id }}" class="tab{{ forloop.index | plus: 1 }} tabbed-block rte">
-                        {% if product.description contains '[#' %}
-                        {{ product.description | split: '[#' | first }}
-                        {% else %}
-                        {{ product.description | split: '<!-- split -->' | first }}
-                        {% endif %}
-                      </div>
-                    {% when 'page' %}
-                    {% assign tab_page = pages[block.settings.page] %}
-                      <div id="{{ block.id }}" class="tab{{ forloop.index | plus: 1 }} tabbed-block rte">
-                        {{ tab_page.content }}
-                      </div>
-                    {% when 'text' %}
-                      <div id="{{ block.id }}" class="tab{{ forloop.index | plus: 1 }} tabbed-block rte">
-                        {% if product.title contains "RECORDING" %} 
-                        	{{block.settings.recterms}}
-                        	{% assign flag = 1 %} 
-                        {% endif %}
-                        {% if product.title contains "Recording" %} 
-                        	{{block.settings.recterms}}
-                        	{% assign flag = 1 %}
-                        {% endif %} 
-                        {% if flag == 0%}
-                        	{{block.settings.liveterms}}
-                        {% endif %}
-                      </div>
-                    {% endcase %}
-                  {% endfor %}
-                {% endunless %}
-              </section>
+            
+            {% if  product.metafields.workshop.type != blank %}
+              <div class="workshop-metafields-container">
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"lifetime1.png" | asset_url}} >
+                {% if product.metafields.workshop.type == 'Live' %}
+                  {{ product.metafields.workshop.type }} via Zoom <br>
+                {% elsif product.metafields.workshop.type == 'In Person' %}
+                  {{ product.metafields.workshop.type }} <br>
+                {% elsif product.metafields.workshop.type == 'Recording' %}
+                  {{ product.metafields.workshop.type }} Past Zoom Workshop <br>
+                {% endif %}
+                
+              </div>
+            {% endif %}
+
+            {% if  product.metafields.workshop.date != blank %}
+              <div class="workshop-metafields-container">
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"date-time1.png" | asset_url}} >
+                {{ product.metafields.workshop.date | date: "%a, %b %d, %Y" }}<br> 
+              </div>
+            {% endif %}
+
+            {% if product.metafields.workshop.difficulty_level != blank %}
+              <div class="workshop-metafields-container">
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"level1.png" | asset_url}} >
+                {{ product.metafields.workshop.difficulty_level }}<br>
+              </div>
+            {% endif %}
+
+            {% if  product.metafields.workshop.materials_included != blank %}
+              <div class="workshop-metafields-container">
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"materials1.png" | asset_url}} >
+                {% if product.metafields.workshop.materials_included == true %} Materials Included {% else %} Materials Not Included {% endif %} <br>
+              </div>
+            {% endif %}
+
+            <div class="workshop-metafields-container">
+              <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"Language1.png" | asset_url}} >
+              Hindi/English (Our Community Manager is present to Help Live Translate)<br>
             </div>
+
+            <div class="workshop-metafields-container">
+              <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"community1.png" | asset_url}} >
+              Lifetime Access to Our Commuinty of Learners<br>
+            </div>
+
+            <div class="workshop-metafields-container">
+              <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"certificate1.png" | asset_url}} >
+              Certificate Upon Completion<br>
+            </div>       
+          </div>
+
+          {%-liquid 
+            assign prod_info = product.description | split: "<!-->"
+
+
+          -%}
+
+          {% capture description %}
+          <div class="drop" class="menu-button" x-role="menu-button">
+            About the Workshop<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p>{{ prod_info[0] }}</p>
+            </div>
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            Key Takeaways<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p></p>
+            </div>
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            {% if  product.metafields.workshop.materials_included == false %}
+              Is the Art Kit included with my order?<i class="p2">+</i>
+              <div class="menu-content" x-role="menu-content">
+                <p>No, we do not provide art kits with this workshop. We will share the list of materials that you will require before the workshop. Our materials list is curated to make sure all required items are easily available.
+                <br><br>However, we sell art kits for some of the art forms seperately which you can <a href="/collections/traditional-art-kits-materials" rel="noopener noreferrer">find here</a>. 
+                </p>
+              </div>
+            {% else %}
+              What will I get in my Art Kit?<i class="p2">+</i>
+              <div class="menu-content" x-role="menu-content">
+                <p></p>
+              </div>
+            {% endif %}
+          </div>
+          <div class="drop" class="menu-button" x-role="menu-button">
+            What materials do I need to prepare in Advance?<i class="p2">+</i>
+            <div class="menu-content" x-role="menu-content">
+              <p></p>
+            </div>
+          </div>
           {% endcapture %}
 
           {% if show_vendor %}
@@ -261,7 +307,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
               {{ description }}
               {% endif %}
               {% if product.description contains '<!-- split -->' %}
-              <br />
+              <br/>
               {{ product.description | split: '<!-- split -->' | last }}
               {% endif %}
             </div>
@@ -270,10 +316,156 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     </div>
   {% endif %}
   <div class="clear"></div>
+ 
+  <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
   
+  <script>
+  
+    const toggle = (item) => {
+      const content = item.querySelector("[x-role=\"menu-content\"]");
+      return content.style.display === "block"? "none" : "block"
+    };
+  
+    const changeDisplay = (item, display) =>
+      item.querySelector("[x-role=\"menu-content\"]").style.display = display;
+  
+    const menuButtonClicked = e => {
+      const style = toggle(e.target);
+      var evt = new Event("menu-click", {});
+      document.body.dispatchEvent(evt);
+      changeDisplay(e.target, style);
+    };
+  
+    document.querySelectorAll("[x-role=\"menu-button\"]").forEach(x => {
+        x.addEventListener("click", menuButtonClicked);
+        document.body.addEventListener("menu-click", e => changeDisplay(x, "none"));
+      }
+    );
+  
+  </script>
 
   <style>
       
+ {% comment %} Workshop Metafields Info Icon {% endcomment %}
+ .instructor-icon-container{
+  display: flex; 
+  margin-top: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.instructor-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 12px;
+}
+
+.instructor-icon-title{
+  align-self: center;
+}
+
+.artwork-info{
+  background: rgba(244, 203, 40, 1.0);
+  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
+
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.workshop-metafields-container{
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+
+.workshop-info-icons{
+  height: 25px;
+  width: 25px;
+  margin-right: 25px;
+}
+{% comment %} Ends Here {% endcomment %}
+{% comment %} Dropdowns CSS starts here {% endcomment %}
+.instructor-icon-container{
+  display: flex; 
+  margin-top: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.instructor-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 12px;
+}
+
+.instructor-icon-title{
+  align-self: center;
+}
+
+.artwork-info{
+  background: rgba(244, 203, 40, 1.0);
+  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
+  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
+
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.workshop-metafields-container{
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+
+.workshop-info-icons{
+  height: 25px;
+  width: 25px;
+  margin-right: 25px;
+}
+{% comment %} Dropdown seticon CSS {% endcomment %}
+
+.drop{
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #555;
+  transition: all 0.2s linear;
+  border-bottom: 1px solid #555;   
+}
+
+.menu-title {
+  font-weight: bold;
+}
+
+.menu-button {
+      cursor: pointer;
+      border: 1px solid red;
+      border-radius: 10px;
+    
+}
+
+.drop i{
+      position: relative;
+      float: right;
+}
+  
+.menu-content {
+      display: none;
+      padding: 10px 0px;
+      margin: 0;
+      color: #333;
+}
+{% comment %} Ends Here {% endcomment %}
 
 .tags3{
   font-family: 'Lato', sans-serif;
