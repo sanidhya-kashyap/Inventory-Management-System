@@ -150,101 +150,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   <p>As all artworks are made to order, that makes every artwork absolutely unique and the actual colour and overall artwork may vary slightly from the artwork image posted here.</p>
 </div>
 <hr>
-<style>
-.accordion {
-  background-color: white;
-  color: #444;
-  cursor: pointer;
-  padding: 0 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-  margin-bottom: 10px;
-}
-.accordion i{
-    position: relative;
-    float: right;
-}
-
-.accordion:hover {
-  color: #f4cb28;
-  background-color: white;
-  font-weight: bold;
-}
-
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
-}
-</style>
-
-
-
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-</script>
-
-          {% comment %} <div class="drop" class="menu-button" x-role="menu-button">
-            About the Artwork <i class="p2">+</i>
-
-          <div class="drop" class="menu-button" x-role="menu-button">
-            <span class="main-heading">About the Artwork <i class="p2">+</i></span>
-            <div class="menu-content" x-role="menu-content">
-              <p>{{ product.description }}</p>
-            </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            Authentication<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p>Each of our artworks are hand painted by master artists across India. We provide an authentication certificate with this artwork signed by the artist.</p>
-            </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            Sizes and Customisation<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p>We take custom artwork orders, please use the WhatsApp chat below or email us at <a href = "mailto: wecare@memeraki.com">wecare@memeraki.com</a> to discuss your requirements in more detail. The sizes mentioned are excluding the borders of the artwork.</p>
-            </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            International Shipping and Taxes<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p>We ship worldwide, shipping charges of 2000 INR are applicable for international orders. Our Prices are inclusive of GST/Taxes. No additional charges are applicable for domestic deliveries.</p>
-            </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            Shipping and Returns
-            <i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p>The paintings are made to order and will take 2-3 weeks to be made and will be packed and couriered securely in a tube. Returns are not applicable on made to order artworks.</p>
-            </div>
-          </div> 
-          <div class="drop" class="menu-button" x-role="menu-button">
-            Colour Disclaimer
-            <i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p>As all artworks are made to order, that makes every artwork absolutely unique and the actual colour and overall artwork may vary slightly from the artwork image posted here.</p>
-            </div>
-          </div> {% endcomment %}
-          
-          {% endcapture %}
+{% endcapture %}
         
 
           {% if show_vendor %}
@@ -354,27 +260,20 @@ for (i = 0; i < acc.length; i++) {
   
 <script>
 
-  const toggle = (item) => {
-    const content = item.querySelector("[x-role=\"menu-content\"]");
-    return content.style.display === "block"? "none" : "block"
-  };
+var acc = document.getElementsByClassName("accordion");
+var i;
 
-  const changeDisplay = (item, display) =>
-    item.querySelector("[x-role=\"menu-content\"]").style.display = display;
-
-  const menuButtonClicked = e => {
-    const style = toggle(e.target);
-    var evt = new Event("menu-click", {});
-    document.body.dispatchEvent(evt);
-    changeDisplay(e.target, style);
-  };
-
-  document.querySelectorAll("[x-role=\"menu-button\"]").forEach(x => {
-      x.addEventListener("click", menuButtonClicked);
-      document.body.addEventListener("menu-click", e => changeDisplay(x, "none"));
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
     }
-  );
-
+  });
+}
 </script>
 
 <style>
@@ -414,7 +313,38 @@ for (i = 0; i < acc.length; i++) {
        justify-content: center; 
     }
   }
-      
+  .accordion {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 0 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    margin-bottom: 10px;
+  }
+  .accordion i{
+      position: relative;
+      float: right;
+  }
+  
+  .accordion:hover {
+    color: #f4cb28;
+    background-color: white;
+    font-weight: bold;
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  
 .drop{
   padding: 10px 15px;
   text-decoration: none;

@@ -1,0 +1,67 @@
+<button onclick="topFunction()" id="myBtn" title="enroll now">Enroll Now</button>
+
+
+<style>
+  @media screen and (min-width: 600px) {
+#myBtn {
+  display: none;
+}}
+@media screen and (min-width: 280px) {
+  #myBtn {
+    width: 222px;
+    right: 32px;
+  }}
+
+  @media screen and (max-width: 980px) {
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 85px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #44153F;
+  color: white;
+  cursor: pointer;
+  /* padding: 15px; */
+  border-radius: 35px;
+  width: 291px;
+  right: 42px;
+  font-weight: bold;
+}
+
+#myBtn:hover {
+  background-color: grey;
+}}
+
+
+
+</style>
+
+<script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 600px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+
+  var w = window.innerWidth;
+  if (w>600) {
+    mybutton.style.display="none"
+  }
+  else{
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }}
+  
+}
+
+// When the user clicks on the button
+function topFunction() { 
+}
+</script>
