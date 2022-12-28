@@ -1,22 +1,35 @@
 <button onclick="topFunction()" id="myBtn" title="enroll now">Enroll Now</button>
 
-
 <style>
-  @media screen and (min-width: 600px) {
-#myBtn {
-  display: none;
-}}
-@media screen and (min-width: 280px) {
-  #myBtn {
-    width: 222px;
-    right: 32px;
-  }}
-
-  @media screen and (max-width: 980px) {
+  @media screen and (min-width: 981px){ 
 #myBtn {
   display: none;
   position: fixed;
-  bottom: 85px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: #44153F;
+  color: white;
+  cursor: pointer;
+  width: 130px;
+  right: 0px;
+  font-weight: bold;
+  top: 125px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+}}
+
+#myBtn:hover {
+  background-color: grey;
+}
+
+@media screen and (max-width: 980px) {
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 42px;
   z-index: 99;
   font-size: 18px;
   border: none;
@@ -24,18 +37,17 @@
   background-color: #44153F;
   color: white;
   cursor: pointer;
-  /* padding: 15px; */
   border-radius: 35px;
-  width: 291px;
-  right: 42px;
+  width: 93%;
+  right: 10px;
   font-weight: bold;
+  text-align: center;
+  height: 45px;
 }
 
 #myBtn:hover {
   background-color: grey;
 }}
-
-
 
 </style>
 
@@ -49,18 +61,13 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
 
   var w = window.innerWidth;
-  if (w>600) {
-    mybutton.style.display="none"
-  }
-  else{
+ 
     if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
   }}
   
-}
-
 // When the user clicks on the button
 function topFunction() { 
 }
