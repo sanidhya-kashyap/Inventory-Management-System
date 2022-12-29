@@ -393,9 +393,9 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
         else {
           EnrollNowButton.style.display = "none";
         }
-        if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
+        {% comment %} if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
           EnrollNowButton.style.display = "none";
-        }
+        } {% endcomment %}
     }
       
     // When the user clicks on the button
