@@ -88,7 +88,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
       </div>
-      <button onclick="topFunction()" id="enroll-now-btn" title="enroll now">Enroll Now at {{product.price | money}}</button>
+      <button onclick='CallAddToCart()' id="enroll-now-btn" title="enroll now">Enroll Now at {{product.price | money}}</button>
 
     	<div class="product__section-content {{ descr_width }}">
         <div class="product__section-details {% if section.settings.image_options == 'scroll' %} is_sticky{% endif %}">
@@ -357,59 +357,59 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   </script>
   
   
-    <script>
-      var acc = document.getElementsByClassName('accordion');
-      var i;
-  
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener('click', function () {
-          this.classList.toggle('active');
-          var panel = this.nextElementSibling;
-          if (panel.style.display === 'block') {
-            panel.style.display = 'none';
-          } else {
-            panel.style.display = 'block';
-          }
-        });
-      }
-    </script>
-    <script>
-      console.log("{{product.price | money }}");
-      // Get the button
-      let addToCartBtn = document.getElementById("addToCart");
-      let mybutton = document.getElementById("enroll-now-btn");
-      
-      // When the user scrolls down 600px from the top of the document, show the button
-      window.onscroll = function() {scrollFunction()};
-      
-      function scrollFunction() {
-      
-        var w = window.innerWidth;
-       
-          if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-          mybutton.style.display = "inline-flex";
+  <script>
+    var acc = document.getElementsByClassName('accordion');
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener('click', function () {
+        this.classList.toggle('active');
+        var panel = this.nextElementSibling;
+        if (panel.style.display === 'block') {
+          panel.style.display = 'none';
+        } else {
+          panel.style.display = 'block';
         }
-         else {
-          mybutton.style.display = "none";
+      });
+    }
+  </script>
+
+  <script>
+    
+    // Get the button
+    let addToCartBtn = document.getElementById("addToCart");
+    let EnrollNowButton = document.getElementById("enroll-now-btn");
+    
+    // When the user scrolls down 600px from the top of the document, show the button
+    window.onscroll = function() {
+      scrollFunction()
+    };
+    
+    function scrollFunction() {
+      var w = window.innerWidth;
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+          EnrollNowButton.style.display = "inline-flex";
         }
-      
+        else {
+          EnrollNowButton.style.display = "none";
+        }
         if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
-          mybutton.style.display = "none";
+          EnrollNowButton.style.display = "none";
         }
-        }
-        
-      // When the user clicks on the button
-      function topFunction() { 
-        document.getElementById("addToCart").click();
+    }
       
-        mybutton.innerText = "Adding...";
-        setTimeout(()=>{
-          mybutton.innerText = "Enroll Now at {{product.price | money}}";
-        },3000);
-        
-      }
+    // When the user clicks on the button
+    function CallAddToCart() { 
+      document.getElementById("addToCart").click();
+    
+      EnrollNowButton.innerText = "Adding To Cart...";
+      setTimeout(()=>{
+        EnrollNowButton.innerText = "Enroll Now at {{ product.price | money }}";
+      }, 3000);
       
-      </script>
+    }
+    
+    </script>
 
   <style>
   {% comment %} To remove border form the bottom of the Add To Cart button {% endcomment %}
@@ -515,58 +515,64 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   margin-right: 10px ;
 }
 
-@media screen and (min-width: 601px){ 
-  #enroll-now-btn {
-    display: none;
-    flex-wrap: wrap;
-    position: fixed;
-    z-index: 99;
-    font-size: 14px;
-    border: none;
-    outline: none;
-    background-color: #44153F;
-    color: white;
-    cursor: pointer;
-    width: 200px;
-    right: 0px;
-    font-weight: bold;
-    top: 125px;
-    text-align: center;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-  }
-}
 {% comment %} Floating enroll now button {% endcomment %}
 #enroll-now-btn:hover {
-background-color: #f4cb28;
+  background-color: #f4cb28;
 }
 
-@media screen and (max-width: 600px) {
 #enroll-now-btn {
   display: none;
   flex-wrap: wrap;
   position: fixed;
-  bottom: 42px;
   z-index: 99;
-  font-size: 18px;
+  font-size: 14px;
   border: none;
   outline: none;
+  line-height: 45px;
   background-color: #44153F;
   color: white;
   cursor: pointer;
-  border-radius: 35px;
-  width: 93%;
-  height: 45px;
-  right: 10px;
   font-weight: bold;
   text-align: center;
   justify-content: center;
   align-content: center;
-  
 }
+
+@media screen and (min-width: 1274px){ 
+  #enroll-now-btn {
+    width: 200px;
+    right: 0px;
+    top: 125px;
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1274px) {
+  #enroll-now-btn {   
+    width: 200px;
+    right: 0px;
+    top: 160px;   
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 979px){ 
+  #enroll-now-btn {
+    width: 200px;
+    right: 0px;
+    top: 125px;
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #enroll-now-btn {
+    bottom: 42px;
+    border-radius: 35px;
+    width: 93%;
+    height: 45px;
+    right: 10px;
+  }
 }
 
   {% if section.settings.description_background != 'rgba(0,0,0,0)' %}
