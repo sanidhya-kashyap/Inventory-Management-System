@@ -88,11 +88,11 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
       </div>
-      <button onclick="topFunction()" id="myBtn" title="enroll now">Enroll Now at {{product.price | money}}</button>
+      <button onclick="topFunction()" id="enroll-now-btn" title="enroll now">Enroll Now at {{product.price | money}}</button>
 
 <style>
   @media screen and (min-width: 601px){ 
-    #myBtn {
+    #enroll-now-btn {
       display: none;
       flex-wrap: wrap;
       position: fixed;
@@ -116,12 +116,12 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     }
 }
 
-#myBtn:hover {
+#enroll-now-btn:hover {
   background-color: #f4cb28;
 }
 
 @media screen and (max-width: 600px) {
-  #myBtn {
+  #enroll-now-btn {
     display: none;
     flex-wrap: wrap;
     position: fixed;
@@ -162,10 +162,16 @@ function scrollFunction() {
  
     if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
     mybutton.style.display = "inline-flex";
-  } else {
+  }
+   else {
     mybutton.style.display = "none";
   }
 }
+  }
+  if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
+    mybutton.style.display = "none";
+  }
+  }
   
 // When the user clicks on the button
 function topFunction() { 
