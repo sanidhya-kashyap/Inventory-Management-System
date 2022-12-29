@@ -219,13 +219,35 @@ function topFunction() {
             {% if  product.metafields.workshop.date != blank %}
               <div class="workshop-metafields-container">
                 <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"date-time1.png" | asset_url}} >
-                {{ product.metafields.workshop.date | date: "%a, %b %d, %Y" }}<br> 
+                {% for date in product.metafields.workshop.date.value %}
+                  {% if date == product.metafields.workshop.date.value.last %}
+                    {{ date | date: "%a, %B %e %Y, %I:%M %p" }} 
+                  {% else %}
+                    {{ date | date: "%a, %B %e, %I:%M %p" }}
+                  {% endif %}
+                  {%if date != product.metafields.workshop.date.value.last %},<br> {% else %} (IST) {% endif %} 
+                {% endfor %}
               </div>
             {% endif %}
 
+
             {% if product.metafields.workshop.difficulty_level != blank %}
+              {%-liquid
+                case product.metafields.workshop.difficulty_level
+                  when 'Beginner'
+                    assign icon = "level1.png"
+                  when 'Intermediate'
+                    assign icon = "level-21.png"
+                  when 'Advanced'
+                    assign icon = "level-31.png"
+                  when 'Beginner To Intermediate'
+                    assign icon = "level1.png"
+                  when 'Intermediate To Advanced'
+                    assign icon = "level-21.png"
+                  endcase
+              %}
               <div class="workshop-metafields-container">
-                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"level1.png" | asset_url}} >
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{ icon | asset_url}} >
                 {{ product.metafields.workshop.difficulty_level }}<br>
               </div>
             {% endif %}
@@ -244,7 +266,7 @@ function topFunction() {
 
             <div class="workshop-metafields-container">
               <img class="workshop-info-icons" loading="lazy" height='10' width='10' src = {{"community1.png" | asset_url}} >
-              Lifetime Access to Our Commuinty of Learners<br>
+              Lifetime Access to Our Learner's Commuinty <br>
             </div>
 
             <div class="workshop-metafields-container">
@@ -255,45 +277,49 @@ function topFunction() {
 
           {%-liquid 
             assign prod_info = product.description | split: "<!-->"
-
-
           -%}
 
           {% capture description %}
-          <div class="drop" class="menu-button" x-role="menu-button">
-            About the Workshop<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
+          <div class="accordion"> About the Workshop <i class="p2">+</i></div>
+            <div class="panel">
               <p>{{ prod_info[0] }}</p>
             </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            Key Takeaways<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p></p>
+          <hr>
+
+          <div class="accordion">Key Takeaways <i class="p2">+</i></div>
+            <div class="panel">
+              <p>{{ prod_info[1] }}</p>
             </div>
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            {% if  product.metafields.workshop.materials_included == false %}
-              Is the Art Kit included with my order?<i class="p2">+</i>
-              <div class="menu-content" x-role="menu-content">
-                <p>No, we do not provide art kits with this workshop. We will share the list of materials that you will require before the workshop. Our materials list is curated to make sure all required items are easily available.
-                <br><br>However, we sell art kits for some of the art forms seperately which you can <a href="/collections/traditional-art-kits-materials" rel="noopener noreferrer">find here</a>. 
+          <hr>
+
+          {% if  product.metafields.workshop.materials_included == false %}
+            <div class="accordion">Is the Art Kit included with my order? <i class="p2">+</i></div>
+              <div class="panel">
+                <p>No, we do not provide art kits with this workshop. Before the workshop, we will share the list of materials you will need to complete your artwork. Our materials list is curated to make sure all required items are easily available.
+                <br><br>However, we also sell art kits for some of the art forms seperately which you can <a href="/collections/traditional-art-kits-materials" rel="noopener noreferrer">find here</a>. 
                 </p>
               </div>
-            {% else %}
-              What will I get in my Art Kit?<i class="p2">+</i>
-              <div class="menu-content" x-role="menu-content">
-                <p></p>
-              </div>
-            {% endif %}
-          </div>
-          <div class="drop" class="menu-button" x-role="menu-button">
-            What materials do I need to prepare in Advance?<i class="p2">+</i>
-            <div class="menu-content" x-role="menu-content">
-              <p></p>
+          {% else %}
+            <div class="accordion">What will I get in my Art Kit?<i class="p2">+</i></div>
+            <div class="panel">
+              <p>{{ prod_info[2] }}</p>
             </div>
-          </div>
-          {% endcapture %}
+
+            <div class="accordion">Can I get the Art Kit shipped outside India?<i class="p2">+</i></div>
+            <div class="panel">
+              <p>We ship worldwide, shipping charges of 2000 INR are applicable for international orders. Our Prices are inclusive of GST/Taxes. No additional charges are applicable for domestic deliveries.</p>
+            </div>
+          <hr>
+          {% endif %}
+          <hr>
+
+          <div class="accordion">What materials do I need to prepare in Advance? <i class="p2">+</i></div>
+            <div class="panel">
+              <p>{{ prod_info[3] }}</p>
+            </div>
+          <hr>
+          
+        {% endcapture %}
 
           {% if show_vendor %}
             <h3>{{ 'products.product.designer' | t }}: {{ product.vendor }}</h3>
@@ -400,30 +426,24 @@ function topFunction() {
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
   
-  <script>
   
-    const toggle = (item) => {
-      const content = item.querySelector("[x-role=\"menu-content\"]");
-      return content.style.display === "block"? "none" : "block"
-    };
+    <script>
+      var acc = document.getElementsByClassName('accordion');
+      var i;
   
-    const changeDisplay = (item, display) =>
-      item.querySelector("[x-role=\"menu-content\"]").style.display = display;
-  
-    const menuButtonClicked = e => {
-      const style = toggle(e.target);
-      var evt = new Event("menu-click", {});
-      document.body.dispatchEvent(evt);
-      changeDisplay(e.target, style);
-    };
-  
-    document.querySelectorAll("[x-role=\"menu-button\"]").forEach(x => {
-        x.addEventListener("click", menuButtonClicked);
-        document.body.addEventListener("menu-click", e => changeDisplay(x, "none"));
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener('click', function () {
+          this.classList.toggle('active');
+          var panel = this.nextElementSibling;
+          if (panel.style.display === 'block') {
+            panel.style.display = 'none';
+          } else {
+            panel.style.display = 'block';
+          }
+        });
       }
-    );
+    </script>
   
-  </script>
 
   <style>
       
@@ -448,11 +468,11 @@ function topFunction() {
 }
 
 .artwork-info{
-  background: rgba(244, 203, 40, 1.0);
-  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
-  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
-  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
-
+  background: rgb(242,203,40);
+  background: -moz-linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
+  background: -webkit-linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
+  background: linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f2cb28",endColorstr="#401e2f",GradientType=1);
   color: white;
   padding: 20px;
   border-radius: 20px;
@@ -470,80 +490,40 @@ function topFunction() {
   margin-right: 25px;
 }
 {% comment %} Ends Here {% endcomment %}
+
 {% comment %} Dropdowns CSS starts here {% endcomment %}
-.instructor-icon-container{
-  display: flex; 
-  margin-top: 20px;
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
 
-.instructor-icon{
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
-  margin-right: 12px;
-}
-
-.instructor-icon-title{
-  align-self: center;
-}
-
-.artwork-info{
-  background: rgba(244, 203, 40, 1.0);
-  background: -webkit-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
-  background: -moz-radial-gradient(bottom right, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0));
-  background: radial-gradient(to top left, rgba(244, 203, 40, 1.0), rgba(65, 30, 47, 1.0)); 
-
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.workshop-metafields-container{
-  display: flex;
+.accordion {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 0 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
   margin-bottom: 10px;
-  
+}
+.accordion i{
+    position: relative;
+    float: right;
 }
 
-.workshop-info-icons{
-  height: 25px;
-  width: 25px;
-  margin-right: 25px;
-}
-{% comment %} Dropdown seticon CSS {% endcomment %}
-
-.drop{
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #555;
-  transition: all 0.2s linear;
-  border-bottom: 1px solid #555;   
-}
-
-.menu-title {
+.accordion:hover {
+  color: #f4cb28;
+  background-color: white;
   font-weight: bold;
 }
 
-.menu-button {
-      cursor: pointer;
-      border: 1px solid red;
-      border-radius: 10px;
-    
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
 }
 
-.drop i{
-      position: relative;
-      float: right;
-}
-  
-.menu-content {
-      display: none;
-      padding: 10px 0px;
-      margin: 0;
-      color: #333;
-}
 {% comment %} Ends Here {% endcomment %}
 
 .tags3{
