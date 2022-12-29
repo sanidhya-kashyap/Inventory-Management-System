@@ -5,8 +5,6 @@
   assign show_quantity = settings.product_show_quantity
   assign show_payment_button = settings.product_show_payment_button
   assign current_variant = product.selected_or_first_available_variant
-  
-  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
 
   assign artist_name = product.metafields.Instructor.name.value
   assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
@@ -109,6 +107,19 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
                   <span class=tags3>Materials Included</span>
                 {% endif %}
             </div>
+
+            {% if collections[artist_handle] != "" %}
+              <a href="{{ artist_url }}">
+                  <div class="instructor-icon-container">
+                  {% if  collections[artist_handle].image != ""%}
+                    {{ collections[artist_handle] | image_url: width: 100 | image_tag: class: "instructor-icon" }}
+                  {% else %}
+                    <img  loading="lazy" class="instructor-icon" style="border: 2px;" height="100" width="100" class="container__image" src="https://cdn.shopify.com/s/files/1/1194/1498/files/placeholder_image.jpg?v=1672304594">
+                  {% endif %}
+                  <span class="instructor-icon-title">{{ artist_name }}</span>
+                  </div>
+              </a>
+            {% endif %}
 
           </div>
           
@@ -420,8 +431,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
  {% comment %} Workshop Metafields Info Icon {% endcomment %}
  .instructor-icon-container{
   display: flex; 
-  margin-top: 20px;
-  margin-top: 20px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -886,20 +895,3 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
 }
 {% endschema %}
 
-{%comment%}
-         {
-          "type": "richtext",
-          "id": "terms",
-          "label": "Content",
-          "default": "<p>Enter the Terms and Conditions and here.</p>"
-        },
-
-
-				{
-          "type": "checkbox",
-          "id": "isrecording",
-          "label": "Recording",
-          "info": "Check this box if this is a recording of a live workshop.",
-          "default": false
-        }
-{%endcomment%}
