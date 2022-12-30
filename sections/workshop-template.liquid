@@ -373,6 +373,8 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
         });
       }
     </script>
+
+    
     <script>
       console.log("{{product.price | money }}");
       // Get the button
@@ -515,6 +517,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   margin-right: 10px ;
 }
 
+{% comment %} Floating enroll now button {% endcomment %}
 @media screen and (min-width: 601px){ 
   #enroll-now-btn {
     display: none;
@@ -539,9 +542,14 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     align-content: center;
   }
 }
-{% comment %} Floating enroll now button {% endcomment %}
+
 #enroll-now-btn:hover {
 background-color: #f4cb28;
+}
+@media screen and (min-width: 601px){
+  #enroll-now-btn {
+    top: 153px;
+  }
 }
 
 @media screen and (max-width: 600px) {
