@@ -5,8 +5,6 @@
   assign show_quantity = settings.product_show_quantity
   assign show_payment_button = settings.product_show_payment_button
   assign current_variant = product.selected_or_first_available_variant
-  
-  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
 
   assign artist_name = product.metafields.Instructor.name.value
   assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
@@ -88,7 +86,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
           {% endif %}
       </div>
-      <button onclick="topFunction()" id="enroll-now-btn" title="enroll now">Enroll Now at {{product.price | money}}</button>
+      <button onclick='CallAddToCart()' id="enroll-now-btn" title="enroll now">Enroll Now at {{product.price | money}}</button>
 
     	<div class="product__section-content {{ descr_width }}">
         <div class="product__section-details {% if section.settings.image_options == 'scroll' %} is_sticky{% endif %}">
@@ -109,6 +107,19 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
                   <span class=tags3>Materials Included</span>
                 {% endif %}
             </div>
+
+            {% if collections[artist_handle] != "" %}
+              <a href="{{ artist_url }}">
+                  <div class="instructor-icon-container">
+                  {% if  collections[artist_handle].image != ""%}
+                    {{ collections[artist_handle] | image_url: width: 100 | image_tag: class: "instructor-icon" }}
+                  {% else %}
+                    <img  loading="lazy" class="instructor-icon" style="border: 2px;" height="100" width="100" class="container__image" src="https://cdn.shopify.com/s/files/1/1194/1498/files/placeholder_image.jpg?v=1672304594">
+                  {% endif %}
+                  <span class="instructor-icon-title">{{ artist_name }}</span>
+                  </div>
+              </a>
+            {% endif %}
 
           </div>
           
@@ -357,61 +368,58 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   </script>
   
   
-    <script>
-      var acc = document.getElementsByClassName('accordion');
-      var i;
-  
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener('click', function () {
-          this.classList.toggle('active');
-          var panel = this.nextElementSibling;
-          if (panel.style.display === 'block') {
-            panel.style.display = 'none';
-          } else {
-            panel.style.display = 'block';
-          }
-        });
-      }
-    </script>
+  <script>
+    var acc = document.getElementsByClassName('accordion');
+    var i;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener('click', function () {
+        this.classList.toggle('active');
+        var panel = this.nextElementSibling;
+        if (panel.style.display === 'block') {
+          panel.style.display = 'none';
+        } else {
+          panel.style.display = 'block';
+        }
+      });
+    }
+  </script>
 
+  <script>
     
-    <script>
-      console.log("{{product.price | money }}");
-      // Get the button
-      let addToCartBtn = document.getElementById("addToCart");
-      let mybutton = document.getElementById("enroll-now-btn");
-      
-      // When the user scrolls down 600px from the top of the document, show the button
-      window.onscroll = function() {scrollFunction()};
-      
-      function scrollFunction() {
-      
-        var w = window.innerWidth;
-       
-          if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-          mybutton.style.display = "inline-flex";
+    // Get the button
+    let addToCartBtn = document.getElementById("addToCart");
+    let EnrollNowButton = document.getElementById("enroll-now-btn");
+    
+    // When the user scrolls down 600px from the top of the document, show the button
+    window.onscroll = function() {
+      scrollFunction()
+    };
+    
+    function scrollFunction() {
+      var w = window.innerWidth;
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+          EnrollNowButton.style.display = "inline-flex";
         }
-         else {
-          mybutton.style.display = "none";
+        else {
+          EnrollNowButton.style.display = "none";
         }
+        {% comment %} if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
+          EnrollNowButton.style.display = "none";
+        } {% endcomment %}
+    }
       
-        if (document.body.scrollTop > 3500 || document.documentElement.scrollTop > 3500) {
-          mybutton.style.display = "none";
-        }
-        }
-        
-      // When the user clicks on the button
-      function topFunction() { 
-        document.getElementById("addToCart").click();
+    // When the user clicks on the button
+    function CallAddToCart() { 
+      document.getElementById("addToCart").click();
+    
+      EnrollNowButton.innerText = "Adding To Cart...";
+      setTimeout(()=>{
+        EnrollNowButton.innerText = "Enroll Now at {{ product.price | money }}";
+      }, 3000);
       
-        mybutton.innerText = "Adding...";
-        setTimeout(()=>{
-          mybutton.innerText = "Enroll Now at {{product.price | money}}";
-        },3000);
-        
-      }
-      
-      </script>
+    }
+    
+    </script>
 
   <style>
   {% comment %} To remove border form the bottom of the Add To Cart button {% endcomment %}
@@ -422,23 +430,18 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
  {% comment %} Workshop Metafields Info Icon {% endcomment %}
  .instructor-icon-container{
   display: flex; 
-  margin-top: 20px;
-  margin-top: 20px;
   font-size: 14px;
   font-weight: bold;
 }
-
 .instructor-icon{
   height: 40px;
   width: 40px;
   border-radius: 20px;
   margin-right: 12px;
 }
-
 .instructor-icon-title{
   align-self: center;
 }
-
 .artwork-info{
   background: rgb(242,203,40);
   background: -moz-linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
@@ -450,22 +453,18 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   border-radius: 20px;
   margin-bottom: 7%;
 }
-
 .workshop-metafields-container{
   display: flex;
   margin-bottom: 10px;
   
 }
-
 .workshop-info-icons{
   height: 25px;
   width: 25px;
   margin-right: 25px;
 }
 {% comment %} Ends Here {% endcomment %}
-
 {% comment %} Dropdowns CSS starts here {% endcomment %}
-
 .accordion {
   background-color: white;
   color: #444;
@@ -483,22 +482,18 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     position: relative;
     float: right;
 }
-
 .accordion:hover {
   color: #f4cb28;
   background-color: white;
   font-weight: bold;
 }
-
 .panel {
   padding: 0 18px;
   display: none;
   background-color: white;
   overflow: hidden;
 }
-
 {% comment %} Ends Here {% endcomment %}
-
 .tags3{
   font-family: 'Lato', sans-serif;
   padding-left: 9px;
@@ -506,7 +501,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   margin-bottom: 5px;
   border-width: 2px; 
   border-radius: 17px; 
-
   background-color: #380433;
   color: white; 
   text-align: center; 
@@ -516,67 +510,60 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   align-items: center;
   margin-right: 10px ;
 }
-
 {% comment %} Floating enroll now button {% endcomment %}
-@media screen and (min-width: 601px){ 
-  #enroll-now-btn {
-    display: none;
-    flex-wrap: wrap;
-    position: fixed;
-    z-index: 99;
-    font-size: 14px;
-    border: none;
-    outline: none;
-    background-color: #44153F;
-    color: white;
-    cursor: pointer;
-    width: 200px;
-    right: 0px;
-    font-weight: bold;
-    top: 125px;
-    text-align: center;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-  }
-}
-
 #enroll-now-btn:hover {
-background-color: #f4cb28;
+  background-color: #f4cb28;
 }
-@media screen and (min-width: 601px){
-  #enroll-now-btn {
-    top: 153px;
-  }
-}
-
-@media screen and (max-width: 600px) {
 #enroll-now-btn {
   display: none;
   flex-wrap: wrap;
   position: fixed;
-  bottom: 42px;
   z-index: 99;
-  font-size: 18px;
+  font-size: 14px;
   border: none;
   outline: none;
+  line-height: 45px;
   background-color: #44153F;
   color: white;
   cursor: pointer;
-  border-radius: 35px;
-  width: 93%;
-  height: 45px;
-  right: 10px;
   font-weight: bold;
   text-align: center;
   justify-content: center;
   align-content: center;
-  
 }
+@media screen and (min-width: 1274px){ 
+  #enroll-now-btn {
+    width: 200px;
+    right: 0px;
+    top: 125px;
+    height: 45px;
+  }
 }
-
+@media screen and (min-width: 980px) and (max-width: 1274px) {
+  #enroll-now-btn {   
+    width: 200px;
+    right: 0px;
+    top: 160px;   
+    height: 45px;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 979px){ 
+  #enroll-now-btn {
+    width: 200px;
+    right: 0px;
+    top: 125px;
+    height: 45px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #enroll-now-btn {
+    bottom: 42px;
+    border-radius: 35px;
+    width: 93%;
+    height: 45px;
+    right: 10px;
+  }
+}
   {% if section.settings.description_background != 'rgba(0,0,0,0)' %}
     :root {
       --color-body: {{ section.settings.description_background }};
@@ -593,7 +580,6 @@ background-color: #f4cb28;
     margin-bottom: 20px;
   }
   {% endif %}
-
   {% if section.settings.image_options == 'static' %}
     {% case section.settings.thumbnail_position %}
       {% when 'below' %}
@@ -629,7 +615,6 @@ background-color: #f4cb28;
     {% if section.settings.show_banner == false and settings.breadcrumb == false %}
     .product__section { margin-top: 30px; }
     {% endif %}
-
   </style>
 </div>
 <script type="application/json" id="ModelJson-{{ section.id }}">
@@ -887,21 +872,3 @@ background-color: #f4cb28;
   }
 }
 {% endschema %}
-
-{%comment%}
-         {
-          "type": "richtext",
-          "id": "terms",
-          "label": "Content",
-          "default": "<p>Enter the Terms and Conditions and here.</p>"
-        },
-
-
-				{
-          "type": "checkbox",
-          "id": "isrecording",
-          "label": "Recording",
-          "info": "Check this box if this is a recording of a live workshop.",
-          "default": false
-        }
-{%endcomment%}
