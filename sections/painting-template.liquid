@@ -6,8 +6,11 @@
   assign show_payment_button = settings.product_show_payment_button
   assign current_variant = product.selected_or_first_available_variant
   
-  assign flag = 0
-  assign workshop_tags = product.metafields.my_fields.workshop_tags.value | split: ", " 
+  
+  
+  assign artist_name = product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign artist_url = collections[artist_handle].url
 -%}
 
 
@@ -107,14 +110,21 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
                   <span class=tags3>Ships in 7 Days</span>
                 {% endif %}
             	{% endfor %}
-              
             </div>
+            {% if collections[artist_handle] != "" %}
+              <a href="{{ artist_url }}">
+                  <div class="instructor-icon-container">
+                  {% if  collections[artist_handle].image != ""%}
+                    {{ collections[artist_handle] | image_url: width: 100 | image_tag: class: "instructor-icon" }}
+                  {% else %}
+                    <img  loading="lazy" class="instructor-icon" style="border: 2px;" height="100" width="100" class="container__image" src="https://cdn.shopify.com/s/files/1/1194/1498/files/placeholder_image.jpg?v=1672304594">
+                  {% endif %}
+                  <span class="instructor-icon-title">{{ artist_name }}</span>
+                  </div>
+              </a>
+            {% endif %}
           </div>
           <div class="artwork-info">
-
-            {% if  product.metafields.artist.name != blank %}
-              <b>Artist :</b> {{ product.metafields.artist.name }}<br>
-            {% endif %}
 
             {% if product.metafields.artwork.artwork_size != blank %}
               <b>Size :</b> {{ product.metafields.artwork.artwork_size }}<br>
@@ -302,6 +312,23 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
 </script>
 
 <style>
+  {% comment %} Instructor Icon CSS {% endcomment %}
+  .instructor-icon-container{
+    display: flex; 
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .instructor-icon{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 12px;
+  }
+  .instructor-icon-title{
+    align-self: center;
+  }
+  {% comment %} Instructor Icon CSS Ends {% endcomment %}
   #talk-to-expert{
     width:280px;
     font-weight: bolder;
