@@ -91,14 +91,24 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
         <div class="product__section-details {% if section.settings.image_options == 'scroll' %} is_sticky{% endif %}">
           <div class="product__section-title section-title">
             <h1>{{ product.title }}</h1>
-            {% if product.metafields.my_fields.workshop_tags != blank %}
+            
             <br>
             <div style="display: flex; flex-flow: row wrap; align-items: center;">      
-            	{% for tag in workshop_tags %}
-            		<span class=tags3>{{tag}}</span>
-            	{%endfor%}
+              
+
+            	{% for collection_name in product.collections %}
+                {% if collection_name.handle == 'made-to-order-hand-painted-paintings' %}
+            		  <span class=tags3>Made To Order</span>
+                  <span class=tags3>Ships Worldwide</span>
+                {% endif %}
+                {% if collection_name.handle == 'ready-to-ship-handmade-paintings' %}
+                  <span class=tags3>In Stock</span>
+            		  <span class=tags3>Ready To Ship</span>
+                  <span class=tags3>Ships in 7 Days</span>
+                {% endif %}
+            	{% endfor %}
+              
             </div>
-			{%endif%}
           </div>
           <div class="artwork-info">
 
