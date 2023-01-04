@@ -1,6 +1,25 @@
+{% comment %}
+COPY THE CODE BELOW TO ADD NEW ARTIST 
+{% assign artist_data = collections['anil-wangad'] %}
+        {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2"></div>
+              </div>
+          
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+            
+            </div>
+{% endcomment %}
 <div class="art-container">
-  <h1 class="artist-name">Artists</h1>
-   <hr class="name-hr">
+  <h1 class="artist-name section-title">Artists</h1>
+   
   <div class="alphabet">
     <a href="#letter-a"><span>A</span></a>
     <a href="#letter-b"><span>B</span></a><a href="#letter-c"><span>C</span></a>
@@ -29,7 +48,7 @@
                 
               {%else%}
               <div class="artist">
-                <div class="artist-img2">
+                <div class="artist-img2"></div>
               </div>
           
                 {% endif %}
@@ -215,6 +234,8 @@
                 {{ artist_data.title }}
               </a>
               </div>
+
+             
               </div>
     </div>
 
@@ -385,6 +406,7 @@
 
       <div class="art-col">
         <a name="letter-i"><h3 >I</h3></a> 
+        <hr>
         {% assign artist_data = collections['ishwar-naik'] %}
             {% if artist_data.image != nil %}
             <div class="artist">

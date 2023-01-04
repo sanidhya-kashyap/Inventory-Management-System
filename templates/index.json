@@ -3,34 +3,9 @@
     "1625752154523bf545": {
       "type": "slideshow",
       "blocks": {
-        "47735e62-3395-48b0-a4b5-4b6bd286e0d7": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner_-_Mobile.jpg",
-            "overlay": false,
-            "text_align": "left",
-            "caption_horizontal": 50,
-            "caption_vertical": 50,
-            "mobile_image": "shopify:\/\/shop_images\/Memeraki_annual_traditional_arts_sale_banner.jpg",
-            "hide_caption_background": false,
-            "caption_below": false,
-            "heading": "",
-            "subheading": "",
-            "link": "#salepopup",
-            "button_text": "",
-            "second_link": "",
-            "second_button_text": "",
-            "slide_text_color": "#000000",
-            "cta_color": "#ffffff",
-            "cta_background": "#000000",
-            "cta_background_hover": "#000000",
-            "caption_background": "rgba(0,0,0,0)",
-            "caption_background_opacity": 20
-          }
-        },
         "aead5dde-1245-4891-94e1-8a6a0475e515": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/banner-_desktop.png",
             "overlay": false,
@@ -131,7 +106,6 @@
         }
       },
       "block_order": [
-        "47735e62-3395-48b0-a4b5-4b6bd286e0d7",
         "aead5dde-1245-4891-94e1-8a6a0475e515",
         "175818fe-2083-4b10-9a0a-4e4e48eb7a8a",
         "0af4bf64-5494-48ca-812c-1c577a2d2d4a",
