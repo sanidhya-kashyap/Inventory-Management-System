@@ -371,7 +371,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   <script>
     var acc = document.getElementsByClassName('accordion');
     var i;
-
     for (i = 0; i < acc.length; i++) {
       acc[i].addEventListener('click', function () {
         this.classList.toggle('active');
@@ -434,18 +433,15 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   font-size: 14px;
   font-weight: bold;
 }
-
 .instructor-icon{
   height: 40px;
   width: 40px;
   border-radius: 20px;
   margin-right: 12px;
 }
-
 .instructor-icon-title{
   align-self: center;
 }
-
 .artwork-info{
   background: rgb(242,203,40);
   background: -moz-linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
@@ -457,22 +453,18 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   border-radius: 20px;
   margin-bottom: 7%;
 }
-
 .workshop-metafields-container{
   display: flex;
   margin-bottom: 10px;
   
 }
-
 .workshop-info-icons{
   height: 25px;
   width: 25px;
   margin-right: 25px;
 }
 {% comment %} Ends Here {% endcomment %}
-
 {% comment %} Dropdowns CSS starts here {% endcomment %}
-
 .accordion {
   background-color: white;
   color: #444;
@@ -490,22 +482,18 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     position: relative;
     float: right;
 }
-
 .accordion:hover {
   color: #f4cb28;
   background-color: white;
   font-weight: bold;
 }
-
 .panel {
   padding: 0 18px;
   display: none;
   background-color: white;
   overflow: hidden;
 }
-
 {% comment %} Ends Here {% endcomment %}
-
 .tags3{
   font-family: 'Lato', sans-serif;
   padding-left: 9px;
@@ -513,7 +501,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   margin-bottom: 5px;
   border-width: 2px; 
   border-radius: 17px; 
-
   background-color: #380433;
   color: white; 
   text-align: center; 
@@ -523,12 +510,10 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   align-items: center;
   margin-right: 10px ;
 }
-
 {% comment %} Floating enroll now button {% endcomment %}
 #enroll-now-btn:hover {
   background-color: #f4cb28;
 }
-
 #enroll-now-btn {
   display: none;
   flex-wrap: wrap;
@@ -546,7 +531,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   justify-content: center;
   align-content: center;
 }
-
 @media screen and (min-width: 1274px){ 
   #enroll-now-btn {
     width: 200px;
@@ -555,7 +539,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     height: 45px;
   }
 }
-
 @media screen and (min-width: 980px) and (max-width: 1274px) {
   #enroll-now-btn {   
     width: 200px;
@@ -564,7 +547,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     height: 45px;
   }
 }
-
 @media screen and (min-width: 601px) and (max-width: 979px){ 
   #enroll-now-btn {
     width: 200px;
@@ -573,7 +555,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     height: 45px;
   }
 }
-
 @media screen and (max-width: 600px) {
   #enroll-now-btn {
     bottom: 42px;
@@ -583,7 +564,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     right: 10px;
   }
 }
-
   {% if section.settings.description_background != 'rgba(0,0,0,0)' %}
     :root {
       --color-body: {{ section.settings.description_background }};
@@ -600,7 +580,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     margin-bottom: 20px;
   }
   {% endif %}
-
   {% if section.settings.image_options == 'static' %}
     {% case section.settings.thumbnail_position %}
       {% when 'below' %}
@@ -636,7 +615,6 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     {% if section.settings.show_banner == false and settings.breadcrumb == false %}
     .product__section { margin-top: 30px; }
     {% endif %}
-
   </style>
 </div>
 <script type="application/json" id="ModelJson-{{ section.id }}">
@@ -894,4 +872,3 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   }
 }
 {% endschema %}
-
