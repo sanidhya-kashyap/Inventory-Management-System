@@ -1,5 +1,83 @@
 {
   "sections": {
+    "ee708889-d904-48ab-83d1-67709d5e2d7a": {
+      "type": "featured-collection-workshop",
+      "settings": {
+        "full_width": false,
+        "title": "Upcoming Workshops",
+        "collection": "live-art-workshops",
+        "carousel": true,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "258b5ae1-ec97-4cae-b9fe-d194cfb27fce": {
+      "type": "featured-collection-workshop",
+      "settings": {
+        "full_width": false,
+        "title": "Editor's Pick",
+        "collection": "live-art-workshops",
+        "carousel": true,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
+    },
+    "51c2d798-9e4e-456a-ae0c-760fc9cb4780": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "d26e5b9c-d27d-49c0-9d86-6edcdd4ab3bd": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bhil",
+            "use_custom_image": "css_color",
+            "css_color_val": "#3ebf40",
+            "transparent_bg": false,
+            "use_custom_label": true,
+            "custom_label": "Beginner Friendly Workshops"
+          }
+        },
+        "26a068a8-3694-4d10-a7fa-caa6ba4e5a9f": {
+          "type": "card",
+          "settings": {
+            "card_collection": "chittara-art",
+            "use_custom_image": "css_color",
+            "css_color_val": "#f4cb28",
+            "transparent_bg": false,
+            "use_custom_label": true,
+            "custom_label": "Intermediate Level"
+          }
+        },
+        "7d545918-8b59-492a-adbd-13b5ca158998": {
+          "type": "card",
+          "settings": {
+            "card_collection": "ambika-devi",
+            "use_custom_image": "css_color",
+            "css_color_val": "#79214c",
+            "transparent_bg": false,
+            "use_custom_label": true,
+            "custom_label": "Advanced Workshops"
+          }
+        }
+      },
+      "block_order": [
+        "d26e5b9c-d27d-49c0-9d86-6edcdd4ab3bd",
+        "26a068a8-3694-4d10-a7fa-caa6ba4e5a9f",
+        "7d545918-8b59-492a-adbd-13b5ca158998"
+      ],
+      "settings": {
+        "title": "Explore By Difficulty Level",
+        "last_card": "",
+        "enable_view_all": false,
+        "view_all_url": "shopify:\/\/collections\/live-art-workshops",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": false,
+        "card_size": "small"
+      }
+    },
     "29176bf3-52e6-4014-84a6-9a8b361c057c": {
       "type": "thumbnail-cards",
       "blocks": {
@@ -17,7 +95,7 @@
         "44c35e6b-6bc7-4068-9cde-ca6bd158fd75": {
           "type": "card",
           "settings": {
-            "card_collection": "ambika-devi",
+            "card_collection": "jayesh-sharma",
             "use_custom_image": "collection_image",
             "css_color_val": "#411e2f",
             "transparent_bg": false,
@@ -28,7 +106,7 @@
         "e3059709-d5f6-43bb-8cd6-569eec50548e": {
           "type": "card",
           "settings": {
-            "card_collection": "applique",
+            "card_collection": "sanjay-tandekar",
             "use_custom_image": "collection_image",
             "css_color_val": "#411e2f",
             "transparent_bg": false,
@@ -39,7 +117,7 @@
         "29750de3-f5d4-4e4d-b9c0-460dba8714fc": {
           "type": "card",
           "settings": {
-            "card_collection": "ashutosh-verma",
+            "card_collection": "venkat-raman-singh-shyam",
             "use_custom_image": "collection_image",
             "css_color_val": "#411e2f",
             "transparent_bg": false,
@@ -50,7 +128,7 @@
         "fe615a8c-314b-45b8-a461-c72598226b76": {
           "type": "card",
           "settings": {
-            "card_collection": "abdul-salim",
+            "card_collection": "kalyan-joshi",
             "use_custom_image": "collection_image",
             "css_color_val": "#411e2f",
             "transparent_bg": false,
@@ -67,12 +145,206 @@
         "fe615a8c-314b-45b8-a461-c72598226b76"
       ],
       "settings": {
-        "title": "Explore By",
+        "title": "Explore By Top Artists",
+        "last_card": "All Artists",
+        "enable_view_all": true,
+        "view_all_url": "shopify:\/\/pages\/artists",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": false,
+        "card_size": "small"
+      }
+    },
+    "0782c9f6-10fc-4811-aea9-93bae1fec69d": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "6d97c364-9ae0-4c73-95dc-688091672fe7": {
+          "type": "card",
+          "settings": {
+            "card_collection": "pichwai-art",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "b0a7b83e-c9ff-4213-b67a-202432d91785": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kalamkari",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "51708d5b-e929-407a-9bdd-34c0c2f225b7": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kerala-mural",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "427caa8e-8b41-4da1-a8b5-f44a97700613": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bikaner",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "fd7ae15c-87cd-43f2-97ac-a63d4648c6ce": {
+          "type": "card",
+          "settings": {
+            "card_collection": "gond",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "e4315a3c-4bbe-4514-abb3-4032fe521a14": {
+          "type": "card",
+          "settings": {
+            "card_collection": "phad",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "e0e9b335-becf-4ae7-ab27-d3ee5f99c530": {
+          "type": "card",
+          "settings": {
+            "card_collection": "pattachitra",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "6d97c364-9ae0-4c73-95dc-688091672fe7",
+        "b0a7b83e-c9ff-4213-b67a-202432d91785",
+        "51708d5b-e929-407a-9bdd-34c0c2f225b7",
+        "427caa8e-8b41-4da1-a8b5-f44a97700613",
+        "fd7ae15c-87cd-43f2-97ac-a63d4648c6ce",
+        "e4315a3c-4bbe-4514-abb3-4032fe521a14",
+        "e0e9b335-becf-4ae7-ab27-d3ee5f99c530"
+      ],
+      "settings": {
+        "title": "Explore By Top Art Forms",
+        "last_card": "All Art Forms",
+        "enable_view_all": true,
+        "view_all_url": "shopify:\/\/pages\/artforms",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": false,
+        "card_size": "small"
+      }
+    },
+    "de7ed192-9bb6-4887-ac63-1dc117577b74": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "bd87d954-5f30-4f38-ae1f-9fe8abaa3eaa": {
+          "type": "card",
+          "settings": {
+            "card_collection": "delhi",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/delhi_ncr_1.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Delhi NCR"
+          }
+        },
+        "4dec8d0a-18f3-4c01-adbf-69f280aa0bdd": {
+          "type": "card",
+          "settings": {
+            "card_collection": "rajasthan",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/rajasthan.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Rajasthan"
+          }
+        },
+        "f47325d2-96ad-415e-9d36-4030ed945308": {
+          "type": "card",
+          "settings": {
+            "card_collection": "maharashtra",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/maharashtra.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Maharashtra"
+          }
+        },
+        "907a9801-02ba-447d-8220-f6186153c984": {
+          "type": "card",
+          "settings": {
+            "card_collection": "gujarat",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/gujarat_1.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Gujarat"
+          }
+        },
+        "8548cb58-fde5-4711-8460-750617bc44af": {
+          "type": "card",
+          "settings": {
+            "card_collection": "tamil-nadu",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/Tamil_Nadu.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Tamil Nadu"
+          }
+        },
+        "cf9903ba-3376-42fa-b51b-0990f60a5602": {
+          "type": "card",
+          "settings": {
+            "card_collection": "karnataka",
+            "use_custom_image": "cdn_image",
+            "css_color_val": "#411e2f",
+            "card_img": "shopify:\/\/shop_images\/karnataka.png",
+            "transparent_bg": true,
+            "use_custom_label": true,
+            "custom_label": "Karnataka"
+          }
+        }
+      },
+      "block_order": [
+        "bd87d954-5f30-4f38-ae1f-9fe8abaa3eaa",
+        "4dec8d0a-18f3-4c01-adbf-69f280aa0bdd",
+        "f47325d2-96ad-415e-9d36-4030ed945308",
+        "907a9801-02ba-447d-8220-f6186153c984",
+        "8548cb58-fde5-4711-8460-750617bc44af",
+        "cf9903ba-3376-42fa-b51b-0990f60a5602"
+      ],
+      "settings": {
+        "title": "Explore By States",
         "last_card": "",
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": true,
-        "enable_nav_bar": true,
+        "enable_nav_bar": false,
         "card_size": "small"
       }
     },
@@ -131,12 +403,31 @@
         "full_width": false,
         "section_padding": "both"
       }
+    },
+    "b725f3ed-8a5c-4838-be92-92c34f8ef24c": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Workshops With Materials",
+        "collection": "live-art-workshops",
+        "carousel": true,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "cs2",
+        "section_padding": "both"
+      }
     }
   },
   "order": [
+    "ee708889-d904-48ab-83d1-67709d5e2d7a",
+    "258b5ae1-ec97-4cae-b9fe-d194cfb27fce",
+    "51c2d798-9e4e-456a-ae0c-760fc9cb4780",
     "29176bf3-52e6-4014-84a6-9a8b361c057c",
+    "0782c9f6-10fc-4811-aea9-93bae1fec69d",
+    "de7ed192-9bb6-4887-ac63-1dc117577b74",
     "banner",
     "main",
-    "1646105122e98f6180"
+    "1646105122e98f6180",
+    "b725f3ed-8a5c-4838-be92-92c34f8ef24c"
   ]
 }
