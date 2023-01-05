@@ -1374,6 +1374,9 @@
       "Instructor-info": {
         "type": "Instructor-info",
         "settings": {
+          "set_manually": false,
+          "artist_collection": "",
+          "show_button": true
         }
       },
       "artform-info": {
@@ -2359,7 +2362,7 @@
           "description_background": "",
           "back_in_stock": true,
           "back_in_stock_text": "<p>Email me when this is available<\/p>",
-          "show_social_share": true,
+          "show_social_share": false,
           "product_description_position": "below",
           "lower_description": "small",
           "lower_description_background": "",
