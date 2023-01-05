@@ -100,7 +100,11 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
                 {% endif %}
       
                 {% if product.metafields.workshop.difficulty_level != blank %}
-                  <span class=tags3>{{ product.metafields.workshop.difficulty_level }} Level</span>
+                  {% if product.metafields.workshop.difficulty_level == 'Beginner'%}
+                    <span class=tags3>{{ product.metafields.workshop.difficulty_level }} Friendly</span>
+                  {% else %}
+                    <span class=tags3>{{ product.metafields.workshop.difficulty_level }} Level</span>
+                  {% endif %}  
                 {% endif %}
       
                 {% if  product.metafields.workshop.materials_included != blank and product.metafields.workshop.materials_included == true %}
@@ -237,14 +241,13 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
             </div>       
           </div>
 
-          {%-liquid 
-            assign prod_info = product.description | split: "<!-->"
-          -%}
+          {% assign prod_info = product.description | split: '[split]' %}
+
 
           {% capture description %}
           <div class="accordion"> About the Workshop <i class="p2">+</i></div>
             <div class="panel">
-              <p>{{ prod_info[0] }}</p>
+              <p>{{ prod_info[0]}}</p>
             </div>
           <hr>
 
