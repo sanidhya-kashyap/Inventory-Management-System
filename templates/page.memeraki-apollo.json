@@ -96,7 +96,7 @@
       "settings": {
         "set_manually": true,
         "artist_collection": "saji-artcan-collection",
-        "show_button": true
+        "show_button": false
       }
     },
     "cf26e1f6-8704-416d-ae2a-882ad7f447b4": {
