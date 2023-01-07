@@ -69,7 +69,7 @@
     "ecdf334f-8724-4c17-b2d2-f4d6a54abddd": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Ramesh ArtCan Collection<\/button><\/a>\n<\/div>",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Ramesh's ArtCan Collection<\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
