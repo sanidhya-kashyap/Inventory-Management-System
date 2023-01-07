@@ -53,7 +53,7 @@
     "b0eb0981-e1c0-46df-ac56-2cb2fbea9f5e": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View More<\/button><\/a>\n<\/div>",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Jijulal's ArtCan Collection<\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
@@ -66,10 +66,10 @@
         "show_button": false
       }
     },
-    "b14ea244-79d1-48bd-989f-d80e8cd586bb": {
+    "ecdf334f-8724-4c17-b2d2-f4d6a54abddd": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Ramesh ArtCan Collection<\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
@@ -96,10 +96,10 @@
         "show_button": false
       }
     },
-    "722afaf0-1ed7-429f-88a5-e13afaa41ec3": {
+    "b14ea244-79d1-48bd-989f-d80e8cd586bb": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Athira's ArtCan Collection<\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
@@ -126,10 +126,10 @@
         "show_button": false
       }
     },
-    "3394f79c-93ce-44e6-a11f-0587f5609818": {
+    "722afaf0-1ed7-429f-88a5-e13afaa41ec3": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Saji's ArtCan Collection<\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
@@ -156,10 +156,10 @@
         "show_button": false
       }
     },
-    "ecdf334f-8724-4c17-b2d2-f4d6a54abddd": {
+    "3394f79c-93ce-44e6-a11f-0587f5609818": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Shaiju's ArtCan Collection <\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "both"
       }
@@ -187,16 +187,16 @@
     "ba03e308-826a-41c9-86bf-9ebbaface359",
     "b0eb0981-e1c0-46df-ac56-2cb2fbea9f5e",
     "03a1d875-e0a4-4cdf-b26d-69e7afd6c14b",
-    "b14ea244-79d1-48bd-989f-d80e8cd586bb",
+    "ecdf334f-8724-4c17-b2d2-f4d6a54abddd",
     "0b74e30a-d463-40c9-8a98-d3af7e720101",
     "48fb65d3-67c4-4897-b309-476303b608ee",
-    "722afaf0-1ed7-429f-88a5-e13afaa41ec3",
+    "b14ea244-79d1-48bd-989f-d80e8cd586bb",
     "ebb5704d-ef46-4364-9009-d3fb7db0b085",
     "fff1317e-29a0-4400-8ced-05d8e810f6b5",
-    "3394f79c-93ce-44e6-a11f-0587f5609818",
+    "722afaf0-1ed7-429f-88a5-e13afaa41ec3",
     "cf26e1f6-8704-416d-ae2a-882ad7f447b4",
     "90ff8f70-e17f-4e3c-a72f-2f9f35a97dda",
-    "ecdf334f-8724-4c17-b2d2-f4d6a54abddd",
+    "3394f79c-93ce-44e6-a11f-0587f5609818",
     "9b00fc88-dcec-474d-beea-dccd977d2953"
   ]
 }
