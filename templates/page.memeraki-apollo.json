@@ -159,7 +159,7 @@
     "3394f79c-93ce-44e6-a11f-0587f5609818": {
       "type": "custom-liquid",
       "settings": {
-        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['diwali-home-decor'].url}}><button class=\"View-More-Button\" >View Shaiju's ArtCan Collection <\/button><\/a>\n<\/div>",
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['shaiju-artcan-collection'].url}}><button class=\"View-More-Button\" >View Shaiju's ArtCan Collection <\/button><\/a>\n<\/div>",
         "full_width": false,
         "section_padding": "bottom"
       }
