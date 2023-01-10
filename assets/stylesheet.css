@@ -10,6 +10,22 @@
 * Copyright 2014 Ben Plum; MIT Licensed
 */
 
+/* Use these to add a centered Button (View More Buttom) using Custom Liquid section in Theme Customizer */
+.View-More-Button-Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.View-More-Button {
+  width: 280px;
+  font-weight: bolder;
+  background-color: #f4cb28;
+  margin-bottom: 0px;
+  margin-top: 8px;
+  padding-bottom: 0px;
+}
+
 /*
 For InterAkt iframe patch
 */
