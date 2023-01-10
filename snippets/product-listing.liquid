@@ -15,25 +15,8 @@
 -%}
 
 <style>
-  .artist-name {   
-    position:absolute;
-    left:1em;
-    color: #9d0000; 
-    font-weight:800;
-  }
-  {%comment%}{% for collection in product.collections %}
-    	{% if collection.title == "MEMERAKI MASTERCLASSES" %}
-  			{% assign counter = 0 %}
-    	{% break %}
-    	{% endif %}
-  {% endfor %}
-  {% if counter == 1 %}
-  	@media screen and (min-width: 966px) {
-  				.ci {
-    				height: 32vw;
-  				}
- 			}
-  {% endif %}{%endcomment%}
+
+
 </style>
 
 <div class="ci">
@@ -64,8 +47,7 @@
 
           {% if settings.image_flip and product.media.size > 1 %}
             <div class="hidden">
-              <img class="lazyload lazyload-fade"
-                id="{{ preview_image.id }}"
+              <img class="lazyload lazyload-fade"id="{{ preview_image.id }}"
                 data-src="{{ product.media[1] | img_url: '1024x' }}"
                 data-sizes="auto"
                 alt="{{ preview_image.alt | escape }}">
@@ -115,17 +97,51 @@
      color: #5d5959eb;
   } 
 
+  .artist-name {   
+    position:absolute;
+    left:1em;
+    color: #9d0000; 
+    font-weight:800;
+  }
+
+  .prod_title {
+    min-height: 50px; 
+    max-height:75px
+  }
+
+  @media screen and (max-width: 740px){
+    .prod_title {
+      min-height: 30px; 
+      max-height:75px
+    }
+  }
+
+
 </style>
 
 <div class="product-details">
   <div style="display: flex; flex-direction:column">
-  <a href="{{ product.url | within: collection }}" class="js-product-details-link" style="height:70px">
+  <a class="prod_title" href="{{ product.url | within: collection }}" class="js-product-details-link" style="">
      {% if settings.vendor %}
       <p class="h4">{{ product.vendor }}</p>
     {% endif %}
-     <h3 style="font-weight: bold; text-align: left;" >{{ product.title }}</h3> 
-    </a>
-    <h4 id="product-details-instructor-name" style="margin-bottom:0; margin-top: 5px;"> {{ product.metafields.Instructor.name}} </h4>
+     <h3 style="font-weight: bold; text-align: left; margin-bottom: 0px;" >{{ product.title }}</h3> 
+  </a>
+  {%-liquid
+    assign in_stock = "Made To Order"
+    for collection in product.collections 
+      if collection.handle == 'ready-to-ship-handmade-paintings' 
+       assign in_stock = "Ready To Ship"
+        break 
+      endif 
+    endfor 
+  %}
+  
+    <h3 style="font-weight: bold; text-align: left; color: #411e2f">
+      {{in_stock}}
+    </h3>
+    <h4 id="product-details-instructor-name" style="margin-bottom:0; margin-top: 5px;"> {{ product.metafields.artist.name}} </h4>
+{% comment %} To add small description. {% endcomment %}
 	{% for collection in product.collections %}
     	{% if collection.title == "MEMERAKI MASTERCLASSES" %}
     		<p class="product-details-masterclass-small-description">
@@ -138,9 +154,7 @@
     
   </div>
     
-  {%comment %} 
-  to add small description   
-  {%endcomment %}
+ 
   
 
   {% unless product.template_suffix == 'not-for-sale' %}
