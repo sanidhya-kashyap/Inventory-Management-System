@@ -13,6 +13,14 @@
         "section_padding": "both"
       }
     },
+    "e3f4e75b-b939-4c48-bae1-2911e8917057": {
+      "type": "custom-liquid",
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['live-art-workshops'].url}}><button class=\"View-More-Button\" >View All Workshops<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "both"
+      }
+    },
     "258b5ae1-ec97-4cae-b9fe-d194cfb27fce": {
       "type": "featured-collection-workshop",
       "settings": {
@@ -420,6 +428,7 @@
   },
   "order": [
     "ee708889-d904-48ab-83d1-67709d5e2d7a",
+    "e3f4e75b-b939-4c48-bae1-2911e8917057",
     "258b5ae1-ec97-4cae-b9fe-d194cfb27fce",
     "51c2d798-9e4e-456a-ae0c-760fc9cb4780",
     "29176bf3-52e6-4014-84a6-9a8b361c057c",
