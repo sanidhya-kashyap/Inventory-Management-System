@@ -383,5 +383,7 @@
     {% include 'revy-bundle-script' %}
 
 
-  </body>
+  
+	{{ 'yta-styles-main.css' | asset_url | stylesheet_tag }}{{ 'yta-scripts-main.js' | asset_url | script_tag }}{% include 'yta-widgets' %}
+</body>
 </html>

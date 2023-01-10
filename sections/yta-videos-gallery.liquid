@@ -1,0 +1,29 @@
+<div data-section-type="arena-youtube-feed" data-section-id="{{section.id}}">
+  {{ section.settings.block }}
+</div>
+
+{% schema %}
+  {
+    "name": "Youtube Gallery",
+    "settings": [
+      {
+        "type":"text",
+        "label":"Ensert code",
+        "placeholder":"Ensert code",
+        "id":"block"
+      }
+    ],
+    "presets": 	[
+      {
+        "name": "Youtube Gallery",
+        "category": "Youtube Feed"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
