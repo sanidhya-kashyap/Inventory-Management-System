@@ -128,13 +128,16 @@
      <h3 style="font-weight: bold; text-align: left; margin-bottom: 0px;" >{{ product.title }}</h3> 
   </a>
   {%-liquid
-    assign in_stock = "Made To Order"
-    for collection in product.collections 
-      if collection.handle == 'ready-to-ship-handmade-paintings' 
-       assign in_stock = "Ready To Ship"
-        break 
-      endif 
-    endfor 
+    
+    if product.type == "Handpainted Artwork"
+      assign in_stock = "Made To Order"
+      for collection in product.collections 
+        if collection.handle == 'ready-to-ship-handmade-paintings' 
+        assign in_stock = "Ready To Ship"
+          break 
+        endif 
+      endfor 
+    endif
   %}
   
     <h3 style="font-weight: bold; text-align: left; color: #411e2f">
