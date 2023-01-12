@@ -89,6 +89,58 @@
         "color_scheme": "cs2",
         "section_padding": "both"
       }
+    },
+    "6a0ff217-6cf8-4874-96c5-da7783561acb": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "361ec760-04dd-4206-91af-e9841ba89c2e": {
+          "type": "card",
+          "settings": {
+            "card_collection": "",
+            "use_custom_image": "css_color",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": true,
+            "custom_label": "Beginner Friendly Workshops"
+          }
+        },
+        "f62bcf5e-69ea-47e4-8ffe-d2e12c2424f4": {
+          "type": "card",
+          "settings": {
+            "card_collection": "",
+            "use_custom_image": "css_color",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": "Intermediate Level Workshops"
+          }
+        },
+        "946a0d12-f8d3-474f-83a6-4cc20887d5b0": {
+          "type": "card",
+          "settings": {
+            "card_collection": "",
+            "use_custom_image": "css_color",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": "Advanced Level Workshops"
+          }
+        }
+      },
+      "block_order": [
+        "361ec760-04dd-4206-91af-e9841ba89c2e",
+        "f62bcf5e-69ea-47e4-8ffe-d2e12c2424f4",
+        "946a0d12-f8d3-474f-83a6-4cc20887d5b0"
+      ],
+      "settings": {
+        "title": "Explore By",
+        "last_card": "",
+        "enable_view_all": false,
+        "view_all_url": "",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": true,
+        "card_size": "small"
+      }
     }
   },
   "order": [
@@ -97,6 +149,7 @@
     "1646105122e98f6180",
     "75d1d21d-3135-4081-ae2a-3294120ffe33",
     "d5aa823e-d051-4178-a2a1-2352aa609ada",
-    "3495692f-9fbd-4465-914b-9f1561618671"
+    "3495692f-9fbd-4465-914b-9f1561618671",
+    "6a0ff217-6cf8-4874-96c5-da7783561acb"
   ]
 }
