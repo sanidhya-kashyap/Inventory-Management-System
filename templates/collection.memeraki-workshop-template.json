@@ -462,7 +462,7 @@
         "grid": 4,
         "limit": 8,
         "color_scheme": "cs2",
-        "section_padding": "both"
+        "section_padding": "top"
       }
     }
   },
