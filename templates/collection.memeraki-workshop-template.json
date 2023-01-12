@@ -101,7 +101,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Beginner Friendly Workshops"
+            "custom_label": "Beginner Friendly Workshops",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "f62bcf5e-69ea-47e4-8ffe-d2e12c2424f4": {
@@ -112,7 +114,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Intermediate Level Workshops"
+            "custom_label": "Intermediate Level Workshops",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "946a0d12-f8d3-474f-83a6-4cc20887d5b0": {
@@ -123,7 +127,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Advanced Level Workshops"
+            "custom_label": "Advanced Level Workshops",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -135,6 +141,7 @@
       "settings": {
         "title": "Explore By Difficulty Level",
         "last_card": "",
+        "enable_view_all_top": true,
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": false,
@@ -153,7 +160,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "872c5e72-4e2d-4a36-a4e2-cd77b39bff98": {
@@ -164,7 +173,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "fc1ed972-cf09-4728-a1b7-856532e9d04b": {
@@ -175,7 +186,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "ccd751b1-9d53-4f2d-a634-cdbf1c147c5a": {
@@ -186,7 +199,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "6bd9d2e8-4c5c-4506-8313-3484ff7ad25d": {
@@ -197,7 +212,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -211,6 +228,7 @@
       "settings": {
         "title": "Popular Artists",
         "last_card": "All Artists",
+        "enable_view_all_top": true,
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artists",
         "enable_nav_arrows": true,
@@ -229,7 +247,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "229c33e0-83e4-4b80-a86c-105de46aea65": {
@@ -240,7 +260,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "d5c1cf98-ecc7-4fe6-bdd3-b53142ef687a": {
@@ -251,7 +273,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "a7a6ba99-27d5-4e99-bb48-dcd72e4e57bc": {
@@ -262,7 +286,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "ca643022-772e-48b4-bbf2-071fbfafb0db": {
@@ -273,7 +299,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "77fb4b2b-8239-43cc-b18c-9dffddce5c9f": {
@@ -284,7 +312,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "aeac6cf9-6bbb-44fc-a1a2-df6735c08b10": {
@@ -295,7 +325,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -311,6 +343,7 @@
       "settings": {
         "title": "Popular Artforms",
         "last_card": "All Art Forms",
+        "enable_view_all_top": true,
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artforms",
         "enable_nav_arrows": true,
@@ -329,7 +362,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "7bb863bb-d0f6-4099-8f83-8ccb873fcd93": {
@@ -340,7 +375,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "9fbc3124-6e40-4906-b014-c25ce5e7f586": {
@@ -351,7 +388,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "812681d7-aaac-4a15-9484-e714f27a70be": {
@@ -362,7 +401,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "1e6319d0-f5af-4a19-bacd-be73d77f31ae": {
@@ -373,7 +414,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "a7c54cf5-fb70-4e9f-af1a-80cbdf95981b": {
@@ -384,7 +427,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": true,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -397,8 +442,9 @@
         "a7c54cf5-fb70-4e9f-af1a-80cbdf95981b"
       ],
       "settings": {
-        "title": "Workshops From Popular Regions",
+        "title": "Popular Regions",
         "last_card": "",
+        "enable_view_all_top": true,
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": true,
