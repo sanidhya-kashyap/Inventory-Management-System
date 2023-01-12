@@ -2,12 +2,14 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "display_wide": true
       }
     },
     "main": {
       "type": "main-collection",
+      "disabled": true,
       "blocks": {
         "33015783-fc74-41ca-873e-a1890ef14fd9": {
           "type": "dropdown_filter",
@@ -53,11 +55,48 @@
         "full_width": false,
         "section_padding": "both"
       }
+    },
+    "75d1d21d-3135-4081-ae2a-3294120ffe33": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Featured collection",
+        "collection": "",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "d5aa823e-d051-4178-a2a1-2352aa609ada": {
+      "type": "custom-liquid",
+      "settings": {
+        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['live-art-workshops'].url}}><button class=\"View-More-Button\" >View All Workshops<\/button><\/a>\n<\/div>",
+        "full_width": false,
+        "section_padding": "both"
+      }
+    },
+    "3495692f-9fbd-4465-914b-9f1561618671": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Featured collection",
+        "collection": "",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
     }
   },
   "order": [
     "banner",
     "main",
-    "1646105122e98f6180"
+    "1646105122e98f6180",
+    "75d1d21d-3135-4081-ae2a-3294120ffe33",
+    "d5aa823e-d051-4178-a2a1-2352aa609ada",
+    "3495692f-9fbd-4465-914b-9f1561618671"
   ]
 }
