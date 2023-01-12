@@ -45,7 +45,9 @@
             "css_color_val": "#3ebf40",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Beginner Friendly Workshops"
+            "custom_label": "Beginner Friendly Workshops",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "26a068a8-3694-4d10-a7fa-caa6ba4e5a9f": {
@@ -56,7 +58,9 @@
             "css_color_val": "#f4cb28",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Intermediate Level"
+            "custom_label": "Intermediate Level",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "7d545918-8b59-492a-adbd-13b5ca158998": {
@@ -67,7 +71,9 @@
             "css_color_val": "#79214c",
             "transparent_bg": false,
             "use_custom_label": true,
-            "custom_label": "Advanced Workshops"
+            "custom_label": "Advanced Workshops",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -79,6 +85,7 @@
       "settings": {
         "title": "Explore By Difficulty Level",
         "last_card": "",
+        "enable_view_all_top": true,
         "enable_view_all": false,
         "view_all_url": "shopify:\/\/collections\/live-art-workshops",
         "enable_nav_arrows": true,
@@ -97,7 +104,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": true,
+            "block_url": "https:\/\/www.memeraki.com"
           }
         },
         "44c35e6b-6bc7-4068-9cde-ca6bd158fd75": {
@@ -108,7 +117,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "e3059709-d5f6-43bb-8cd6-569eec50548e": {
@@ -119,7 +130,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "29750de3-f5d4-4e4d-b9c0-460dba8714fc": {
@@ -130,7 +143,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "fe615a8c-314b-45b8-a461-c72598226b76": {
@@ -141,7 +156,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -155,6 +172,7 @@
       "settings": {
         "title": "Explore By Top Artists",
         "last_card": "All Artists",
+        "enable_view_all_top": false,
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artists",
         "enable_nav_arrows": true,
@@ -173,7 +191,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "b0a7b83e-c9ff-4213-b67a-202432d91785": {
@@ -184,7 +204,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "51708d5b-e929-407a-9bdd-34c0c2f225b7": {
@@ -195,7 +217,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "427caa8e-8b41-4da1-a8b5-f44a97700613": {
@@ -206,7 +230,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "fd7ae15c-87cd-43f2-97ac-a63d4648c6ce": {
@@ -217,7 +243,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "e4315a3c-4bbe-4514-abb3-4032fe521a14": {
@@ -228,7 +256,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "e0e9b335-becf-4ae7-ab27-d3ee5f99c530": {
@@ -239,7 +269,9 @@
             "css_color_val": "#411e2f",
             "transparent_bg": false,
             "use_custom_label": false,
-            "custom_label": ""
+            "custom_label": "",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -255,6 +287,7 @@
       "settings": {
         "title": "Explore By Top Art Forms",
         "last_card": "All Art Forms",
+        "enable_view_all_top": true,
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artforms",
         "enable_nav_arrows": true,
@@ -274,7 +307,9 @@
             "card_img": "shopify:\/\/shop_images\/delhi_ncr_1.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Delhi NCR"
+            "custom_label": "Delhi NCR",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "4dec8d0a-18f3-4c01-adbf-69f280aa0bdd": {
@@ -286,7 +321,9 @@
             "card_img": "shopify:\/\/shop_images\/rajasthan.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Rajasthan"
+            "custom_label": "Rajasthan",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "f47325d2-96ad-415e-9d36-4030ed945308": {
@@ -298,7 +335,9 @@
             "card_img": "shopify:\/\/shop_images\/maharashtra.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Maharashtra"
+            "custom_label": "Maharashtra",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "907a9801-02ba-447d-8220-f6186153c984": {
@@ -310,7 +349,9 @@
             "card_img": "shopify:\/\/shop_images\/gujarat_1.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Gujarat"
+            "custom_label": "Gujarat",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "8548cb58-fde5-4711-8460-750617bc44af": {
@@ -322,7 +363,9 @@
             "card_img": "shopify:\/\/shop_images\/Tamil_Nadu.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Tamil Nadu"
+            "custom_label": "Tamil Nadu",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         },
         "cf9903ba-3376-42fa-b51b-0990f60a5602": {
@@ -334,7 +377,9 @@
             "card_img": "shopify:\/\/shop_images\/karnataka.png",
             "transparent_bg": true,
             "use_custom_label": true,
-            "custom_label": "Karnataka"
+            "custom_label": "Karnataka",
+            "use_custom_block_url": false,
+            "block_url": ""
           }
         }
       },
@@ -349,6 +394,7 @@
       "settings": {
         "title": "Explore By States",
         "last_card": "",
+        "enable_view_all_top": true,
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": true,
