@@ -217,6 +217,118 @@
         "enable_nav_bar": false,
         "card_size": "small"
       }
+    },
+    "dfe8fdf3-6adf-4225-8232-431f9c15fc49": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "e1245ff6-116b-416b-83cc-ec797892969c": {
+          "type": "card",
+          "settings": {
+            "card_collection": "pichwai-art",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "229c33e0-83e4-4b80-a86c-105de46aea65": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kalamkari",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "d5c1cf98-ecc7-4fe6-bdd3-b53142ef687a": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kerala-mural",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "a7a6ba99-27d5-4e99-bb48-dcd72e4e57bc": {
+          "type": "card",
+          "settings": {
+            "card_collection": "bikaner",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "ca643022-772e-48b4-bbf2-071fbfafb0db": {
+          "type": "card",
+          "settings": {
+            "card_collection": "gond",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "77fb4b2b-8239-43cc-b18c-9dffddce5c9f": {
+          "type": "card",
+          "settings": {
+            "card_collection": "phad",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "aeac6cf9-6bbb-44fc-a1a2-df6735c08b10": {
+          "type": "card",
+          "settings": {
+            "card_collection": "pattachitra",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "e1245ff6-116b-416b-83cc-ec797892969c",
+        "229c33e0-83e4-4b80-a86c-105de46aea65",
+        "d5c1cf98-ecc7-4fe6-bdd3-b53142ef687a",
+        "a7a6ba99-27d5-4e99-bb48-dcd72e4e57bc",
+        "ca643022-772e-48b4-bbf2-071fbfafb0db",
+        "77fb4b2b-8239-43cc-b18c-9dffddce5c9f",
+        "aeac6cf9-6bbb-44fc-a1a2-df6735c08b10"
+      ],
+      "settings": {
+        "title": "Explore By Artforms",
+        "last_card": "All Art Forms",
+        "enable_view_all": true,
+        "view_all_url": "shopify:\/\/pages\/artforms",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": false,
+        "card_size": "small"
+      }
+    },
+    "a8eaf947-9e3b-489a-969b-18c9672e82f3": {
+      "type": "thumbnail-cards",
+      "settings": {
+        "title": "Explore By",
+        "last_card": "",
+        "enable_view_all": false,
+        "view_all_url": "",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": true,
+        "card_size": "small"
+      }
     }
   },
   "order": [
@@ -227,6 +339,8 @@
     "d5aa823e-d051-4178-a2a1-2352aa609ada",
     "3495692f-9fbd-4465-914b-9f1561618671",
     "6a0ff217-6cf8-4874-96c5-da7783561acb",
-    "fe398387-b792-4ee0-b63b-cad0200f14d0"
+    "fe398387-b792-4ee0-b63b-cad0200f14d0",
+    "dfe8fdf3-6adf-4225-8232-431f9c15fc49",
+    "a8eaf947-9e3b-489a-969b-18c9672e82f3"
   ]
 }
