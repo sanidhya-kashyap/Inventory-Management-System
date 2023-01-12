@@ -2,14 +2,12 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
-      "disabled": true,
       "settings": {
         "display_wide": true
       }
     },
     "main": {
       "type": "main-collection",
-      "disabled": true,
       "blocks": {
         "33015783-fc74-41ca-873e-a1890ef14fd9": {
           "type": "dropdown_filter",
@@ -43,7 +41,6 @@
       "blocks": {
         "4430f128-4e49-4629-a8a1-9e9b630f72f3": {
           "type": "shopify:\/\/apps\/unlimited-bundles-discounts\/blocks\/embed-all\/d33d0f48-dee0-42a0-b156-2a5dce91814a",
-          "disabled": true,
           "settings": {
           }
         }
@@ -55,101 +52,11 @@
         "full_width": false,
         "section_padding": "both"
       }
-    },
-    "90825247-ea9f-450a-8855-8faafd52a59c": {
-      "type": "featured-collection",
-      "settings": {
-        "full_width": false,
-        "title": "Upcoming Workshops",
-        "collection": "live-art-workshops",
-        "carousel": false,
-        "grid": 4,
-        "limit": 8,
-        "color_scheme": "none",
-        "section_padding": "both"
-      }
-    },
-    "af74b2b0-a86c-4a31-96c2-3dc922384852": {
-      "type": "custom-liquid",
-      "settings": {
-        "liquid": "<div class=\"View-More-Button-Container\">\n<a href={{collections['live-art-workshops'].url}}><button class=\"View-More-Button\" >View All Workshops<\/button><\/a>\n<\/div>",
-        "full_width": false,
-        "section_padding": "both"
-      }
-    },
-    "2aefcc45-9dc4-47d5-8463-24306220b550": {
-      "type": "featured-collection",
-      "settings": {
-        "full_width": false,
-        "title": "Editor's Pick",
-        "collection": "online-and-offline-workshops-editors-picks",
-        "carousel": true,
-        "grid": 4,
-        "limit": 8,
-        "color_scheme": "cs2",
-        "section_padding": "both"
-      }
-    },
-    "38b4d565-2e6f-4e35-aa94-d337170aabea": {
-      "type": "thumbnail-cards",
-      "blocks": {
-        "6eaaf3b1-3a37-42f7-a034-b63830e639e8": {
-          "type": "card",
-          "settings": {
-            "card_collection": "",
-            "use_custom_image": "css_color",
-            "css_color_val": "#411e2f",
-            "transparent_bg": false,
-            "use_custom_label": true,
-            "custom_label": "Beginner Friendly Workshops"
-          }
-        },
-        "cfd3ae0a-a3e1-47d6-84a4-558e4381e22e": {
-          "type": "card",
-          "settings": {
-            "card_collection": "",
-            "use_custom_image": "css_color",
-            "css_color_val": "#411e2f",
-            "transparent_bg": false,
-            "use_custom_label": true,
-            "custom_label": "Intermediate Level Workshops"
-          }
-        },
-        "c3252ac8-aafb-458e-ac67-9e6ff36a551a": {
-          "type": "card",
-          "settings": {
-            "card_collection": "",
-            "use_custom_image": "css_color",
-            "css_color_val": "#411e2f",
-            "transparent_bg": false,
-            "use_custom_label": false,
-            "custom_label": "Advanced Workshops"
-          }
-        }
-      },
-      "block_order": [
-        "6eaaf3b1-3a37-42f7-a034-b63830e639e8",
-        "cfd3ae0a-a3e1-47d6-84a4-558e4381e22e",
-        "c3252ac8-aafb-458e-ac67-9e6ff36a551a"
-      ],
-      "settings": {
-        "title": "Explore By",
-        "last_card": "",
-        "enable_view_all": false,
-        "view_all_url": "",
-        "enable_nav_arrows": true,
-        "enable_nav_bar": true,
-        "card_size": "small"
-      }
     }
   },
   "order": [
     "banner",
     "main",
-    "1646105122e98f6180",
-    "90825247-ea9f-450a-8855-8faafd52a59c",
-    "af74b2b0-a86c-4a31-96c2-3dc922384852",
-    "2aefcc45-9dc4-47d5-8463-24306220b550",
-    "38b4d565-2e6f-4e35-aa94-d337170aabea"
+    "1646105122e98f6180"
   ]
 }
