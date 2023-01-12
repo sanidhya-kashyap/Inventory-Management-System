@@ -49,9 +49,9 @@ endcase -%}
           assign block_url = block.settings.card_collection.url
         endif
       -%}
-      <div class="carousel-cell thumbnail-card" style="margin-right: {{ space }}; width: {{ width }};">
+      <div class="carousel-cell thumbnail-card " style="">
         <a href="{{ block_url }}">
-          <div style=" {% if block.settings.transparent_bg == false %} background-color:  {{ block.settings.css_color_val }};{% endif %} width:{{ width }}; height: {{ height }}" class="thumbnail">
+          <div style=" {% if block.settings.transparent_bg == false %} background-color:  {{ block.settings.css_color_val }};{% endif %} " class="thumbnail liquid-dimensions">
               {% case block.settings.use_custom_image %}
                 {% when "collection_image" %}
                   {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
@@ -75,7 +75,7 @@ endcase -%}
     {% if section.settings.enable_view_all == true %} 
       <div class="carousel-cell thumbnail-card">
         <a href="{{ section.settings.view_all_url }}">
-          <div id="last-card" style="background-color: {{ block.settings.css_color_val }}; width:{{ width }}; height: {{ height }};" class="thumbnail">
+          <div id="last-card" style="background-color: {{ block.settings.css_color_val }};" class="thumbnail liquid-dimensions">
             <h3 style="color: white;">{{ section.settings.last_card }}</h3>
           </div>  
         </a>
@@ -102,6 +102,16 @@ endcase -%}
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 0px;
+  }
+
+  .liquid-dimensions{
+    width: {{ width }};
+    height: {{ height }};
+  }
+
+  .liquid-spacing{
+    {% comment %} margin-right: {{ space }}; {% endcomment %}
+    width: {{ width }};
   }
   
   .thumbnail-container{
@@ -163,6 +173,10 @@ endcase -%}
   }
 
   @media screen and (min-width: 980px) {
+    .shopify-section-thumbnail-cards {
+      margin: 25px 0px 10px 0px;
+    }
+    
     .thumbnail{
       height: 150px;
       width: 150px;
@@ -173,14 +187,19 @@ endcase -%}
     }
 
     .shopify-section-thumbnail-cards{
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 10%;
+      padding-right: 10%;
     }
 
   }
-  @media screen and (max-width: 980px) {
+
+  @media screen and (max-width: 979px) {
     .shopify-section-thumbnail-cards{
-      margin: 3px 0px 3px 0px;
+      margin: 10px 0px 10px 0px;
+    }
+
+    .thumbnail-container {
+      margin-top: 10px;
     }
 
     .thumbnail{
@@ -189,7 +208,7 @@ endcase -%}
     }
 
     .thumbnail-card{
-      margin-right: 8px;
+      margin-right: 15px;
     }
 
     .thumbnail-name{
@@ -202,6 +221,20 @@ endcase -%}
 
     .flickity-button{
       display: none;
+    }
+  }
+
+  @media screen and (max-width: 680px){
+    .cards-heading{
+      flex-flow: column;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .cards-heading > h1 {
+      text-align: center;
     }
   }
   
