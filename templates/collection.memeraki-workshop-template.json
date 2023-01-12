@@ -320,8 +320,84 @@
     },
     "a8eaf947-9e3b-489a-969b-18c9672e82f3": {
       "type": "thumbnail-cards",
+      "blocks": {
+        "0242c26a-310f-4954-ae15-20ddecc67cf4": {
+          "type": "card",
+          "settings": {
+            "card_collection": "delhi",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "7bb863bb-d0f6-4099-8f83-8ccb873fcd93": {
+          "type": "card",
+          "settings": {
+            "card_collection": "rajasthan",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "9fbc3124-6e40-4906-b014-c25ce5e7f586": {
+          "type": "card",
+          "settings": {
+            "card_collection": "maharashtra",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "812681d7-aaac-4a15-9484-e714f27a70be": {
+          "type": "card",
+          "settings": {
+            "card_collection": "gujarat",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "1e6319d0-f5af-4a19-bacd-be73d77f31ae": {
+          "type": "card",
+          "settings": {
+            "card_collection": "tamil-nadu",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "a7c54cf5-fb70-4e9f-af1a-80cbdf95981b": {
+          "type": "card",
+          "settings": {
+            "card_collection": "karnataka",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": true,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "0242c26a-310f-4954-ae15-20ddecc67cf4",
+        "7bb863bb-d0f6-4099-8f83-8ccb873fcd93",
+        "9fbc3124-6e40-4906-b014-c25ce5e7f586",
+        "812681d7-aaac-4a15-9484-e714f27a70be",
+        "1e6319d0-f5af-4a19-bacd-be73d77f31ae",
+        "a7c54cf5-fb70-4e9f-af1a-80cbdf95981b"
+      ],
       "settings": {
-        "title": "Explore By",
+        "title": "Workshops From Popular Regions",
         "last_card": "",
         "enable_view_all": false,
         "view_all_url": "",
