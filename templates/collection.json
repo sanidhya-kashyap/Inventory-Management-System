@@ -2,12 +2,14 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "display_wide": true
       }
     },
     "main": {
       "type": "main-collection",
+      "disabled": true,
       "blocks": {
         "33015783-fc74-41ca-873e-a1890ef14fd9": {
           "type": "dropdown_filter",
@@ -53,11 +55,61 @@
         "full_width": false,
         "section_padding": "both"
       }
+    },
+    "90825247-ea9f-450a-8855-8faafd52a59c": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Upcoming Workshops",
+        "collection": "live-art-workshops",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "2aefcc45-9dc4-47d5-8463-24306220b550": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Featured collection",
+        "collection": "",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
+    },
+    "38b4d565-2e6f-4e35-aa94-d337170aabea": {
+      "type": "thumbnail-cards",
+      "settings": {
+        "title": "Explore By",
+        "last_card": "",
+        "enable_view_all": false,
+        "view_all_url": "",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": true,
+        "card_size": "small"
+      }
+    },
+    "af74b2b0-a86c-4a31-96c2-3dc922384852": {
+      "type": "custom-liquid",
+      "settings": {
+        "liquid": "",
+        "full_width": false,
+        "section_padding": "both"
+      }
     }
   },
   "order": [
     "banner",
     "main",
-    "1646105122e98f6180"
+    "1646105122e98f6180",
+    "90825247-ea9f-450a-8855-8faafd52a59c",
+    "2aefcc45-9dc4-47d5-8463-24306220b550",
+    "38b4d565-2e6f-4e35-aa94-d337170aabea",
+    "af74b2b0-a86c-4a31-96c2-3dc922384852"
   ]
 }
