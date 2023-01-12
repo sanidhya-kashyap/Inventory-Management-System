@@ -12,7 +12,9 @@
 }
 {%- endcapture -%}
 
-{%-liquid case section.settings.card_size 
+{%-liquid 
+  
+  case section.settings.card_size 
    when 'small'
       assign height = '150px' 
       assign width = '150px' 
@@ -30,16 +32,25 @@ endcase -%}
 <Section>
   <div class="cards-heading">
     <h1 class="">{{ section.settings.title }}</h1>
+    {% if section.settings.enable_view_all_top == true %}
     <a href="{{ section.settings.view_all_url }}">
       <h4 style='color: #f4cb28'>View All</h4>
     </a>
+    {% endif %}
   </div>
 
   <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}' style='width: 100%'>
 
     {% for block in section.blocks %}
+      {%-liquid
+        if block.settings.use_custom_block_url == true
+          assign block_url = block.settings.block_url
+        else
+          assign block_url = block.settings.card_collection.url
+        endif
+      -%}
       <div class="carousel-cell thumbnail-card" style="margin-right: {{ space }}; width: {{ width }};">
-        <a href="{{ block.settings.card_collection.url }}">
+        <a href="{{ block_url }}">
           <div style=" {% if block.settings.transparent_bg == false %} background-color:  {{ block.settings.css_color_val }};{% endif %} width:{{ width }}; height: {{ height }}" class="thumbnail">
               {% case block.settings.use_custom_image %}
                 {% when "collection_image" %}
@@ -213,6 +224,12 @@ endcase -%}
       },
       {
         "type": "checkbox",
+        "id": "enable_view_all_top",
+        "label": "Show View All at the Top",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "enable_view_all",
         "label": "Show View More Card at the End"
       },
@@ -312,6 +329,17 @@ endcase -%}
             "type": "text",
             "id": "custom_label",
             "label": "Custom Label"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_custom_block_url",
+            "label": "Use a Custom URL",
+            "default": false
+          },
+          {
+            "type": "url",
+            "id": "block_url",
+            "label": "Custom URL"
           }
           
          ]
