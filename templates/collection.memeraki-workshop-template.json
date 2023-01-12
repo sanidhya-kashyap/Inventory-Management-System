@@ -446,7 +446,7 @@
         "last_card": "",
         "enable_view_all_top": false,
         "enable_view_all": false,
-        "view_all_url": "",
+        "view_all_url": "shopify:\/\/pages\/artforms",
         "enable_nav_arrows": true,
         "enable_nav_bar": false,
         "card_size": "small"
@@ -454,6 +454,7 @@
     },
     "1fbb11aa-c19f-4cf2-b321-f2f0737f36c0": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "full_width": false,
         "title": "Workshops with Art Kits",
