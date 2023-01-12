@@ -11,41 +11,46 @@
 }
 {%- endcapture -%}
 
-{% case section.settings.card_size %}
-  {% when 'small'%}
-    {% capture dimension %}
-    height: 150px;
-    width: 150px;
-    {% endcapture %}
-    {% assign space = '20px' %}
-  {% when 'mid'%}
-    {% capture dimension %}
-    height: 200px;
-    width: 200px;
-    {% endcapture %}
-    {% assign space = '30px' %}
-  {% when 'large'%}
-    {% capture dimension %}
-    height: 250px;
-    width: 250px;
-    {% endcapture %}
-    {% assign space ='40px' %}
-{% endcase %}
+{%-liquid 
+  
+  case section.settings.card_size 
+   when 'small'
+      assign height = '150px' 
+      assign width = '150px' 
+      assign space = '20px' 
+   when 'mid'
+      assign height = '200px' 
+      assign width = '200px' 
+      assign space = '30px' 
+   when 'large'
+      assign height = '250px' 
+      assign width = '250px' 
+      assign space = '30px' 
+endcase -%}
 
 <Section>
   <div class="cards-heading">
     <h1 class="">{{ section.settings.title }}</h1>
+    {% if section.settings.enable_view_all_top == true %}
     <a href="{{ section.settings.view_all_url }}">
       <h4 style='color: #f4cb28'>View All</h4>
     </a>
+    {% endif %}
   </div>
 
   <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
 
     {% for block in section.blocks %}
-      <div class="carousel-cell thumbnail-card" style="margin-right: {{ space }}">
-        <a href="{{ block.settings.card_collection.url }}">
-          <div style=" {% if block.settings.transparent_bg == false %} background-color:  {% endif %}{{ block.settings.css_color_val }}; {{dimension}}" class="thumbnail">
+      {%-liquid
+        if block.settings.use_custom_block_url == true
+          assign block_url = block.settings.block_url
+        else
+          assign block_url = block.settings.card_collection.url
+        endif
+      -%}
+      <div class="carousel-cell thumbnail-card" style="margin-right: {{ space }}; width: {{ width }};">
+        <a href="{{ block_url }}">
+          <div style=" {% if block.settings.transparent_bg == false %} background-color:  {{ block.settings.css_color_val }};{% endif %} width:{{ width }}; height: {{ height }}" class="thumbnail">
               {% case block.settings.use_custom_image %}
                 {% when "collection_image" %}
                   {{ block.settings.card_collection.image.src | image_url: height: 600 | image_tag: class: 'lazyload-fade lazyautosizes lazyloaded' }}
@@ -207,6 +212,12 @@
       },
       {
         "type": "checkbox",
+        "id": "enable_view_all_top",
+        "label": "Show View All at the Top",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "enable_view_all",
         "label": "Show View More Card at the End"
       },
@@ -306,6 +317,17 @@
             "type": "text",
             "id": "custom_label",
             "label": "Custom Label"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_custom_block_url",
+            "label": "Use a Custom URL",
+            "default": false
+          },
+          {
+            "type": "url",
+            "id": "block_url",
+            "label": "Custom URL"
           }
           
          ]
