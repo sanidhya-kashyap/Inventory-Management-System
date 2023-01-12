@@ -141,7 +141,7 @@
       "settings": {
         "title": "Explore By Difficulty Level",
         "last_card": "",
-        "enable_view_all_top": true,
+        "enable_view_all_top": false,
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": false,
@@ -444,7 +444,7 @@
       "settings": {
         "title": "Popular Regions",
         "last_card": "",
-        "enable_view_all_top": true,
+        "enable_view_all_top": false,
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": true,
