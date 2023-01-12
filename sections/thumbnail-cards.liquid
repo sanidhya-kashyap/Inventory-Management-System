@@ -2,6 +2,7 @@
 {
   "prevNextButtons": {{ section.settings.enable_nav_arrows }},
   "pageDots": {{ section.settings.enable_nav_bar }},
+  "imagesLoaded": true,
   "draggable": true,
   "contain": true,
   "freeScroll": true,
@@ -38,7 +39,7 @@ endcase -%}
     {% endif %}
   </div>
 
-  <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}'>
+  <div class="thumbnail-container js-flickity" data-flickity='{{ flickity_options }}' style='width: 100%'>
 
     {% for block in section.blocks %}
       {%-liquid
@@ -74,7 +75,7 @@ endcase -%}
     {% if section.settings.enable_view_all == true %} 
       <div class="carousel-cell thumbnail-card">
         <a href="{{ section.settings.view_all_url }}">
-          <div id="last-card" style="background-color: {{ block.settings.css_color_val }}; {{dimension}}" class="thumbnail">
+          <div id="last-card" style="background-color: {{ block.settings.css_color_val }}; width:{{ width }}; height: {{ height }};" class="thumbnail">
             <h3 style="color: white;">{{ section.settings.last_card }}</h3>
           </div>  
         </a>
@@ -85,7 +86,7 @@ endcase -%}
 
 <style>
   .flickity-page-dots {
-    bottom: -22px;
+    bottom: 55px;
   }
 
   /* dots are lines */
@@ -97,14 +98,15 @@ endcase -%}
   }
 
   .shopify-section-thumbnail-cards{
-    margin: 10px 20px 50px 20px;
+    margin: 50px 80px 50px 80px;
     padding-left: 10%;
     padding-right: 10%;
-    padding-top: 40px;
+    padding-top: 0px;
   }
-
+  
   .thumbnail-container{
-    margin-top: 40px;
+    margin-top: 20px;
+    {% comment %} height: 300px; {% endcomment %}
   }
 
   #last-card{
@@ -117,26 +119,26 @@ endcase -%}
   .cards-heading > h1{
       display: inline;
       width: 100%;
+      font-size: large;
   }
+
   .cards-heading > a {
       float: right;
       display: inline;
   }
   
-
-
   .thumbnail-card{
       margin-top: 10px;
   }
 
   .thumbnail-card > a{
       text-decoration: none;
-      color: black;
-      
+      color: black;   
   }
 
   .thumbnail{
       border-radius: 0px 35px 0px 0px;
+      overflow: hidden;
   }
 
   .thumbnail-name{
@@ -155,21 +157,32 @@ endcase -%}
     margin: 20% 20%;
   }
 
-  @media screen and (max-width: 980px) {
+  @media screen and (min-width: 1220px) {
+    
+
+  }
+
+  @media screen and (min-width: 980px) {
     .thumbnail{
       height: 150px;
       width: 150px;
     }
+
     .thumbnail-card{
       margin-right: 30px;
     }
+
     .shopify-section-thumbnail-cards{
       padding-left: 5px;
       padding-right: 5px;
     }
-  }
 
+  }
   @media screen and (max-width: 980px) {
+    .shopify-section-thumbnail-cards{
+      margin: 3px 0px 3px 0px;
+    }
+
     .thumbnail{
       height: 100px;
       width: 100px;
@@ -192,7 +205,6 @@ endcase -%}
     }
   }
   
-
 </style>
 
 {% schema %}
