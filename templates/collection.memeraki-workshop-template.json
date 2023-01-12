@@ -141,6 +141,82 @@
         "enable_nav_bar": false,
         "card_size": "small"
       }
+    },
+    "fe398387-b792-4ee0-b63b-cad0200f14d0": {
+      "type": "thumbnail-cards",
+      "blocks": {
+        "a810a63a-74cc-4d61-a558-7464ca03f0f9": {
+          "type": "card",
+          "settings": {
+            "card_collection": "adarsh",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "872c5e72-4e2d-4a36-a4e2-cd77b39bff98": {
+          "type": "card",
+          "settings": {
+            "card_collection": "jayesh-sharma",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "fc1ed972-cf09-4728-a1b7-856532e9d04b": {
+          "type": "card",
+          "settings": {
+            "card_collection": "sanjay-tandekar",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "ccd751b1-9d53-4f2d-a634-cdbf1c147c5a": {
+          "type": "card",
+          "settings": {
+            "card_collection": "venkat-raman-singh-shyam",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        },
+        "6bd9d2e8-4c5c-4506-8313-3484ff7ad25d": {
+          "type": "card",
+          "settings": {
+            "card_collection": "kalyan-joshi",
+            "use_custom_image": "collection_image",
+            "css_color_val": "#411e2f",
+            "transparent_bg": false,
+            "use_custom_label": false,
+            "custom_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "a810a63a-74cc-4d61-a558-7464ca03f0f9",
+        "872c5e72-4e2d-4a36-a4e2-cd77b39bff98",
+        "fc1ed972-cf09-4728-a1b7-856532e9d04b",
+        "ccd751b1-9d53-4f2d-a634-cdbf1c147c5a",
+        "6bd9d2e8-4c5c-4506-8313-3484ff7ad25d"
+      ],
+      "settings": {
+        "title": "Explore By",
+        "last_card": "All Artists",
+        "enable_view_all": true,
+        "view_all_url": "shopify:\/\/pages\/artists",
+        "enable_nav_arrows": true,
+        "enable_nav_bar": false,
+        "card_size": "small"
+      }
     }
   },
   "order": [
@@ -150,6 +226,7 @@
     "75d1d21d-3135-4081-ae2a-3294120ffe33",
     "d5aa823e-d051-4178-a2a1-2352aa609ada",
     "3495692f-9fbd-4465-914b-9f1561618671",
-    "6a0ff217-6cf8-4874-96c5-da7783561acb"
+    "6a0ff217-6cf8-4874-96c5-da7783561acb",
+    "fe398387-b792-4ee0-b63b-cad0200f14d0"
   ]
 }
