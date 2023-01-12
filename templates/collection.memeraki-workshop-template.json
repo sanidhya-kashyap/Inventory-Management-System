@@ -209,7 +209,7 @@
         "6bd9d2e8-4c5c-4506-8313-3484ff7ad25d"
       ],
       "settings": {
-        "title": "Top Artists",
+        "title": "Popular Artists",
         "last_card": "All Artists",
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artists",
@@ -309,7 +309,7 @@
         "aeac6cf9-6bbb-44fc-a1a2-df6735c08b10"
       ],
       "settings": {
-        "title": "Top Artforms",
+        "title": "Popular Artforms",
         "last_card": "All Art Forms",
         "enable_view_all": true,
         "view_all_url": "shopify:\/\/pages\/artforms",
