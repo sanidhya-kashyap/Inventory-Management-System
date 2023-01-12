@@ -402,8 +402,21 @@
         "enable_view_all": false,
         "view_all_url": "",
         "enable_nav_arrows": true,
-        "enable_nav_bar": true,
+        "enable_nav_bar": false,
         "card_size": "small"
+      }
+    },
+    "1fbb11aa-c19f-4cf2-b321-f2f0737f36c0": {
+      "type": "featured-collection",
+      "settings": {
+        "full_width": false,
+        "title": "Workshops with Art Kits",
+        "collection": "",
+        "carousel": false,
+        "grid": 4,
+        "limit": 8,
+        "color_scheme": "cs2",
+        "section_padding": "both"
       }
     }
   },
@@ -417,6 +430,7 @@
     "6a0ff217-6cf8-4874-96c5-da7783561acb",
     "fe398387-b792-4ee0-b63b-cad0200f14d0",
     "dfe8fdf3-6adf-4225-8232-431f9c15fc49",
-    "a8eaf947-9e3b-489a-969b-18c9672e82f3"
+    "a8eaf947-9e3b-489a-969b-18c9672e82f3",
+    "1fbb11aa-c19f-4cf2-b321-f2f0737f36c0"
   ]
 }
