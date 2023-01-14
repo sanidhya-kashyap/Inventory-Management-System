@@ -23,7 +23,7 @@
       <div class="art-col" >
        <a name="letter-a"><h3 >A</h3></a> 
         <hr>
-        {% assign artist_data = collections['Assamese-Scroll'] %}
+        {% assign artist_data = collections['Andhra-Pradesh'] %}
         {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -39,13 +39,48 @@
               </a>
             
             </div>
+
+          
+               {% assign artist_data = collections['Arunachal-Pradesh'] %}
+               {% if artist_data.image != nil %}
+                   <div class="artist">
+                       {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                       
+                     {%else%}
+                     <div class="artist">
+                       <div class="artist-img2">
+                     </div>
+                 
+                       {% endif %}
+                       <a class="artist-a" href="{{ artist_data.url }}">
+                       {{ artist_data.title }}
+                     </a>
+                   
+                   </div>
+                   {% assign artist_data = collections['Assam'] %}
+                   {% if artist_data.image != nil %}
+                       <div class="artist">
+                           {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+                           
+                         {%else%}
+                         <div class="artist">
+                           <div class="artist-img2">
+                         </div>
+                     
+                           {% endif %}
+                           <a class="artist-a" href="{{ artist_data.url }}">
+                           {{ artist_data.title }}
+                         </a>
+                       
+                       </div>
+     
           
       </div>
 
       <div class="art-col">
         <a name="letter-b"><h3 >B</h3></a> 
         <hr>
-        {% assign artist_data = collections['Bengal-Pattachitra'] %}
+        {% assign artist_data = collections['Bihar'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -64,7 +99,20 @@
       <div class="art-col">
         <a name="letter-c"><h3 >C</h3></a> 
         <hr>
-        {% assign artist_data = collections['Cheriyal-Scroll'] %}
+        {% assign artist_data = collections['Chhattisgarh'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+        {% assign artist_data = collections['Chandigarh'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -78,19 +126,6 @@
               </a>
               </div>
 
-              {% assign artist_data = collections['Chitrakathi '] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
     </div>
 
 
@@ -98,7 +133,32 @@
       <div class="art-col">
         <a name="letter-d"><h3 >D</h3></a> 
         <hr>
-              
+        {% assign artist_data = collections['Daman-and-Diu'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>      
+        {% assign artist_data = collections['Delhi'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>      
       </div>
 
 
@@ -119,7 +179,20 @@
       <div class="art-col">
         <a name="letter-g"><h3 >G</h3></a> 
         <hr>
-        {% assign artist_data = collections['Gond'] %}
+        {% assign artist_data = collections['Goa'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+        {% assign artist_data = collections['Gujarat'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -137,6 +210,32 @@
       <div class="art-col">
         <a name="letter-h"><h3 >H</h3></a> 
         <hr>
+        {% assign artist_data = collections['Haryana'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['Himachal-Pradesh'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
       </div>
 
       <div class="art-col">
@@ -148,11 +247,37 @@
       <div class="art-col">
         <a name="letter-j"><h3 >J</h3></a> 
         <hr>
+        {% assign artist_data = collections['Jammu-and-Kashmir'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>
+        {% assign artist_data = collections['Jharkhand'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>
       </div>
       <div class="art-col">
         <a name="letter-k"><h3 >K</h3></a> 
         <hr>
-        {% assign artist_data = collections['Kalamkari'] %}
+        {% assign artist_data = collections['Karnataka'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -166,7 +291,7 @@
               </a>
               </div>
 
-              {% assign artist_data = collections['Kalighat'] %}
+              {% assign artist_data = collections['Kerala'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -179,89 +304,34 @@
                 {{ artist_data.title }}
               </a>
               </div>
+          
 
-
-              {% assign artist_data = collections['Kangra-Art'] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
-
-              {% assign artist_data = collections['Kavad-Art'] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
-
-              {% assign artist_data = collections['Kerala-Mural'] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
-
-              {% assign artist_data = collections['Kishangarh-Art'] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
       </div>
 
       <div class="art-col">
         <a name="letter-l"><h3 >L</h3></a> 
         <hr>
-        {% assign artist_data = collections['Lippan-Kaam'] %}
-            {% if artist_data.image != nil %}
-            <div class="artist">
-                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-              {%else%}
-              <div class="artist">
-                <div class="artist-img2" >
-              </div>
-                {% endif %}
-                <a class="artist-a" href="{{ artist_data.url }}">
-                {{ artist_data.title }}
-              </a>
-              </div>
-              </div>
+        {% assign artist_data = collections['Lakshadweep'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>
+     </div>
     </div>
 
     <div class="art-row">
       <div class="art-col">
         <a name="letter-m"><h3 >M</h3></a> 
         <hr>
-        {% assign artist_data = collections['Madhubani'] %}
+        {% assign artist_data = collections['Madhya-Pradesh'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -275,7 +345,7 @@
               </a>
               </div>
 
-              {% assign artist_data = collections['Mandana'] %}
+              {% assign artist_data = collections['Maharashtra'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -289,7 +359,7 @@
               </a>
               </div>
 
-              {% assign artist_data = collections['Mata-ni-Pachedi'] %}
+              {% assign artist_data = collections['Manipur'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -303,7 +373,20 @@
               </a>
               </div>
 
-              {% assign artist_data = collections['Miniature-Paintings'] %}
+              {% assign artist_data = collections['Meghalaya'] %}
+            {% if artist_data.image != nil %}
+            <div class="artist">
+                {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+              {%else%}
+              <div class="artist">
+                <div class="artist-img2" >
+              </div>
+                {% endif %}
+                <a class="artist-a" href="{{ artist_data.url }}">
+                {{ artist_data.title }}
+              </a>
+              </div>
+              {% assign artist_data = collections['Mizoram'] %}
             {% if artist_data.image != nil %}
             <div class="artist">
                 {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -320,18 +403,57 @@
       <div class="art-col">
         <a name="letter-n"><h3 >N</h3></a> 
         <hr>
+        {% assign artist_data = collections['Nagaland'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>
       </div>
 
       <div class="art-col">
         <a name="letter-o"><h3 >O</h3></a> 
         <hr>
+        {% assign artist_data = collections['Odisha'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+            {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+            <div class="artist-img2" >
+          </div>
+            {% endif %}
+            <a class="artist-a" href="{{ artist_data.url }}">
+            {{ artist_data.title }}
+          </a>
+          </div>
       </div>
     </div>
     <div class="art-row">
       <div class="art-col">
         <a name="letter-p"><h3 >P</h3></a> 
         <hr>
-        {% assign artist_data = collections['Pattachitra'] %}
+        {% assign artist_data = collections['Punjab'] %}
+         {% if artist_data.image != nil %}
+         <div class="artist">
+         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+          {%else%}
+          <div class="artist">
+          <div class="artist-img2" >
+          </div>
+          {% endif %}
+          <a class="artist-a" href="{{ artist_data.url }}">
+          {{ artist_data.title }}
+          </a>
+          </div>
+        {% assign artist_data = collections['Puducherry'] %}
          {% if artist_data.image != nil %}
          <div class="artist">
          {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -345,33 +467,7 @@
           </a>
           </div>
 
-          {% assign artist_data = collections['Phad'] %}
-         {% if artist_data.image != nil %}
-         <div class="artist">
-         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-          {%else%}
-          <div class="artist">
-          <div class="artist-img2" >
-          </div>
-          {% endif %}
-          <a class="artist-a" href="{{ artist_data.url }}">
-          {{ artist_data.title }}
-          </a>
-          </div>
-
-          {% assign artist_data = collections['Pichwai-Art'] %}
-         {% if artist_data.image != nil %}
-         <div class="artist">
-         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-          {%else%}
-          <div class="artist">
-          <div class="artist-img2" >
-          </div>
-          {% endif %}
-          <a class="artist-a" href="{{ artist_data.url }}">
-          {{ artist_data.title }}
-          </a>
-          </div>
+         
       </div>
       <div class="art-col">
         <a name="letter-q"><h3 >Q</h3></a> 
@@ -384,7 +480,7 @@
         <a name="letter-r"><h3 >R</h3></a> 
 
         <hr>
-        {% assign artist_data = collections['Rogan-Art'] %}
+        {% assign artist_data = collections['Rajasthan'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -403,7 +499,7 @@
       <div class="art-col">
         <a name="letter-s"><h3 >S</h3></a> 
         <hr>
-        {% assign artist_data = collections['Sanjhi'] %}
+        {% assign artist_data = collections['Sikkim'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -416,41 +512,13 @@
          {{ artist_data.title }}
          </a>
          </div>
-
-         {% assign artist_data = collections['Saura-Art'] %}
-         {% if artist_data.image != nil %}
-         <div class="artist">
-         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-          {%else%}
-          <div class="artist">
-          <div class="artist-img2" >
-          </div>
-          {% endif %}
-          <a class="artist-a" href="{{ artist_data.url }}">
-          {{ artist_data.title }}
-          </a>
-          </div>
-
-          {% assign artist_data = collections['Sohrai'] %}
-          {% if artist_data.image != nil %}
-          <div class="artist">
-          {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
-           {%else%}
-           <div class="artist">
-           <div class="artist-img2" >
-           </div>
-           {% endif %}
-           <a class="artist-a" href="{{ artist_data.url }}">
-           {{ artist_data.title }}
-           </a>
-           </div>
                  
       </div>
       <div class="art-col">
         <a name="letter-t"><h3 >T</h3></a> 
 
         <hr>
-        {% assign artist_data = collections['Tanjore'] %}
+        {% assign artist_data = collections['Tamil-Nadu'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -463,7 +531,7 @@
         {{ artist_data.title }}
         </a>
         </div>
-        {% assign artist_data = collections['Terracotta'] %}
+        {% assign artist_data = collections['Telangana'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -476,7 +544,7 @@
         {{ artist_data.title }}
         </a>
         </div>
-        {% assign artist_data = collections['Thangka-Art'] %}
+        {% assign artist_data = collections['Tripura'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
@@ -494,6 +562,32 @@
       <div class="art-col">
         <a name="letter-u"><h3 >U</h3></a> 
         <hr>
+        {% assign artist_data = collections['Uttar-Pradesh'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+        {%else%}
+        <div class="artist">
+        <div class="artist-img2" >
+        </div>
+        {% endif %}
+        <a class="artist-a" href="{{ artist_data.url }}">
+        {{ artist_data.title }}
+        </a>
+        </div>
+        {% assign artist_data = collections['Uttarakhand'] %}
+        {% if artist_data.image != nil %}
+        <div class="artist">
+        {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
+        {%else%}
+        <div class="artist">
+        <div class="artist-img2" >
+        </div>
+        {% endif %}
+        <a class="artist-a" href="{{ artist_data.url }}">
+        {{ artist_data.title }}
+        </a>
+        </div>
       </div>
     </div>
 
@@ -506,7 +600,7 @@
       <div class="art-col">
         <a name="letter-w"><h3 >W</h3></a> 
         <hr>
-        {% assign artist_data = collections['Warli'] %}
+        {% assign artist_data = collections['West-Bengal'] %}
         {% if artist_data.image != nil %}
         <div class="artist">
         {{ artist_data.image.src | image_url: height: 200 | image_tag: class: 'artist-img' }} 
