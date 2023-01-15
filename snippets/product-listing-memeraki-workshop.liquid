@@ -1,4 +1,3 @@
-{% comment %} Sanity Check {% endcomment %}
 {%- liquid
 
   case settings.product_image_size
@@ -68,30 +67,6 @@
               {% endif %}
             </div>
           {% endif %}
-
-          {% comment %} {% if product.metafields.workshop.difficulty_level != blank %}
-            {%-liquid
-              case product.metafields.workshop.difficulty_level
-                when 'Beginner'
-                  assign icon = "level1.png"
-                when 'Intermediate'
-                  assign icon = "level-21.png"
-                when 'Advanced'
-                  assign icon = "level-31.png"
-                when 'Beginner To Intermediate'
-                  assign icon = "level1.png"
-                when 'Intermediate To Advanced'
-                  assign icon = "level-21.png"
-                endcase
-            %}
-            <div class=tag>
-              <img class="workshop-info-icons" loading="lazy" height='10' width='10' style="height: 16px; width: 16px; margin-right: 5px;"src = {{ icon | asset_url }} >
-            </div>
-          {% endif %} {% endcomment %}
-
-          {% comment %} {% if product.metafields.workshop.difficulty_level != blank %}
-            <div class=tag>{{ product.metafields.workshop.difficulty_level }}</div>
-          {% endif %} {% endcomment %}
 
           {% if  product.metafields.workshop.materials_included != blank and product.metafields.workshop.materials_included == true %}
             <div class=tag>Materials Included</div>
