@@ -69,7 +69,7 @@
             </div>
           {% endif %}
 
-          {% if product.metafields.workshop.difficulty_level != blank %}
+          {% comment %} {% if product.metafields.workshop.difficulty_level != blank %}
             {%-liquid
               case product.metafields.workshop.difficulty_level
                 when 'Beginner'
@@ -87,7 +87,7 @@
             <div class=tag>
               <img class="workshop-info-icons" loading="lazy" height='10' width='10' style="height: 16px; width: 16px; margin-right: 5px;"src = {{ icon | asset_url }} >
             </div>
-          {% endif %}
+          {% endif %} {% endcomment %}
 
           {% comment %} {% if product.metafields.workshop.difficulty_level != blank %}
             <div class=tag>{{ product.metafields.workshop.difficulty_level }}</div>
