@@ -371,7 +371,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   </script>
   
   
-  <script>
+  <script type="application/javascript">
     console.log("{{product.images[1]}}");
     var acc = document.getElementsByClassName('accordion');
     var i;
@@ -388,7 +388,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     }
   </script>
 
-  <script>
+  <script type="application/javascript">
     
     // Get the button
     let addToCartBtn = document.getElementById("addToCart");
@@ -425,27 +425,30 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     
     </script>
 
-  <style>
-  {% comment %} To remove border form the bottom of the Add To Cart button {% endcomment %}
-  #AddToCartForm{
-    border-bottom: none;
-  }
+<style>
+{% comment %} To remove border form the bottom of the Add To Cart button {% endcomment %}
+#AddToCartForm{
+  border-bottom: none;
+}
       
- {% comment %} Workshop Metafields Info Icon {% endcomment %}
- .instructor-icon-container{
+{% comment %} Workshop Metafields Info Icon {% endcomment %}
+.instructor-icon-container{
   display: flex; 
   font-size: 14px;
   font-weight: bold;
 }
+
 .instructor-icon{
   height: 40px;
   width: 40px;
   border-radius: 20px;
   margin-right: 12px;
 }
+
 .instructor-icon-title{
   align-self: center;
 }
+
 .artwork-info{
   background: rgb(242,203,40);
   background: -moz-linear-gradient(330deg, rgba(242,203,40,1) 0%, rgba(85,51,46,1) 76%, rgba(64,30,47,1) 100%);
@@ -457,17 +460,20 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   border-radius: 20px;
   margin-bottom: 7%;
 }
+
 .workshop-metafields-container{
   display: flex;
   margin-bottom: 10px;
   
 }
+
 .workshop-info-icons{
   height: 25px;
   width: 25px;
   margin-right: 25px;
 }
 {% comment %} Ends Here {% endcomment %}
+
 {% comment %} Dropdowns CSS starts here {% endcomment %}
 .accordion {
   background-color: white;
@@ -621,9 +627,11 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
     {% endif %}
   </style>
 </div>
+
 <script type="application/json" id="ModelJson-{{ section.id }}">
   {{ product.media | where: 'media_type', 'model' | json }}
 </script>
+
 {% schema %}
 {
     "name": "Product Page",
