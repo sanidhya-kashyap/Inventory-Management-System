@@ -13,16 +13,28 @@
   endcase
 
 -%}
+{%- liquid
 
-<style>
-  .artist-name {   
-    position:absolute;
-    left:1em;
-    color: #9d0000; 
-    font-weight:800;
-  }
-</style>
+  assign artist_name =  product.metafields.Instructor.name.value
+  assign artist_handle = product.metafields.Instructor.name.value | downcase | replace: ' ', '-'
+  assign workshop_dates = product.metafields.workshop.date.value
+-%}
 
+{% comment %} Temporary code to show second picture for old workshosp {% endcomment %}
+{%-liquid
+  assign today = "now" | date: "%s"
+  assign cutoff_date = 'Tuesday, January 31, 2023 at 12:00 am +0000' | date: '%s'
+
+  if today > cutoff_date
+    assign image_to_use = product.images[0]
+  else
+    if product.images[1] 
+      assign image_to_use = product.images[1]
+    else
+      assign image_to_use = product.images[0]
+    endif
+  endif
+-%}
 
 <div class="ci">
   {% if product.available %}
@@ -43,16 +55,43 @@
 
   <a class="workshop-hyperlinks" title="{{ product.title }}" href="{{ product.url }}"><div class="workshop-product-container">
 
-    <div class="workshop-image" style=' background-image: url({{ product.images[1] | image_url: height: 600 }});'>
+    <div class="workshop-image" style=' background-image: url({{ image_to_use | image_url: height: 600 }});'>
         <div class="workshop-tags">
         
           {% if  product.metafields.workshop.type != blank and product.metafields.workshop.type == 'In Person' %}
-            <div class=tag>Offline Workshop</div>
+            <div class=tag>
+              {% if product.metafields.workshop.address != blank %}
+                <img class="workshop-info-icons" loading="lazy" height='10' width='10' style="height: 16px; width: 16px; margin-right: 5px;"src = {{ "location1.png" | asset_url }} >
+                {{ product.metafields.workshop.address | split: " " | last }}
+              {% else %}
+                In Person
+              {% endif %}
+            </div>
           {% endif %}
 
           {% if product.metafields.workshop.difficulty_level != blank %}
-            <div class=tag>{{ product.metafields.workshop.difficulty_level }}</div>
+            {%-liquid
+              case product.metafields.workshop.difficulty_level
+                when 'Beginner'
+                  assign icon = "level1.png"
+                when 'Intermediate'
+                  assign icon = "level-21.png"
+                when 'Advanced'
+                  assign icon = "level-31.png"
+                when 'Beginner To Intermediate'
+                  assign icon = "level1.png"
+                when 'Intermediate To Advanced'
+                  assign icon = "level-21.png"
+                endcase
+            %}
+            <div class=tag>
+              <img class="workshop-info-icons" loading="lazy" height='10' width='10' style="height: 16px; width: 16px; margin-right: 5px;"src = {{ icon | asset_url }} >
+            </div>
           {% endif %}
+
+          {% comment %} {% if product.metafields.workshop.difficulty_level != blank %}
+            <div class=tag>{{ product.metafields.workshop.difficulty_level }}</div>
+          {% endif %} {% endcomment %}
 
           {% if  product.metafields.workshop.materials_included != blank and product.metafields.workshop.materials_included == true %}
             <div class=tag>Materials Included</div>
@@ -64,12 +103,13 @@
         <div class="workshop-title">
             <h3 style="color: white !important;">{{ product.title }}</h3>
         </div>
-
         <div class="workshop-dates">
+          
           {% if workshop_dates.size > 1 %}
             From 
           {% endif %}
           {{ workshop_dates[0] | date: "%A %I:%M %p, %b %e %Y" }}
+          
         </div>
 
         <div class="aartist">
@@ -86,6 +126,7 @@
       
 </div></a>
 </div>
+
 
 <style>
 .workshop-hyperlinks{
@@ -111,24 +152,28 @@
 
 
 .workshop-image {
-  background-color: gray;
+  background-color: #dfdfdf;
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 300px;
   max-height: 50%;
   border-radius: 25px 25px 0 0;
+  display: flex;
+  flex-flow: column-reverse;
 }
 
 .workshop-tags {
-  width: 100%;
-  height: 30.5vh;
-  overflow: hidden;
   display: flex;
-  flex-flow: row wrap;
-  padding-top: 260px;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-flow: wrap-reverse;
+  width: 100%;
+  {% comment %} height: 30.5vh; {% endcomment %}
+  overflow: hidden;
+  {% comment %} padding-top: 260px;
   padding-bottom: 1%;
-  top: 33%;
+  top: 33%; {% endcomment %}
   padding-left: 5px;
 }
 
@@ -138,7 +183,7 @@
   align-items: center;
   font-family: 'Lato', sans-serif;
   padding: 0 9px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   margin-right: 4px;
   border-radius: 17px;
   background-color: #411e2f;
@@ -199,5 +244,31 @@
   height: 50px;
 } 
 
+.enroll-now {
+  margin: 40px 0px 0px 0px;
+  background-color: #f4cb28;
+  color: white;
+  font-weight: bolder;
+  border-radius: 0 0 22px 22px;
+  border-style: none;
+  height: 55px;
+  width: 100%;
+  
+}
+
+.enroll-now:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 741px) and (max-width: 980px){ 
+.featured__collection-carousel .featured__collection-product {
+    width: 50% !important;
+}
+}
+@media screen and (max-width: 740px){ 
+.featured__collection-carousel .featured__collection-product {
+    width: 85% !important;
+}
+}
 </style>
 
