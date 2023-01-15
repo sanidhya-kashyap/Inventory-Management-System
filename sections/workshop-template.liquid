@@ -174,7 +174,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
                 {% if product.metafields.workshop.type == 'Live' %}
                   {{ product.metafields.workshop.type }} via Zoom <br>
                 {% elsif product.metafields.workshop.type == 'In Person' %}
-                  {{ product.metafields.workshop.type }} <br>
+                  {{ product.metafields.workshop.address }} <br>
                 {% elsif product.metafields.workshop.type == 'Recording' %}
                    Past Workshop {{ product.metafields.workshop.type }}<br>
                 {% endif %}
@@ -372,6 +372,7 @@ data-initial-variant="{{ current_variant.featured_media.id }}">
   
   
   <script>
+    console.log("{{product.images[1]}}");
     var acc = document.getElementsByClassName('accordion');
     var i;
     for (i = 0; i < acc.length; i++) {
