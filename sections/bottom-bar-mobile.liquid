@@ -1,15 +1,15 @@
 {%-liquid
     if template contains 'article'
         assign page_title = article.title
-        assign msg_template = "Hi, I was reading " | append: page_title | append: "and wanted some more information about it." | append: page.url
+        assign msg_template = "Hi, I was reading " | append: page_title | append: "and wanted some more information about it." | append: page.url[0]
     elsif template contains 'product'
         assign page_title = product.title
-        assign msg_template = "Hi, I have a question about " | append: page_title | append: page.url
+        assign msg_template = "Hi, I have a question about " | append: page_title | append: page.url[0]
     elsif template contains 'collection'
         assign page_title = collection.title
-        assign msg_template = "Hi, I have a query about the collection " | append: page_title | append: page.url
+        assign msg_template = "Hi, I have a query about the collection " | append: page_title | append: page.url[0]
     else
-        assign msg_template = "Hi, I need assistance and I am on" | append: page.title | append: page.url
+        assign msg_template = "Hi, I need assistance and I am on" | append: page.title | append: page.url[0]
     endif
 -%}
 
