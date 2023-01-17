@@ -120,11 +120,23 @@
     {% if template == 'cart' %}
       {% include "revy-bundle-script" %}{% endif %}
 
+    {% comment %} GSC API Script {% endcomment %}
     <script>
       window.gsc = window.gsc || function() {
         (gsc.q = gsc.q || []).push(arguments)
       };
     </script>
+    
+  {% comment %} Script for GA4 Manual Installation {% endcomment %}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-57F3NJQWT5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-57F3NJQWT5');
+  </script>
 
     <!-- Hotjar Tracking Code for https://www.memeraki.com/ -->
     <script>
