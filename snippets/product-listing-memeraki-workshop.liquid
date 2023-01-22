@@ -84,7 +84,7 @@
             <img class="workshop-info-icons" loading="lazy" height='10' width='10' style="height: 20px; width: 20px; margin-left: 2px; margin-right: 5px;" src = {{ "lifetime1.png" | asset_url }} >
               <span style="">Workshop Recording</span><br>
           {% elsif product.metafields.workshop.type != 'Recording' %}
-            {% if workshop_dates.size > 1 %} From {% endif %}
+            {% if workshop_dates.size > 1 %} {{ workshop_dates.size }} Day Workshop <br> Starting  {% endif %}
             {{ workshop_dates[0] | date: "%A %I:%M %p, %b %e %Y" }}
           {% endif %}
           
@@ -239,6 +239,10 @@
 @media screen and (min-width: 741px) and (max-width: 980px){ 
 .featured__collection-carousel .featured__collection-product {
     width: 50% !important;
+}
+
+.workshop_dates{
+  height: 40px;
 }
 }
 @media screen and (max-width: 740px){ 
